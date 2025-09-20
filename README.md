@@ -116,6 +116,28 @@ WRIT20833-2025/
 - **Images**: Optimized web formats (PNG, JPG, GIF, SVG)
 - **Structure**: Modular organization for easy maintenance and updates
 
+## 🌿 Development Workflow
+
+### **Branch Strategy**
+- **`main` branch**: Stable, classroom-ready content (protected)
+- **`textbook-dev` branch**: Active development for textbook project
+- **Public access**: Students and colleagues use stable `main` branch content
+- **Content control**: Only tested materials reach `main` via pull requests
+
+### **For Contributors & Textbook Development**
+```bash
+# Work on textbook development
+git checkout textbook-dev
+# Make changes, test, commit
+git push origin textbook-dev
+
+# Publish classroom-ready content
+# Create PR: textbook-dev → main
+# Merge after review
+```
+
+**See [`BRANCHING_STRATEGY.md`](BRANCHING_STRATEGY.md) for detailed workflow guidance.**
+
 ## 📅 Project Timeline
 
 ### **Current Status (September 2025)**
@@ -123,6 +145,7 @@ WRIT20833-2025/
 - ✅ **Provisional TOC Created**: 18-chapter structure with existing content mapped
 - ✅ **High-Quality Foundation**: Lectures and notebooks ready for adaptation
 - ✅ **Technical Planning**: Platform decisions and development strategy finalized
+- ✅ **Development Workflow**: Branch protection and controlled publishing implemented
 
 ### **Development Schedule**
 - **Fall 2025** (Heavy Development): Python foundations content (Chapters 2-6)
@@ -139,6 +162,12 @@ WRIT20833-2025/
 ---
 
 ## 🔄 Recent Updates
+
+### **September 20, 2025 - Development Workflow Implementation**
+- **Branch Strategy**: Implemented protected `main` branch with `textbook-dev` for active development
+- **Repository Setup**: Added development documentation and gitignore configuration
+- **Controlled Publishing**: Branch protection ensures only tested content reaches public main branch
+- **Developer Environment**: Jupyter Lab configuration and Python environment verified
 
 ### **September 6, 2025 - Major Assessment & Planning Session**
 - **Comprehensive Content Review**: Evaluated all existing materials for textbook potential
