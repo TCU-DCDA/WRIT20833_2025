@@ -18,9 +18,8 @@ git push origin textbook-dev
 ### Publishing Classroom Content  
 ```bash
 # When content is classroom-ready
-git checkout main
-git merge textbook-dev --no-ff  # Or create PR on GitHub
-git push origin main
+# Create a Pull Request (PR) from 'textbook-dev' to 'main' on GitHub
+# After PR approval and merge, your changes will be published to 'main'
 ```
 
 ### Student/Colleague Access
