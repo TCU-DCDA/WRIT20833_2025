@@ -34,5 +34,4 @@ git push origin textbook-dev
 
 ## Current Status
 ✅ Development branch created (`textbook-dev`)  
-⏳ Configure branch protection on GitHub  
-⏳ Set development branch as your default workspace
+⏳ [Configure branch protection on GitHub](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches)  
