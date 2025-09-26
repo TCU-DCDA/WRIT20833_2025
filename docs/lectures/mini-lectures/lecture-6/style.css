@@ -1,0 +1,757 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    background: linear-gradient(135deg, #1a0330, #2d1b5e, #1a0330);
+    color: white;
+    overflow: hidden;
+    height: 100vh;
+}
+
+/* WCAG-Compliant Link Styles */
+a {
+    color: #e6d3ff;
+    text-decoration: underline;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: #f0e6ff;
+    text-decoration: underline;
+}
+
+a:focus {
+    outline: 2px solid #e6d3ff;
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+a:visited {
+    color: #d4c2ff;
+}
+
+.slide-container {
+    display: none;
+    height: 100vh;
+    padding: 2rem;
+    justify-content: center;
+    align-items: flex-start;
+    overflow-y: auto;
+    box-sizing: border-box;
+    padding-top: 3rem;
+}
+
+.slide-container.active {
+    display: flex;
+}
+
+.slide {
+    width: 100%;
+    max-width: 1200px;
+    text-align: center;
+    position: relative;
+}
+
+.slide-number {
+    position: absolute;
+    top: -1rem;
+    right: 0;
+    font-size: 1rem;
+    color: #a888d8;
+    font-weight: 300;
+}
+
+h1 {
+    font-family: 'Orbitron', monospace;
+    font-size: 4rem;
+    font-weight: 900;
+    margin: 1rem 0;
+    background: linear-gradient(45deg, #c9a9ff, #e6d3ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px rgba(201, 169, 255, 0.3);
+}
+
+h2 {
+    font-family: 'Orbitron', monospace;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 1.5rem 0;
+    color: #e6d3ff;
+}
+
+h3 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 1rem 0;
+    color: #f0e6ff;
+}
+
+h4 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin: 0.8rem 0;
+    color: #e6d3ff;
+}
+
+p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 0.8rem 0;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: #c9a9ff;
+    margin-bottom: 2rem;
+}
+
+.highlight {
+    background: linear-gradient(45deg, #ff6b6b, #ffd93d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+}
+
+.slide-image {
+    width: 80%;
+    max-width: 600px;
+    height: auto;
+    margin: 2rem auto;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.slide-image-small {
+    width: 60%;
+    max-width: 400px;
+    height: auto;
+    margin: 1rem auto;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.instructor-info {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.2rem;
+    color: #a888d8;
+    font-weight: 300;
+}
+
+/* Hook Question Styles */
+.hook-question {
+    margin: 2rem 0;
+    padding: 2rem;
+    background: rgba(201, 169, 255, 0.1);
+    border-radius: 15px;
+    border: 2px solid rgba(201, 169, 255, 0.3);
+}
+
+.archaeological-parallel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.parallel-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border-left: 4px solid #c9a9ff;
+}
+
+.parallel-item h3 {
+    color: #c9a9ff;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+/* Data Comparison Styles */
+.data-comparison {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.data-type {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.data-type:first-child {
+    border-left: 4px solid #ff6b6b;
+}
+
+.data-type:last-child {
+    border-left: 4px solid #4cc9f0;
+}
+
+.data-type .emphasis {
+    color: #c9a9ff;
+    font-weight: 600;
+    margin-top: 1rem;
+    font-style: italic;
+}
+
+.found-data-examples {
+    margin: 2rem 0;
+}
+
+.examples-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.example-item {
+    background: rgba(76, 201, 240, 0.1);
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 3px solid #4cc9f0;
+    font-weight: 500;
+}
+
+/* Ethics Framework */
+.ethics-framework {
+    display: grid;
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.ethics-principle {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: left;
+    border-left: 4px solid #ffd93d;
+}
+
+.ethics-principle h3 {
+    color: #ffd93d;
+    margin-bottom: 1rem;
+}
+
+.ethics-principle code {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    color: #e6d3ff;
+}
+
+/* Data Biography Styling */
+.biography-framework {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.biography-section {
+    background: rgba(201, 169, 255, 0.1);
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: 2px solid rgba(201, 169, 255, 0.3);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.biography-section h3 {
+    color: #c9a9ff;
+    margin-bottom: 1rem;
+}
+
+.biography-elements {
+    margin: 2rem 0;
+}
+
+.biography-elements h3 {
+    color: #c9a9ff;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.biography-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.bio-element {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border-left: 4px solid #4cc9f0;
+    text-align: left;
+}
+
+.bio-element h4 {
+    color: #4cc9f0;
+    margin-bottom: 0.8rem;
+    font-size: 1.1rem;
+}
+
+.bio-element p {
+    color: #e6d3ff;
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+.biography-importance {
+    background: rgba(76, 201, 240, 0.1);
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: 2px solid rgba(76, 201, 240, 0.3);
+    margin-top: 2rem;
+}
+
+.biography-importance h3 {
+    color: #4cc9f0;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.bio-reasons {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+}
+
+.bio-reasons li {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    margin: 0.8rem 0;
+    border-radius: 8px;
+    border-left: 3px solid #c9a9ff;
+}
+
+.bio-reasons strong {
+    color: #c9a9ff;
+}
+
+.responsibility-box {
+    background: rgba(255, 107, 107, 0.1);
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: 2px solid rgba(255, 107, 107, 0.3);
+    margin: 2rem 0;
+}
+
+.responsibility-box h4 {
+    color: #ff8a8a;
+    margin-bottom: 1rem;
+}
+
+/* Artifact Analysis */
+.artifact-analysis {
+    margin: 2rem 0;
+}
+
+.data-artifact {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 2px solid rgba(201, 169, 255, 0.3);
+}
+
+.artifact-layers {
+    display: grid;
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.layer {
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: left;
+}
+
+.layer.surface {
+    background: rgba(76, 201, 240, 0.1);
+    border-left: 4px solid #4cc9f0;
+}
+
+.layer.cultural {
+    background: rgba(201, 169, 255, 0.1);
+    border-left: 4px solid #c9a9ff;
+}
+
+.layer.societal {
+    background: rgba(255, 217, 61, 0.1);
+    border-left: 4px solid #ffd93d;
+}
+
+.archaeology-parallel {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin: 2rem 0;
+    border: 2px solid rgba(201, 169, 255, 0.2);
+}
+
+.insight-example {
+    background: rgba(76, 201, 240, 0.1);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border-left: 4px solid #4cc9f0;
+    margin: 2rem 0;
+}
+
+/* Tools Analogy */
+.tools-analogy {
+    margin: 2rem 0;
+}
+
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.tool-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: left;
+    border-left: 4px solid #c9a9ff;
+}
+
+.tool-item h4 {
+    color: #c9a9ff;
+    margin-bottom: 0.5rem;
+    font-family: 'Courier New', monospace;
+}
+
+.tool-item p:first-of-type {
+    color: #ffd93d;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.methodology-note {
+    background: rgba(255, 217, 61, 0.1);
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: 2px solid rgba(255, 217, 61, 0.3);
+    margin: 2rem 0;
+}
+
+.methodology-note h4 {
+    color: #ffd93d;
+    margin-bottom: 1rem;
+}
+
+/* Pattern Reading */
+.pattern-reading {
+    display: grid;
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.pattern-method {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: left;
+    border-left: 4px solid #4cc9f0;
+}
+
+.pattern-method h3 {
+    color: #4cc9f0;
+    margin-bottom: 1rem;
+    font-family: 'Courier New', monospace;
+    font-size: 1.5rem;
+}
+
+.pattern-method p:first-of-type {
+    color: #c9a9ff;
+    margin-bottom: 0.5rem;
+}
+
+.landscape-example {
+    background: rgba(201, 169, 255, 0.1);
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: 2px solid rgba(201, 169, 255, 0.3);
+    margin: 2rem 0;
+}
+
+.landscape-example h4 {
+    color: #c9a9ff;
+    margin-bottom: 1rem;
+}
+
+/* Case Study */
+.case-study-demo {
+    margin: 2rem 0;
+}
+
+.discovery-path {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 2px solid rgba(201, 169, 255, 0.3);
+    margin: 2rem 0;
+}
+
+.discovery-steps {
+    text-align: left;
+    padding-left: 1.5rem;
+    margin: 1rem 0;
+}
+
+.discovery-steps li {
+    margin: 1rem 0;
+    line-height: 1.6;
+}
+
+.insight-reveal {
+    background: rgba(76, 201, 240, 0.1);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border-left: 4px solid #4cc9f0;
+    margin: 2rem 0;
+}
+
+.insight-reveal h4 {
+    color: #4cc9f0;
+    margin-bottom: 1rem;
+}
+
+.methodology-showcase {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border-left: 4px solid #c9a9ff;
+    margin: 2rem 0;
+}
+
+.methodology-showcase h4 {
+    color: #c9a9ff;
+    margin-bottom: 1rem;
+}
+
+.methodology-showcase code {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    color: #e6d3ff;
+    display: inline-block;
+    margin: 0.2rem 0;
+}
+
+/* Mission Overview */
+.mission-overview {
+    margin: 2rem 0;
+}
+
+.hw-structure {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 2px solid rgba(201, 169, 255, 0.3);
+}
+
+.hw-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.hw-step {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: left;
+    border-left: 4px solid #4cc9f0;
+}
+
+.hw-step h4 {
+    color: #4cc9f0;
+    margin-bottom: 1rem;
+}
+
+.strategic-advice {
+    background: rgba(255, 217, 61, 0.1);
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: 2px solid rgba(255, 217, 61, 0.3);
+    margin: 2rem 0;
+    text-align: left;
+}
+
+.strategic-advice h3 {
+    color: #ffd93d;
+    margin-bottom: 1rem;
+}
+
+.strategic-advice ul {
+    padding-left: 1.5rem;
+    margin: 1rem 0;
+}
+
+.strategic-advice li {
+    margin: 0.5rem 0;
+    line-height: 1.5;
+}
+
+.call-to-action {
+    background: rgba(201, 169, 255, 0.1);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 2px solid rgba(201, 169, 255, 0.3);
+    margin: 2rem 0;
+}
+
+.call-to-action h2 {
+    color: #c9a9ff;
+    margin-bottom: 1rem;
+}
+
+.mission-statement {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: #e6d3ff;
+}
+
+/* Navigation */
+.navigation {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(26, 3, 48, 0.95);
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    border: 1px solid rgba(201, 169, 255, 0.3);
+    backdrop-filter: blur(10px);
+    z-index: 9999;
+}
+
+.navigation button {
+    background: rgba(201, 169, 255, 0.15);
+    border: 1px solid rgba(201, 169, 255, 0.4);
+    color: #c9a9ff;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.9rem;
+}
+
+.navigation button:hover {
+    background: rgba(201, 169, 255, 0.25);
+    border-color: rgba(201, 169, 255, 0.6);
+    transform: translateY(-1px);
+}
+
+.navigation button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+#slideInfo {
+    font-weight: 500;
+    color: #c9a9ff;
+    min-width: 50px;
+    font-size: 0.9rem;
+}
+
+.keyboard-hint {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    font-size: 0.9rem;
+    color: #a888d8;
+    background: rgba(26, 3, 48, 0.7);
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    border: 1px solid rgba(201, 169, 255, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .slide {
+        padding: 1rem;
+    }
+    
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    h2 {
+        font-size: 2rem;
+    }
+    
+    h3 {
+        font-size: 1.8rem;
+    }
+    
+    .archaeological-parallel,
+    .data-comparison,
+    .biography-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .tools-grid,
+    .hw-steps {
+        grid-template-columns: 1fr;
+    }
+    
+    .navigation {
+        top: 0.5rem;
+        right: 0.5rem;
+        gap: 0.3rem;
+        padding: 0.4rem 0.8rem;
+        flex-direction: row;
+    }
+}
+
+@media (max-width: 480px) {
+    .slide-container {
+        padding: 1rem;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+    
+    h3 {
+        font-size: 1.4rem;
+    }
+    
+    p {
+        font-size: 1rem;
+    }
+    
+    .keyboard-hint {
+        display: none;
+    }
+}

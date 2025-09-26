@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini-Lecture 6: Digital Archaeology - WRIT 20833</title>
+    <!-- Updated for GitHub Pages -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Slide 1: Title/Hook -->
+    <div class="slide-container active">
+        <div class="slide">
+            <div class="slide-number">1 / 8</div>
+            <h1>Digital Archaeology</h1>
+            <p class="subtitle">Finding Stories in Found Data</p>
+            <img src="images/slide1.jpg" alt="Digital archaeology visualization" class="slide-image">
+            
+            <div class="hook-question">
+                <div class="archaeological-parallel">
+                    <div class="parallel-item">
+                        <h3>Traditional Archaeology</h3>
+                        <p>Pottery shards → Ancient dining habits</p>
+                    </div>
+                    <div class="parallel-item">
+                        <h3>Digital Archaeology</h3>
+                        <p>Dataset rows → Cultural patterns</p>
+                    </div>
+                </div>
+                <h2 style="color: #c9a9ff; font-size: 2rem; margin: 2rem 0;">
+                    "Every dataset is someone's digital diary. What stories are waiting to be discovered?"
+                </h2>
+            </div>
+            
+            <div class="instructor-info">WRIT 20833 • Mini-Lecture 6</div>
+        </div>
+    </div>
+
+    <!-- Slide 2: What is Found Data? -->
+    <div class="slide-container">
+        <div class="slide">
+            <div class="slide-number">2 / 8</div>
+            <h2>What is <span class="highlight">"Found Data"</span>?</h2>
+            <img src="images/slide2.jpg" alt="Sources of found cultural data" class="slide-image-small">
+            
+            <div class="data-comparison">
+                <div class="data-type">
+                    <h3>❌ Created Data</h3>
+                    <p>Surveys you design<br>Experiments you run<br>Interviews you conduct</p>
+                    <p class="emphasis">You control the questions</p>
+                </div>
+                <div class="data-type">
+                    <h3>✅ Found Data</h3>
+                    <p>Datasets already existing<br>Digital traces of culture<br>Archives waiting for analysis</p>
+                    <p class="emphasis">Culture has already left clues</p>
+                </div>
+            </div>
+
+            <div class="found-data-examples">
+                <h3>Cultural Found Data Sources:</h3>
+                <div class="examples-grid">
+                    <div class="example-item">Kaggle: Books, movies, music datasets</div>
+                    <div class="example-item">Digital collections: Museum catalogs, library records</div>
+                    <div class="example-item">Entertainment: IMDb, Spotify, Netflix data</div>
+                    <div class="example-item">Government: Arts funding, cultural statistics</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 3: Data Biography -->
+    <div class="slide-container">
+        <div class="slide">
+            <div class="slide-number">3 / 9</div>
+            <h2>Creating a <span class="highlight">Data Biography</span></h2>
+            <img src="images/slide3.jpg" alt="Data biography documentation process" class="slide-image-small">
+            
+            <div class="biography-framework">
+                <div class="biography-section">
+                    <h3>What is a Data Biography?</h3>
+                    <p>A comprehensive record of your dataset's life story—from creation to your analysis</p>
+                    <div class="archaeology-parallel">
+                        <p><strong>Just like archaeologists document artifact provenance, we document data provenance</strong></p>
+                    </div>
+                </div>
+                
+                <div class="biography-elements">
+                    <h3>Essential Biography Elements:</h3>
+                    <div class="biography-grid">
+                        <div class="bio-element">
+                            <h4>Origin Story</h4>
+                            <p>Who created it? When? Why?</p>
+                        </div>
+                        <div class="bio-element">
+                            <h4>Journey</h4>
+                            <p>How was it collected, processed, shared?</p>
+                        </div>
+                        <div class="bio-element">
+                            <h4>Transformations</h4>
+                            <p>What cleaning/filtering did you do?</p>
+                        </div>
+                        <div class="bio-element">
+                            <h4>⚠️ Limitations</h4>
+                            <p>What's missing? What are the biases?</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="biography-importance">
+                    <h3>Why Document the Biography?</h3>
+                    <ul class="bio-reasons">
+                        <li><strong>Credibility:</strong> Readers can evaluate your sources</li>
+                        <li><strong>Reproducibility:</strong> Others can follow your process</li>
+                        <li><strong>Ethics:</strong> Transparent about data limitations</li>
+                        <li><strong>Discovery:</strong> Understanding context reveals hidden patterns</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4: Ethics of Digital Archaeology -->
+    <div class="slide-container">
+        <div class="slide">
+            <div class="slide-number">4 / 9</div>
+            <h2>The Ethics of <span class="highlight">Digital Archaeology</span></h2>
+            <img src="images/slide4.jpg" alt="Ethical considerations in data archaeology" class="slide-image-small">
+            
+            <div class="ethics-framework">
+                <div class="ethics-principle">
+                    <h3>🤖 robots.txt: The "Do Not Disturb" Sign</h3>
+                    <p>Every website has rules about data collection</p>
+                    <p>Check <code>website.com/robots.txt</code> before using scraped data</p>
+                </div>
+                
+                <div class="ethics-principle">
+                    <h3>Attribution & Respect</h3>
+                    <p>Always credit your data sources</p>
+                    <p>Remember: these represent real people and communities</p>
+                </div>
+                
+                <div class="ethics-principle">
+                    <h3>🧠 AI Training Debates</h3>
+                    <p>Many sites now restrict AI training use</p>
+                    <p>Cultural researchers must be extra thoughtful about data rights</p>
+                </div>
+            </div>
+
+            <div class="responsibility-box">
+                <h4>Your Responsibility as a Digital Archaeologist:</h4>
+                <p>You're not just analyzing data—you're interpreting <strong>human cultural behavior</strong>. Handle with care.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4: From Artifact to Insight -->
+    <div class="slide-container">
+        <div class="slide">
+            <div class="slide-number">5 / 9</div>
+            <h2>From <span class="highlight">Artifact</span> to Insight</h2>
+            <img src="images/slide5.jpg" alt="Layers of meaning in data artifacts" class="slide-image-small">
+            
+            <div class="artifact-analysis">
+                <div class="data-artifact">
+                    <h3>📖 Single Dataset Row: A Book Entry</h3>
+                    <div class="artifact-layers">
+                        <div class="layer surface">
+                            <h4>Surface Level</h4>
+                            <p>Title, Author, Year, Genre, Pages</p>
+                        </div>
+                        <div class="layer cultural">
+                            <h4>Cultural Layer</h4>
+                            <p>Publishing trends, Genre popularity, Author demographics</p>
+                        </div>
+                        <div class="layer societal">
+                            <h4>Societal Layer</h4>
+                            <p>Economic factors, Educational access, Cultural values</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="archaeology-parallel">
+                <p><strong>Just like pottery shards reveal ancient dining habits,</strong></p>
+                <p><strong>a Netflix entry reveals viewing patterns, cultural preferences, and industry decisions.</strong></p>
+            </div>
+
+            <div class="insight-example">
+                <h4>Example Discovery:</h4>
+                <p>"Why do certain book genres peak in specific decades? What cultural anxieties do they reflect?"</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 5: The Pandas Toolkit -->
+    <div class="slide-container">
+        <div class="slide">
+            <div class="slide-number">6 / 9</div>
+            <h2>The <span class="highlight">Pandas</span> Toolkit</h2>
+            <img src="images/slide6.jpg" alt="Pandas as archaeological tools" class="slide-image-small">
+            
+            <div class="tools-analogy">
+                <h3>🔨 Every Archaeologist Needs Tools:</h3>
+                <div class="tools-grid">
+                    <div class="tool-item">
+                        <h4>🔍 .head()</h4>
+                        <p><strong>The Survey</strong></p>
+                        <p>First look at the site</p>
+                    </div>
+                    <div class="tool-item">
+                        <h4>📋 .info()</h4>
+                        <p><strong>The Site Map</strong></p>
+                        <p>Structure and condition</p>
+                    </div>
+                    <div class="tool-item">
+                        <h4>📊 .describe()</h4>
+                        <p><strong>The Inventory</strong></p>
+                        <p>Count and measure findings</p>
+                    </div>
+                    <div class="tool-item">
+                        <h4>🎯 Filtering</h4>
+                        <p><strong>Careful Excavation</strong></p>
+                        <p>Choose what to examine closely</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="methodology-note">
+                <h4>Digital Archaeology Methodology:</h4>
+                <p>Like physical archaeology, we start broad (survey the whole site) then narrow focus (excavate specific areas) to uncover patterns.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 6: Reading the Cultural Landscape -->
+    <div class="slide-container">
+        <div class="slide">
+            <div class="slide-number">7 / 9</div>
+            <h2>Reading the Cultural <span class="highlight">Landscape</span></h2>
+            <img src="images/slide7.jpg" alt="Cultural patterns in data visualization" class="slide-image-small">
+            
+            <div class="pattern-reading">
+                <div class="pattern-method">
+                    <h3>.value_counts()</h3>
+                    <p><strong>Reveals:</strong> What's popular, what's rare</p>
+                    <p><strong>Cultural Insight:</strong> "Which genres dominate? What does this say about our cultural moment?"</p>
+                </div>
+                
+                <div class="pattern-method">
+                    <h3>🔄 .groupby()</h3>
+                    <p><strong>Reveals:</strong> Differences across time, region, demographics</p>
+                    <p><strong>Cultural Insight:</strong> "How do reading habits vary by generation? By geography?"</p>
+                </div>
+                
+                <div class="pattern-method">
+                    <h3>❓ Missing Data</h3>
+                    <p><strong>Reveals:</strong> What cultures choose NOT to record</p>
+                    <p><strong>Cultural Insight:</strong> "Whose voices are absent? What topics are avoided?"</p>
+                </div>
+            </div>
+
+            <div class="landscape-example">
+                <h4>Example Pattern Discovery:</h4>
+                <p>"Young adult fiction peaked in 2010-2015. Same time as social media growth. Coincidence? Or reflection of changing social needs?"</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 7: Case Study Preview -->
+    <div class="slide-container">
+        <div class="slide">
+            <div class="slide-number">8 / 9</div>
+            <h2>Case Study: <span class="highlight">Book Evolution</span></h2>
+            <img src="images/slide8.jpg" alt="Book publication patterns case study" class="slide-image-small">
+            
+            <div class="case-study-demo">
+                <div class="discovery-path">
+                    <h3>📚 The Discovery Path:</h3>
+                    <ol class="discovery-steps">
+                        <li><strong>Found Data:</strong> Goodreads dataset (50,000 books, 1900-2020)</li>
+                        <li><strong>Initial Exploration:</strong> Most books published after 2000</li>
+                        <li><strong>Pattern Recognition:</strong> Page counts decreasing over time</li>
+                        <li><strong>Cultural Insight:</strong> Digital age = shorter attention spans? Or different publishing economics?</li>
+                    </ol>
+                </div>
+                
+                <div class="insight-reveal">
+                    <h4>💡 What We Discovered:</h4>
+                    <p>Average book length dropped 15% since 2000. But fantasy novels got LONGER. What does this tell us about different reading communities and their evolving preferences?</p>
+                </div>
+            </div>
+
+            <div class="methodology-showcase">
+                <h4>Pandas Tools Used:</h4>
+                <p><code>.groupby('year')['pages'].mean()</code> → Trends over time<br>
+                <code>.value_counts()</code> → Genre popularity<br>
+                <code>df[df['genre'] == 'Fantasy']</code> → Focused analysis</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 8: Your Archaeological Mission -->
+    <div class="slide-container">
+        <div class="slide">
+            <div class="slide-number">9 / 9</div>
+            <h2>Your Archaeological <span class="highlight">Mission</span></h2>
+            <img src="images/slide9.jpg" alt="Students conducting digital archaeology" class="slide-image-small">
+            
+            <div class="mission-overview">
+                <div class="hw-structure">
+                    <h3>HW3-1 Structure:</h3>
+                    <div class="hw-steps">
+                        <div class="hw-step">
+                            <h4>1. Choose Your Site</h4>
+                            <p>Select cultural dataset (15+ rows, rich & messy)</p>
+                        </div>
+                        <div class="hw-step">
+                            <h4>2. Survey the Terrain</h4>
+                            <p>Use pandas to explore structure and patterns</p>
+                        </div>
+                        <div class="hw-step">
+                            <h4>3. Excavate Insights</h4>
+                            <p>Apply filtering, grouping, visualization</p>
+                        </div>
+                        <div class="hw-step">
+                            <h4>4. Interpret Findings</h4>
+                            <p>What cultural story does your data tell?</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="strategic-advice">
+                <h3>💡 Choose Wisely:</h3>
+                <p>Your dataset continues to <strong>HW3-2 (Data Cleaning)</strong>. Pick something with:</p>
+                <ul>
+                    <li>Research interest (you'll work with it again!)</li>
+                    <li>Cleaning potential (messy data = learning opportunities)</li>
+                    <li>Cultural richness (stories worth telling)</li>
+                </ul>
+            </div>
+
+            <div class="call-to-action">
+                <h2>What cultural story will you uncover?</h2>
+                <p class="mission-statement">Remember: You're not just learning pandas—you're becoming a digital cultural detective.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="navigation">
+        <button id="prevBtn" onclick="changeSlide(-1)">←</button>
+        <span id="slideInfo">1 / 9</span>
+        <button id="nextBtn" onclick="changeSlide(1)">→</button>
+    </div>
+
+    
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide-container');
+        const totalSlides = slides.length;
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+            
+            // Update slide info
+            document.getElementById('slideInfo').textContent = `${currentSlide + 1} / ${totalSlides}`;
+            
+            // Update slide numbers in each slide
+            document.querySelectorAll('.slide-number').forEach((elem, index) => {
+                if (index === currentSlide) {
+                    elem.textContent = `${currentSlide + 1} / ${totalSlides}`;
+                }
+            });
+        }
+
+        function changeSlide(direction) {
+            showSlide(currentSlide + direction);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft') {
+                changeSlide(-1);
+            } else if (e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                changeSlide(1);
+            }
+        });
+
+        // Initialize
+        showSlide(0);
+    </script>
+</body>
+</html>
