@@ -10,11 +10,14 @@ This repository contains course materials for WRIT 20833, including interactive 
 - **Content Integration**: Assessment of existing materials for textbook adaptation
 - **Target Publication**: August 2026 for Fall 2026 course launch
 
-### �📓 Notebooks (5 total)
-- **CodeAlongs**: Interactive coding sessions covering Python fundamentals (Variables, Data Types, String Methods, Conditionals, Loops)
+### �📓 Notebooks (11 total)
+- **CodeAlongs**: Interactive coding sessions covering Python fundamentals, data analysis, and text analysis
+  - Python basics: Variables, Data Types, String Methods, Conditionals, Loops, Dictionaries, Functions
+  - Data analysis: Pandas fundamentals and data cleaning
+  - Text analysis: Ethical data collection, sentiment analysis with VADER
 - **Exercises**: In-class practice activities and skill-building exercises
 - **Tutorial assignments**: Interactive coding exercises paired with mini-lectures (ready for textbook integration)
-- **Homework assignments**: Structured assignments demonstrating assessment approaches
+- **Homework assignments**: Structured assignments including term frequency and sentiment analysis
 
 ### 🎓 Lectures (6 HTML presentations)
 - **Main lectures**: "When Coding Meets Culture" - foundational digital humanities introduction
@@ -51,9 +54,15 @@ WRIT20833-2025/
 │               ├── style.css       # Consistent styling
 │               └── newImages/      # Additional visual resources
 ├── notebooks/
-│   ├── codeAlongs/                 # Ready for textbook Chapters 3-4
+│   ├── codeAlongs/                 # Ready for textbook Chapters 3-4, 7-8
 │   │   ├── WRIT20833_Variables_DataTypes_F25.ipynb
-│   │   └── WRIT20833_StrMethods_Conditionals_Loops_F25.ipynb
+│   │   ├── WRIT20833_StrMethods_Conditionals_Loops_F25.ipynb
+│   │   ├── WRIT20833_Lists_Loops_Complete_F25.ipynb
+│   │   ├── WRIT20833_Dictionaries_Functions_F25.ipynb
+│   │   ├── WRIT20833_Pandas_01_Found_Data_Fundamentals_F25.ipynb
+│   │   ├── WRIT20833_Pandas_02_Data_Cleaning_Analysis_Pandas_F25.ipynb
+│   │   ├── WRIT20833_Instant_Data_Scraper_Ethics_F25.ipynb
+│   │   └── WRIT20833_VADER_Sentiment_Analysis_F25.ipynb
 │   ├── exercises/
 │   │   └── WRIT20833_Conditionals_9-5-25.ipynb
 │   ├── tutorials/                  # Critical framework integration examples
@@ -62,19 +71,15 @@ WRIT20833-2025/
 │   │   ├── Tutorial_03_AI_Agency_MiniLecture3.ipynb
 │   │   └── Tutorial_04_Collective_Memory_MiniLecture4.ipynb
 │   └── homework/                   # Assessment model examples
-│       └── WRIT20833_HW1_Fall2025.ipynb
+│       ├── WRIT20833_HW1_Fall2025.ipynb
+│       └── WRIT20833_HW4-1_Term_Frequency_Sentiment_F25.ipynb
 └── textbook/                       # **NEW: Textbook Development**
     ├── provisionalTOC.md           # Complete 18-chapter structure
     ├── initial_plan.md             # 16-week curriculum design
     ├── tech_stack_decisions.md     # Platform and tool specifications
-    ├── datasets_needed.md          # Data collection requirements  
-    └── weekly_exercises_outline.md # Pedagogical activity framework
-    │   ├── Tutorial_02_Classification_Logic_MiniLecture2.ipynb
-    │   ├── Tutorial_03_AI_Agency_MiniLecture3.ipynb
-    │   └── Tutorial_04_Collective_Memory_MiniLecture4.ipynb
-    └── homework/                   # Archived content
-        └── WRIT20833_HW1_Fall2025.ipynb
-```
+    ├── datasets_needed.md          # Data collection requirements
+    ├── weekly_exercises_outline.md # Pedagogical activity framework
+    └── NEXT_STEPS_TOPIC_MODELING.md # Planning for final text analysis phase
 ```
 
 ## 🚀 Getting Started
@@ -86,7 +91,7 @@ WRIT20833-2025/
 
 ### **For Textbook Development (2025-2026)**
 - **Planning Documents**: Start with [`textbook/provisionalTOC.md`](textbook/provisionalTOC.md) for complete chapter overview
-- **Content Assessment**: Existing notebooks map to Chapters 3-4 with 80%+ completion
+- **Content Assessment**: Existing notebooks map to Chapters 3-4, 7-8 with 80%+ completion for Python and text analysis
 - **Integration Strategy**: Mini-lectures provide critical frameworks for technical chapters
 
 ## 📋 Course & Textbook Vision
@@ -169,10 +174,16 @@ git push origin textbook-dev
 - **Controlled Publishing**: Branch protection ensures only tested content reaches public main branch
 - **Developer Environment**: Jupyter Lab configuration and Python environment verified
 
+### **September 28, 2025 - Text Analysis Development Phase**
+- **Instant Data Scraper CodeAlong**: Ethical data collection with browser extensions
+- **VADER Sentiment Analysis CodeAlong**: Cultural text analysis with sentiment tools
+- **HW4-1 Complete**: Term frequency and sentiment analysis assignment
+- **Topic Modeling Planning**: Next steps document for Gensim LDA implementation
+
 ### **September 6, 2025 - Major Assessment & Planning Session**
 - **Comprehensive Content Review**: Evaluated all existing materials for textbook potential
 - **Provisional TOC Created**: Complete 18-chapter structure with integration strategy
-- **Content Mapping**: Identified 80%+ completion for Python foundations (Chapters 3-4)
+- **Content Mapping**: Identified 80%+ completion for Python foundations and text analysis (Chapters 3-4, 7-8)
 - **Development Strategy**: Accelerated timeline due to high-quality existing content
 - **Integration Plan**: Mini-lectures provide critical frameworks for technical chapters
 

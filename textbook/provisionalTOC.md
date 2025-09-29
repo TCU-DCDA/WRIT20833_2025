@@ -19,16 +19,21 @@
 - **Exercise**: Digital Identity Variables ✅ *[From weekly exercises outline]*
 - **Critical Framework**: Boundaries in Digital Spaces
 
-### Chapter 3: Variables and Data Types - Representing Human Experience ⚠️ *[PROPOSED - needs development]*
-**Planned Content**: Variables, basic data types, working with text from the start
+### Chapter 3: Variables and Data Types - Representing Human Experience ✅ *[Existing Content - 80% complete]*
+**Source**: `notebooks/codeAlongs/WRIT20833_Variables_DataTypes_F25.ipynb`
+**Content**: Variables, basic data types, working with text from the start
 - Variables as Digital Containers
 - Strings, Numbers, and Booleans in Cultural Context
 - Your First Text Analysis
 - **Exercise**: Pop Culture Math ✅ *[From weekly exercises outline]*
 - **Critical Framework**: Coding Taboo Logic - How Code Classifies People ✅ *[From mini-lecture-2]*
 
-### Chapter 4: Lists, Loops, and Dictionaries - Organizing Cultural Data ⚠️ *[PROPOSED - needs development]*
-**Planned Content**: Lists, loops, dictionaries, conditionals with text data focus
+### Chapter 4: Lists, Loops, and Dictionaries - Organizing Cultural Data ✅ *[Existing Content - 85% complete]*
+**Sources**:
+- `notebooks/codeAlongs/WRIT20833_StrMethods_Conditionals_Loops_F25.ipynb`
+- `notebooks/codeAlongs/WRIT20833_Lists_Loops_Complete_F25.ipynb`
+- `notebooks/codeAlongs/WRIT20833_Dictionaries_Functions_F25.ipynb`
+**Content**: Lists, loops, dictionaries, conditionals with text data focus
 - Lists as Cultural Collections
 - Dictionaries as Cultural Categories and Relationships
 - Iterating Through Data Structures
@@ -48,8 +53,11 @@
 - **Exercise**: Custom Analysis Workflow ✅ *[From weekly exercises outline]*
 - **Beginner Focus**: Error messages as learning opportunities, not obstacles
 
-### Chapter 6: Libraries and Visualization - Your First Data Story ⚠️ *[PROPOSED - needs development]*
-**Planned Content**: pandas, matplotlib, first visualizations
+### Chapter 6: Libraries and Visualization - Your First Data Story ✅ *[Existing Content - 75% complete]*
+**Sources**:
+- `notebooks/codeAlongs/WRIT20833_Pandas_01_Found_Data_Fundamentals_F25.ipynb`
+- `notebooks/codeAlongs/WRIT20833_Pandas_02_Data_Cleaning_Analysis_Pandas_F25.ipynb`
+**Content**: pandas, matplotlib, first visualizations
 - Introduction to pandas DataFrames
 - Creating Your First Charts
 - Combining Visualizations into Data Stories
@@ -59,8 +67,9 @@
 
 ## Part II: Text Analysis & Natural Language Processing (Weeks 5-8)
 
-### Chapter 7: Working with Digital Cultural Data - JSON and APIs ⚠️ *[PROPOSED - needs development]*
-**Planned Content**: JSON basics, simple API access for cultural data (beginner-friendly)
+### Chapter 7: Working with Digital Cultural Data - Ethical Collection ✅ *[Existing Content - 90% complete]*
+**Source**: `notebooks/codeAlongs/WRIT20833_Instant_Data_Scraper_Ethics_F25.ipynb`
+**Content**: Ethical data collection, browser-based scraping, robots.txt compliance
 - Understanding JSON Structure (the format of digital culture)
 - Reading Social Media and Cultural Data
 - Basic API Concepts for Humanities Students
@@ -89,8 +98,9 @@
 - **Dataset**: Song lyrics and news headlines ✅ *[Identified in datasets_needed.md]*
 - **Beginner Focus**: Statistics as storytelling tools, not mathematical complexity
 
-### Chapter 10: Sentiment Analysis - Reading Digital Emotions ⚠️ *[PROPOSED - needs development]*
-**Planned Content**: TextBlob/VADER, comparing coverage across platforms (beginner-friendly)
+### Chapter 10: Sentiment Analysis - Reading Digital Emotions ✅ *[Existing Content - 95% complete]*
+**Source**: `notebooks/codeAlongs/WRIT20833_VADER_Sentiment_Analysis_F25.ipynb`
+**Content**: VADER sentiment analysis for cultural texts, with TextBlob comparison
 - Introduction to Sentiment Analysis for Humanists
 - Using Pre-built Tools (TextBlob/VADER)
 - Comparing News Coverage Across Sources
@@ -98,8 +108,9 @@
 - **Dataset**: Restaurant/movie reviews with ratings ✅ *[Identified in datasets_needed.md]*
 - **Beginner Focus**: Using existing tools rather than building algorithms
 
-### Chapter 11: Topic Modeling - Discovering Hidden Themes ⚠️ *[PROPOSED - needs development]*
-**Planned Content**: Basic LDA, analyzing Reddit communities (conceptual focus)
+### Chapter 11: Topic Modeling - Discovering Hidden Themes 🔄 *[IN DEVELOPMENT - HW4-2 phase]*
+**Planning Source**: `NEXT_STEPS_TOPIC_MODELING.md`
+**Planned Content**: Gensim LDA, analyzing cultural communities (practical implementation)
 - Understanding Topic Modeling Concepts
 - Using Simple Topic Modeling Tools
 - Analyzing Online Communities
@@ -217,24 +228,43 @@
 ## Legend
 
 ✅ **Existing Content** - Material already developed and ready for adaptation
+🔄 **IN DEVELOPMENT** - Currently being developed or planned for immediate development
 ⚠️ **PROPOSED Content** - Needs development according to planning documents
-📊 **Dataset Ready** - Dataset identified and sourced per datasets_needed.md
-🎯 **Exercise Ready** - Exercise outlined in weekly_exercises_outline.md
+
+## Recent Development Progress (Week 7-8, Fall 2025)
+
+### **Major Additions:**
+- **Chapter 7** (Data Collection): Complete ethical data collection CodeAlong with Instant Data Scraper
+- **Chapter 10** (Sentiment Analysis): Complete VADER sentiment analysis CodeAlong for cultural texts
+- **Chapter 11** (Topic Modeling): Planning document created, development scheduled for Week 9-10
+- **Assessment Integration**: HW4-1 combines term frequency and sentiment analysis, preparing for HW4-2 topic modeling
+
+### **Text Analysis Workflow Complete:**
+1. **Data Collection** → Ethical scraping with robots.txt compliance ✅
+2. **Term Frequency** → Word counting and analysis (from HW1 foundation) ✅
+3. **Sentiment Analysis** → VADER emotional tone analysis ✅
+4. **Topic Modeling** → Gensim LDA theme discovery (Week 9-10) 🔄
+
+### **Integration Achievement:**
+The course now provides a complete computational text analysis pipeline from data collection through advanced NLP, maintaining beginner accessibility while covering professional-level techniques.
 
 ---
 
 ## Development Priority Summary
 
 ### **Fall 2025 (Heavy Development Phase)**
-**Priority 1**: Chapters 2-6 (Python Foundations) ⚠️
-- All need development from scratch
+**Priority 1**: Chapters 2-6 (Python Foundations) ✅ *80-85% complete*
+- Chapter 2 needs development from scratch
+- Chapters 3-6 have substantial CodeAlong foundations
 - Exercise frameworks exist in weekly_exercises_outline.md
 - Critical frameworks from mini-lectures can be integrated
 
-**Priority 2**: Begin Chapters 7-10 (NLP content) ⚠️
-- Technical content needs development
+**Priority 2**: Chapters 7-10 (NLP content) 🔄 *70% complete, Chapter 11 in development*
+- Chapters 7, 10 have complete CodeAlong foundations
+- Chapter 11 topic modeling in active development (Week 9-10)
+- Chapters 8-9 need development from scratch
 - Datasets need collection per datasets_needed.md
-- Conceptual frameworks partially exist
+- Complete text analysis workflow nearly finished
 
 ### **Spring 2026 (Maintenance Mode)**
 **Priority 3**: Chapters 11-14 (Web Development) ⚠️

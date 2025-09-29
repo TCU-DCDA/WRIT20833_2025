@@ -1,5 +1,21 @@
 # Datasets Needed for WRIT20833
 
+## Recent Progress (Week 7-8, Fall 2025)
+
+### **✅ Implemented Data Collection Methods:**
+- **Instant Data Scraper CodeAlong**: Students now collect their own cultural datasets using browser extension
+- **Ethical Framework**: robots.txt compliance and consent-based collection established
+- **Student Choice**: Rather than pre-selected datasets, students choose culturally meaningful data
+- **HW4-1 Integration**: Students use self-collected data for term frequency and sentiment analysis
+
+### **📊 Current Student Dataset Examples:**
+Based on Instant Data Scraper lesson, students are collecting:
+- Broadway show reviews and ratings
+- Museum exhibition descriptions and visitor comments
+- Book reviews from cultural sources
+- Arts criticism and cultural commentary
+- Social media posts about cultural events (with privacy compliance)
+
 ## Core Dataset Requirements
 
 ### Week 2-3: Basic Text Processing

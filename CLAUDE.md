@@ -37,9 +37,11 @@ WRIT20833-2025/
 ### Core Python Libraries Used
 - **pandas**: Data manipulation and analysis
 - **matplotlib/seaborn**: Data visualization
-- **nltk/textblob**: Natural language processing
+- **vaderSentiment**: Sentiment analysis for social media and informal text
+- **nltk/textblob**: Natural language processing (alternative tools)
 - **re, collections**: Text processing and analysis
 - **requests**: API access (when needed)
+- **gensim**: Topic modeling with LDA (planned for HW4-2)
 
 ### Content Development Tools
 - **Jupyter Book**: Planned textbook platform
@@ -99,8 +101,14 @@ find notebooks/ -name "*.ipynb" -exec python -m json.tool {} \; > /dev/null
 
 ### Development Priorities (Fall 2025)
 1. **Chapters 2-6**: Python foundations content (high priority)
-2. **Chapters 7-10**: Text analysis and NLP (medium priority)
+2. **Chapters 7-10**: Text analysis and NLP (current focus - sentiment analysis and topic modeling)
 3. **Planning Phase**: Web development and integration chapters
+
+### Recent Developments (Week 7-8)
+- **Instant Data Scraper CodeAlong**: Ethical data collection using browser extensions
+- **VADER Sentiment Analysis CodeAlong**: Cultural text sentiment analysis
+- **HW4-1**: Term frequency and sentiment analysis assignment (completed)
+- **Next Steps**: Topic modeling with Gensim LDA for HW4-2
 
 ### Key Planning Documents
 - `textbook/provisionalTOC.md`: Complete chapter structure and content mapping
@@ -183,5 +191,11 @@ All technical content should connect to one of the four critical frameworks:
 
 ---
 
-*Last Updated: September 2025*
+*Last Updated: September 28, 2025*
 *For questions about this codebase: Refer to planning documents in `textbook/` directory*
+
+### Recent CodeAlong Development (Week 7-8)
+- `WRIT20833_Instant_Data_Scraper_Ethics_F25.ipynb`: Ethical data collection with robots.txt compliance
+- `WRIT20833_VADER_Sentiment_Analysis_F25.ipynb`: Cultural text sentiment analysis
+- `WRIT20833_HW4-1_Term_Frequency_Sentiment_F25.ipynb`: Complete text analysis assignment
+- Planning document: `NEXT_STEPS_TOPIC_MODELING.md` for upcoming Gensim LDA work
