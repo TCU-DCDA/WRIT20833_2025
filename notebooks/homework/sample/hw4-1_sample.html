@@ -1,0 +1,158 @@
+<h2>Assignment Overview</h2>
+<p>This assignment marks your first extensive analysis of a text-heavy dataset of your choosing. The goal is not just to run analytical tools, but to experience the process of moving from assumptions to data-driven insights. You'll practice forming hypotheses, testing them against actual data, and allowing your understanding to evolve based on what you discover.</p>
+<p>In our digital age, we're constantly exposed to two very different paths to forming opinions and understanding the world. One path leads from genuine phenomena through careful data collection and analysis toward real insight, knowledge, and wisdom. The other path starts with social media impressions and moves through cherry-picked evidence and narrative scaffolding toward rigid ideological positions. Through this assignment, you'll experience the first path—the harder but more rewarding journey of letting data challenge and refine your thinking.</p>
+<p><strong>Important Philosophy</strong>: Being "wrong" in your initial predictions is not a failure—it's a sign of genuine learning and intellectual growth. The best insights often come from discovering that reality differs from our assumptions. When your data surprises you, that's when real learning happens.</p>
+<p><strong>Collaboration Policy</strong>: You may work together with classmates to solve technical challenges and discuss methods, but each student must choose their own unique dataset and complete their own analysis.</p>
+<p></p>
+<p></p>
+<hr>
+<h2>>Step 1: Dataset Selection and Exploration</h2>
+<p><em>Moving from Phenomena to Raw Data</em></p>
+<h3>Finding Your Dataset</h3>
+<p>Choose a dataset rich in string/text data that genuinely interests you. Here are types that work well for beginners:</p>
+<p><strong>Recommended for first-time analysis:</strong></p>
+<ul>
+<li><strong>Product reviews</strong> (Amazon, Yelp, app reviews) - clear sentiment, good size</li>
+<li><strong>Reddit comments</strong> from specific subreddits - focused topics, varied opinions</li>
+<li><strong>News headlines</strong> - timely content, easy to collect</li>
+</ul>
+<p><strong>Good alternatives if you're feeling confident:</strong></p>
+<ul>
+<li><strong>Survey responses</strong> with open-ended questions</li>
+<li><strong>Forum discussions</strong> on topics you know well</li>
+<li><strong>Social media posts</strong> about specific events or topics</li>
+</ul>
+<p><strong>Dataset Repositories:</strong> [Links to repositories will be provided in class - check D2L for specific URLs]</p>
+<h3>Dataset Feasibility Check</h3>
+<p>Before diving into full analysis, complete this quick evaluation:</p>
+<p><strong>Size Requirements:</strong></p>
+<ul>
+<li>At least 500 text entries</li>
+<li>Each entry contains meaningful text (not just single words)</li>
+<li>Data is legally accessible to you</li>
+</ul>
+<p><strong>Content Requirements:</strong></p>
+<ul>
+<li>Text is in a language you can analyze</li>
+<li>You have genuine curiosity about this topic</li>
+<li>The content varies enough to show different patterns</li>
+</ul>
+<p><strong>Technical Requirements:</strong></p>
+<ul>
+<li>You can load the data into pandas</li>
+<li>The text column is clearly identified</li>
+<li>Basic cleaning is manageable</li>
+</ul>
+<h3>Initial Predictions</h3>
+<p>Before analyzing your data, record your predictions. Here are examples to model your thinking:</p>
+<p><em>Example for restaurant reviews:</em> "I predict negative reviews will focus on 'slow,' 'cold,' and 'rude' while positive reviews will emphasize 'fresh,' 'friendly,' and 'delicious.' I expect about 60% positive sentiment overall."</p>
+<p><em>Example for political forum posts:</em> "I predict discussions will center on 'economy,' 'healthcare,' and 'election' with highly polarized sentiment—mostly very positive or very negative, not much middle ground."</p>
+<h3>Deliverable for Step 1</h3>
+<p><strong>Write 1-2 paragraphs:</strong></p>
+<ol>
+<li><strong>Dataset Description</strong>: What did you choose and why? Complete your feasibility checklist above.</li>
+<li><strong>Your Predictions</strong>: Based on your knowledge of this topic, what specific words or themes do you expect to dominate? What sentiment patterns do you predict? Be specific—you'll test these predictions soon.</li>
+</ol>
+<hr>
+<h2>Step 2: Data Collection and Cleaning</h2>
+<p><em>Raw Data to Structured Data</em></p>
+<h3>Technical Work</h3>
+<ul>
+<li>Load your data using pandas</li>
+<li>Identify and clean your main text column</li>
+<li>Handle basic issues (missing values, encoding problems)</li>
+<li>Create a clean dataset ready for analysis</li>
+</ul>
+<h3>Technical Checkpoint 1: Data Loading Reality Check</h3>
+<p>After loading your data, run:</p>
+<div>
+<div>
+<div>
+<div></div>
+</div>
+</div>
+<div>
+<pre><code># Checkpoint 1: Verify your data loaded correctly
+print(f"Dataset shape: {df.shape}")
+print(f"Columns: {df.columns.tolist()}")
+print(f"Text column has {df['YOUR_TEXT_COLUMN'].isna().sum()} missing values")
+print(f"Sample text: {df['YOUR_TEXT_COLUMN'].iloc[0][:200]}")</code></pre>
+</div>
+</div>
+<h3>Deliverable for Step 2</h3>
+<p><strong>Brief technical summary</strong>: What challenges did you encounter in collecting and cleaning your data? What decisions did you make about handling missing or problematic entries?</p>
+<hr>
+<h2>Step 3: Term Frequency Analysis</h2>
+<p><em>Structured Data to Analyzed Data</em></p>
+<h3>Technical Requirements</h3>
+<ul>
+<li>Use pandas for data manipulation</li>
+<li>Implement basic term frequency analysis (count word occurrences)</li>
+<li>Clean text appropriately (remove punctuation, convert to lowercase, handle common stop words)</li>
+<li>Create a simple visualization (bar chart of top 15-20 words)</li>
+</ul>
+<h3>Technical Checkpoint 2: Text Cleaning Verification</h3>
+<p>Before term frequency analysis:</p>
+<div>
+<div>
+<pre><code># Checkpoint 2: Check your cleaning worked
+sample_text = df['YOUR_TEXT_COLUMN'].iloc[0]
+print(f"Original: {sample_text[:100]}")
+print(f"Cleaned: {your_clean_function(sample_text)[:100]}")
+# Should show: lowercase, no punctuation, no extra spaces</code></pre>
+</div>
+</div>
+<h3>Deliverable for Step 3</h3>
+<p><strong>Write 1-2 paragraphs:</strong></p>
+<ol>
+<li><strong>Prediction Check</strong>: Which of your predicted words actually appeared in the top frequencies? What surprised you most?</li>
+<li><strong>New Questions</strong>: Based on these word frequencies, what new patterns are you noticing? What questions do you now want to explore with sentiment analysis?</li>
+</ol>
+<hr>
+<h2>Step 4: Sentiment Analysis</h2>
+<p><em>Continuing Analyzed Data Phase</em></p>
+<h3>Technical Requirements</h3>
+<p><strong>Primary Tool: VADER Sentiment Analysis</strong></p>
+<ul>
+<li>We'll demonstrate VADER in class—it handles social media text and informal language well</li>
+<li>Produces sentiment scores you can analyze and visualize</li>
+<li><em>Alternative: TextBlob is available if VADER doesn't suit your data type</em></li>
+</ul>
+<h3>Technical Checkpoint 3: VADER Installation/Import</h3>
+<div>
+<div>
+<pre><code># Checkpoint 3: VADER setup
+# If not installed: !pip install vaderSentiment
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+analyzer = SentimentIntensityAnalyzer()
+test_text = "This assignment is surprisingly interesting!"
+print(analyzer.polarity_scores(test_text))
+# Should see: {'neg': 0.0, 'neu': 0.323, 'pos': 0.677, 'compound': 0.6588}</code></pre>
+</div>
+</div>
+<h3>Deliverable for Step 4</h3>
+<p><strong>Write 2 paragraphs:</strong></p>
+<ol>
+<li><strong>Sentiment Patterns</strong>: What did sentiment analysis reveal? How did these results compare to your expectations? Were there more positive, negative, or neutral entries than you predicted?</li>
+<li><strong>Accuracy Check</strong>: Read 5-6 full text entries and compare your human judgment to the automated sentiment scores. Where do you agree or disagree with the tool's assessment?</li>
+</ol>
+<h3>Bridge to Part 2</h3>
+<p><strong>Final Prediction</strong>: Based on your term frequency and sentiment findings, what deeper topics or themes do you predict topic modeling will reveal in your data? What specific topics do you expect to emerge?</p>
+<hr>
+<h2>Common Troubleshooting Tips</h2>
+<p><strong>If you see this error...</strong></p>
+<ul>
+<li><code>UnicodeDecodeError</code> → Add <code>encoding='utf-8'</code> or try <code>'latin-1'</code> when reading file</li>
+<li><code>KeyError</code> → Check column name spelling, use <code>df.columns</code> to see exact names</li>
+<li>VADER returns all neutral → Check if you're analyzing very short text or single words</li>
+<li>Topic modeling shows random words → You may need to remove more stop words or increase minimum document frequency</li>
+</ul>
+<hr>
+<h2>Submission Requirements</h2>
+<p>Submit to your Pre-Project Practice Files dropbox:</p>
+<ol>
+<li><strong>Colab Notebook</strong> (<code>LASTNAME_HW4-1_F25.ipynb</code>) with all code and markdown responses</li>
+<li><strong>Clean dataset CSV</strong></li>
+<li><strong>Visualization PNG files</strong> (if not embedded in notebook)</li>
+</ol>
+<p><strong>Due Date</strong>: October 5th</p>
