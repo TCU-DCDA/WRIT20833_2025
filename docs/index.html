@@ -6,246 +6,652 @@
     <title>WRIT 20833 — Course Materials (2025)</title>
     <meta name="description" content="Course materials for WRIT 20833 including interactive notebooks, lectures, and resources">
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #fff;
+        /* CSS Custom Properties for consistent theming */
+        :root {
+            --primary-color: #4d1979;
+            --primary-hover: #3d1461;
+            --secondary-color: #64748b;
+            --accent-color: #7c3aed;
+            --success-color: #059669;
+            --warning-color: #d97706;
+            
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --text-muted: #94a3b8;
+            
+            --bg-primary: #ffffff;
+            --bg-secondary: #fafafa;
+            --bg-card: #ffffff;
+            --bg-accent: #f3f4f6;
+            
+            --border-color: #e2e8f0;
+            --border-radius: 12px;
+            --border-radius-lg: 16px;
+            
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            
+            --space-xs: 0.5rem;
+            --space-sm: 0.75rem;
+            --space-md: 1rem;
+            --space-lg: 1.5rem;
+            --space-xl: 2rem;
+            --space-2xl: 2.5rem;
+            
+            --font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+            --font-family-mono: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
         }
         
+        /* Reset and Base Styles */
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-family-base);
+            line-height: 1.6;
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-secondary);
+        }
+        
+        /* Typography Scale */
         h1 {
-            color: #2c3e50;
-            border-bottom: 3px solid #3498db;
-            padding-bottom: 10px;
-            margin-bottom: 30px;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin: 0 0 var(--space-md) 0;
+            color: var(--text-primary);
         }
         
         h2 {
-            color: #34495e;
-            margin-top: 40px;
-            margin-bottom: 20px;
-            border-left: 4px solid #3498db;
-            padding-left: 15px;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 600;
+            line-height: 1.3;
+            margin: 0 0 var(--space-lg) 0;
+            color: var(--text-primary);
         }
         
         h3 {
-            color: #2c3e50;
-            margin-top: 30px;
-            margin-bottom: 15px;
+            font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+            font-weight: 600;
+            line-height: 1.4;
+            margin: 0 0 var(--space-md) 0;
+            color: var(--text-primary);
         }
         
+        h4 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            line-height: 1.4;
+            margin: 0 0 var(--space-sm) 0;
+            color: var(--text-primary);
+        }
+        
+        p {
+            margin: 0 0 var(--space-md) 0;
+            color: var(--text-secondary);
+        }
+        
+        /* Main Grid Layout */
+        .container {
+            min-height: 100vh;
+            display: grid;
+            grid-template-areas: 
+                "header"
+                "hero"
+                "nav-cards"
+                "content"
+                "footer";
+            grid-template-rows: auto auto auto 1fr auto;
+            max-width: 1400px;
+            margin: 0 auto;
+            gap: var(--space-xl);
+            padding: var(--space-lg);
+        }
+        
+        @media (min-width: 1024px) {
+            .container {
+                grid-template-areas: 
+                    "header header header"
+                    "hero hero hero"
+                    "nav-cards nav-cards nav-cards"
+                    "content content content"
+                    "footer footer footer";
+                grid-template-columns: 1fr 1fr 1fr;
+                gap: var(--space-2xl);
+                padding: var(--space-2xl);
+            }
+        }
+        
+        /* Header */
+        .header {
+            grid-area: header;
+            text-align: center;
+            padding: var(--space-md) 0;
+        }
+        
+        .course-title {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .course-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+        
+        /* Hero Section */
+        .hero {
+            grid-area: hero;
+            background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-accent) 100%);
+            border-radius: var(--border-radius-lg);
+            padding: var(--space-2xl);
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+        }
+        
+        .hero-content p {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Navigation Cards */
+        .nav-cards {
+            grid-area: nav-cards;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-lg);
+        }
+        
+        .nav-card {
+            background: var(--bg-card);
+            border-radius: var(--border-radius);
+            padding: var(--space-xl);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .nav-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-color);
+        }
+        
+        .nav-card-icon {
+            font-size: 2rem;
+            margin-bottom: var(--space-md);
+            display: block;
+        }
+        
+        .nav-card h3 {
+            color: var(--text-primary);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .nav-card p {
+            color: var(--text-secondary);
+            margin: 0;
+            font-size: 0.9rem;
+        }
+        
+        /* Content Grid */
+        .content {
+            grid-area: content;
+            display: grid;
+            gap: var(--space-2xl);
+        }
+        
+        @media (min-width: 1024px) {
+            .content {
+                grid-template-columns: 2fr 1fr;
+                gap: var(--space-2xl);
+            }
+        }
+        
+        /* Main Content Area */
+        .main-content {
+            display: grid;
+            gap: var(--space-2xl);
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            display: grid;
+            gap: var(--space-xl);
+            align-content: start;
+        }
+        
+        /* Section Styling */
+        .section {
+            background: var(--bg-card);
+            border-radius: var(--border-radius);
+            padding: var(--space-xl);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-lg);
+            padding-bottom: var(--space-md);
+            border-bottom: 2px solid var(--bg-accent);
+        }
+        
+        .section-icon {
+            font-size: 1.5rem;
+        }
+        
+        /* Subsection Styling */
+        .subsection {
+            margin-bottom: var(--space-xl);
+        }
+        
+        .subsection:last-child {
+            margin-bottom: 0;
+        }
+        
+        .subsection h4 {
+            color: var(--primary-color);
+            border-left: 3px solid var(--primary-color);
+            padding-left: var(--space-md);
+            margin-bottom: var(--space-md);
+        }
+        
+        /* Resource Cards */
+        .resource-grid {
+            display: grid;
+            gap: var(--space-lg);
+        }
+        
+        @media (min-width: 768px) {
+            .resource-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+        }
+        
+        .resource-card {
+            background: var(--bg-accent);
+            border-radius: var(--border-radius);
+            padding: var(--space-lg);
+            border: 1px solid var(--border-color);
+        }
+        
+        /* Lists */
         ul {
-            padding-left: 20px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
         }
         
         li {
-            margin-bottom: 8px;
+            margin-bottom: var(--space-sm);
         }
         
+        /* Grid Lists for CodeAlongs */
+        .grid-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-md);
+            margin: 0;
+            padding: 0;
+        }
+        
+        .grid-list li {
+            margin-bottom: 0;
+        }
+        
+        /* Links */
         a {
-            color: #3498db;
+            color: var(--primary-color);
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: color 0.2s ease;
+            position: relative;
         }
         
         a:hover {
-            color: #2980b9;
-            text-decoration: underline;
+            color: var(--primary-hover);
         }
         
-        .intro {
-            background-color: #f8f9fa;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 30px;
-            border-left: 4px solid #3498db;
+        /* Link Badges */
+        .link-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: 6px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            margin-bottom: var(--space-xs);
         }
         
-        .footer {
-            margin-top: 50px;
-            padding-top: 20px;
-            border-top: 1px solid #ecf0f1;
-            text-align: center;
-            color: #7f8c8d;
-            font-style: italic;
+        .link-badge:hover {
+            transform: translateY(-1px);
         }
         
-        .section {
-            margin-bottom: 30px;
-        }
-        
-        .resource-section {
-            background-color: #f9f9f9;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }
-        
-        .colab-link {
+        .colab-badge {
             background-color: #fff3cd;
-            padding: 2px 6px;
-            border-radius: 4px;
+            color: #856404;
             border: 1px solid #ffeaa7;
         }
         
-        .lecture-link {
+        .colab-badge:hover {
+            background-color: #ffeaa7;
+            color: #856404;
+        }
+        
+        .lecture-badge {
             background-color: #d1ecf1;
-            padding: 2px 6px;
-            border-radius: 4px;
+            color: #0c5460;
             border: 1px solid #bee5eb;
+        }
+        
+        .lecture-badge:hover {
+            background-color: #bee5eb;
+            color: #0c5460;
+        }
+        
+        .external-badge {
+            background-color: #e1f5fe;
+            color: #01579b;
+            border: 1px solid #b3e5fc;
+        }
+        
+        .external-badge:hover {
+            background-color: #b3e5fc;
+            color: #01579b;
+        }
+        
+        /* Quick Stats */
+        .quick-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: var(--space-md);
+            margin-bottom: var(--space-lg);
+        }
+        
+        .stat {
+            text-align: center;
+            padding: var(--space-md);
+            background: var(--bg-accent);
+            border-radius: var(--border-radius);
+        }
+        
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+        }
+        
+        /* Footer */
+        .footer {
+            grid-area: footer;
+            text-align: center;
+            padding: var(--space-xl) 0;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            font-style: italic;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: var(--space-md);
+                gap: var(--space-lg);
+            }
+            
+            .hero {
+                padding: var(--space-lg);
+            }
+            
+            .section {
+                padding: var(--space-lg);
+            }
+            
+            .nav-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Focus States for Accessibility */
+        a:focus,
+        .nav-card:focus {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+        
+        /* Print Styles */
+        @media print {
+            .container {
+                display: block;
+            }
+            
+            .nav-cards,
+            .hero {
+                display: none;
+            }
+            
+            .section {
+                box-shadow: none;
+                border: 1px solid #ccc;
+                margin-bottom: var(--space-lg);
+            }
         }
     </style>
 </head>
 <body>
-    <h1>WRIT 20833 — Course Materials (2025)</h1>
-    
-    <div class="intro">
-        <p>Welcome. This site hosts weekly notebooks, lectures, and course resources for WRIT 20833.</p>
-    </div>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="course-title">WRIT 20833</h1>
+            <p class="course-subtitle">Course Materials (2025)</p>
+        </header>
 
-    <div class="section">
-        <h2>📓 Notebooks</h2>
-        
-        <h3>CodeAlongs</h3>
-        <ul>
-            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/codeAlongs/WRIT20833_Variables_DataTypes_F25.ipynb" target="_blank" class="colab-link">Variables & Data Types</a></li>
-            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/codeAlongs/WRIT20833_StrMethods_Conditionals_Loops_F25.ipynb" target="_blank" class="colab-link">String Methods, Conditionals & Loops</a></li>
-            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/codeAlongs/WRIT20833_Lists_Loops_Complete_F25.ipynb" target="_blank" class="colab-link">Lists & Loops</a></li>
-            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/codeAlongs/WRIT20833_Dictionaries_Functions_F25.ipynb" target="_blank" class="colab-link">Dictionaries & Functions</a></li>
-            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/codeAlongs/WRIT20833_Pandas_01_Found_Data_Fundamentals_F25.ipynb" target="_blank" class="colab-link">Found Data and Pandas Fundamentals 01</a></li>
-            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/codeAlongs/WRIT20833_Pandas_02_Data_Cleaning_Analysis_Pandas_F25.ipynb" target="_blank" class="colab-link">Found Data and Pandas Fundamentals 02</a></li>
-            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/codeAlongs/WRIT20833_Instant_Data_Scraper_Ethics_F25.ipynb" target="_blank" class="colab-link">Instant Data Scraper & Ethics</a></li>
-            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/codeAlongs/WRIT20833_VADER_Sentiment_Analysis_F25.ipynb" target="_blank" class="colab-link">VADER Sentiment Analysis</a></li>
-        </ul>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <p>Welcome to your digital humanities workspace. This site hosts weekly notebooks, lectures, and course resources for WRIT 20833—where coding meets culture.</p>
+            </div>
+        </section>
 
-        <h3>Exercises</h3>
-        <ul>
-            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/exercises/WRIT20833_Conditionals_9-5-25.ipynb" target="_blank" class="colab-link">Conditionals Exercise (9-5-25)</a></li>
-            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/exercises/WRIT20833_InClassEx_Family_Dictionaries_F25.ipynb" target="_blank" class="colab-link">Family Exercise - Dictionaries</a></li>
-        </ul>
-    </div>
+        <!-- Quick Navigation Cards -->
+        <nav class="nav-cards" role="navigation" aria-label="Main navigation">
+            <a href="#notebooks" class="nav-card">
+                <span class="nav-card-icon">📓</span>
+                <h3>Interactive Notebooks</h3>
+                <p>CodeAlongs, exercises, and hands-on tutorials</p>
+            </a>
+            
+            <a href="#lectures" class="nav-card">
+                <span class="nav-card-icon">🎓</span>
+                <h3>Lectures</h3>
+                <p>Weekly presentations and mini-lectures</p>
+            </a>
+            
+            <a href="#resources" class="nav-card">
+                <span class="nav-card-icon">📚</span>
+                <h3>Resources</h3>
+                <p>Tools, datasets, and reference materials</p>
+            </a>
+        </nav>
 
-    <div class="section">
-        <h2>🎓 Lectures</h2>
-        
-        <h3>Main Lectures</h3>
-        <ul>
-            <li><a href="/WRIT20833-2025/lectures/main/lecture1.html" target="_blank" class="lecture-link">Lecture 1: When Coding Meets Culture</a></li>
-        </ul>
-    </div>
+        <!-- Main Content -->
+        <main class="content">
+            <div class="main-content">
+                <!-- Notebooks Section -->
+                <section id="notebooks" class="section">
+                    <div class="section-header">
+                        <span class="section-icon">📓</span>
+                        <h2>Notebooks</h2>
+                    </div>
+                    
+                    
 
-    <div class="section">
-        <h2>📚 Course Resources</h2>
-        
-        <h3>1. Python and Data Analysis</h3>
-        
-        <div class="resource-section">
-            <h4>Python Fundamentals</h4>
-            <ul>
-                <li><a href="https://docs.python.org/3/tutorial/" target="_blank">Python.org Official Tutorial</a> - Comprehensive beginner-friendly guide</li>
-                <li><a href="https://www.codecademy.com/learn/learn-python-3" target="_blank">Codecademy Python Course</a> - Interactive coding exercises</li>
-                <li><a href="https://automatetheboringstuff.com/" target="_blank">Automate the Boring Stuff with Python</a> - Practical programming for beginners</li>
-            </ul>
-        </div>
+                    <div class="subsection">
+                        <h4>CodeAlongs</h4>
+                        <ul class="grid-list">
+                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/codeAlongs/WRIT20833_Variables_DataTypes_F25.ipynb" target="_blank" class="link-badge colab-badge">1. Variables & Data Types</a></li>
+                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/codeAlongs/WRIT20833_StrMethods_Conditionals_Loops_F25.ipynb" target="_blank" class="link-badge colab-badge">2. String Methods, Conditionals & Loops</a></li>
+                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/codeAlongs/WRIT20833_Lists_Loops_Complete_F25.ipynb" target="_blank" class="link-badge colab-badge">3. Lists & Loops</a></li>
+                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/codeAlongs/WRIT20833_Dictionaries_Functions_F25.ipynb" target="_blank" class="link-badge colab-badge">4. Dictionaries & Functions</a></li>
+                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/codeAlongs/WRIT20833_Pandas_01_Found_Data_Fundamentals_F25.ipynb" target="_blank" class="link-badge colab-badge">5. Found Data & Pandas Fundamentals 01</a></li>
+                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/codeAlongs/WRIT20833_Pandas_02_Data_Cleaning_Analysis_Pandas_F25.ipynb" target="_blank" class="link-badge colab-badge">6. Data Cleaning & Analysis with Pandas</a></li>
+                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/codeAlongs/WRIT20833_Instant_Data_Scraper_Ethics_F25.ipynb" target="_blank" class="link-badge colab-badge">7. Instant Data Scraper & Ethics</a></li>
+                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/codeAlongs/WRIT20833_VADER_Sentiment_Analysis_F25.ipynb" target="_blank" class="link-badge colab-badge">8. VADER Sentiment Analysis</a></li>
+                        </ul>
+                    </div>
 
-        <div class="resource-section">
-            <h4>Pandas & Data Analysis</h4>
-            <ul>
-                <li><a href="https://pandas.pydata.org/docs/getting_started/intro_tutorials/" target="_blank">Pandas Official Getting Started Tutorials</a> - Official pandas documentation with interactive examples</li>
-                <li><a href="https://www.kaggle.com/learn/pandas" target="_blank">Kaggle Learn: Pandas</a> - Free interactive pandas course with exercises</li>
-                <li><a href="https://github.com/jvns/pandas-cookbook" target="_blank">Pandas Cookbook</a> - Julia Evans' practical pandas examples and recipes</li>
-                <li><a href="https://www.dataschool.io/pandas/" target="_blank">Data School Pandas Tutorials</a> - Video tutorials for pandas fundamentals</li>
-                <li><a href="https://realpython.com/pandas-dataframe/" target="_blank">Real Python: Working with Pandas DataFrames</a> - Comprehensive guide to DataFrame operations</li>
-            </ul>
-        </div>
+                    <div class="subsection">
+                        <h4>In-Class Exercises</h4>
+                        <ul>
+                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/exercises/WRIT20833_Conditionals_9-5-25.ipynb" target="_blank" class="link-badge colab-badge">Conditionals Exercise (9-5-25)</a></li>
+                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/exercises/WRIT20833_InClassEx_Family_Dictionaries_F25.ipynb" target="_blank" class="link-badge colab-badge">Family Exercise - Dictionaries</a></li>
+                        </ul>
+                    </div>
+                </section>
 
-        <div class="resource-section">
-            <h4>Data Visualization</h4>
-            <ul>
-                <li><a href="https://matplotlib.org/stable/tutorials/index.html" target="_blank">Matplotlib Tutorials</a> - Official tutorials for Python's primary plotting library</li>
-                <li><a href="https://seaborn.pydata.org/tutorial.html" target="_blank">Seaborn Tutorial</a> - Statistical data visualization built on matplotlib</li>
-                <li><a href="https://python-graph-gallery.com/" target="_blank">Python Graph Gallery</a> - Hundreds of chart examples with code</li>
-                <li><a href="https://www.data-to-viz.com/" target="_blank">From Data to Viz</a> - Guide to choosing the right chart type for your data</li>
-                <li><a href="https://clauswilke.com/dataviz/" target="_blank">Fundamentals of Data Visualization</a> - Claus Wilke's free online book on visualization principles</li>
-            </ul>
-        </div>
+                <!-- Lectures Section -->
+                <section id="lectures" class="section">
+                    <div class="section-header">
+                        <span class="section-icon">🎓</span>
+                        <h2>Lectures</h2>
+                    </div>
 
-        <div class="resource-section" id="datasets">
-            <h4>Cultural Datasets & Data Sources</h4>
-            <ul>
-                <li><a href="https://www.kaggle.com/datasets" target="_blank">Kaggle Datasets</a> - Free datasets including movies, books, music, and cultural data</li>
-                <li><a href="https://data.gov/" target="_blank">Data.gov</a> - US government open data portal with cultural and historical datasets</li>
-                <li><a href="https://archive.org/details/datasets" target="_blank">Internet Archive Datasets</a> - Historical and cultural data collections</li>
-                <li><a href="https://www.europeana.eu/en/explore" target="_blank">Europeana</a> - European cultural heritage data and collections</li>
-                <li><a href="https://github.com/awesomedata/awesome-public-datasets" target="_blank">Awesome Public Datasets</a> - Curated list of free datasets organized by topic</li>
-                <li><a href="https://developers.google.com/public-data/" target="_blank">Google Public Data</a> - Public datasets accessible through Google tools</li>
-            </ul>
-            <p>For direct links to slightly messy, real-world datasets to practice data cleaning and wrangling in Pandas, click on the links below. They include missing values, duplicates, inconsistent formats, and other issues perfect for hands-on experience.</p>
+                    <div class="subsection">
+                        <h4>Main Lectures</h4>
+                        <ul>
+                            <li><a href="/WRIT20833-2025/lectures/main/lecture1.html" target="_blank" class="link-badge lecture-badge">Lecture 1: When Coding Meets Culture</a></li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
 
-            <ul>
-            <li><a href="https://www.kaggle.com/datasets/tmthyjames/nashville-housing-data" target="_blank" rel="noopener">Nashville Housing Data</a> — real housing transactions with missing values, duplicate rows, inconsistent date formats.</li>
-            <li><a href="https://www.kaggle.com/competitions/titanic/data" target="_blank" rel="noopener">Titanic: Machine Learning from Disaster</a> — includes NaNs, categorical variables, and outliers; great for practicing imputation and encoding.</li>
-            <li><a href="https://www.kaggle.com/datasets/mylesoneill/world-university-rankings" target="_blank" rel="noopener">World University Rankings</a> — mixed data types and duplicate rows; good for string cleaning and type conversion.</li>
-            <li><a href="https://vincentarelbundock.github.io/Rdatasets/doc/datasets/chickwts.html" target="_blank" rel="noopener">Chickweight Dataset</a> — repeated-measures data that requires pivoting and reshaping for analysis.</li>
-            <li><a href="https://data.cityofnewyork.us/Transportation/Parking-Violations-Issued-Fiscal-Year-2023/pvqr-7yc4" target="_blank" rel="noopener">NYC Parking Violations (Sample)</a> — wide CSV with messy categorical values, misspellings, and many columns to rename or subset.</li>
-            <li><a href="https://www.kaggle.com/datasets/joniarroba/noshowappointments" target="_blank" rel="noopener">Medical Appointment No-Shows</a> — date parsing, negative ages to clean, and categorical Yes/No standardization practice.</li>
-            </ul>
-        </div>
-        
-        <h3>2. Web Development</h3>
-        
-        <div class="resource-section">
-            <h4>HTML</h4>
-            <ul>
-                <li><a href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics" target="_blank">MDN HTML Basics</a> - Mozilla's authoritative guide</li>
-                <li><a href="https://www.w3schools.com/html/" target="_blank">W3Schools HTML Tutorial</a> - Step-by-step tutorials with examples</li>
-                <li><a href="https://html5forwebdesigners.com/" target="_blank">HTML5 for Web Designers</a> - Modern HTML practices and standards</li>
-            </ul>
-        </div>
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <!-- Quick Access -->
+                <section class="section">
+                    <div class="section-header">
+                        <span class="section-icon">⚡</span>
+                        <h3>Quick Access</h3>
+                    </div>
+                    <ul>
+                        <li><a href="#datasets" class="link-badge external-badge">Practice Datasets</a></li>
+                        <li><a href="https://colab.research.google.com/" target="_blank" class="link-badge external-badge">Google Colab</a></li>
+                        <li><a href="https://github.com/TCU-DCDA/WRIT20833-2025" target="_blank" class="link-badge external-badge">Course GitHub</a></li>
+                    </ul>
+                </section>
 
-        <div class="resource-section">
-            <h4>CSS</h4>
-            <ul>
-                <li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps" target="_blank">MDN CSS First Steps</a> - Mozilla's comprehensive CSS guide</li>
-                <li><a href="https://css-tricks.com/guides/beginner/" target="_blank">CSS-Tricks</a> - Practical CSS techniques and best practices</li>
-                <li><a href="https://flexboxfroggy.com/" target="_blank">Flexbox Froggy</a> - Interactive game for learning CSS Flexbox</li>
-            </ul>
-        </div>
+                <!-- Recent Updates -->
+                <section class="section">
+                    <div class="section-header">
+                        <span class="section-icon">🔄</span>
+                        <h3>Recent Updates</h3>
+                    </div>
+                    <ul>
+                        <li><span style="color: var(--text-muted); font-size: 0.875rem;">Sep 29</span><br>
+                            VADER Sentiment Analysis notebook added</li>
+                        <li><span style="color: var(--text-muted); font-size: 0.875rem;">Sep 25</span><br>
+                            Data scraping ethics materials</li>
+                        <li><span style="color: var(--text-muted); font-size: 0.875rem;">Sep 20</span><br>
+                            Pandas fundamentals part 2</li>
+                    </ul>
+                </section>
+            </aside>
+        </main>
 
-        <div class="resource-section">
-            <h4>Data Ethics & Web Scraping</h4>
-            <ul>
-                <li><a href="https://blog.archive.org/2017/04/17/robots-txt-meant-for-search-engines-dont-work-well-for-web-archives/" target="_blank">Internet Archive: Understanding robots.txt</a> - Guide to web scraping ethics and robots.txt</li>
-                <li><a href="https://towardsdatascience.com/ethics-in-web-scraping-b96b18136f01" target="_blank">Towards Data Science: Ethics in Web Scraping</a> - Best practices for ethical data collection</li>
-                <li><a href="https://www.robots-txt.com/" target="_blank">robots-txt.com</a> - Complete guide to robots.txt standards and usage</li>
-            </ul>
-        </div>
-        
-        <h3>3. Larger Issues</h3>
-        
-        <div class="resource-section">
-            <h4>Data Ethics & Digital Rights</h4>
-            <ul>
-                <li><a href="https://datajournalism.com/read/handbook/one/understanding-data/data-ethics" target="_blank">Data Journalism Handbook: Data Ethics</a> - Ethical considerations in data analysis</li>
-                <li><a href="https://www.eff.org/issues/privacy" target="_blank">Electronic Frontier Foundation: Privacy Issues</a> - Digital rights and privacy in the age of data collection</li>
-            </ul>
-        </div>
+        <!-- Resources Section (Full Width) -->
+        <section id="resources" class="section" style="grid-column: 1 / -1;">
+            <div class="section-header">
+                <span class="section-icon">📚</span>
+                <h2>Course Resources</h2>
+            </div>
 
-        <div class="resource-section">
-            <h4>Critical Perspectives on Technology</h4>
-            <ul>
-                <li><a href="https://www.newyorker.com/science/annals-of-artificial-intelligence/will-ai-become-the-new-mckinsey" target="_blank">Ted Chiang: "Will A.I. Become the New McKinsey?"</a> - Clear essay on AI and decision-making</li>
-                <li><a href="https://www.danah.org/papers/talks/2010/WWW2010.html" target="_blank">danah boyd: "Privacy and Publicity in the Context of Big Data"</a> - Short essay on digital boundaries and privacy</li>
-                <li><a href="https://www.penguinrandomhouse.com/books/241363/weapons-of-math-destruction-by-cathy-oneil/" target="_blank">Cathy O'Neil: "Weapons of Math Destruction"</a> - Accessible exploration of algorithmic bias in everyday life</li>
-            </ul>
-        </div>
-    </div>
+            <div class="resource-grid">
+                <div class="resource-card">
+                    <h4>Python Fundamentals</h4>
+                    <ul>
+                        <li><a href="https://docs.python.org/3/tutorial/" target="_blank" class="link-badge external-badge">Python.org Official Tutorial</a></li>
+                        <li><a href="https://www.codecademy.com/learn/learn-python-3" target="_blank" class="link-badge external-badge">Codecademy Python Course</a></li>
+                        <li><a href="https://automatetheboringstuff.com/" target="_blank" class="link-badge external-badge">Automate the Boring Stuff</a></li>
+                    </ul>
+                </div>
 
-    <div class="footer">
-        <p>If a link 404s, it's just a placeholder—files will be added as the semester content is finalized.</p>
+                <div class="resource-card">
+                    <h4>Data Analysis</h4>
+                    <ul>
+                        <li><a href="https://pandas.pydata.org/docs/getting_started/intro_tutorials/" target="_blank" class="link-badge external-badge">Pandas Official Tutorials</a></li>
+                        <li><a href="https://www.kaggle.com/learn/pandas" target="_blank" class="link-badge external-badge">Kaggle Learn: Pandas</a></li>
+                        <li><a href="https://github.com/jvns/pandas-cookbook" target="_blank" class="link-badge external-badge">Pandas Cookbook</a></li>
+                    </ul>
+                </div>
+
+                <div class="resource-card">
+                    <h4>Data Visualization</h4>
+                    <ul>
+                        <li><a href="https://matplotlib.org/stable/tutorials/index.html" target="_blank" class="link-badge external-badge">Matplotlib Tutorials</a></li>
+                        <li><a href="https://seaborn.pydata.org/tutorial.html" target="_blank" class="link-badge external-badge">Seaborn Tutorial</a></li>
+                        <li><a href="https://python-graph-gallery.com/" target="_blank" class="link-badge external-badge">Python Graph Gallery</a></li>
+                    </ul>
+                </div>
+
+                <div class="resource-card" id="datasets">
+                    <h4>Practice Datasets</h4>
+                    <p style="font-size: 0.875rem; margin-bottom: var(--space-md); color: var(--text-secondary);">Real-world messy datasets perfect for pandas practice:</p>
+                    <ul>
+                        <li><a href="https://www.kaggle.com/datasets/tmthyjames/nashville-housing-data" target="_blank" class="link-badge external-badge">Nashville Housing Data</a></li>
+                        <li><a href="https://www.kaggle.com/competitions/titanic/data" target="_blank" class="link-badge external-badge">Titanic Dataset</a></li>
+                        <li><a href="https://www.kaggle.com/datasets/mylesoneill/world-university-rankings" target="_blank" class="link-badge external-badge">University Rankings</a></li>
+                    </ul>
+                </div>
+
+                <div class="resource-card">
+                    <h4>Web Development</h4>
+                    <ul>
+                        <li><a href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics" target="_blank" class="link-badge external-badge">MDN HTML Basics</a></li>
+                        <li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps" target="_blank" class="link-badge external-badge">MDN CSS First Steps</a></li>
+                        <li><a href="https://flexboxfroggy.com/" target="_blank" class="link-badge external-badge">Flexbox Froggy</a></li>
+                    </ul>
+                </div>
+
+                <div class="resource-card">
+                    <h4>Ethics & Critical Thinking</h4>
+                    <ul>
+                        <li><a href="https://www.newyorker.com/science/annals-of-artificial-intelligence/will-ai-become-the-new-mckinsey" target="_blank" class="link-badge external-badge">Ted Chiang: AI & McKinsey</a></li>
+                        <li><a href="https://towardsdatascience.com/ethics-in-web-scraping-b96b18136f01" target="_blank" class="link-badge external-badge">Ethics in Web Scraping</a></li>
+                        <li><a href="https://www.eff.org/issues/privacy" target="_blank" class="link-badge external-badge">EFF: Privacy Issues</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>If a link 404s, it's just a placeholder—files will be added as the semester content is finalized.</p>
+        </footer>
     </div>
 </body>
 </html>
