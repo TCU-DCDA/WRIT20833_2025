@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini-Lecture 6: Digital Archaeology - WRIT 20833</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared-style.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Slide 1: Title/Hook -->
+    <div class="slide-container active">
+        <div class="slide">
+            <h1>Digital Archaeology</h1>
+            <p class="subtitle">Finding Stories in Found Data</p>
+            <img src="../images/JPEG/data_as_categorization.jpg" alt="Digital archaeology visualization" class="slide-image">
+
+            <div class="hook-question">
+                <h2 style="color: #c9a9ff; font-size: 2rem; margin: 2rem 0;">
+                    "Every dataset is someone's digital diary. What stories are waiting to be discovered?"
+                </h2>
+            </div>
+
+            <div class="instructor-info">WRIT 20833 • Mini-Lecture 6</div>
+        </div>
+    </div>
+
+    <!-- Slide 2: The Analogy -->
+    <div class="slide-container">
+        <div class="slide">
+            <h2>The <span class="highlight">Analogy</span></h2>
+
+            <div class="layout-image-left">
+                <div class="layout-image">
+                    <img src="../images/JPEG/filedrawers_sculpture.jpg" alt="Archaeological analogy">
+                </div>
+
+                <div class="layout-content">
+                    <h3>Traditional vs Digital Archaeology</h3>
+
+                    <div class="text-section">
+                        <h3>🏺 Traditional Archaeology</h3>
+                        <p>Pottery shards → Ancient dining habits</p>
+                    </div>
+
+                    <div class="text-section">
+                        <h3>💾 Digital Archaeology</h3>
+                        <p>Dataset rows → Cultural patterns</p>
+                    </div>
+
+                    <div class="key-insight">
+                        <p>Both excavate traces of human culture to understand behavior</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 3: Created vs Found Data -->
+    <div class="slide-container">
+        <div class="slide">
+            <h2>Created vs <span class="highlight">Found</span> Data</h2>
+
+            <div class="layout-image-right">
+                <div class="layout-content">
+                    <div class="text-section">
+                        <h3>❌ Created Data</h3>
+                        <ul>
+                            <li>Surveys you design</li>
+                            <li>Experiments you run</li>
+                            <li><strong>You control the questions</strong></li>
+                        </ul>
+                    </div>
+
+                    <div class="text-section">
+                        <h3>✅ Found Data</h3>
+                        <ul>
+                            <li>Datasets already existing</li>
+                            <li>Digital traces of culture</li>
+                            <li><strong>Culture left the clues</strong></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="layout-image">
+                    <img src="../images/JPEG/ancient+modern_barriers.jpg" alt="Data types">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4: Data Sources Part 1 -->
+    <div class="slide-container" data-part="Part 1 of 2">
+        <div class="slide">
+            <h2>Cultural <span class="highlight">Data Sources</span></h2>
+
+            <div class="layout-image-left">
+                <div class="layout-image">
+                    <img src="../images/JPEG/polynesianMask_ipad.jpg" alt="Data sources">
+                </div>
+
+                <div class="layout-content">
+                    <h3>Where to Find Cultural Data:</h3>
+
+                    <div class="text-section">
+                        <h3>📚 Kaggle Datasets</h3>
+                        <p>Books, movies, music - curated for analysis</p>
+                    </div>
+
+                    <div class="text-section">
+                        <h3>🏛️ Digital Collections</h3>
+                        <p>Museum catalogs, library records, archives</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="continuation-arrow">↓</div>
+            <p style="text-align: center; font-style: italic; color: #c9a9ff;">More sources...</p>
+        </div>
+    </div>
+
+    <!-- Slide 5: Data Sources Part 2 -->
+    <div class="slide-container" data-part="Part 2 of 2">
+        <div class="slide">
+            <h2>Cultural Data Sources <span style="font-size: 1.5rem;">(continued)</span></h2>
+
+            <div class="layout-image-right">
+                <div class="layout-content">
+                    <div class="text-section">
+                        <h3>🎬 Entertainment Platforms</h3>
+                        <p>IMDb, Spotify, Netflix - viewing/listening patterns</p>
+                    </div>
+
+                    <div class="text-section">
+                        <h3>📊 Government Sources</h3>
+                        <p>Arts funding statistics, cultural policy data</p>
+                    </div>
+
+                    <div class="key-insight">
+                        <p><strong>Key:</strong> Look for datasets that represent real human cultural behavior</p>
+                    </div>
+                </div>
+
+                <div class="layout-image">
+                    <img src="../images/JPEG/chief+taboo+privacy.jpg" alt="More data sources">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 6: What is Data Biography -->
+    <div class="slide-container">
+        <div class="slide">
+            <h2>Creating a <span class="highlight">Data Biography</span></h2>
+
+            <div class="layout-image-left">
+                <div class="layout-image">
+                    <img src="../images/JPEG/data_visualization_bias.jpg" alt="Data biography">
+                </div>
+
+                <div class="layout-content">
+                    <h3>What is it?</h3>
+                    <p>A comprehensive record of your dataset's life story—from creation to your analysis</p>
+
+                    <div class="key-insight">
+                        <p><strong>Archaeologists document artifact provenance.<br>We document data provenance.</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 7: Biography Elements Part 1 -->
+    <div class="slide-container" data-part="Part 1 of 2">
+        <div class="slide">
+            <h2>Biography <span class="highlight">Elements</span></h2>
+
+            <div class="layout-image-right">
+                <div class="layout-content">
+                    <h3>Document These 4 Things:</h3>
+
+                    <div class="text-section">
+                        <h3>📜 Origin Story</h3>
+                        <p>Who created it? When? Why?</p>
+                    </div>
+
+                    <div class="text-section">
+                        <h3>🛤️ Journey</h3>
+                        <p>How was it collected, processed, shared?</p>
+                    </div>
+                </div>
+
+                <div class="layout-image">
+                    <img src="../images/JPEG/AI-Box_Pulling_HandsofCoder.jpg" alt="Documentation">
+                </div>
+            </div>
+
+            <div class="continuation-arrow">↓</div>
+            <p style="text-align: center; font-style: italic; color: #c9a9ff;">2 more elements...</p>
+        </div>
+    </div>
+
+    <!-- Slide 8: Biography Elements Part 2 -->
+    <div class="slide-container" data-part="Part 2 of 2">
+        <div class="slide">
+            <h2>Biography Elements <span style="font-size: 1.5rem;">(continued)</span></h2>
+
+            <div class="layout-image-left">
+                <div class="layout-image">
+                    <img src="../images/JPEG/nuance.png" alt="More documentation">
+                </div>
+
+                <div class="layout-content">
+                    <div class="text-section">
+                        <h3>🔄 Transformations</h3>
+                        <p>What cleaning/filtering did you do?</p>
+                    </div>
+
+                    <div class="text-section">
+                        <h3>⚠️ Limitations</h3>
+                        <p>What's missing? What are the biases?</p>
+                    </div>
+
+                    <div class="key-insight">
+                        <p><strong>Transparency = Credibility</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 9: Why Document Part 1 -->
+    <div class="slide-container" data-part="Part 1 of 2">
+        <div class="slide">
+            <h2>Why <span class="highlight">Document</span>?</h2>
+
+            <div class="layout-image-right">
+                <div class="layout-content">
+                    <div class="text-section">
+                        <h3>📝 Credibility</h3>
+                        <p>Readers can evaluate your sources</p>
+                    </div>
+
+                    <div class="text-section">
+                        <h3>🔄 Reproducibility</h3>
+                        <p>Others can follow your process</p>
+                    </div>
+                </div>
+
+                <div class="layout-image">
+                    <img src="../images/JPEG/forest-for-trees.png" alt="Why document">
+                </div>
+            </div>
+
+            <div class="continuation-arrow">↓</div>
+            <p style="text-align: center; font-style: italic; color: #c9a9ff;">2 more reasons...</p>
+        </div>
+    </div>
+
+    <!-- Slide 10: Why Document Part 2 -->
+    <div class="slide-container" data-part="Part 2 of 2">
+        <div class="slide">
+            <h2>Why Document? <span style="font-size: 1.5rem;">(continued)</span></h2>
+
+            <div class="layout-image-left">
+                <div class="layout-image">
+                    <img src="../images/JPEG/tippingScales.png" alt="Ethics and discovery">
+                </div>
+
+                <div class="layout-content">
+                    <div class="text-section">
+                        <h3>⚖️ Ethics</h3>
+                        <p>Transparent about limitations and biases</p>
+                    </div>
+
+                    <div class="text-section">
+                        <h3>💡 Discovery</h3>
+                        <p>Context reveals hidden patterns</p>
+                    </div>
+
+                    <div class="key-insight">
+                        <p><strong>You're interpreting human cultural behavior. Handle with care.</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 11: Ethics -->
+    <div class="slide-container">
+        <div class="slide">
+            <h2>The <span class="highlight">Ethics</span></h2>
+
+            <div class="layout-image-right">
+                <div class="layout-content">
+                    <div class="text-section">
+                        <h3>🤖 Check robots.txt</h3>
+                        <p>Respect website data collection rules</p>
+                    </div>
+
+                    <div class="text-section">
+                        <h3>✅ Always Credit Sources</h3>
+                        <p>These represent real people and communities</p>
+                    </div>
+                </div>
+
+                <div class="layout-image">
+                    <img src="../images/JPEG/half_digitized_sculpture.jpg" alt="Ethics">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 12: From Artifact to Insight -->
+    <div class="slide-container">
+        <div class="slide">
+            <h2>Artifact to <span class="highlight">Insight</span></h2>
+
+            <div class="layout-image-left">
+                <div class="layout-image">
+                    <img src="../images/JPEG/data_as_categorization.jpg" alt="Layers of meaning">
+                </div>
+
+                <div class="layout-content">
+                    <h3>📖 One Dataset Row = 3 Layers</h3>
+
+                    <div class="text-section">
+                        <h3>Surface: Title, Author, Year</h3>
+                    </div>
+
+                    <div class="text-section">
+                        <h3>Cultural: Publishing trends, Genre popularity</h3>
+                    </div>
+
+                    <div class="text-section">
+                        <h3>Societal: Economic factors, Cultural values</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 13: Pandas Toolkit -->
+    <div class="slide-container">
+        <div class="slide">
+            <h2>The <span class="highlight">Pandas</span> Toolkit</h2>
+
+            <div class="layout-image-right">
+                <div class="layout-content">
+                    <h3>🔨 Every Archaeologist Needs Tools:</h3>
+
+                    <div class="text-section">
+                        <h3>.head() - The Survey</h3>
+                        <p>First look at the site</p>
+                    </div>
+
+                    <div class="text-section">
+                        <h3>.info() - The Site Map</h3>
+                        <p>Structure and condition</p>
+                    </div>
+                </div>
+
+                <div class="layout-image">
+                    <img src="../images/JPEG/ancient+modern_barriers.jpg" alt="Pandas tools">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 14: More Pandas Tools -->
+    <div class="slide-container">
+        <div class="slide">
+            <h2>More <span class="highlight">Tools</span></h2>
+
+            <div class="layout-image-left">
+                <div class="layout-image">
+                    <img src="../images/JPEG/filedrawers_sculpture.jpg" alt="More tools">
+                </div>
+
+                <div class="layout-content">
+                    <div class="text-section">
+                        <h3>.describe() - The Inventory</h3>
+                        <p>Count and measure findings</p>
+                    </div>
+
+                    <div class="text-section">
+                        <h3>Filtering - Careful Excavation</h3>
+                        <p>Choose what to examine closely</p>
+                    </div>
+
+                    <div class="key-insight">
+                        <p><strong>Start broad, then narrow focus</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 15: Reading Cultural Landscape -->
+    <div class="slide-container">
+        <div class="slide">
+            <h2>Reading <span class="highlight">Patterns</span></h2>
+
+            <div class="layout-image-right">
+                <div class="layout-content">
+                    <div class="text-section">
+                        <h3>.value_counts()</h3>
+                        <p>What's popular? What's rare?</p>
+                    </div>
+
+                    <div class="text-section">
+                        <h3>.groupby()</h3>
+                        <p>Differences across time, region, demographics</p>
+                    </div>
+
+                    <div class="text-section">
+                        <h3>Missing Data</h3>
+                        <p>What cultures choose NOT to record</p>
+                    </div>
+                </div>
+
+                <div class="layout-image">
+                    <img src="../images/JPEG/polynesianMask_ipad.jpg" alt="Cultural patterns">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 16: Case Study -->
+    <div class="slide-container">
+        <div class="slide">
+            <h2>Case Study: <span class="highlight">Books</span></h2>
+
+            <div class="layout-image-left">
+                <div class="layout-image">
+                    <img src="../images/JPEG/chief+taboo+privacy.jpg" alt="Book study">
+                </div>
+
+                <div class="layout-content">
+                    <h3>📚 Goodreads Dataset (50K books)</h3>
+
+                    <div class="text-section">
+                        <p><strong>Pattern:</strong> Page counts decreasing over time</p>
+                        <p><strong>Discovery:</strong> Average book length dropped 15% since 2000</p>
+                        <p><strong>But:</strong> Fantasy novels got LONGER</p>
+                    </div>
+
+                    <div class="key-insight">
+                        <p>What does this tell us about different reading communities?</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 17: Your Mission -->
+    <div class="slide-container">
+        <div class="slide">
+            <h2>Your <span class="highlight">Mission</span></h2>
+
+            <div class="layout-image-right">
+                <div class="layout-content">
+                    <h3>HW3-1 Structure:</h3>
+
+                    <div class="text-section">
+                        <h3>1. Choose Your Site</h3>
+                        <p>Cultural dataset (15+ rows, rich & messy)</p>
+                    </div>
+
+                    <div class="text-section">
+                        <h3>2. Survey & Excavate</h3>
+                        <p>Use pandas to explore and find insights</p>
+                    </div>
+
+                    <div class="text-section">
+                        <h3>3. Interpret Findings</h3>
+                        <p>What cultural story does your data tell?</p>
+                    </div>
+                </div>
+
+                <div class="layout-image">
+                    <img src="../images/JPEG/half_digitized_sculpture.jpg" alt="Your mission">
+                </div>
+            </div>
+
+            <div class="transition-next">
+                <h2>What cultural story will you uncover?</h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- Upper Left: Series Navigation -->
+    <div class="inter-lecture-nav">
+        <div class="lecture-nav">
+            <a href="../index.html" class="lecture-nav-btn series-home">← Series Home</a>
+            <a href="../lecture-5-connotations/index.html" class="lecture-nav-btn">← Prev</a>
+        </div>
+    </div>
+
+    <!-- Upper Right: Slide Controls -->
+    <div class="navigation-container">
+        <div class="navigation">
+            <button class="nav-btn" onclick="previousSlide()">←</button>
+            <span class="nav-counter" id="slideCounter">1 / 17</span>
+            <span class="nav-part-indicator" id="partIndicator"></span>
+            <button class="nav-btn" onclick="nextSlide()">→</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide-container');
+        const totalSlides = slides.length;
+
+        function showSlide(n) {
+            if (n >= totalSlides) { currentSlide = 0; }
+            if (n < 0) { currentSlide = totalSlides - 1; }
+            if (n >= 0 && n < totalSlides) { currentSlide = n; }
+
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[currentSlide].classList.add('active');
+
+            const slideCounter = document.getElementById('slideCounter');
+            if (slideCounter) {
+                slideCounter.textContent = `${currentSlide + 1} / ${totalSlides}`;
+            }
+
+            // Update part indicator if slide has data-part attribute
+            const partIndicator = document.getElementById('partIndicator');
+            const currentSlideElement = slides[currentSlide];
+            const partText = currentSlideElement.getAttribute('data-part');
+
+            if (partIndicator) {
+                if (partText) {
+                    partIndicator.textContent = partText;
+                    partIndicator.style.display = 'inline';
+                } else {
+                    partIndicator.textContent = '';
+                    partIndicator.style.display = 'none';
+                }
+            }
+        }
+
+        function nextSlide() {
+            currentSlide++;
+            showSlide(currentSlide);
+        }
+
+        function previousSlide() {
+            currentSlide--;
+            showSlide(currentSlide);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowRight' || event.key === ' ') {
+                event.preventDefault();
+                nextSlide();
+            } else if (event.key === 'ArrowLeft') {
+                event.preventDefault();
+                previousSlide();
+            }
+        });
+
+        // Initialize
+        showSlide(currentSlide);
+    </script>
+</body>
+</html>

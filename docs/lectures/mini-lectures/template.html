@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini-Lecture [N]: [Title] - WRIT 20833</title>
+    <!-- Font Imports -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Stylesheets: Shared base styles + lecture-specific overrides -->
+    <link rel="stylesheet" href="../shared-style.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- ============================================
+         SLIDE 1: TITLE/HOOK SLIDE
+         Full-width centered content with optional image
+         ============================================ -->
+    <div class="slide-container active">
+        <div class="slide">
+            <h1>[Lecture Title]</h1>
+            <p class="subtitle">[Subtitle or Tagline]</p>
+            <img src="images/slide1.jpg" alt="[Descriptive alt text]" class="slide-image">
+
+            <!-- Optional: Hook Question Box -->
+            <div class="hook-question">
+                <h2 style="color: #c9a9ff; font-size: 2.5rem; margin: 2rem 0;">
+                    "[Your compelling hook question here]"
+                </h2>
+            </div>
+
+            <div class="instructor-info">WRIT 20833 • Mini-Lecture [N]</div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         SLIDE 2: IMAGE-LEFT LAYOUT
+         Image on left (40%), text content on right (60%)
+         Automatically stacks vertically on mobile
+         ============================================ -->
+    <div class="slide-container">
+        <div class="slide">
+            <h2>[Slide Title]</h2>
+
+            <div class="layout-image-left">
+                <!-- Image Column (Left) -->
+                <div class="layout-image">
+                    <img src="images/slide2.jpg" alt="[Descriptive alt text]">
+                </div>
+
+                <!-- Content Column (Right) -->
+                <div class="layout-content">
+                    <h3>[Content Heading]</h3>
+                    <p>[Your text content here. This column will automatically adjust to the available space.]</p>
+
+                    <ul>
+                        <li>[Bullet point 1]</li>
+                        <li>[Bullet point 2]</li>
+                        <li>[Bullet point 3]</li>
+                    </ul>
+
+                    <div class="key-insight">
+                        <p><strong>Key Insight:</strong> [Your main takeaway]</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         SLIDE 3: IMAGE-RIGHT LAYOUT
+         Text content on left (60%), image on right (40%)
+         Automatically stacks vertically on mobile
+         ============================================ -->
+    <div class="slide-container">
+        <div class="slide">
+            <h2>[Slide Title]</h2>
+
+            <div class="layout-image-right">
+                <!-- Content Column (Left) -->
+                <div class="layout-content">
+                    <h3>[Content Heading]</h3>
+                    <p>[Your text content here. This layout reverses the image position.]</p>
+
+                    <div class="text-section">
+                        <h3>[Section Title]</h3>
+                        <ul>
+                            <li>[Point 1]</li>
+                            <li>[Point 2]</li>
+                            <li>[Point 3]</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Image Column (Right) -->
+                <div class="layout-image">
+                    <img src="images/slide3.jpg" alt="[Descriptive alt text]">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         SLIDE 4: TEXT-HEAVY CONTENT (Part 1 of 2)
+         Use continuation indicator for multi-slide concepts
+         Break at natural concept boundaries
+         NOTE: Add data-part="Part 1 of 2" to show indicator in nav
+         ============================================ -->
+    <div class="slide-container" data-part="Part 1 of 2">
+        <div class="slide">
+            <h2>[Complex Topic Title]</h2>
+
+            <div class="text-section">
+                <h3>[First Aspect]</h3>
+                <p>[Content for the first part of your explanation. Keep to 3-5 bullet points or 2-3 paragraphs maximum per slide.]</p>
+                <ul>
+                    <li>[Key point 1]</li>
+                    <li>[Key point 2]</li>
+                    <li>[Key point 3]</li>
+                </ul>
+            </div>
+
+            <div class="text-section">
+                <h3>[Second Aspect]</h3>
+                <p>[Content for the second part.]</p>
+                <ul>
+                    <li>[Key point 1]</li>
+                    <li>[Key point 2]</li>
+                </ul>
+            </div>
+
+            <!-- Continuation Arrow Indicator -->
+            <div class="continuation-arrow">↓</div>
+            <p style="text-align: center; font-style: italic; color: #c9a9ff;">Continued on next slide...</p>
+        </div>
+    </div>
+
+    <!-- ============================================
+         SLIDE 5: TEXT-HEAVY CONTENT (Part 2 of 2)
+         Continuation of previous slide
+         NOTE: Add data-part="Part 2 of 2" to show indicator in nav
+         ============================================ -->
+    <div class="slide-container" data-part="Part 2 of 2">
+        <div class="slide">
+            <h2>[Complex Topic Title] <span style="font-size: 1.5rem;">(continued)</span></h2>
+
+            <div class="text-section">
+                <h3>[Third Aspect]</h3>
+                <p>[Content for the third part of your explanation.]</p>
+                <ul>
+                    <li>[Key point 1]</li>
+                    <li>[Key point 2]</li>
+                    <li>[Key point 3]</li>
+                </ul>
+            </div>
+
+            <div class="key-insight">
+                <p><strong>Bringing It Together:</strong> [Synthesize the full concept across both slides]</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         SLIDE 6: COMPARISON GRID LAYOUT
+         Side-by-side comparison boxes (existing pattern)
+         ============================================ -->
+    <div class="slide-container">
+        <div class="slide">
+            <h2>[Comparison Title]</h2>
+            <img src="images/slide6.jpg" alt="[Descriptive alt text]" class="slide-image-small">
+
+            <!-- Two-column comparison -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0;">
+                <div style="background: rgba(201, 169, 255, 0.1); padding: 1.5rem; border-radius: 12px; border: 1px solid #c9a9ff;">
+                    <h3>[Option A]</h3>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li style="padding: 0.5rem 0;">→ [Point 1]</li>
+                        <li style="padding: 0.5rem 0;">→ [Point 2]</li>
+                        <li style="padding: 0.5rem 0;">→ [Point 3]</li>
+                    </ul>
+                </div>
+
+                <div style="background: rgba(231, 76, 60, 0.15); padding: 1.5rem; border-radius: 12px; border: 1px solid #e74c3c;">
+                    <h3>[Option B]</h3>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li style="padding: 0.5rem 0;">→ [Point 1]</li>
+                        <li style="padding: 0.5rem 0;">→ [Point 2]</li>
+                        <li style="padding: 0.5rem 0;">→ [Point 3]</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="key-insight">
+                <p><strong>The Difference:</strong> [Highlight the key distinction]</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         SLIDE 7: CENTERED EMPHASIS SLIDE
+         For critical questions or statements
+         ============================================ -->
+    <div class="slide-container">
+        <div class="slide">
+            <h2>[Topic Title]</h2>
+
+            <div class="hook-question">
+                <h2 style="color: #c9a9ff; font-size: 2rem; margin: 2rem 0;">
+                    "[Your important question or statement here]"
+                </h2>
+            </div>
+
+            <div class="text-section">
+                <h3>[Context or Explanation]</h3>
+                <p>[Provide context or explanation for the emphasis above.]</p>
+            </div>
+
+            <div class="transition-next">
+                <h4>Next Up:</h4>
+                <p>[Preview of what's coming in the next slide]</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         SLIDE 8: RESOURCES/READINGS SLIDE
+         Card grid layout for recommended readings
+         ============================================ -->
+    <div class="slide-container">
+        <div class="slide">
+            <h2>📚 <span class="highlight">Explore Further</span></h2>
+            <p class="subtitle">Optional readings to deepen your understanding</p>
+
+            <div class="readings-grid">
+                <div class="reading-card">
+                    <div class="reading-header">
+                        <h4>[Author Name]</h4>
+                        <span class="year">[Year]</span>
+                    </div>
+                    <h3><em>[Article or Book Title]</em></h3>
+                    <p class="reading-description">[Brief description of what students will learn from this resource.]</p>
+                    <a href="[URL]" target="_blank" class="reading-link">Read Online →</a>
+                </div>
+
+                <div class="reading-card">
+                    <div class="reading-header">
+                        <h4>[Author Name]</h4>
+                        <span class="year">[Year]</span>
+                    </div>
+                    <h3><em>[Article or Book Title]</em></h3>
+                    <p class="reading-description">[Brief description of what students will learn from this resource.]</p>
+                    <a href="[URL]" target="_blank" class="reading-link">Read Online →</a>
+                </div>
+
+                <div class="reading-card">
+                    <div class="reading-header">
+                        <h4>[Author Name]</h4>
+                        <span class="year">[Year]</span>
+                    </div>
+                    <h3><em>[Article or Book Title]</em></h3>
+                    <p class="reading-description">[Brief description of what students will learn from this resource.]</p>
+                    <a href="[URL]" target="_blank" class="reading-link">Publisher Page →</a>
+                </div>
+            </div>
+
+            <div class="next-lecture-preview">
+                <h4>Coming Next: <span class="highlight">[Next Lecture Title]</span></h4>
+                <p>[Next lecture subtitle or preview]</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         NAVIGATION COMPONENTS
+         Fixed positioning - DO NOT MODIFY
+         ============================================ -->
+
+    <!-- Upper Left: Series Navigation -->
+    <div class="inter-lecture-nav">
+        <div class="lecture-nav">
+            <a href="../index.html" class="lecture-nav-btn series-home" target="_blank">← Series Home</a>
+            <!-- Optional: Add prev/next lecture links -->
+            <!-- <a href="../lecture-[N-1]/index.html" class="lecture-nav-btn">← Prev</a> -->
+            <!-- <a href="../lecture-[N+1]/index.html" class="lecture-nav-btn">Next →</a> -->
+        </div>
+    </div>
+
+    <!-- Upper Right: Slide Controls -->
+    <div class="navigation-container">
+        <div class="navigation">
+            <button class="nav-btn" onclick="previousSlide()">←</button>
+            <span class="nav-counter" id="slideCounter">1 / 8</span>
+            <span class="nav-part-indicator" id="partIndicator"></span>
+            <button class="nav-btn" onclick="nextSlide()">→</button>
+        </div>
+    </div>
+
+    <!-- ============================================
+         JAVASCRIPT FOR SLIDE NAVIGATION
+         DO NOT MODIFY - Handles slide transitions
+         ============================================ -->
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide-container');
+        const totalSlides = slides.length;
+
+        function showSlide(n) {
+            if (n >= totalSlides) { currentSlide = 0; }
+            if (n < 0) { currentSlide = totalSlides - 1; }
+            if (n >= 0 && n < totalSlides) { currentSlide = n; }
+
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[currentSlide].classList.add('active');
+
+            const slideCounter = document.getElementById('slideCounter');
+            if (slideCounter) {
+                slideCounter.textContent = `${currentSlide + 1} / ${totalSlides}`;
+            }
+
+            // Update part indicator if slide has data-part attribute
+            const partIndicator = document.getElementById('partIndicator');
+            const currentSlideElement = slides[currentSlide];
+            const partText = currentSlideElement.getAttribute('data-part');
+
+            if (partIndicator) {
+                if (partText) {
+                    partIndicator.textContent = partText;
+                    partIndicator.style.display = 'inline';
+                } else {
+                    partIndicator.textContent = '';
+                    partIndicator.style.display = 'none';
+                }
+            }
+        }
+
+        function nextSlide() {
+            currentSlide++;
+            showSlide(currentSlide);
+        }
+
+        function previousSlide() {
+            currentSlide--;
+            showSlide(currentSlide);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowRight' || event.key === ' ') {
+                event.preventDefault();
+                nextSlide();
+            } else if (event.key === 'ArrowLeft') {
+                event.preventDefault();
+                previousSlide();
+            }
+        });
+
+        // Initialize
+        showSlide(currentSlide);
+    </script>
+</body>
+</html>

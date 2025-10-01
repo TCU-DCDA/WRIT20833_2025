@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini-Lecture Template Demo - WRIT 20833</title>
+    <!-- Font Imports -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Stylesheets: Demo uses direct path to shared-style.css in same directory -->
+    <link rel="stylesheet" href="shared-style.css">
+</head>
+<body>
+    <!-- ============================================
+         SLIDE 1: TITLE/HOOK SLIDE
+         Full-width centered content with optional image
+         ============================================ -->
+    <div class="slide-container active">
+        <div class="slide">
+            <h1>Template Demo</h1>
+            <p class="subtitle">Showcasing All Available Layout Patterns</p>
+            <img src="images/JPEG/chief+taboo+privacy.jpg" alt="Demo visualization" class="slide-image">
+
+            <!-- Optional: Hook Question Box -->
+            <div class="hook-question">
+                <h2 style="color: #c9a9ff; font-size: 2.5rem; margin: 2rem 0;">
+                    "This is what a compelling hook question looks like"
+                </h2>
+            </div>
+
+            <div class="instructor-info">WRIT 20833 • Template Demo</div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         SLIDE 2: IMAGE-LEFT LAYOUT
+         Image on left (40%), text content on right (60%)
+         Automatically stacks vertically on mobile
+         ============================================ -->
+    <div class="slide-container">
+        <div class="slide">
+            <h2>Image-Left Layout Example</h2>
+
+            <div class="layout-image-left">
+                <!-- Image Column (Left) -->
+                <div class="layout-image">
+                    <img src="images/JPEG/polynesianMask_ipad.jpg" alt="Example image on left">
+                </div>
+
+                <!-- Content Column (Right) -->
+                <div class="layout-content">
+                    <h3>Content Goes Here</h3>
+                    <p>This layout places the image on the left (40% width) and text content on the right (60% width). The image scales proportionally to fit its column.</p>
+
+                    <ul>
+                        <li>Image auto-scales to available space</li>
+                        <li>Max height: 550px on desktop</li>
+                        <li>Stacks vertically on mobile devices</li>
+                        <li>Text column remains readable and well-spaced</li>
+                    </ul>
+
+                    <div class="key-insight">
+                        <p><strong>Key Insight:</strong> Use this layout when the image should introduce or set context for the text content</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         SLIDE 3: IMAGE-RIGHT LAYOUT
+         Text content on left (60%), image on right (40%)
+         Automatically stacks vertically on mobile
+         ============================================ -->
+    <div class="slide-container">
+        <div class="slide">
+            <h2>Image-Right Layout Example</h2>
+
+            <div class="layout-image-right">
+                <!-- Content Column (Left) -->
+                <div class="layout-content">
+                    <h3>Text Content First</h3>
+                    <p>This layout reverses the order: text content on the left (60% width) and image on the right (40% width). Better for text-driven explanations.</p>
+
+                    <div class="text-section">
+                        <h3>Text Section Component</h3>
+                        <ul>
+                            <li>Styled background with left border accent</li>
+                            <li>Good for organizing multiple concepts</li>
+                            <li>Custom arrow bullets for list items</li>
+                            <li>Maintains visual hierarchy</li>
+                        </ul>
+                    </div>
+
+                    <p style="font-style: italic; color: #c9a9ff;">Use this when text should be read before viewing the supporting visual.</p>
+                </div>
+
+                <!-- Image Column (Right) -->
+                <div class="layout-image">
+                    <img src="images/JPEG/ancient+modern_barriers.jpg" alt="Example image on right">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         SLIDE 4: TEXT-HEAVY CONTENT (Part 1 of 2)
+         Use continuation indicator for multi-slide concepts
+         Break at natural concept boundaries
+         NOTE: Part indicator shows in navigation bar (upper right)
+         ============================================ -->
+    <div class="slide-container" data-part="Part 1 of 2">
+        <div class="slide">
+            <h2>Multi-Slide Content Pattern</h2>
+
+            <div class="text-section">
+                <h3>First Set of Concepts</h3>
+                <p>When you have complex topics requiring more than 5-6 bullet points, split the content across multiple slides at natural concept boundaries.</p>
+                <ul>
+                    <li>This slide demonstrates the "Part 1" pattern</li>
+                    <li>Notice the continuation badge at the top</li>
+                    <li>Each part should feel complete but connected</li>
+                    <li>Use text-section components for organization</li>
+                </ul>
+            </div>
+
+            <div class="text-section">
+                <h3>Second Set of Concepts</h3>
+                <p>You can include multiple text-section components on a single slide to organize related ideas.</p>
+                <ul>
+                    <li>Each section has its own visual container</li>
+                    <li>Left border accent maintains consistency</li>
+                    <li>Headings use theme colors (#c9a9ff)</li>
+                </ul>
+            </div>
+
+            <!-- Continuation Arrow Indicator -->
+            <div class="continuation-arrow">↓</div>
+            <p style="text-align: center; font-style: italic; color: #c9a9ff;">Continued on next slide...</p>
+        </div>
+    </div>
+
+    <!-- ============================================
+         SLIDE 5: TEXT-HEAVY CONTENT (Part 2 of 2)
+         Continuation of previous slide
+         NOTE: Part indicator shows in navigation bar (upper right)
+         ============================================ -->
+    <div class="slide-container" data-part="Part 2 of 2">
+        <div class="slide">
+            <h2>Multi-Slide Content Pattern <span style="font-size: 1.5rem;">(continued)</span></h2>
+
+            <div class="text-section">
+                <h3>Remaining Concepts</h3>
+                <p>This is Part 2, continuing from the previous slide. The continuation badge and "(continued)" label help students track their progress.</p>
+                <ul>
+                    <li>Split at natural concept boundaries (causes → effects, before → after)</li>
+                    <li>Keep each part to 3-5 bullets or 2-3 paragraphs</li>
+                    <li>Maximum 3 parts per concept (if more needed, reconsider structure)</li>
+                    <li>End with synthesis that brings both parts together</li>
+                </ul>
+            </div>
+
+            <div class="key-insight">
+                <p><strong>Bringing It Together:</strong> Multi-slide patterns work best when each part builds on the previous, creating a cohesive narrative across the sequence</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         SLIDE 6: COMPARISON GRID LAYOUT
+         Side-by-side comparison boxes (existing pattern)
+         ============================================ -->
+    <div class="slide-container">
+        <div class="slide">
+            <h2>Comparison Grid Layout</h2>
+            <img src="images/JPEG/data_as_categorization.jpg" alt="Comparison concept" class="slide-image-small">
+
+            <!-- Two-column comparison -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0;">
+                <div style="background: rgba(201, 169, 255, 0.1); padding: 1.5rem; border-radius: 12px; border: 1px solid #c9a9ff;">
+                    <h3>🏛️ Option A</h3>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li style="padding: 0.5rem 0;">→ Traditional approach</li>
+                        <li style="padding: 0.5rem 0;">→ Manual processes</li>
+                        <li style="padding: 0.5rem 0;">→ Human oversight</li>
+                        <li style="padding: 0.5rem 0;">→ Limited scale</li>
+                    </ul>
+                </div>
+
+                <div style="background: rgba(231, 76, 60, 0.15); padding: 1.5rem; border-radius: 12px; border: 1px solid #e74c3c;">
+                    <h3>💻 Option B</h3>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li style="padding: 0.5rem 0;">→ Digital approach</li>
+                        <li style="padding: 0.5rem 0;">→ Automated systems</li>
+                        <li style="padding: 0.5rem 0;">→ Algorithmic decisions</li>
+                        <li style="padding: 0.5rem 0;">→ Massive scale</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="key-insight">
+                <p><strong>The Difference:</strong> Use different background colors to highlight contrast. Purple = default/neutral, Red = warning/modern, Green = positive/solution</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         SLIDE 7: CENTERED EMPHASIS SLIDE
+         For critical questions or statements
+         ============================================ -->
+    <div class="slide-container">
+        <div class="slide">
+            <h2>Emphasis Pattern</h2>
+
+            <div class="hook-question">
+                <h2 style="color: #c9a9ff; font-size: 2rem; margin: 2rem 0;">
+                    "Use this pattern for critical questions or pivotal statements that deserve full attention"
+                </h2>
+            </div>
+
+            <div class="text-section">
+                <h3>When to Use Emphasis Slides</h3>
+                <p>Reserve this pattern for turning points in your lecture, major questions, or concepts that require special focus. The centered layout and animated box create visual impact.</p>
+            </div>
+
+            <div class="transition-next">
+                <h4>Next Up:</h4>
+                <p>How to structure your readings and resources for maximum student engagement</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         SLIDE 8: RESOURCES/READINGS SLIDE
+         Card grid layout for recommended readings
+         ============================================ -->
+    <div class="slide-container">
+        <div class="slide">
+            <h2>📚 <span class="highlight">Explore Further</span></h2>
+            <p class="subtitle">Resources and readings pattern</p>
+
+            <div class="readings-grid">
+                <div class="reading-card">
+                    <div class="reading-header">
+                        <h4>Author Name</h4>
+                        <span class="year">2020</span>
+                    </div>
+                    <h3><em>Example Article Title</em></h3>
+                    <p class="reading-description">Brief description of what students will learn from this resource. Keep to 1-2 sentences for scannability.</p>
+                    <a href="#" class="reading-link">Read Online →</a>
+                </div>
+
+                <div class="reading-card">
+                    <div class="reading-header">
+                        <h4>Another Author</h4>
+                        <span class="year">2019</span>
+                    </div>
+                    <h3><em>Example Book Title</em></h3>
+                    <p class="reading-description">Each card follows the same structure: author, year, title, description, and link. Cards are responsive and stack on mobile.</p>
+                    <a href="#" class="reading-link">Publisher Page →</a>
+                </div>
+
+                <div class="reading-card">
+                    <div class="reading-header">
+                        <h4>Third Author</h4>
+                        <span class="year">2021</span>
+                    </div>
+                    <h3><em>Example Research Paper</em></h3>
+                    <p class="reading-description">Grid automatically adjusts to 1-3 columns based on screen width. Include 2-4 resources maximum per slide.</p>
+                    <a href="#" class="reading-link">Download PDF →</a>
+                </div>
+            </div>
+
+            <div class="next-lecture-preview">
+                <h4>Coming Next: <span class="highlight">Next Lecture Title</span></h4>
+                <p>Preview of what students will explore in the next mini-lecture</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         NAVIGATION COMPONENTS
+         Fixed positioning - DO NOT MODIFY
+         ============================================ -->
+
+    <!-- Upper Left: Series Navigation -->
+    <div class="inter-lecture-nav">
+        <div class="lecture-nav">
+            <a href="index.html" class="lecture-nav-btn series-home">← Series Home</a>
+        </div>
+    </div>
+
+    <!-- Upper Right: Slide Controls -->
+    <div class="navigation-container">
+        <div class="navigation">
+            <button class="nav-btn" onclick="previousSlide()">←</button>
+            <span class="nav-counter" id="slideCounter">1 / 8</span>
+            <span class="nav-part-indicator" id="partIndicator"></span>
+            <button class="nav-btn" onclick="nextSlide()">→</button>
+        </div>
+    </div>
+
+    <!-- ============================================
+         JAVASCRIPT FOR SLIDE NAVIGATION
+         DO NOT MODIFY - Handles slide transitions
+         ============================================ -->
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide-container');
+        const totalSlides = slides.length;
+
+        function showSlide(n) {
+            if (n >= totalSlides) { currentSlide = 0; }
+            if (n < 0) { currentSlide = totalSlides - 1; }
+            if (n >= 0 && n < totalSlides) { currentSlide = n; }
+
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[currentSlide].classList.add('active');
+
+            const slideCounter = document.getElementById('slideCounter');
+            if (slideCounter) {
+                slideCounter.textContent = `${currentSlide + 1} / ${totalSlides}`;
+            }
+
+            // Update part indicator if slide has data-part attribute
+            const partIndicator = document.getElementById('partIndicator');
+            const currentSlideElement = slides[currentSlide];
+            const partText = currentSlideElement.getAttribute('data-part');
+
+            if (partIndicator) {
+                if (partText) {
+                    partIndicator.textContent = partText;
+                    partIndicator.style.display = 'inline';
+                } else {
+                    partIndicator.textContent = '';
+                    partIndicator.style.display = 'none';
+                }
+            }
+        }
+
+        function nextSlide() {
+            currentSlide++;
+            showSlide(currentSlide);
+        }
+
+        function previousSlide() {
+            currentSlide--;
+            showSlide(currentSlide);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowRight' || event.key === ' ') {
+                event.preventDefault();
+                nextSlide();
+            } else if (event.key === 'ArrowLeft') {
+                event.preventDefault();
+                previousSlide();
+            }
+        });
+
+        // Initialize
+        showSlide(currentSlide);
+    </script>
+</body>
+</html>
