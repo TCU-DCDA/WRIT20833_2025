@@ -52,8 +52,18 @@ a:visited {
 .slide {
     max-width: 1000px;
     width: 100%;
-    text-align: center;
+    text-align: center; /* Keep titles centered */
     position: relative;
+}
+
+/* Left-align body text elements */
+.slide p,
+.slide ul,
+.slide li,
+.slide .example,
+.slide .approach,
+.slide .method {
+    text-align: left;
 }
 
 h1 {
@@ -376,21 +386,61 @@ p {
     background: rgba(0, 0, 0, 0.2);
     padding: 1.5rem;
     border-radius: 8px;
+    text-align: left; /* Left-align body text */
+}
+
+/* Keep headings centered in map sections */
+.map-section h4 {
     text-align: center;
 }
 
 .map-section.highlight {
-    background: rgba(231, 76, 60, 0.15);
-    border: 2px solid #e74c3c;
+    background: rgba(201, 169, 255, 0.15);
+    border: 2px solid #c9a9ff;
+}
+
+/* Override the shared stylesheet's .highlight class for map sections */
+.map-section.highlight * {
+    -webkit-text-fill-color: initial !important;
+    background-clip: initial !important;
+    -webkit-background-clip: initial !important;
+    color: #ffffff !important;
 }
 
 .map-section h4 {
     margin-bottom: 1rem;
 }
 
+.mapping-insight {
+    background: rgba(201, 169, 255, 0.1);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 2rem;
+    border-left: 4px solid #c9a9ff;
+    text-align: left;
+}
+
 .map-section p {
     font-size: 1.2rem;
     margin-bottom: 0.5rem;
+    color: #ffffff;
+    display: block;
+    visibility: visible;
+}
+
+.map-section.highlight p {
+    color: #ffffff !important;
+    opacity: 1 !important;
+    display: block !important;
+    visibility: visible !important;
+    font-size: 1.2rem !important;
+    line-height: 1.6 !important;
+}
+
+.map-section.highlight h4 {
+    color: #ffffff !important;
+    display: block !important;
+    visibility: visible !important;
 }
 
 .examples-list {
