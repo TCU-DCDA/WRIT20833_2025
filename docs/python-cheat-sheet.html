@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Cheat Sheet - WRIT 20833</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fafafa;
+        }
+        
+        .header {
+            text-align: center;
+            background: linear-gradient(135deg, #4d1979, #7c3aed);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        
+        .subtitle {
+            margin: 10px 0 0 0;
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+        
+        .section {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-left: 4px solid #7c3aed;
+        }
+        
+        h2 {
+            color: #4d1979;
+            margin-top: 0;
+            font-size: 1.5rem;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 10px;
+        }
+        
+        h3 {
+            color: #64748b;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .code-block {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            padding: 15px;
+            margin: 10px 0;
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+        }
+        
+        .inline-code {
+            background-color: #f1f3f4;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        
+        .example {
+            background-color: #e8f5e8;
+            border-left: 4px solid #059669;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        
+        .tip {
+            background-color: #fff3cd;
+            border-left: 4px solid #d97706;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        
+        ul {
+            padding-left: 20px;
+        }
+        
+        li {
+            margin-bottom: 5px;
+        }
+        
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 15px 0;
+        }
+        
+        .footer {
+            text-align: center;
+            color: #64748b;
+            font-style: italic;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        @media (max-width: 768px) {
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+            
+            body {
+                padding: 10px;
+            }
+            
+            .section {
+                padding: 15px;
+            }
+        }
+        
+        @media print {
+            body {
+                background-color: white;
+            }
+            
+            .section {
+                box-shadow: none;
+                border: 1px solid #ccc;
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Python Cheat Sheet</h1>
+        <p class="subtitle">WRIT 20833 • Digital Humanities Programming Reference</p>
+    </div>
+
+    <div class="section">
+        <h2>📋 Review 01: Python Foundations</h2>
+        
+        <h3>Variables & Data Types</h3>
+        <div class="code-block">
+# Basic data types
+book_title = "1984"           # String
+year_published = 1949         # Integer  
+rating = 4.5                  # Float
+is_fiction = True            # Boolean
+
+# Check data type
+print(type(book_title))      # &lt;class 'str'&gt;
+        </div>
+        
+        <h3>String Formatting</h3>
+        <div class="code-block">
+# F-string formatting (recommended)
+print(f"Title: {book_title}")
+print(f"Published: {year_published}")
+print(f"Rating: {rating}/5.0")
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>📝 Review 02: Text Processing</h2>
+        
+        <h3>Essential String Methods</h3>
+        <div class="two-column">
+            <div>
+                <div class="code-block">
+text = "To be or not to be"
+
+# Length and basic info
+len(text)                # 18
+text.count("be")         # 2
+"be" in text            # True
+                </div>
+            </div>
+            <div>
+                <div class="code-block">
+# Case conversion
+text.upper()            # TO BE OR NOT TO BE  
+text.lower()            # to be or not to be
+text.title()            # To Be Or Not To Be
+                </div>
+            </div>
+        </div>
+        
+        <h3>Text Cleaning</h3>
+        <div class="code-block">
+messy_text = "   THE DECLARATION OF INDEPENDENCE   "
+
+cleaned = messy_text.strip()        # Remove whitespace
+proper = cleaned.title()            # Proper capitalization
+words = text.split()               # Split into words list
+joined = " ".join(words)           # Join list back to string
+        </div>
+        
+        <h3>Text Analysis</h3>
+        <div class="code-block">
+text.startswith("To")              # True
+text.endswith("?")                 # False
+text.replace("be", "exist")        # Replace text
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>📚 Review 03: Loops & Data Structures</h2>
+        
+        <h3>Lists</h3>
+        <div class="code-block">
+books = ["1984", "Pride and Prejudice", "The Great Gatsby"]
+
+# Accessing elements
+books[0]                          # First: "1984"
+books[-1]                         # Last: "The Great Gatsby"
+len(books)                        # Length: 3
+
+# Modifying lists
+books.append("Jane Eyre")         # Add to end
+books.insert(1, "Hamlet")        # Insert at position
+books.remove("1984")             # Remove by value
+        </div>
+        
+        <h3>For Loops</h3>
+        <div class="code-block">
+# Loop through items
+for book in books:
+    print(f"Reading: {book}")
+
+# Loop with index
+for i, book in enumerate(books):
+    print(f"{i+1}. {book}")
+
+# Loop through range
+for i in range(5):
+    print(i)                      # 0, 1, 2, 3, 4
+        </div>
+        
+        <h3>Dictionaries</h3>
+        <div class="code-block">
+book_info = {
+    "title": "1984",
+    "author": "George Orwell", 
+    "year": 1949,
+    "pages": 328
+}
+
+# Accessing values
+book_info["title"]                # "1984"
+book_info.get("publisher", "Unknown")  # Safe access
+
+# Loop through dictionary
+for key, value in book_info.items():
+    print(f"{key}: {value}")
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>⚙️ Review 04: Functions & Advanced Processing</h2>
+        
+        <h3>Basic Functions</h3>
+        <div class="code-block">
+def analyze_text(text):
+    """Analyze basic text properties"""
+    return {
+        "length": len(text),
+        "words": len(text.split()),
+        "uppercase": text.upper()
+    }
+
+# Call function
+result = analyze_text("Hello world")
+print(result["words"])            # 2
+        </div>
+        
+        <h3>Functions with Parameters</h3>
+        <div class="code-block">
+def clean_text(text, remove_punctuation=True):
+    """Clean text with optional punctuation removal"""
+    cleaned = text.strip().lower()
+    if remove_punctuation:
+        import string
+        cleaned = cleaned.translate(str.maketrans('', '', string.punctuation))
+    return cleaned
+
+clean_text("Hello, World!")      # "hello world"
+        </div>
+        
+        <h3>List Comprehensions</h3>
+        <div class="code-block">
+books = ["1984", "hamlet", "PRIDE AND PREJUDICE"]
+
+# Create new list with comprehension
+title_case = [book.title() for book in books]
+long_titles = [book for book in books if len(book) > 5]
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>🛡️ Review 05: Data Ethics & Collection Methods</h2>
+        
+        <h3>Ethical Considerations</h3>
+        <div class="tip">
+            <strong>Key Principles:</strong>
+            <ul>
+                <li>Respect robots.txt and terms of service</li>
+                <li>Consider data privacy and consent</li>
+                <li>Acknowledge biases in datasets</li>
+                <li>Transparent methodology</li>
+            </ul>
+        </div>
+        
+        <h3>Data Collection Best Practices</h3>
+        <div class="code-block">
+# Check if data collection is appropriate
+def ethical_check(url, purpose):
+    print(f"Collecting from: {url}")
+    print(f"Purpose: {purpose}")
+    print("✓ Checked robots.txt")
+    print("✓ Considered privacy implications")
+    print("✓ Will cite sources appropriately")
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>📊 Review 06: Pandas for Data Analysis</h2>
+        
+        <h3>Creating DataFrames</h3>
+        <div class="code-block">
+import pandas as pd
+
+# From dictionary
+data = {
+    'title': ['1984', 'Pride and Prejudice'],
+    'author': ['George Orwell', 'Jane Austen'],
+    'year': [1949, 1813]
+}
+df = pd.DataFrame(data)
+
+# From CSV file
+df = pd.read_csv('books.csv')
+        </div>
+        
+        <h3>Essential DataFrame Operations</h3>
+        <div class="code-block">
+# Basic info
+df.shape                         # (rows, columns)
+df.columns                       # Column names
+df.dtypes                        # Data types
+df.head()                        # First 5 rows
+df.describe()                    # Statistical summary
+
+# Selecting data
+df['title']                      # Single column
+df[['title', 'author']]         # Multiple columns
+df[df['year'] > 1900]           # Filtering rows
+        </div>
+        
+        <h3>Data Analysis</h3>
+        <div class="code-block">
+# Basic statistics
+df['year'].mean()                # Average year
+df['author'].value_counts()      # Count occurrences
+df.groupby('genre')['year'].mean()  # Group by analysis
+
+# Sorting
+df.sort_values('year')           # Sort by column
+df.sort_values(['author', 'year'])  # Multiple columns
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>💭 Review 07: Text Analysis & Sentiment Analysis</h2>
+        
+        <h3>VADER Sentiment Analysis</h3>
+        <div class="code-block">
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+
+analyzer = SentimentIntensityAnalyzer()
+
+def analyze_sentiment(text):
+    scores = analyzer.polarity_scores(text)
+    return {
+        'positive': scores['pos'],
+        'negative': scores['neg'], 
+        'neutral': scores['neu'],
+        'compound': scores['compound']  # Overall score -1 to 1
+    }
+
+# Analyze text
+result = analyze_sentiment("This book is amazing!")
+print(f"Sentiment: {result['compound']}")  # Positive number
+        </div>
+        
+        <h3>Text Processing for Analysis</h3>
+        <div class="code-block">
+import re
+from collections import Counter
+
+def process_text(text):
+    # Clean text
+    text = re.sub(r'[^\w\s]', '', text.lower())
+    words = text.split()
+    
+    # Count words
+    word_counts = Counter(words)
+    return word_counts
+
+# Usage
+text = "This is a great book. This book is wonderful."
+counts = process_text(text)
+print(counts.most_common(3))     # Top 3 words
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>📈 Review 08: Data Visualization</h2>
+        
+        <h3>Basic Plotting with Matplotlib</h3>
+        <div class="code-block">
+import matplotlib.pyplot as plt
+
+# Simple plot
+years = [1813, 1925, 1949, 1985]
+titles = ['P&P', 'Gatsby', '1984', 'Handmaid']
+
+plt.figure(figsize=(10, 6))
+plt.bar(titles, years)
+plt.title('Publication Years of Classic Books')
+plt.xlabel('Books')
+plt.ylabel('Year')
+plt.xticks(rotation=45)
+plt.show()
+        </div>
+        
+        <h3>Different Plot Types</h3>
+        <div class="code-block">
+# Line plot
+plt.plot(x_data, y_data, marker='o')
+
+# Scatter plot  
+plt.scatter(x_data, y_data)
+
+# Histogram
+plt.hist(data, bins=20)
+
+# Pie chart
+plt.pie(sizes, labels=labels, autopct='%1.1f%%')
+        </div>
+        
+        <h3>Customizing Plots</h3>
+        <div class="code-block">
+plt.title('My Analysis', fontsize=16)
+plt.xlabel('X Label', fontsize=12)
+plt.ylabel('Y Label', fontsize=12)
+plt.legend(['Series 1', 'Series 2'])
+plt.grid(True, alpha=0.3)
+plt.tight_layout()              # Adjust spacing
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>🔗 Review 09: Integration & Final Projects</h2>
+        
+        <h3>Complete Analysis Workflow</h3>
+        <div class="code-block">
+import pandas as pd
+import matplotlib.pyplot as plt
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+
+def full_analysis(csv_file, text_column):
+    # 1. Load data
+    df = pd.read_csv(csv_file)
+    
+    # 2. Clean data
+    df = df.dropna(subset=[text_column])
+    
+    # 3. Analyze sentiment
+    analyzer = SentimentIntensityAnalyzer()
+    df['sentiment'] = df[text_column].apply(
+        lambda x: analyzer.polarity_scores(x)['compound']
+    )
+    
+    # 4. Visualize results
+    plt.figure(figsize=(12, 8))
+    plt.hist(df['sentiment'], bins=30, alpha=0.7)
+    plt.title('Sentiment Distribution')
+    plt.xlabel('Sentiment Score')
+    plt.ylabel('Frequency')
+    plt.show()
+    
+    # 5. Summary statistics
+    return df['sentiment'].describe()
+        </div>
+        
+        <h3>Project Structure Best Practices</h3>
+        <div class="example">
+            <strong>Organize your analysis:</strong>
+            <ol>
+                <li><strong>Import libraries</strong> - All imports at the top</li>
+                <li><strong>Load data</strong> - Read CSV, clean, explore</li>
+                <li><strong>Process data</strong> - Apply functions, create new columns</li>
+                <li><strong>Analyze</strong> - Group by, calculate statistics</li>
+                <li><strong>Visualize</strong> - Create meaningful charts</li>
+                <li><strong>Interpret</strong> - Document findings and insights</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>🚀 Quick Reference</h2>
+        
+        <div class="two-column">
+            <div>
+                <h3>Essential Libraries</h3>
+                <div class="code-block">
+import pandas as pd
+import matplotlib.pyplot as plt
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+from collections import Counter
+import re
+                </div>
+            </div>
+            <div>
+                <h3>Common Operations</h3>
+                <div class="code-block">
+# Data loading
+df = pd.read_csv('file.csv')
+
+# Quick exploration  
+df.head(), df.shape, df.describe()
+
+# Basic plotting
+plt.plot(x, y)
+plt.show()
+                </div>
+            </div>
+        </div>
+        
+        <div class="tip">
+            <strong>💡 Remember:</strong> Always start with <code class="inline-code">df.head()</code> and <code class="inline-code">df.info()</code> to understand your data before analysis!
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>WRIT 20833 Python Cheat Sheet • Based on Review Notebooks 01-09</p>
+        <p>For interactive practice, visit the <a href="https://tcu-dcda.github.io/WRIT20833-2025/" style="color: #7c3aed;">course notebooks</a></p>
+    </div>
+</body>
+</html>
