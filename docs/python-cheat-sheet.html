@@ -160,10 +160,10 @@
 book_title = "1984"           # String
 year_published = 1949         # Integer  
 rating = 4.5                  # Float
-is_fiction = True            # Boolean
+is_fiction = True             # Boolean
 
 # Check data type
-print(type(book_title))      # &lt;class 'str'&gt;
+print(type(book_title))       # &lt;class 'str'&gt;
         </div>
         
         <h3>String Formatting</h3>
@@ -187,15 +187,15 @@ text = "To be or not to be"
 # Length and basic info
 len(text)                # 18
 text.count("be")         # 2
-"be" in text            # True
+"be" in text             # True
                 </div>
             </div>
             <div>
                 <div class="code-block">
 # Case conversion
-text.upper()            # TO BE OR NOT TO BE  
-text.lower()            # to be or not to be
-text.title()            # To Be Or Not To Be
+text.upper()             # TO BE OR NOT TO BE  
+text.lower()             # to be or not to be
+text.title()             # To Be Or Not To Be
                 </div>
             </div>
         </div>
@@ -204,10 +204,11 @@ text.title()            # To Be Or Not To Be
         <div class="code-block">
 messy_text = "   THE DECLARATION OF INDEPENDENCE   "
 
+# Clean the text
 cleaned = messy_text.strip()        # Remove whitespace
 proper = cleaned.title()            # Proper capitalization
-words = text.split()               # Split into words list
-joined = " ".join(words)           # Join list back to string
+words = text.split()                # Split into words list
+joined = " ".join(words)            # Join list back to string
         </div>
         
         <h3>Text Analysis</h3>
@@ -298,6 +299,7 @@ def clean_text(text, remove_punctuation=True):
         cleaned = cleaned.translate(str.maketrans('', '', string.punctuation))
     return cleaned
 
+# Usage
 clean_text("Hello, World!")      # "hello world"
         </div>
         
@@ -402,7 +404,7 @@ def analyze_sentiment(text):
         'compound': scores['compound']  # Overall score -1 to 1
     }
 
-# Analyze text
+# Usage example
 result = analyze_sentiment("This book is amazing!")
 print(f"Sentiment: {result['compound']}")  # Positive number
         </div>
@@ -435,10 +437,11 @@ print(counts.most_common(3))     # Top 3 words
         <div class="code-block">
 import matplotlib.pyplot as plt
 
-# Simple plot
+# Data for plotting
 years = [1813, 1925, 1949, 1985]
 titles = ['P&P', 'Gatsby', '1984', 'Handmaid']
 
+# Create bar chart
 plt.figure(figsize=(10, 6))
 plt.bar(titles, years)
 plt.title('Publication Years of Classic Books')
@@ -465,6 +468,7 @@ plt.pie(sizes, labels=labels, autopct='%1.1f%%')
         
         <h3>Customizing Plots</h3>
         <div class="code-block">
+# Customize appearance
 plt.title('My Analysis', fontsize=16)
 plt.xlabel('X Label', fontsize=12)
 plt.ylabel('Y Label', fontsize=12)
@@ -529,6 +533,7 @@ def full_analysis(csv_file, text_column):
             <div>
                 <h3>Essential Libraries</h3>
                 <div class="code-block">
+# Core libraries for digital humanities
 import pandas as pd
 import matplotlib.pyplot as plt
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
@@ -543,7 +548,9 @@ import re
 df = pd.read_csv('file.csv')
 
 # Quick exploration  
-df.head(), df.shape, df.describe()
+df.head()              # First 5 rows
+df.shape               # Dimensions
+df.describe()          # Statistics
 
 # Basic plotting
 plt.plot(x, y)
