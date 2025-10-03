@@ -1,6 +1,5 @@
 .claude/settings.local.json
-docs/.DS_Store
-textbook/.DS_Store
+
+# macOS
 .DS_Store
-textbook/.DS_Store
-.DS_Store
+**/.DS_Store
