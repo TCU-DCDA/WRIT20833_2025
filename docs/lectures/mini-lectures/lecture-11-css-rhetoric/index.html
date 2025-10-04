@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture 11: CSS as Visual Rhetoric | WRIT20833</title>
+    <link rel="stylesheet" href="../shared-style.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Inter-lecture navigation (top-left) -->
+    <nav class="inter-lecture-nav">
+        <a href="../index.html" class="nav-link">← Mini-Lectures</a>
+    </nav>
+
+    <!-- Slide navigation (top-right) -->
+    <nav class="navigation-container">
+        <button id="prev-slide" class="nav-button" disabled>←</button>
+        <span id="slide-counter">1 / 10</span>
+        <button id="next-slide" class="nav-button">→</button>
+    </nav>
+
+    <!-- Slide 1: Title / Hook -->
+    <section class="slide-container active" id="slide-1">
+        <h1>CSS as Visual Rhetoric</h1>
+        <h2>How styling choices make arguments</h2>
+
+        <div class="image-placeholder" style="margin: 2rem auto; max-width: 900px;">
+            <img src="images/slide1.jpg" alt="CSS properties transforming into visual rhetoric - color, size, position making persuasive claims" style="width: 100%; border-radius: 10px;">
+        </div>
+
+        <div class="hook-statement">
+            <p>If HTML is the argument's structure, CSS is its voice, tone, and emphasis.</p>
+        </div>
+    </section>
+
+    <!-- Slide 2: From Structure to Style -->
+    <section class="slide-container" id="slide-2">
+        <h2>From Structure to Style</h2>
+
+        <div class="image-placeholder" style="margin: 2rem auto; max-width: 700px;">
+            <img src="images/slide2.jpg" alt="HTML wireframe transforming into styled visual design" style="width: 100%; border-radius: 10px;">
+        </div>
+
+        <div class="two-column-layout">
+            <div class="content-column">
+                <div class="structure-box">
+                    <h3>HTML Provides</h3>
+                    <ul>
+                        <li>Logical structure (<code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;aside&gt;</code>)</li>
+                        <li>Content organization (headings, paragraphs, lists)</li>
+                        <li>Semantic meaning (what things are)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-column">
+                <div class="style-box">
+                    <h3>CSS Provides</h3>
+                    <ul>
+                        <li>Visual hierarchy (size, color, position)</li>
+                        <li>Emotional tone (color, typography, spacing)</li>
+                        <li>Persuasive emphasis (what demands attention)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="rhetoric-reminder">
+            <p><strong>Together:</strong> Structure argues what matters. Style argues how much and in what way.</p>
+        </div>
+    </section>
+
+    <!-- Slide 3: CSS Selectors as Targeting -->
+    <section class="slide-container" id="slide-3">
+        <h2>CSS Selectors: Choosing What to Emphasize</h2>
+
+        <div class="two-column-layout">
+            <div class="image-column">
+                <img src="images/slide3.jpg" alt="CSS selectors targeting specific elements for emphasis" style="width: 100%; border-radius: 10px;">
+            </div>
+
+            <div class="content-column">
+                <div class="selector-examples">
+                    <h3>Selectors Choose Targets</h3>
+
+                    <div class="selector-example">
+                        <code>h1 { font-size: 48px; color: #2ecc71; }</code>
+                        <p class="selector-meaning"><strong>Chooses:</strong> All h1 headings</p>
+                        <p class="selector-rhetoric"><strong>Argues:</strong> Top-level headings are the most important, should be large and green (positive/affirming)</p>
+                    </div>
+
+                    <div class="selector-example">
+                        <code>.community-voice { font-size: 20px; font-weight: bold; }</code>
+                        <p class="selector-meaning"><strong>Chooses:</strong> Elements with class "community-voice"</p>
+                        <p class="selector-rhetoric"><strong>Argues:</strong> Community perspectives deserve visual prominence</p>
+                    </div>
+
+                    <div class="selector-example">
+                        <code>aside { font-size: 12px; color: #95a5a6; }</code>
+                        <p class="selector-meaning"><strong>Chooses:</strong> All aside elements</p>
+                        <p class="selector-rhetoric"><strong>Argues:</strong> Supplementary content is less important (small, gray)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="critical-note">
+            <h4>Critical Question</h4>
+            <p>Who decides what gets styled prominently vs. minimized? What values does that encode?</p>
+        </div>
+    </section>
+
+    <!-- Slide 4: Color as Emotional Argument -->
+    <section class="slide-container" id="slide-4">
+        <h2>Color: Emotional & Cultural Rhetoric</h2>
+
+        <div class="image-placeholder" style="margin: 2rem auto; max-width: 900px;">
+            <img src="images/slide4.jpg" alt="Color palette showing emotional and cultural associations" style="width: 100%; border-radius: 10px;">
+        </div>
+
+        <div class="color-rhetoric">
+            <h3>Color Choices Make Claims</h3>
+
+            <div class="color-examples">
+                <div class="color-example red-example">
+                    <h4>Red (#e74c3c)</h4>
+                    <p><strong>Associations:</strong> Urgency, danger, passion, importance, stop</p>
+                    <p><strong>Rhetorical use:</strong> Errors, warnings, calls to action</p>
+                    <p class="cultural-note">Cultural variation: In China, red = celebration, luck</p>
+                </div>
+
+                <div class="color-example green-example">
+                    <h4>Green (#2ecc71)</h4>
+                    <p><strong>Associations:</strong> Success, growth, nature, safety, go</p>
+                    <p><strong>Rhetorical use:</strong> Confirmation, environmental topics, positive framing</p>
+                    <p class="cultural-note">Cultural variation: In Middle East, green = Islam, paradise</p>
+                </div>
+
+                <div class="color-example blue-example">
+                    <h4>Blue (#3498db)</h4>
+                    <p><strong>Associations:</strong> Trust, calm, professionalism, technology</p>
+                    <p><strong>Rhetorical use:</strong> Corporate sites, health, social platforms</p>
+                    <p class="cultural-note">Cultural variation: Widely positive across cultures, but depth varies</p>
+                </div>
+
+                <div class="color-example gray-example">
+                    <h4>Gray (#95a5a6)</h4>
+                    <p><strong>Associations:</strong> Neutral, unimportant, background, disabled</p>
+                    <p><strong>Rhetorical use:</strong> De-emphasize, minimize, push to background</p>
+                    <p class="cultural-note">Accessibility concern: Low contrast = exclusion</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="takeaway-box">
+            <p><strong>Takeaway:</strong> Color is never neutral. Every color choice encodes cultural values and makes emotional claims.</p>
+        </div>
+    </section>
+
+    <!-- Slide 5: Typography as Voice -->
+    <section class="slide-container" id="slide-5">
+        <h2>Typography: The Voice of Your Text</h2>
+
+        <div class="two-column-layout">
+            <div class="image-column">
+                <img src="images/slide5.jpg" alt="Different typefaces showing personality and tone" style="width: 100%; border-radius: 10px;">
+            </div>
+
+            <div class="content-column">
+                <div class="typography-rhetoric">
+                    <h3>Font Choices Argue Tone & Authority</h3>
+
+                    <div class="font-example serif-example">
+                        <h4 style="font-family: Georgia, serif;">Serif Fonts (Georgia, Times)</h4>
+                        <p><strong>Tone:</strong> Traditional, authoritative, academic, formal</p>
+                        <p><strong>Rhetorical use:</strong> Scholarly articles, established institutions, print tradition</p>
+                    </div>
+
+                    <div class="font-example sans-example">
+                        <h4 style="font-family: 'Helvetica Neue', Arial, sans-serif;">Sans-Serif (Helvetica, Arial)</h4>
+                        <p><strong>Tone:</strong> Modern, clean, accessible, neutral</p>
+                        <p><strong>Rhetorical use:</strong> Web interfaces, contemporary brands, digital-first</p>
+                    </div>
+
+                    <div class="font-example mono-example">
+                        <h4 style="font-family: 'Courier New', monospace;">Monospace (Courier, Monaco)</h4>
+                        <p><strong>Tone:</strong> Technical, code-like, precise, typewriter</p>
+                        <p><strong>Rhetorical use:</strong> Code examples, data, developer tools</p>
+                    </div>
+                </div>
+
+                <div class="type-properties">
+                    <h4>Size & Weight = Importance</h4>
+                    <p><code>font-size: 48px;</code> → Demands attention, signals priority</p>
+                    <p><code>font-size: 12px;</code> → Minimizes, suggests less important</p>
+                    <p><code>font-weight: bold;</code> → Emphasizes, argues significance</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 6: Layout & Position as Power -->
+    <section class="slide-container" id="slide-6">
+        <h2>Layout & Position: Spatial Arguments</h2>
+
+        <div class="image-placeholder" style="margin: 2rem auto; max-width: 900px;">
+            <img src="images/slide6.jpg" alt="Webpage layouts showing center vs margin, top vs bottom positioning" style="width: 100%; border-radius: 10px;">
+        </div>
+
+        <div class="layout-rhetoric">
+            <h3>Space = Power</h3>
+
+            <div class="position-examples">
+                <div class="position-example">
+                    <h4>Center vs. Margin</h4>
+                    <p><code>text-align: center;</code> or <code>margin: 0 auto;</code></p>
+                    <p class="rhetoric-claim"><strong>Argues:</strong> This is central, primary, for everyone</p>
+                    <p><code>float: right; margin-left: 2rem;</code></p>
+                    <p class="rhetoric-claim"><strong>Argues:</strong> This is supplementary, aside, for some</p>
+                </div>
+
+                <div class="position-example">
+                    <h4>Top vs. Bottom</h4>
+                    <p><code>position: fixed; top: 0;</code></p>
+                    <p class="rhetoric-claim"><strong>Argues:</strong> Always visible, always important (navigation)</p>
+                    <p><code>position: relative; bottom: 0;</code></p>
+                    <p class="rhetoric-claim"><strong>Argues:</strong> Concluding, credits, fine print (footer)</p>
+                </div>
+
+                <div class="position-example">
+                    <h4>Visible vs. Hidden</h4>
+                    <p><code>display: block;</code> or <code>visibility: visible;</code></p>
+                    <p class="rhetoric-claim"><strong>Argues:</strong> You should see this</p>
+                    <p><code>display: none;</code> or <code>visibility: hidden;</code></p>
+                    <p class="rhetoric-claim"><strong>Argues:</strong> This isn't for you (or isn't important enough)</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="critical-note">
+            <h4>Critical Question</h4>
+            <p>What content gets centered? What gets pushed to margins? Who is included in visible space vs excluded through hiding?</p>
+        </div>
+    </section>
+
+    <!-- Slide 7: Whitespace as Value -->
+    <section class="slide-container" id="slide-7">
+        <h2>Whitespace: The Rhetoric of Breathing Room</h2>
+
+        <div class="two-column-layout">
+            <div class="image-column">
+                <img src="images/slide7.jpg" alt="Comparison of cramped vs spacious layouts" style="width: 100%; border-radius: 10px;">
+            </div>
+
+            <div class="content-column">
+                <div class="whitespace-rhetoric">
+                    <h3>Space Argues About Worth</h3>
+
+                    <div class="spacing-example generous">
+                        <h4>Generous Spacing</h4>
+                        <p><code>padding: 3rem; margin: 2rem 0; line-height: 1.8;</code></p>
+                        <p class="rhetoric-claim"><strong>Argues:</strong> This content deserves room to breathe. It's valuable, unhurried, worthy of contemplation.</p>
+                        <p class="example-context">Common in: Premium brands, art galleries, thoughtful scholarship</p>
+                    </div>
+
+                    <div class="spacing-example cramped">
+                        <h4>Minimal Spacing</h4>
+                        <p><code>padding: 0.2rem; margin: 0; line-height: 1.2;</code></p>
+                        <p class="rhetoric-claim"><strong>Argues:</strong> This content is utilitarian, disposable, or less important. Information density over comfort.</p>
+                        <p class="example-context">Common in: Classified ads, data tables, rushed communication</p>
+                    </div>
+                </div>
+
+                <div class="accessibility-connection">
+                    <h4>Accessibility Dimension</h4>
+                    <p>Cramped spacing creates barriers for users with cognitive differences, motor challenges, or vision impairments. Generous spacing is inclusive design.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 8: DH Example - Styling Choices in Action -->
+    <section class="slide-container" id="slide-8">
+        <h2>DH Example: CSS Rhetoric in Practice</h2>
+
+        <div class="image-placeholder" style="margin: 2rem auto; max-width: 900px;">
+            <img src="images/slide8.jpg" alt="Digital archive styled two different ways showing different arguments" style="width: 100%; border-radius: 10px;">
+        </div>
+
+        <div class="dh-styling-example">
+            <h3>Case Study: Oral History Digital Archive</h3>
+            <p class="context">Same HTML structure, two different CSS approaches:</p>
+
+            <div class="styling-comparison">
+                <div class="styling-approach institutional">
+                    <h4>Approach A: Institutional Voice</h4>
+                    <div class="css-choices">
+                        <p><strong>CSS Choices:</strong></p>
+                        <ul>
+                            <li>Serif fonts (Georgia) → academic authority</li>
+                            <li>Muted colors (#95a5a6 grays) → neutral, objective tone</li>
+                            <li>Small testimonial text (14px) → voices as data</li>
+                            <li>Large methodology section (24px) → scholarly process is primary</li>
+                            <li>Generous margin around analysis → valuable scholarship</li>
+                            <li>Cramped spacing for community quotes → less important</li>
+                        </ul>
+                        <p class="argument-made"><strong>Argument:</strong> This is scholarly research <em>about</em> communities. Academic interpretation is central.</p>
+                    </div>
+                </div>
+
+                <div class="styling-approach community">
+                    <h4>Approach B: Community-Centered Voice</h4>
+                    <div class="css-choices">
+                        <p><strong>CSS Choices:</strong></p>
+                        <ul>
+                            <li>Sans-serif fonts (Helvetica) → accessible, modern</li>
+                            <li>Warm, vibrant colors (#e74c3c, #f1c40f) → emotional, human</li>
+                            <li>Large testimonial text (20px) → voices are primary</li>
+                            <li>Small methodology note (12px) → process is secondary</li>
+                            <li>Generous spacing around testimonials → valuable stories</li>
+                            <li>Compact academic framing → context, not focus</li>
+                        </ul>
+                        <p class="argument-made"><strong>Argument:</strong> This is community storytelling <em>with</em> scholarly support. Lived experience is central.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="lesson-box">
+            <p><strong>Lesson:</strong> Identical content + identical structure + different CSS = completely different rhetorical stance and argument about whose voice matters.</p>
+        </div>
+    </section>
+
+    <!-- Slide 9: Responsive Design as Inclusive Rhetoric -->
+    <section class="slide-container" id="slide-9">
+        <h2>Responsive Design: Who Gets Access?</h2>
+
+        <div class="two-column-layout">
+            <div class="image-column">
+                <img src="images/slide9.jpg" alt="Same website on desktop, tablet, and mobile showing responsive adaptation" style="width: 100%; border-radius: 10px;">
+            </div>
+
+            <div class="content-column">
+                <div class="responsive-rhetoric">
+                    <h3>CSS Media Queries = Access Decisions</h3>
+
+                    <div class="responsive-example">
+                        <h4>Desktop-Only Design (No Responsive CSS)</h4>
+                        <p class="code-choice">No <code>@media</code> queries, fixed widths, assumes large screens</p>
+                        <p class="who-excluded"><strong>Excludes:</strong> Mobile users, tablet users, users with small screens</p>
+                        <p class="argument-implicit"><strong>Argues:</strong> Desktop users are the intended audience. Others are not important.</p>
+                    </div>
+
+                    <div class="responsive-example">
+                        <h4>Mobile-First Responsive Design</h4>
+                        <p class="code-choice">Base styles for mobile, <code>@media (min-width: 768px)</code> for larger screens</p>
+                        <p class="who-included"><strong>Includes:</strong> All users, prioritizes mobile (majority of web traffic globally)</p>
+                        <p class="argument-implicit"><strong>Argues:</strong> Access is a right, not a privilege. We design for everyone.</p>
+                    </div>
+                </div>
+
+                <div class="global-context">
+                    <h4>Global Digital Divide</h4>
+                    <p>In many countries, mobile is the <em>only</em> internet access. Desktop-only design is a form of global exclusion.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="ethical-reminder">
+            <p><strong>Ethical Stance:</strong> Responsive CSS isn't optional. It's a commitment to access justice.</p>
+        </div>
+    </section>
+
+    <!-- Slide 10: What You Learned / Practice -->
+    <section class="slide-container" id="slide-10">
+        <h2>CSS as Rhetorical Practice</h2>
+
+        <div class="image-placeholder" style="margin: 2rem auto; max-width: 700px;">
+            <img src="images/slide10.jpg" alt="Designer making conscious CSS choices with rhetorical awareness" style="width: 100%; border-radius: 10px;">
+        </div>
+
+        <div class="learning-summary">
+            <h3>What You Now Understand</h3>
+            <ul>
+                <li>CSS selectors choose what to emphasize (targeting = rhetorical choice)</li>
+                <li>Color encodes emotion and cultural meaning (never neutral)</li>
+                <li>Typography gives text a voice and tone (font = personality)</li>
+                <li>Layout positions content in power hierarchies (space = value)</li>
+                <li>Whitespace argues about worth (breathing room = importance)</li>
+                <li>Responsive design determines access (inclusion vs exclusion)</li>
+                <li>All styling choices are arguments about what matters and to whom</li>
+            </ul>
+        </div>
+
+        <div class="critical-questions-final">
+            <h3>Ask Yourself While Styling</h3>
+            <ul>
+                <li>What am I making large/bold/colorful? What does that center?</li>
+                <li>What am I making small/gray/hidden? Who does that marginalize?</li>
+                <li>Whose cultural associations do my color choices assume?</li>
+                <li>Does my design work on mobile devices? Who am I excluding if not?</li>
+                <li>Does my spacing create accessibility or barriers?</li>
+                <li>What argument am I making about whose voice deserves emphasis?</li>
+            </ul>
+        </div>
+
+        <div class="next-lecture">
+            <h4>What's Next</h4>
+            <p><strong>Next:</strong> Building Public DH Projects — Putting HTML structure and CSS rhetoric into practice with real digital humanities applications.</p>
+        </div>
+    </section>
+
+    <script src="../script.js"></script>
+</body>
+</html>

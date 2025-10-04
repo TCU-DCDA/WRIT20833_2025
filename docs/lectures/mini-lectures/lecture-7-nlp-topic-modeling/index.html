@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini-Lecture: NLP & Topic Modeling - WRIT 20833</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared-style.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Slide 1: Title/Hook -->
+    <div class="slide-container active">
+        <div class="slide">
+            <div class="slide-number">1 / 12</div>
+            <h1>Natural Language Processing</h1>
+            <p class="subtitle">Teaching Machines to Read Culture</p>
+            <img src="images/slide1.jpg" alt="Neural network processing text" class="slide-image">
+
+            <div class="hook-question">
+                <h2 style="color: #c9a9ff; font-size: 2.5rem; margin: 2rem 0;">
+                    "How can computers understand the difference between 'bank' (river) and 'bank' (money)?"
+                </h2>
+            </div>
+
+            <div class="instructor-info">WRIT 20833 • Mini-Lecture: NLP & Topic Modeling</div>
+        </div>
+    </div>
+
+    <!-- Slide 2: What is NLP? -->
+    <div class="slide-container">
+        <div class="slide">
+            <div class="slide-number">2 / 12</div>
+            <h2>What is <span class="highlight">NLP</span>?</h2>
+
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <img src="images/slide2.jpg" alt="Computer reading text" style="max-width: 80%; height: auto;">
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                <div class="definition-box">
+                    <h3>Natural Language Processing</h3>
+                    <p class="definition"><strong>NLP</strong> is the field of computer science focused on enabling machines to understand, interpret, and generate human language.</p>
+                </div>
+
+                <div class="nlp-examples">
+                    <h4>You Use NLP Every Day:</h4>
+                    <ul>
+                        <li>Autocorrect and predictive text</li>
+                        <li>Voice assistants (Siri, Alexa)</li>
+                        <li>Spam filters</li>
+                        <li>Translation apps</li>
+                        <li>Search engines</li>
+                        <li>Sentiment analysis of reviews</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 3: The Challenge of Human Language -->
+    <div class="slide-container">
+        <div class="slide">
+            <div class="slide-number">3 / 12</div>
+            <h2>Why Language is <span class="highlight">Hard</span></h2>
+
+            <div class="two-column-layout">
+                <div class="image-column">
+                    <img src="images/slide3.jpg" alt="Ambiguous language examples">
+                </div>
+                <div class="content-column">
+                    <div class="challenge-grid">
+                        <div class="challenge-box">
+                            <h3>Ambiguity</h3>
+                            <p>"I saw her duck"</p>
+                            <p class="example-text">Did you see her pet? Or her motion?</p>
+                        </div>
+
+                        <div class="challenge-box">
+                            <h3>Context</h3>
+                            <p>"That's sick!"</p>
+                            <p class="example-text">Negative or positive? Depends on context.</p>
+                        </div>
+
+                        <div class="challenge-box">
+                            <h3>Idioms</h3>
+                            <p>"It's raining cats and dogs"</p>
+                            <p class="example-text">Not literal. Cultural knowledge required.</p>
+                        </div>
+
+                        <div class="challenge-box">
+                            <h3>Sarcasm</h3>
+                            <p>"Oh great, another meeting"</p>
+                            <p class="example-text">Words say positive, meaning is negative.</p>
+                        </div>
+                    </div>
+
+                    <div class="key-insight">
+                        <p><strong>Key Challenge:</strong> Human language is messy, context-dependent, and culturally embedded</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4: NLP Pipeline Overview -->
+    <div class="slide-container">
+        <div class="slide">
+            <div class="slide-number">4 / 12</div>
+            <h2>The NLP <span class="highlight">Pipeline</span></h2>
+
+            <div class="two-column-layout">
+                <div class="image-column">
+                    <img src="images/slide4.jpg" alt="NLP processing pipeline">
+                </div>
+                <div class="content-column">
+                    <div class="pipeline-flow">
+                        <div class="pipeline-step">
+                            <h3>1. Text Collection</h3>
+                            <p>Gather raw text data</p>
+                            <p class="example-text">Tweets, reviews, articles, books</p>
+                        </div>
+
+                        <div class="pipeline-arrow">⬇</div>
+
+                        <div class="pipeline-step">
+                            <h3>2. Preprocessing</h3>
+                            <p>Clean and normalize text</p>
+                            <p class="example-text">Remove punctuation, lowercase, tokenize</p>
+                        </div>
+
+                        <div class="pipeline-arrow">⬇</div>
+
+                        <div class="pipeline-step">
+                            <h3>3. Analysis</h3>
+                            <p>Extract meaning and patterns</p>
+                            <p class="example-text">Sentiment, topics, entities, relationships</p>
+                        </div>
+
+                        <div class="pipeline-arrow">⬇</div>
+
+                        <div class="pipeline-step">
+                            <h3>4. Interpretation</h3>
+                            <p>Make sense of results</p>
+                            <p class="example-text">Cultural insights, trends, narratives</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 5: Common NLP Tasks -->
+    <div class="slide-container">
+        <div class="slide">
+            <div class="slide-number">5 / 12</div>
+            <h2>Common NLP <span class="highlight">Tasks</span></h2>
+
+            <div class="two-column-layout">
+                <div class="image-column">
+                    <img src="images/slide5.jpg" alt="NLP tasks overview">
+                </div>
+                <div class="content-column">
+                    <div class="tasks-grid">
+                        <div class="task-box">
+                            <h3>Sentiment Analysis</h3>
+                            <p>Detect emotional tone (positive/negative/neutral)</p>
+                            <p class="use-case">Product reviews, social media monitoring</p>
+                        </div>
+
+                        <div class="task-box">
+                            <h3>Named Entity Recognition</h3>
+                            <p>Identify people, places, organizations</p>
+                            <p class="use-case">News analysis, document indexing</p>
+                        </div>
+
+                        <div class="task-box">
+                            <h3>Topic Modeling</h3>
+                            <p>Discover hidden themes in text collections</p>
+                            <p class="use-case">Archive analysis, trend detection</p>
+                        </div>
+
+                        <div class="task-box">
+                            <h3>Text Classification</h3>
+                            <p>Categorize documents automatically</p>
+                            <p class="use-case">Spam filtering, content organization</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 6: Transition to Topic Modeling -->
+    <div class="slide-container">
+        <div class="slide">
+            <div class="slide-number">6 / 12</div>
+            <h2>Deep Dive: <span class="highlight">Topic Modeling</span></h2>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+                <div style="text-align: center;">
+                    <img src="images/slide6.jpg" alt="Documents organized into topic clusters" style="max-width: 100%; height: auto;">
+                </div>
+                <div style="display: flex; flex-direction: column; justify-content: center;">
+                    <h3>The Research Question</h3>
+                    <p class="big-question" style="font-size: 1.6rem;">"What are people talking about in this collection of 10,000 documents?"</p>
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                <div class="problem-box">
+                    <h4>The Human Problem:</h4>
+                    <p>Reading 10,000 documents would take months</p>
+                    <p>Our cognitive biases might miss patterns</p>
+                    <p>We need a bird's-eye view of themes</p>
+                </div>
+
+                <div class="solution-box">
+                    <h4>The Computational Solution:</h4>
+                    <p>Topic modeling automatically discovers hidden thematic structure in large text collections</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 7: What is Topic Modeling? -->
+    <div class="slide-container">
+        <div class="slide">
+            <div class="slide-number">7 / 12</div>
+            <h2>Topic Modeling <span class="highlight">Explained</span></h2>
+
+            <div class="two-column-layout">
+                <div class="image-column">
+                    <img src="images/slide7.jpg" alt="Topic modeling visualization">
+                </div>
+                <div class="content-column">
+                    <div class="definition-box">
+                        <h3>Definition</h3>
+                        <p class="definition">Topic modeling is an <strong>unsupervised machine learning</strong> technique that discovers abstract "topics" in a collection of documents.</p>
+                    </div>
+
+                    <div class="metaphor-box">
+                        <h4>Think of it like:</h4>
+                        <p>Imagine organizing a library without reading every book. You look at which words appear together frequently and infer categories: "history," "science fiction," "romance," etc.</p>
+                    </div>
+
+                    <div class="key-concepts">
+                        <h4>Key Concepts:</h4>
+                        <ul>
+                            <li><strong>Topics</strong> = Groups of words that frequently appear together</li>
+                            <li><strong>Documents</strong> = Mix of multiple topics</li>
+                            <li><strong>Algorithm</strong> = Finds patterns in word co-occurrence</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 8: How LDA Works (Simplified) -->
+    <div class="slide-container">
+        <div class="slide">
+            <div class="slide-number">8 / 12</div>
+            <h2>LDA: The Most Common <span class="highlight">Algorithm</span></h2>
+
+            <div class="two-column-layout">
+                <div class="image-column">
+                    <img src="images/slide8.jpg" alt="LDA algorithm visualization">
+                </div>
+                <div class="content-column">
+                    <div class="lda-explanation">
+                        <h3>Latent Dirichlet Allocation (LDA)</h3>
+
+                        <div class="lda-assumptions">
+                            <h4>LDA's Assumptions:</h4>
+                            <ol>
+                                <li>Every document is a mixture of topics</li>
+                                <li>Every topic is a mixture of words</li>
+                                <li>Words that appear together likely share a topic</li>
+                            </ol>
+                        </div>
+
+                        <div class="lda-process">
+                            <h4>Simplified Process:</h4>
+                            <div class="process-step">
+                                <strong>Step 1:</strong> Start with random topic assignments
+                            </div>
+                            <div class="process-step">
+                                <strong>Step 2:</strong> Iterate: "Which topic does this word probably belong to given its context?"
+                            </div>
+                            <div class="process-step">
+                                <strong>Step 3:</strong> Repeat thousands of times until patterns stabilize
+                            </div>
+                        </div>
+
+                        <div class="analogy-box">
+                            <h4>Analogy:</h4>
+                            <p>Like reverse-engineering a recipe by analyzing finished dishes. You see patterns: tomatoes + basil + mozzarella = Italian cuisine topic</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 9: Example Output -->
+    <div class="slide-container">
+        <div class="slide">
+            <div class="slide-number">9 / 12</div>
+            <h2>What Topic Models <span class="highlight">Reveal</span></h2>
+
+            <div class="two-column-layout">
+                <div class="image-column">
+                    <img src="images/slide9.jpg" alt="Example topic model output">
+                </div>
+                <div class="content-column">
+                    <div class="example-topics">
+                        <h3>Example: News Articles Analysis</h3>
+
+                        <div class="topic-result">
+                            <h4>Topic 1: Politics</h4>
+                            <p class="word-cloud">government, election, vote, policy, senate, bill, president, congress, debate, law</p>
+                        </div>
+
+                        <div class="topic-result">
+                            <h4>Topic 2: Technology</h4>
+                            <p class="word-cloud">ai, data, software, digital, algorithm, code, app, tech, innovation, internet</p>
+                        </div>
+
+                        <div class="topic-result">
+                            <h4>Topic 3: Health</h4>
+                            <p class="word-cloud">patient, doctor, medical, hospital, treatment, health, disease, care, study, research</p>
+                        </div>
+
+                        <div class="topic-result">
+                            <h4>Topic 4: Sports</h4>
+                            <p class="word-cloud">game, team, player, win, score, coach, season, championship, league, tournament</p>
+                        </div>
+                    </div>
+
+                    <div class="interpretation-note">
+                        <h4>Important:</h4>
+                        <p>The algorithm doesn't "know" these are about politics or sports - <strong>you</strong> interpret and label the topics based on the word patterns</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 10: Humanities Applications -->
+    <div class="slide-container">
+        <div class="slide">
+            <div class="slide-number">10 / 12</div>
+            <h2>Topic Modeling in <span class="highlight">Humanities</span></h2>
+
+            <div class="two-column-layout">
+                <div class="image-column">
+                    <img src="images/slide10.jpg" alt="Digital humanities research">
+                </div>
+                <div class="content-column">
+                    <div class="applications-grid">
+                        <div class="application-box">
+                            <h3>Literary Studies</h3>
+                            <p>Analyze themes across thousands of novels</p>
+                            <p class="example">How did depictions of gender change from 1800-2000?</p>
+                        </div>
+
+                        <div class="application-box">
+                            <h3>Historical Archives</h3>
+                            <p>Discover patterns in newspaper collections</p>
+                            <p class="example">What topics dominated public discourse during WWII?</p>
+                        </div>
+
+                        <div class="application-box">
+                            <h3>Social Media Research</h3>
+                            <p>Map conversations and communities</p>
+                            <p class="example">What are activist communities discussing on Twitter?</p>
+                        </div>
+
+                        <div class="application-box">
+                            <h3>Cultural Analysis</h3>
+                            <p>Track cultural trends over time</p>
+                            <p class="example">How has climate change discourse evolved since 1990?</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 11: Critical Considerations -->
+    <div class="slide-container">
+        <div class="slide">
+            <div class="slide-number">11 / 12</div>
+            <h2>Critical <span class="highlight">Questions</span></h2>
+
+            <div class="two-column-layout">
+                <div class="image-column">
+                    <img src="images/slide11.jpg" alt="Critical analysis visualization">
+                </div>
+                <div class="content-column">
+                    <div class="critical-framework">
+                        <h3>Classification Logic at Work</h3>
+
+                        <div class="critical-question-box">
+                            <h4>What gets counted?</h4>
+                            <p>Topic models only work with text that's been digitized. Whose voices are in the archive? Whose are missing?</p>
+                        </div>
+
+                        <div class="critical-question-box">
+                            <h4>Who interprets?</h4>
+                            <p>Algorithms produce word clusters. <strong>Humans</strong> decide what they mean. Your cultural position shapes interpretation.</p>
+                        </div>
+
+                        <div class="critical-question-box">
+                            <h4>What assumptions are baked in?</h4>
+                            <p>LDA assumes topics are stable categories. But culture is fluid and contextual. Are we imposing order on chaos?</p>
+                        </div>
+
+                        <div class="critical-question-box">
+                            <h4>What does the algorithm miss?</h4>
+                            <p>Irony, sarcasm, coded language, cultural context. Computational reading has blind spots.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 12: Reflection and Next Steps -->
+    <div class="slide-container">
+        <div class="slide">
+            <div class="slide-number">12 / 12</div>
+            <h2>From Theory to <span class="highlight">Practice</span></h2>
+
+            <div class="two-column-layout">
+                <div class="image-column">
+                    <img src="images/slide12.jpg" alt="Coding for humanities research">
+                </div>
+                <div class="content-column">
+                    <div class="reflection-prompt">
+                        <h3>Reflection Prompt</h3>
+                        <div class="prompt-box">
+                            <p><strong>"What text collection would you want to analyze with topic modeling, and what questions would you ask?"</strong></p>
+                        </div>
+                    </div>
+
+                    <div class="transition-next">
+                        <h4>Next Up:</h4>
+                        <p>Hands-on topic modeling with Gensim and LDA in Python</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Series Navigation -->
+    <div class="inter-lecture-nav">
+        <div class="lecture-nav">
+            <a href="../index.html" class="lecture-nav-btn series-home" target="_blank">← Series Home</a>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="navigation-container">
+        <div class="navigation">
+            <button class="nav-btn" onclick="previousSlide()">←</button>
+            <span class="nav-counter" id="slideCounter">1 / 12</span>
+            <button class="nav-btn" onclick="nextSlide()">→</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide-container');
+        const totalSlides = slides.length;
+
+        function showSlide(n) {
+            if (n >= totalSlides) { currentSlide = 0; }
+            if (n < 0) { currentSlide = totalSlides - 1; }
+            if (n >= 0 && n < totalSlides) { currentSlide = n; }
+
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[currentSlide].classList.add('active');
+
+            const slideCounter = document.getElementById('slideCounter');
+            if (slideCounter) {
+                slideCounter.textContent = `${currentSlide + 1} / ${totalSlides}`;
+            }
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function previousSlide() {
+            showSlide(currentSlide - 1);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                previousSlide();
+            }
+        });
+
+        // Touch/swipe support for mobile
+        let startX = 0;
+        let endX = 0;
+        let startY = 0;
+        let endY = 0;
+
+        document.addEventListener('touchstart', function(e) {
+            startX = e.changedTouches[0].screenX;
+            startY = e.changedTouches[0].screenY;
+        }, { passive: true });
+
+        document.addEventListener('touchend', function(e) {
+            endX = e.changedTouches[0].screenX;
+            endY = e.changedTouches[0].screenY;
+            handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+            const deltaX = endX - startX;
+            const deltaY = endY - startY;
+            const minSwipeDistance = 50;
+
+            // Only register horizontal swipes if they're more horizontal than vertical
+            if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > minSwipeDistance) {
+                if (deltaX < 0) {
+                    nextSlide(); // Swipe left = next slide
+                } else {
+                    previousSlide(); // Swipe right = previous slide
+                }
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture: HTML as Structure & Argument - WRIT 20833</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared-style.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Slide 1: Title -->
+    <div class="slide-container active">
+        <div class="slide">
+            <div class="slide-number">1 / 10</div>
+            <h1>HTML as Structure & Argument</h1>
+            <p class="subtitle">Building Meaningful Web Pages for Digital Humanities</p>
+            <img src="images/slide1.jpg" alt="HTML structure" class="slide-image">
+            <div class="instructor-info">WRIT 20833 • Lecture 10</div>
+        </div>
+    </div>
+
+    <!-- Slide 2: HTML Document Anatomy -->
+    <div class="slide-container">
+        <div class="slide">
+            <div class="slide-number">2 / 10</div>
+            <h2>HTML Document <span class="highlight">Anatomy</span></h2>
+
+            <div class="code-example-large">
+                <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;My Topic Modeling Results&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;!-- Your visible content goes here --&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            </div>
+
+            <div class="explanation-grid">
+                <div class="explanation-item">
+                    <h4>&lt;head&gt;</h4>
+                    <p>Metadata - information <em>about</em> your page (title, description, links to CSS)</p>
+                </div>
+                <div class="explanation-item">
+                    <h4>&lt;body&gt;</h4>
+                    <p>Content - everything users actually see and interact with</p>
+                </div>
+            </div>
+
+            <div class="key-point">
+                <p><strong>Think of it like a research paper:</strong> &lt;head&gt; = title page/metadata, &lt;body&gt; = actual content</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 3: Semantic HTML5 Elements -->
+    <div class="slide-container">
+        <div class="slide">
+            <div class="slide-number">3 / 10</div>
+            <h2>Semantic HTML5 <span class="highlight">Elements</span></h2>
+
+            <div class="semantic-layout-visual">
+                <div class="layout-diagram">
+                    <div class="tag-box header-tag">&lt;header&gt;<br><span class="tag-purpose">Site/page introduction</span></div>
+                    <div class="tag-box nav-tag">&lt;nav&gt;<br><span class="tag-purpose">Navigation links</span></div>
+                    <div class="tag-box main-tag">&lt;main&gt;<br><span class="tag-purpose">Primary content</span></div>
+                    <div class="tag-box article-tag">&lt;article&gt;<br><span class="tag-purpose">Standalone content</span></div>
+                    <div class="tag-box aside-tag">&lt;aside&gt;<br><span class="tag-purpose">Related/supplementary</span></div>
+                    <div class="tag-box footer-tag">&lt;footer&gt;<br><span class="tag-purpose">Site/page conclusion</span></div>
+                </div>
+            </div>
+
+            <div class="why-semantic">
+                <h3>Why Use Semantic Tags?</h3>
+                <ul>
+                    <li><strong>Meaning:</strong> Tags communicate purpose to humans & machines</li>
+                    <li><strong>Accessibility:</strong> Screen readers understand document structure</li>
+                    <li><strong>Argument:</strong> Structure = claim about what's important</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4: Headings as Hierarchy -->
+    <div class="slide-container">
+        <div class="slide">
+            <div class="slide-number">4 / 10</div>
+            <h2>Headings Create <span class="highlight">Hierarchy</span></h2>
+
+            <div class="two-column-layout">
+                <div class="content-column">
+                    <div class="code-example">
+                        <pre><code>&lt;h1&gt;Sentiment Analysis of Climate Discourse&lt;/h1&gt;
+
+&lt;h2&gt;Methods&lt;/h2&gt;
+  &lt;h3&gt;Data Collection&lt;/h3&gt;
+  &lt;h3&gt;VADER Analysis&lt;/h3&gt;
+
+&lt;h2&gt;Results&lt;/h2&gt;
+  &lt;h3&gt;Overall Trends&lt;/h3&gt;
+  &lt;h3&gt;Key Patterns&lt;/h3&gt;</code></pre>
+                    </div>
+                </div>
+                <div class="content-column">
+                    <div class="hierarchy-rules">
+                        <h3>Heading Rules:</h3>
+                        <ul>
+                            <li><strong>&lt;h1&gt;:</strong> One per page - main topic</li>
+                            <li><strong>&lt;h2&gt;:</strong> Major sections</li>
+                            <li><strong>&lt;h3&gt;:</strong> Subsections within h2</li>
+                            <li><strong>Don't skip levels</strong> (h1 → h3)</li>
+                        </ul>
+
+                        <div class="rhetorical-note">
+                            <h4>Rhetorical Impact:</h4>
+                            <p>Heading hierarchy = argument about relative importance. What deserves h2 vs h3 is a <em>rhetorical choice</em>.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 5: DH Example - Digital Archive Structure -->
+    <div class="slide-container">
+        <div class="slide">
+            <div class="slide-number">5 / 10</div>
+            <h2>DH Example: <span class="highlight">Digital Archive</span></h2>
+
+            <div class="dh-structure-example">
+                <h3>Community Photo Archive - Two Structural Approaches:</h3>
+
+                <div class="approach-comparison">
+                    <div class="approach academic">
+                        <h4>Approach A: Academic Frame</h4>
+                        <div class="code-example">
+                            <pre><code>&lt;header&gt;
+  &lt;h1&gt;Research Project: Local Memory&lt;/h1&gt;
+&lt;/header&gt;
+&lt;main&gt;
+  &lt;section&gt;
+    &lt;h2&gt;Methodology&lt;/h2&gt;
+    &lt;article&gt;Collection process...&lt;/article&gt;
+  &lt;/section&gt;
+  &lt;section&gt;
+    &lt;h2&gt;Photo Gallery&lt;/h2&gt;
+  &lt;/section&gt;
+&lt;/main&gt;
+&lt;aside&gt;Community voices&lt;/aside&gt;</code></pre>
+                        </div>
+                        <p class="argument-claim"><strong>Argument:</strong> Research methodology is primary. Photos are evidence. Community input is supplementary.</p>
+                    </div>
+
+                    <div class="approach community">
+                        <h4>Approach B: Community-Centered</h4>
+                        <div class="code-example">
+                            <pre><code>&lt;header&gt;
+  &lt;h1&gt;Our Community, Our Stories&lt;/h1&gt;
+&lt;/header&gt;
+&lt;main&gt;
+  &lt;section&gt;
+    &lt;h2&gt;Photo Stories&lt;/h2&gt;
+    &lt;article&gt;Each photo with community narrative&lt;/article&gt;
+  &lt;/section&gt;
+&lt;/main&gt;
+&lt;aside&gt;Research context&lt;/aside&gt;</code></pre>
+                        </div>
+                        <p class="argument-claim"><strong>Argument:</strong> Community voices and photos are primary. Research context is supplementary.</p>
+                    </div>
+                </div>
+
+                <div class="structure-lesson">
+                    <p><strong>Lesson:</strong> Same content, different HTML structure = different rhetorical stance about whose knowledge matters.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 6: Links & Navigation -->
+    <div class="slide-container">
+        <div class="slide">
+            <div class="slide-number">6 / 10</div>
+            <h2>Links as <span class="highlight">Pathways</span></h2>
+
+            <div class="two-column-layout">
+                <div class="content-column">
+                    <h3>Link Anatomy:</h3>
+                    <div class="code-example">
+                        <pre><code>&lt;a href="results.html"&gt;
+  View Analysis Results
+&lt;/a&gt;
+
+&lt;a href="https://example.com"&gt;
+  External Resource
+&lt;/a&gt;</code></pre>
+                    </div>
+
+                    <div class="link-best-practices">
+                        <h4>Best Practices:</h4>
+                        <ul>
+                            <li><strong>Descriptive text:</strong> "View sentiment analysis results" not "click here"</li>
+                            <li><strong>Context:</strong> Tell users where they're going</li>
+                            <li><strong>Accessibility:</strong> Screen readers read link text out of context</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="content-column">
+                    <div class="nav-example">
+                        <h3>Navigation Structure:</h3>
+                        <div class="code-example">
+                            <pre><code>&lt;nav&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href="index.html"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="findings.html"&gt;Findings&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="sources.html"&gt;Sources&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+                        </div>
+
+                        <div class="nav-rhetoric">
+                            <h4>Rhetorical Question:</h4>
+                            <p>What you include in &lt;nav&gt; = "these are the important destinations." What paths do you prioritize?</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 7: Images with Alt Text -->
+    <div class="slide-container">
+        <div class="slide">
+            <div class="slide-number">7 / 10</div>
+            <h2>Images & <span class="highlight">Accessibility</span></h2>
+
+            <div class="alt-text-comparison">
+                <div class="bad-example">
+                    <h3>❌ Inaccessible:</h3>
+                    <div class="code-example">
+                        <pre><code>&lt;img src="chart.jpg"&gt;</code></pre>
+                    </div>
+                    <p class="impact">Screen reader: "Image" (no information)</p>
+                    <p class="who-excluded">Excludes: Users who can't see images</p>
+                </div>
+
+                <div class="better-example">
+                    <h3>⚠️ Minimal:</h3>
+                    <div class="code-example">
+                        <pre><code>&lt;img src="chart.jpg" alt="chart"&gt;</code></pre>
+                    </div>
+                    <p class="impact">Screen reader: "Chart" (not helpful)</p>
+                    <p class="who-excluded">Partially excludes: No actual content</p>
+                </div>
+
+                <div class="good-example">
+                    <h3>✓ Accessible:</h3>
+                    <div class="code-example">
+                        <pre><code>&lt;img src="chart.jpg"
+     alt="Bar chart showing 60% increase in
+     negative sentiment about climate policy
+     from 2015 to 2020"&gt;</code></pre>
+                    </div>
+                    <p class="impact">Screen reader: Full insight available</p>
+                    <p class="who-included">Includes: Everyone gets the data</p>
+                </div>
+            </div>
+
+            <div class="ethical-stance">
+                <p><strong>Framework: Sacred Boundaries</strong> - Alt text is an ethical decision about who deserves access to your insights.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 8: Lists for Organization -->
+    <div class="slide-container">
+        <div class="slide">
+            <div class="slide-number">8 / 10</div>
+            <h2>Lists for <span class="highlight">Organization</span></h2>
+
+            <div class="list-types-grid">
+                <div class="list-type">
+                    <h3>Unordered Lists (bullets):</h3>
+                    <div class="code-example">
+                        <pre><code>&lt;ul&gt;
+  &lt;li&gt;Topic: Politics&lt;/li&gt;
+  &lt;li&gt;Topic: Technology&lt;/li&gt;
+  &lt;li&gt;Topic: Health&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+                    </div>
+                    <p><strong>Use when:</strong> Order doesn't matter (topics, features, themes)</p>
+                </div>
+
+                <div class="list-type">
+                    <h3>Ordered Lists (numbered):</h3>
+                    <div class="code-example">
+                        <pre><code>&lt;ol&gt;
+  &lt;li&gt;Collect data&lt;/li&gt;
+  &lt;li&gt;Clean and preprocess&lt;/li&gt;
+  &lt;li&gt;Run topic modeling&lt;/li&gt;
+  &lt;li&gt;Interpret results&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+                    </div>
+                    <p><strong>Use when:</strong> Order matters (steps, rankings, chronology)</p>
+                </div>
+            </div>
+
+            <div class="classification-reminder">
+                <p><strong>Remember:</strong> Choosing ul vs ol = rhetorical choice about whether sequence matters.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 9: Putting It Together - Full DH Page -->
+    <div class="slide-container">
+        <div class="slide">
+            <div class="slide-number">9 / 10</div>
+            <h2>Full DH Page <span class="highlight">Structure</span></h2>
+
+            <div class="full-page-example">
+                <div class="code-example-scrollable">
+                    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Climate Discourse Sentiment Analysis&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;header&gt;
+    &lt;h1&gt;Climate Discourse Sentiment Analysis&lt;/h1&gt;
+    &lt;p&gt;Tracking emotional tone in climate conversations, 2015-2020&lt;/p&gt;
+  &lt;/header&gt;
+
+  &lt;nav&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href="#methods"&gt;Methods&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#findings"&gt;Findings&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#implications"&gt;Implications&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/nav&gt;
+
+  &lt;main&gt;
+    &lt;section id="methods"&gt;
+      &lt;h2&gt;Methods&lt;/h2&gt;
+      &lt;p&gt;We analyzed 50,000 tweets using VADER sentiment analysis...&lt;/p&gt;
+      &lt;img src="methodology.jpg" alt="Flowchart showing data collection
+           from Twitter API, preprocessing steps, and VADER analysis"&gt;
+    &lt;/section&gt;
+
+    &lt;section id="findings"&gt;
+      &lt;h2&gt;Key Findings&lt;/h2&gt;
+      &lt;article&gt;
+        &lt;h3&gt;Negative Sentiment Increased 60%&lt;/h3&gt;
+        &lt;p&gt;From 2015 to 2020, negative sentiment rose sharply...&lt;/p&gt;
+        &lt;img src="trend.jpg" alt="Line graph showing negative sentiment
+             rising from 20% in 2015 to 80% in 2020"&gt;
+      &lt;/article&gt;
+    &lt;/section&gt;
+  &lt;/main&gt;
+
+  &lt;aside&gt;
+    &lt;h3&gt;Data Sources&lt;/h3&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Twitter API (2015-2020)&lt;/li&gt;
+      &lt;li&gt;50,000 tweets with #climate&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/aside&gt;
+
+  &lt;footer&gt;
+    &lt;p&gt;Created by [Your Name] | WRIT 20833 | Fall 2025&lt;/p&gt;
+  &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="structure-notes">
+                <p><strong>Notice:</strong> Semantic structure tells a story about what matters and how pieces relate.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 10: Next Steps -->
+    <div class="slide-container">
+        <div class="slide">
+            <div class="slide-number">10 / 10</div>
+            <h2>From Structure to <span class="highlight">Style</span></h2>
+
+            <div class="two-column-layout">
+                <div class="content-column">
+                    <div class="what-you-learned">
+                        <h3>What You Now Know:</h3>
+                        <ul>
+                            <li>HTML document structure (head/body)</li>
+                            <li>Semantic HTML5 elements (header, nav, main, article, aside, footer)</li>
+                            <li>Heading hierarchy (h1-h6)</li>
+                            <li>Links and navigation</li>
+                            <li>Accessible images (alt text)</li>
+                            <li>Lists for organization</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="content-column">
+                    <div class="whats-next">
+                        <h3>What's Next:</h3>
+                        <p>You have meaningful structure. Now we'll learn CSS to make it visually compelling—remembering that every style choice is a rhetorical choice.</p>
+
+                        <div class="preview-box">
+                            <h4>Next Lecture:</h4>
+                            <p class="next-title">CSS as Visual Rhetoric</p>
+                            <p>Learn how color, typography, layout, and spacing make arguments about what matters.</p>
+                        </div>
+
+                        <div class="practice-note">
+                            <h4>Practice:</h4>
+                            <p>Start structuring your Python analysis results in HTML. Think critically about hierarchy and what your structure argues.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Series Navigation -->
+    <div class="inter-lecture-nav">
+        <div class="lecture-nav">
+            <a href="../index.html" class="lecture-nav-btn series-home" target="_blank">← Series Home</a>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="navigation-container">
+        <div class="navigation">
+            <button class="nav-btn" onclick="previousSlide()">←</button>
+            <span class="nav-counter" id="slideCounter">1 / 10</span>
+            <button class="nav-btn" onclick="nextSlide()">→</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide-container');
+        const totalSlides = slides.length;
+
+        function showSlide(n) {
+            if (n >= totalSlides) { currentSlide = 0; }
+            if (n < 0) { currentSlide = totalSlides - 1; }
+            if (n >= 0 && n < totalSlides) { currentSlide = n; }
+
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[currentSlide].classList.add('active');
+
+            const slideCounter = document.getElementById('slideCounter');
+            if (slideCounter) {
+                slideCounter.textContent = `${currentSlide + 1} / ${totalSlides}`;
+            }
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function previousSlide() {
+            showSlide(currentSlide - 1);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                previousSlide();
+            }
+        });
+
+        // Touch/swipe support for mobile
+        let startX = 0;
+        let endX = 0;
+        let startY = 0;
+        let endY = 0;
+
+        document.addEventListener('touchstart', function(e) {
+            startX = e.changedTouches[0].screenX;
+            startY = e.changedTouches[0].screenY;
+        }, { passive: true });
+
+        document.addEventListener('touchend', function(e) {
+            endX = e.changedTouches[0].screenX;
+            endY = e.changedTouches[0].screenY;
+            handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+            const deltaX = endX - startX;
+            const deltaY = endY - startY;
+            const minSwipeDistance = 50;
+
+            if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > minSwipeDistance) {
+                if (deltaX < 0) {
+                    nextSlide();
+                } else {
+                    previousSlide();
+                }
+            }
+        }
+    </script>
+</body>
+</html>

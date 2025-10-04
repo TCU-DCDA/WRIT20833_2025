@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini-Lecture: Code as Rhetoric - WRIT 20833</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared-style.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Slide 1: Title/Hook -->
+    <div class="slide-container active">
+        <div class="slide">
+            <div class="slide-number">1 / 8</div>
+            <h1>Code as Rhetoric</h1>
+            <p class="subtitle">How Technical Choices Make Arguments</p>
+            <img src="images/slide1.jpg" alt="Code making arguments" class="slide-image">
+
+            <div class="hook-question">
+                <h2 style="color: #c9a9ff; font-size: 2.5rem; margin: 2rem 0;">
+                    "If I make the heading bigger, am I just styling... or am I arguing?"
+                </h2>
+            </div>
+
+            <div class="instructor-info">WRIT 20833 • Mini-Lecture: Code as Rhetoric</div>
+        </div>
+    </div>
+
+    <!-- Slide 2: The Myth of Neutral Code -->
+    <div class="slide-container">
+        <div class="slide">
+            <div class="slide-number">2 / 8</div>
+            <h2>The Myth of <span class="highlight">Neutral</span> Code</h2>
+
+            <div class="two-column-layout">
+                <div class="image-column">
+                    <img src="images/slide2.jpg" alt="Code is never neutral">
+                </div>
+                <div class="content-column">
+                    <div class="myth-box">
+                        <h3>❌ "HTML/CSS are just technical tools"</h3>
+                        <p>This assumes code makes no claims about what matters, who's important, or how to understand information.</p>
+                    </div>
+
+                    <div class="reality-box">
+                        <h3>✓ Code Makes Arguments</h3>
+                        <p>Every technical choice you make is a rhetorical choice:</p>
+                        <ul>
+                            <li>What you put in <code>&lt;h1&gt;</code> = "This is most important"</li>
+                            <li>What you hide in <code>&lt;aside&gt;</code> = "This is secondary"</li>
+                            <li>What you make 48px = "Pay attention here"</li>
+                            <li>What you put first = "Start here"</li>
+                        </ul>
+                    </div>
+
+                    <div class="key-insight">
+                        <p><strong>Just like data has connotations, code has rhetoric.</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 3: Three Websites, Same Content -->
+    <div class="slide-container">
+        <div class="slide">
+            <div class="slide-number">3 / 8</div>
+            <h2>Same Content, <span class="highlight">Different Arguments</span></h2>
+
+            <div class="comparison-grid">
+                <div class="comparison-item version1">
+                    <h3>Version 1: Academic Hierarchy</h3>
+                    <div class="mockup-preview">
+                        <p class="mockup-description"><strong>Large heading:</strong> "Research Methodology"<br>
+                        <strong>Small text:</strong> Community voices<br>
+                        <strong>Structure:</strong> Theory → Methods → Results → Communities</p>
+                    </div>
+                    <p class="argument"><strong>Argument:</strong> Expert knowledge is primary. Community input is supplementary.</p>
+                </div>
+
+                <div class="comparison-item version2">
+                    <h3>Version 2: Community-Centered</h3>
+                    <div class="mockup-preview">
+                        <p class="mockup-description"><strong>Large heading:</strong> "Community Voices"<br>
+                        <strong>Small text:</strong> Research methodology<br>
+                        <strong>Structure:</strong> Voices → Context → Analysis → Technical Notes</p>
+                    </div>
+                    <p class="argument"><strong>Argument:</strong> Community knowledge is primary. Academic framing is secondary.</p>
+                </div>
+
+                <div class="comparison-item version3">
+                    <h3>Version 3: Dialogic</h3>
+                    <div class="mockup-preview">
+                        <p class="mockup-description"><strong>Equal headings:</strong> "Research" + "Community"<br>
+                        <strong>Side-by-side layout</strong><br>
+                        <strong>Structure:</strong> Conversation between voices</p>
+                    </div>
+                    <p class="argument"><strong>Argument:</strong> Multiple perspectives in dialogue. No single authority.</p>
+                </div>
+            </div>
+
+            <div class="takeaway">
+                <p><strong>Same data. Same words. Different HTML/CSS structure = Different rhetorical claims about whose knowledge matters.</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4: HTML as Classification -->
+    <div class="slide-container">
+        <div class="slide">
+            <div class="slide-number">4 / 8</div>
+            <h2>HTML as <span class="highlight">Classification Logic</span></h2>
+
+            <div class="two-column-layout">
+                <div class="image-column">
+                    <img src="images/slide4.jpg" alt="HTML tags as categories">
+                </div>
+                <div class="content-column">
+                    <div class="classification-examples">
+                        <h3>Semantic Tags = Acts of Categorization</h3>
+
+                        <div class="tag-example">
+                            <code>&lt;header&gt;</code>
+                            <p class="tag-meaning">Says: "This content defines/introduces the site"</p>
+                            <p class="tag-power">Power: You decide what defines your project</p>
+                        </div>
+
+                        <div class="tag-example">
+                            <code>&lt;main&gt;</code>
+                            <p class="tag-meaning">Says: "This is the central purpose"</p>
+                            <p class="tag-power">Power: You decide what's primary vs. peripheral</p>
+                        </div>
+
+                        <div class="tag-example">
+                            <code>&lt;aside&gt;</code>
+                            <p class="tag-meaning">Says: "This is tangentially related"</p>
+                            <p class="tag-power">Power: You decide what gets marginalized</p>
+                        </div>
+
+                        <div class="tag-example">
+                            <code>&lt;nav&gt;</code>
+                            <p class="tag-meaning">Says: "These are the key destinations"</p>
+                            <p class="tag-power">Power: You decide what paths matter</p>
+                        </div>
+                    </div>
+
+                    <div class="framework-connection">
+                        <h4>Framework: Classification Logic</h4>
+                        <p>Remember: How you categorize shapes how people understand. HTML structure is an act of classification—and all classification involves power.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 5: CSS as Visual Argument -->
+    <div class="slide-container">
+        <div class="slide">
+            <div class="slide-number">5 / 8</div>
+            <h2>CSS as <span class="highlight">Visual Argument</span></h2>
+
+            <div class="two-column-layout">
+                <div class="image-column">
+                    <img src="images/slide5.jpg" alt="CSS making visual arguments">
+                </div>
+                <div class="content-column">
+                    <div class="css-rhetoric">
+                        <h3>Every Style Choice is a Claim</h3>
+
+                        <div class="style-argument">
+                            <h4>Font Size</h4>
+                            <p><code>font-size: 48px;</code> = "This matters most"</p>
+                            <p><code>font-size: 12px;</code> = "This is less important"</p>
+                            <p class="critical">Who decides what's important?</p>
+                        </div>
+
+                        <div class="style-argument">
+                            <h4>Color</h4>
+                            <p><code>color: red;</code> = "Warning/urgency/danger"</p>
+                            <p><code>color: green;</code> = "Success/growth/affirmation"</p>
+                            <p class="critical">Cultural associations shape meaning</p>
+                        </div>
+
+                        <div class="style-argument">
+                            <h4>Position</h4>
+                            <p><code>position: top;</code> = "See this first"</p>
+                            <p><code>display: none;</code> = "This doesn't exist (for some audiences)"</p>
+                            <p class="critical">Visibility = power</p>
+                        </div>
+
+                        <div class="style-argument">
+                            <h4>Space</h4>
+                            <p><code>margin: 100px;</code> = "Give this breathing room"</p>
+                            <p><code>margin: 0;</code> = "Pack this tight"</p>
+                            <p class="critical">Whitespace communicates value</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 6: Accessibility as Ethics -->
+    <div class="slide-container">
+        <div class="slide">
+            <div class="slide-number">6 / 8</div>
+            <h2>Accessibility as <span class="highlight">Ethical Argument</span></h2>
+
+            <div class="two-column-layout">
+                <div class="image-column">
+                    <img src="images/slide6.jpg" alt="Accessible design as ethics">
+                </div>
+                <div class="content-column">
+                    <div class="accessibility-rhetoric">
+                        <h3>Code Choices = Inclusion/Exclusion Decisions</h3>
+
+                        <div class="access-example">
+                            <h4>Alt Text</h4>
+                            <p><code>&lt;img src="chart.jpg" alt=""&gt;</code></p>
+                            <p class="implication">Argument: "If you can't see, this insight isn't for you"</p>
+                        </div>
+
+                        <div class="access-example">
+                            <h4>vs.</h4>
+                            <p><code>&lt;img src="chart.jpg" alt="Bar chart showing 60% increase in mentions of climate change from 2010-2020"&gt;</code></p>
+                            <p class="implication">Argument: "This insight belongs to everyone"</p>
+                        </div>
+
+                        <div class="access-example">
+                            <h4>Color Contrast</h4>
+                            <p><code>color: #ddd; background: #fff;</code> (low contrast)</p>
+                            <p class="implication">Argument: "Only people with perfect vision matter"</p>
+                        </div>
+
+                        <div class="access-example">
+                            <h4>Responsive Design</h4>
+                            <p><code>@media (max-width: 768px)</code></p>
+                            <p class="implication">Argument: "Mobile users deserve the same experience"</p>
+                        </div>
+                    </div>
+
+                    <div class="framework-connection">
+                        <h4>Framework: Sacred Boundaries</h4>
+                        <p>Every access decision is a boundary decision. Who gets in? Who's left out? Accessible code is an ethical stance.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 7: Examples in DH -->
+    <div class="slide-container">
+        <div class="slide">
+            <div class="slide-number">7 / 8</div>
+            <h2>Code Rhetoric in <span class="highlight">Digital Humanities</span></h2>
+
+            <div class="dh-examples">
+                <div class="dh-example">
+                    <h3>Example 1: Digital Archive</h3>
+                    <div class="code-choice">
+                        <p><strong>Choice:</strong> Put artifact images in <code>&lt;main&gt;</code>, curator analysis in <code>&lt;aside&gt;</code></p>
+                        <p><strong>Argument:</strong> Objects speak for themselves. Expert interpretation is supplementary.</p>
+                    </div>
+                    <div class="code-choice">
+                        <p><strong>Alternative:</strong> Interweave images and analysis in <code>&lt;article&gt;</code> sections</p>
+                        <p><strong>Argument:</strong> Objects and interpretation are inseparable.</p>
+                    </div>
+                </div>
+
+                <div class="dh-example">
+                    <h3>Example 2: Topic Modeling Results</h3>
+                    <div class="code-choice">
+                        <p><strong>Choice:</strong> Large font for topic labels, small font for example documents</p>
+                        <p><strong>Argument:</strong> Patterns matter more than individual texts.</p>
+                    </div>
+                    <div class="code-choice">
+                        <p><strong>Alternative:</strong> Equal visual weight, side-by-side</p>
+                        <p><strong>Argument:</strong> Computational findings and textual evidence equally important.</p>
+                    </div>
+                </div>
+
+                <div class="dh-example">
+                    <h3>Example 3: Data Story</h3>
+                    <div class="code-choice">
+                        <p><strong>Choice:</strong> Scroll-triggered CSS animations revealing data progressively</p>
+                        <p><strong>Argument:</strong> Understanding builds over time. Trust the narrative journey.</p>
+                    </div>
+                    <div class="code-choice">
+                        <p><strong>Alternative:</strong> All data visible immediately, navigable sections</p>
+                        <p><strong>Argument:</strong> Readers should explore at their own pace and priority.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 8: Mindset Shift -->
+    <div class="slide-container">
+        <div class="slide">
+            <div class="slide-number">8 / 8</div>
+            <h2>From <span class="highlight">Coder</span> to <span class="highlight">Rhetorician</span></h2>
+
+            <div class="two-column-layout">
+                <div class="image-column">
+                    <img src="images/slide8.jpg" alt="Code as rhetorical tool">
+                </div>
+                <div class="content-column">
+                    <div class="mindset-shift">
+                        <div class="old-mindset">
+                            <h3>❌ Old Mindset:</h3>
+                            <p>"I'm learning HTML/CSS to build websites"</p>
+                            <p>"Code is technical and neutral"</p>
+                            <p>"I just want it to work"</p>
+                        </div>
+
+                        <div class="new-mindset">
+                            <h3>✓ New Mindset:</h3>
+                            <p>"I'm learning HTML/CSS to make public arguments"</p>
+                            <p>"Every line of code is a rhetorical choice"</p>
+                            <p>"I want it to work AND say what I mean"</p>
+                        </div>
+                    </div>
+
+                    <div class="critical-questions">
+                        <h3>Questions to Ask While Coding:</h3>
+                        <ul>
+                            <li>What does this tag/style choice claim is important?</li>
+                            <li>Whose perspective is centered? Whose is marginalized?</li>
+                            <li>Who can access this? Who's excluded?</li>
+                            <li>What assumptions am I baking into the structure?</li>
+                            <li>What alternative arguments could I make with different code choices?</li>
+                        </ul>
+                    </div>
+
+                    <div class="next-steps">
+                        <h4>Next Up:</h4>
+                        <p>Now that you understand code as rhetoric, let's learn the technical skills—<em>but always with critical awareness.</em></p>
+                        <p class="next-lecture">Lecture 09: HTML as Structure & Argument</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Series Navigation -->
+    <div class="inter-lecture-nav">
+        <div class="lecture-nav">
+            <a href="../index.html" class="lecture-nav-btn series-home" target="_blank">← Series Home</a>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="navigation-container">
+        <div class="navigation">
+            <button class="nav-btn" onclick="previousSlide()">←</button>
+            <span class="nav-counter" id="slideCounter">1 / 8</span>
+            <button class="nav-btn" onclick="nextSlide()">→</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide-container');
+        const totalSlides = slides.length;
+
+        function showSlide(n) {
+            if (n >= totalSlides) { currentSlide = 0; }
+            if (n < 0) { currentSlide = totalSlides - 1; }
+            if (n >= 0 && n < totalSlides) { currentSlide = n; }
+
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[currentSlide].classList.add('active');
+
+            const slideCounter = document.getElementById('slideCounter');
+            if (slideCounter) {
+                slideCounter.textContent = `${currentSlide + 1} / ${totalSlides}`;
+            }
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function previousSlide() {
+            showSlide(currentSlide - 1);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                previousSlide();
+            }
+        });
+
+        // Touch/swipe support for mobile
+        let startX = 0;
+        let endX = 0;
+        let startY = 0;
+        let endY = 0;
+
+        document.addEventListener('touchstart', function(e) {
+            startX = e.changedTouches[0].screenX;
+            startY = e.changedTouches[0].screenY;
+        }, { passive: true });
+
+        document.addEventListener('touchend', function(e) {
+            endX = e.changedTouches[0].screenX;
+            endY = e.changedTouches[0].screenY;
+            handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+            const deltaX = endX - startX;
+            const deltaY = endY - startY;
+            const minSwipeDistance = 50;
+
+            // Only register horizontal swipes if they're more horizontal than vertical
+            if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > minSwipeDistance) {
+                if (deltaX < 0) {
+                    nextSlide(); // Swipe left = next slide
+                } else {
+                    previousSlide(); // Swipe right = previous slide
+                }
+            }
+        }
+    </script>
+</body>
+</html>

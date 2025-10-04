@@ -1,0 +1,575 @@
+/* ============================================
+   LECTURE 10: HTML AS STRUCTURE & ARGUMENT
+   Lecture-specific styles
+   Extends shared-style.css
+   ============================================ */
+
+/* Code Examples */
+.code-example-large {
+    background: rgba(26, 3, 48, 0.8);
+    border: 2px solid #9b59b6;
+    border-radius: 10px;
+    padding: 2rem;
+    margin: 2rem 0;
+}
+
+.code-example {
+    background: rgba(26, 3, 48, 0.8);
+    border: 1px solid #9b59b6;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1rem 0;
+}
+
+.code-example-scrollable {
+    background: rgba(26, 3, 48, 0.8);
+    border: 2px solid #9b59b6;
+    border-radius: 10px;
+    padding: 2rem;
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+pre {
+    margin: 0;
+    font-family: 'Courier New', monospace;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #e6d3ff;
+}
+
+code {
+    color: #c9a9ff;
+}
+
+/* Explanation Grid */
+.explanation-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.explanation-item {
+    background: rgba(155, 89, 182, 0.15);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border-left: 5px solid #9b59b6;
+}
+
+.explanation-item h4 {
+    color: #c9a9ff;
+    margin-bottom: 1rem;
+    font-family: 'Courier New', monospace;
+}
+
+/* Semantic Layout Visual */
+.semantic-layout-visual {
+    margin: 2rem 0;
+}
+
+.layout-diagram {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.tag-box {
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+    font-family: 'Courier New', monospace;
+    font-size: 1.3rem;
+    font-weight: bold;
+    border: 2px solid;
+}
+
+.tag-box .tag-purpose {
+    display: block;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1rem;
+    font-weight: normal;
+    margin-top: 0.5rem;
+    font-style: italic;
+}
+
+.header-tag {
+    background: rgba(231, 76, 60, 0.1);
+    border-color: #e74c3c;
+    color: #e74c3c;
+}
+
+.nav-tag {
+    background: rgba(52, 152, 219, 0.1);
+    border-color: #3498db;
+    color: #3498db;
+}
+
+.main-tag {
+    background: rgba(46, 204, 113, 0.15);
+    border-color: #2ecc71;
+    color: #2ecc71;
+}
+
+.article-tag {
+    background: rgba(155, 89, 182, 0.15);
+    border-color: #9b59b6;
+    color: #c9a9ff;
+}
+
+.aside-tag {
+    background: rgba(241, 196, 15, 0.1);
+    border-color: #f1c40f;
+    color: #f1c40f;
+}
+
+.footer-tag {
+    background: rgba(149, 165, 166, 0.1);
+    border-color: #95a5a6;
+    color: #95a5a6;
+}
+
+.why-semantic {
+    background: rgba(155, 89, 182, 0.15);
+    padding: 2rem;
+    border-radius: 10px;
+    margin-top: 2rem;
+}
+
+.why-semantic h3 {
+    color: #c9a9ff;
+    margin-bottom: 1rem;
+}
+
+.why-semantic ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.why-semantic li {
+    padding: 0.5rem 0;
+    font-size: 1.1rem;
+}
+
+/* Two-column layout */
+.two-column-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin: 2rem 0;
+}
+
+.content-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Hierarchy Rules */
+.hierarchy-rules {
+    background: rgba(52, 152, 219, 0.1);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border: 2px solid #3498db;
+}
+
+.hierarchy-rules h3 {
+    color: #3498db;
+    margin-bottom: 1rem;
+}
+
+.hierarchy-rules ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.hierarchy-rules li {
+    padding: 0.5rem 0;
+    font-size: 1.1rem;
+}
+
+.rhetorical-note {
+    background: rgba(241, 196, 15, 0.15);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    border-left: 4px solid #f1c40f;
+}
+
+.rhetorical-note h4 {
+    color: #f1c40f;
+    margin-bottom: 0.5rem;
+}
+
+.rhetorical-note p {
+    font-size: 1rem;
+    font-style: italic;
+}
+
+/* DH Structure Example */
+.dh-structure-example {
+    margin: 2rem 0;
+}
+
+.dh-structure-example h3 {
+    color: #c9a9ff;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.approach-comparison {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.approach {
+    padding: 1.5rem;
+    border-radius: 10px;
+    border: 2px solid;
+}
+
+.approach.academic {
+    background: rgba(231, 76, 60, 0.1);
+    border-color: #e74c3c;
+}
+
+.approach.community {
+    background: rgba(46, 204, 113, 0.1);
+    border-color: #2ecc71;
+}
+
+.approach h4 {
+    margin-bottom: 1rem;
+}
+
+.approach.academic h4 {
+    color: #e74c3c;
+}
+
+.approach.community h4 {
+    color: #2ecc71;
+}
+
+.argument-claim {
+    font-style: italic;
+    margin-top: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+}
+
+.structure-lesson {
+    background: rgba(241, 196, 15, 0.15);
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.structure-lesson p {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #f1c40f;
+}
+
+/* Link Best Practices */
+.link-best-practices {
+    background: rgba(46, 204, 113, 0.15);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border-left: 5px solid #2ecc71;
+}
+
+.link-best-practices h4 {
+    color: #2ecc71;
+    margin-bottom: 1rem;
+}
+
+.link-best-practices ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.link-best-practices li {
+    padding: 0.5rem 0;
+    font-size: 1.1rem;
+}
+
+.nav-example {
+    background: rgba(52, 152, 219, 0.1);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border: 2px solid #3498db;
+}
+
+.nav-example h3 {
+    color: #3498db;
+    margin-bottom: 1rem;
+}
+
+.nav-rhetoric {
+    background: rgba(241, 196, 15, 0.15);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+.nav-rhetoric h4 {
+    color: #f1c40f;
+    margin-bottom: 0.5rem;
+}
+
+.nav-rhetoric p {
+    font-size: 1rem;
+    font-style: italic;
+}
+
+/* Alt Text Comparison */
+.alt-text-comparison {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.bad-example,
+.better-example,
+.good-example {
+    padding: 1.5rem;
+    border-radius: 10px;
+    border: 2px solid;
+}
+
+.bad-example {
+    background: rgba(231, 76, 60, 0.1);
+    border-color: #e74c3c;
+}
+
+.better-example {
+    background: rgba(241, 196, 15, 0.1);
+    border-color: #f1c40f;
+}
+
+.good-example {
+    background: rgba(46, 204, 113, 0.1);
+    border-color: #2ecc71;
+}
+
+.bad-example h3 {
+    color: #e74c3c;
+    margin-bottom: 1rem;
+}
+
+.better-example h3 {
+    color: #f1c40f;
+    margin-bottom: 1rem;
+}
+
+.good-example h3 {
+    color: #2ecc71;
+    margin-bottom: 1rem;
+}
+
+.impact {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0.5rem 0;
+}
+
+.who-excluded {
+    color: #ff6b6b;
+    font-style: italic;
+    margin-top: 0.5rem;
+}
+
+.who-included {
+    color: #2ecc71;
+    font-style: italic;
+    margin-top: 0.5rem;
+}
+
+.ethical-stance {
+    background: rgba(155, 89, 182, 0.15);
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.ethical-stance p {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #c9a9ff;
+}
+
+/* List Types Grid */
+.list-types-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.list-type {
+    background: rgba(155, 89, 182, 0.15);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border: 2px solid #9b59b6;
+}
+
+.list-type h3 {
+    color: #c9a9ff;
+    margin-bottom: 1rem;
+}
+
+.list-type p {
+    margin-top: 1rem;
+    font-size: 1rem;
+}
+
+.classification-reminder {
+    background: rgba(241, 196, 15, 0.15);
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.classification-reminder p {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #f1c40f;
+}
+
+/* Full Page Example */
+.full-page-example {
+    margin: 2rem 0;
+}
+
+.structure-notes {
+    background: rgba(155, 89, 182, 0.15);
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.structure-notes p {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #c9a9ff;
+}
+
+/* What You Learned / Next Steps */
+.what-you-learned {
+    background: rgba(46, 204, 113, 0.15);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border-left: 5px solid #2ecc71;
+}
+
+.what-you-learned h3 {
+    color: #2ecc71;
+    margin-bottom: 1rem;
+}
+
+.what-you-learned ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.what-you-learned li {
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    font-size: 1.1rem;
+}
+
+.what-you-learned li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #2ecc71;
+    font-weight: bold;
+}
+
+.whats-next {
+    background: rgba(155, 89, 182, 0.15);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border: 2px solid #9b59b6;
+}
+
+.whats-next h3 {
+    color: #c9a9ff;
+    margin-bottom: 1rem;
+}
+
+.whats-next p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.preview-box {
+    background: rgba(52, 152, 219, 0.1);
+    padding: 1rem;
+    border-radius: 8px;
+    margin: 1rem 0;
+}
+
+.preview-box h4 {
+    color: #3498db;
+    margin-bottom: 0.5rem;
+}
+
+.next-title {
+    color: #3498db;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.practice-note {
+    background: rgba(241, 196, 15, 0.15);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+.practice-note h4 {
+    color: #f1c40f;
+    margin-bottom: 0.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .two-column-layout,
+    .explanation-grid,
+    .approach-comparison,
+    .alt-text-comparison,
+    .list-types-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .slide-container {
+        padding: 1rem;
+        padding-top: 2rem;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    pre {
+        font-size: 0.85rem;
+    }
+}
