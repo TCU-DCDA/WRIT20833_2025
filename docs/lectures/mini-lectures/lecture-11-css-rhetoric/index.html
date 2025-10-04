@@ -411,6 +411,88 @@
         </div>
     </section>
 
-    <script src="../script.js"></script>
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide-container');
+        const totalSlides = slides.length;
+
+        function showSlide(n) {
+            if (n >= totalSlides) { currentSlide = 0; }
+            if (n < 0) { currentSlide = totalSlides - 1; }
+            if (n >= 0 && n < totalSlides) { currentSlide = n; }
+
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[currentSlide].classList.add('active');
+
+            const counter = document.getElementById('slide-counter');
+            const prevBtn = document.getElementById('prev-slide');
+            const nextBtn = document.getElementById('next-slide');
+
+            if (counter) {
+                counter.textContent = `${currentSlide + 1} / ${totalSlides}`;
+            }
+
+            if (prevBtn) {
+                prevBtn.disabled = (currentSlide === 0);
+            }
+
+            if (nextBtn) {
+                nextBtn.disabled = (currentSlide === totalSlides - 1);
+            }
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function previousSlide() {
+            showSlide(currentSlide - 1);
+        }
+
+        // Event listeners for navigation buttons
+        document.getElementById('prev-slide').addEventListener('click', previousSlide);
+        document.getElementById('next-slide').addEventListener('click', nextSlide);
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                previousSlide();
+            }
+        });
+
+        // Touch/swipe support for mobile
+        let startX = 0;
+        let endX = 0;
+        let startY = 0;
+        let endY = 0;
+
+        document.addEventListener('touchstart', function(e) {
+            startX = e.changedTouches[0].screenX;
+            startY = e.changedTouches[0].screenY;
+        }, { passive: true });
+
+        document.addEventListener('touchend', function(e) {
+            endX = e.changedTouches[0].screenX;
+            endY = e.changedTouches[0].screenY;
+
+            const diffX = Math.abs(startX - endX);
+            const diffY = Math.abs(startY - endY);
+
+            if (diffX > diffY && diffX > 50) {
+                if (startX > endX) {
+                    nextSlide();
+                } else {
+                    previousSlide();
+                }
+            }
+        }, { passive: true });
+
+        // Initialize
+        showSlide(0);
+    </script>
 </body>
 </html>
