@@ -11,10 +11,113 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Slide 1: Title/Hook -->
+    <!-- Slide 1: Opening Discussion Question -->
     <div class="slide-container active">
         <div class="slide">
-            <div class="slide-number">1 / 12</div>
+            <div class="slide-number">1 / 15</div>
+            <h1 style="font-size: 3rem; margin-bottom: 3rem;">Discussion Starter</h1>
+
+            <div style="text-align: center; margin: 3rem 0;">
+                <img src="images/slide0a.jpg" alt="People in conversation and reading" style="max-width: 70%; height: auto; border-radius: 10px; box-shadow: 0 8px 30px rgba(201, 169, 255, 0.3);">
+            </div>
+
+            <div class="hook-question" style="margin: 3rem auto; max-width: 900px;">
+                <h2 style="color: #c9a9ff; font-size: 2.8rem; margin: 0; line-height: 1.4;">
+                    "When you're having a conversation with someone, or reading something for the first time, how do you figure out what it's about?"
+                </h2>
+            </div>
+
+            <div class="instructor-info">WRIT 20833 • Mini-Lecture: NLP & Topic Modeling</div>
+        </div>
+    </div>
+
+    <!-- Slide 2: How Humans Understand Meaning -->
+    <div class="slide-container">
+        <div class="slide">
+            <div class="slide-number">2 / 15</div>
+            <h2>How Humans <span class="highlight">Understand Meaning</span></h2>
+
+            <div class="challenge-grid" style="margin-top: 2rem;">
+                <div class="challenge-box">
+                    <h3>Repeated Words</h3>
+                    <p>"If someone keeps saying 'budget' and 'deadline'..."</p>
+                    <p class="example-text">We know it's about project management</p>
+                </div>
+
+                <div class="challenge-box">
+                    <h3>Keywords</h3>
+                    <p>"Words like 'election' or 'campaign'..."</p>
+                    <p class="example-text">Signal the topic immediately</p>
+                </div>
+
+                <div class="challenge-box">
+                    <h3>Context Clues</h3>
+                    <p>"Where we are, who's speaking..."</p>
+                    <p class="example-text">What we were just discussing</p>
+                </div>
+
+                <div class="challenge-box">
+                    <h3>Tone & Emphasis</h3>
+                    <p>"Frustration + 'traffic' + 'construction'..."</p>
+                    <p class="example-text">Complaint about commute, not urban planning</p>
+                </div>
+            </div>
+
+            <div class="key-insight" style="margin-top: 2rem; text-align: center;">
+                <p><strong>We also ask clarifying questions:</strong> "Wait, are you talking about the group project or the internship?"</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 3: The Computational Challenge -->
+    <div class="slide-container">
+        <div class="slide">
+            <div class="slide-number">3 / 15</div>
+            <h2>Now Teach a <span class="highlight">Computer</span> to Do That</h2>
+
+            <div class="two-column-layout" style="margin-top: 2rem;">
+                <div class="content-column">
+                    <h3 style="color: #c9a9ff; margin-bottom: 1.5rem;">What Humans Get:</h3>
+                    <div style="background: rgba(155, 89, 182, 0.2); padding: 1.5rem; border-radius: 10px;">
+                        <ul style="list-style: none; padding: 0; font-size: 1.3rem; line-height: 2;">
+                            <li>✓ Tone of voice</li>
+                            <li>✓ Facial expressions</li>
+                            <li>✓ Body language</li>
+                            <li>✓ Ability to ask "what do you mean?"</li>
+                            <li>✓ Cultural context</li>
+                            <li>✓ Prior conversation history</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="content-column">
+                    <h3 style="color: #ff6b6b; margin-bottom: 1.5rem;">What Computers Get:</h3>
+                    <div style="background: rgba(255, 107, 107, 0.15); padding: 1.5rem; border-radius: 10px; border: 2px solid #ff6b6b;">
+                        <div style="font-size: 2.5rem; text-align: center; margin: 2rem 0; color: #ff6b6b; font-weight: bold;">
+                            Just the words on a screen
+                        </div>
+                        <ul style="list-style: none; padding: 0; font-size: 1.2rem; line-height: 2; color: #ff9999;">
+                            <li>✗ No tone</li>
+                            <li>✗ No ability to ask questions</li>
+                            <li>✗ No cultural knowledge (unless programmed)</li>
+                            <li>✗ No visual or contextual clues</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 2rem; text-align: center; padding: 2rem; background: rgba(201, 169, 255, 0.15); border-radius: 10px;">
+                <p style="font-size: 1.6rem; color: #c9a9ff; margin: 0;">
+                    <strong>This is the challenge of Natural Language Processing...</strong>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4: Title/Hook (formerly Slide 1) -->
+    <div class="slide-container">
+        <div class="slide">
+            <div class="slide-number">4 / 15</div>
             <h1>Natural Language Processing</h1>
             <p class="subtitle">Teaching Machines to Read Culture</p>
             <img src="images/slide1.jpg" alt="Neural network processing text" class="slide-image">
@@ -24,15 +127,13 @@
                     "How can computers understand the difference between 'bank' (river) and 'bank' (money)?"
                 </h2>
             </div>
-
-            <div class="instructor-info">WRIT 20833 • Mini-Lecture: NLP & Topic Modeling</div>
         </div>
     </div>
 
-    <!-- Slide 2: What is NLP? -->
+    <!-- Slide 5: What is NLP? -->
     <div class="slide-container">
         <div class="slide">
-            <div class="slide-number">2 / 12</div>
+            <div class="slide-number">5 / 15</div>
             <h2>What is <span class="highlight">NLP</span>?</h2>
 
             <div style="text-align: center; margin-bottom: 2rem;">
@@ -60,10 +161,10 @@
         </div>
     </div>
 
-    <!-- Slide 3: The Challenge of Human Language -->
+    <!-- Slide 6: The Challenge of Human Language -->
     <div class="slide-container">
         <div class="slide">
-            <div class="slide-number">3 / 12</div>
+            <div class="slide-number">6 / 15</div>
             <h2>Why Language is <span class="highlight">Hard</span></h2>
 
             <div class="two-column-layout">
@@ -105,10 +206,10 @@
         </div>
     </div>
 
-    <!-- Slide 4: NLP Pipeline Overview -->
+    <!-- Slide 7: NLP Pipeline Overview -->
     <div class="slide-container">
         <div class="slide">
-            <div class="slide-number">4 / 12</div>
+            <div class="slide-number">7 / 15</div>
             <h2>The NLP <span class="highlight">Pipeline</span></h2>
 
             <div class="two-column-layout">
@@ -152,10 +253,10 @@
         </div>
     </div>
 
-    <!-- Slide 5: Common NLP Tasks -->
+    <!-- Slide 8: Common NLP Tasks -->
     <div class="slide-container">
         <div class="slide">
-            <div class="slide-number">5 / 12</div>
+            <div class="slide-number">8 / 15</div>
             <h2>Common NLP <span class="highlight">Tasks</span></h2>
 
             <div class="two-column-layout">
@@ -193,10 +294,10 @@
         </div>
     </div>
 
-    <!-- Slide 6: Transition to Topic Modeling -->
+    <!-- Slide 9: Transition to Topic Modeling -->
     <div class="slide-container">
         <div class="slide">
-            <div class="slide-number">6 / 12</div>
+            <div class="slide-number">9 / 15</div>
             <h2>Deep Dive: <span class="highlight">Topic Modeling</span></h2>
 
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
@@ -225,10 +326,10 @@
         </div>
     </div>
 
-    <!-- Slide 7: What is Topic Modeling? -->
+    <!-- Slide 10: What is Topic Modeling? -->
     <div class="slide-container">
         <div class="slide">
-            <div class="slide-number">7 / 12</div>
+            <div class="slide-number">10 / 15</div>
             <h2>Topic Modeling <span class="highlight">Explained</span></h2>
 
             <div class="two-column-layout">
@@ -259,10 +360,10 @@
         </div>
     </div>
 
-    <!-- Slide 8: How LDA Works (Simplified) -->
+    <!-- Slide 11: How LDA Works (Simplified) -->
     <div class="slide-container">
         <div class="slide">
-            <div class="slide-number">8 / 12</div>
+            <div class="slide-number">11 / 15</div>
             <h2>LDA: The Most Common <span class="highlight">Algorithm</span></h2>
 
             <div class="two-column-layout">
@@ -305,10 +406,10 @@
         </div>
     </div>
 
-    <!-- Slide 9: Example Output -->
+    <!-- Slide 12: Example Output -->
     <div class="slide-container">
         <div class="slide">
-            <div class="slide-number">9 / 12</div>
+            <div class="slide-number">12 / 15</div>
             <h2>What Topic Models <span class="highlight">Reveal</span></h2>
 
             <div class="two-column-layout">
@@ -349,10 +450,10 @@
         </div>
     </div>
 
-    <!-- Slide 10: Humanities Applications -->
+    <!-- Slide 13: Humanities Applications -->
     <div class="slide-container">
         <div class="slide">
-            <div class="slide-number">10 / 12</div>
+            <div class="slide-number">13 / 15</div>
             <h2>Topic Modeling in <span class="highlight">Humanities</span></h2>
 
             <div class="two-column-layout">
@@ -390,10 +491,10 @@
         </div>
     </div>
 
-    <!-- Slide 11: Critical Considerations -->
+    <!-- Slide 14: Critical Considerations -->
     <div class="slide-container">
         <div class="slide">
-            <div class="slide-number">11 / 12</div>
+            <div class="slide-number">14 / 15</div>
             <h2>Critical <span class="highlight">Questions</span></h2>
 
             <div class="two-column-layout">
@@ -429,10 +530,10 @@
         </div>
     </div>
 
-    <!-- Slide 12: Reflection and Next Steps -->
+    <!-- Slide 15: Reflection and Next Steps -->
     <div class="slide-container">
         <div class="slide">
-            <div class="slide-number">12 / 12</div>
+            <div class="slide-number">15 / 15</div>
             <h2>From Theory to <span class="highlight">Practice</span></h2>
 
             <div class="two-column-layout">
@@ -467,7 +568,7 @@
     <div class="navigation-container">
         <div class="navigation">
             <button class="nav-btn" onclick="previousSlide()">←</button>
-            <span class="nav-counter" id="slideCounter">1 / 12</span>
+            <span class="nav-counter" id="slideCounter">1 / 15</span>
             <button class="nav-btn" onclick="nextSlide()">→</button>
         </div>
     </div>
