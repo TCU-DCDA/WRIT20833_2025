@@ -3,6 +3,15 @@
 
 This document contains detailed prompts for generating visual assets for each slide in the Code as Rhetoric mini-lecture. Use these with AI image generation tools (DALL-E, Midjourney, Stable Diffusion, etc.).
 
+Note: Slides 1–4 have been redrafted into separate per-slide markdown files for easier editing and reuse. See:
+
+- `slide-01-title-hook.md` — Slide 1 (Title/Hook)
+- `slide-02-myth-neutral-code.md` — Slide 2 (The Myth of Neutral Code)
+- `slide-03-same-content-different-arguments.md` — Slide 3 (Same Content, Different Arguments)
+- `slide-04-html-as-classification.md` — Slide 4 (HTML as Classification)
+
+The rest of this document contains the original combined prompts and the full set of General Style Guidelines. Use the per-slide files for updates focused on individual slides.
+
 ---
 
 ## Slide 1: Title/Hook
