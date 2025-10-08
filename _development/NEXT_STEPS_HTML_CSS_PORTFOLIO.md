@@ -1,7 +1,8 @@
 # Next Steps: HTML/CSS Portfolio Development (Weeks 9-12)
+## When Coding Meets Culture: Developing Data-Driven Opinions Through Web Presentation
 
 ## Overview
-Following topic modeling completion, WRIT20833 will transition to web development fundamentals, enabling students to create professional websites showcasing their semester-long text analysis projects. This bridges computational analysis with public digital humanities presentation.
+Following topic modeling completion, WRIT20833 will transition to web development fundamentals, enabling students to create professional websites showcasing their journey from initial assumptions to data-driven opinions. This bridges computational analysis with public digital humanities presentation, completing the "When Coding Meets Culture" learning arc.
 
 ## Course Sequence Integration
 
@@ -149,8 +150,8 @@ Drawing from TCU's WRIT 40363 "Introduction to Web Applications" but simplified 
 
 ## Assessment Integration
 
-### **Final Portfolio Project (Weeks 11-12)**
-Replaces traditional final exam with comprehensive digital humanities portfolio:
+### **Final Portfolio Project (Weeks 11-12): Developing Data-Driven Opinions**
+Replaces traditional final exam with comprehensive digital humanities portfolio showcasing the complete journey from assumptions to data-driven insights:
 
 #### **Technical Requirements**:
 - Complete HTML website with multiple linked pages
@@ -164,8 +165,9 @@ Replaces traditional final exam with comprehensive digital humanities portfolio:
 - **Term Frequency Analysis**: Results and interpretation from HW4-1
 - **Sentiment Analysis**: VADER findings and critical assessment from HW4-1
 - **Topic Modeling**: Gensim LDA results and theme analysis from HW4-2
-- **Integration & Reflection**: Synthesis of all analytical approaches
-- **Critical Analysis**: Assessment of computational methods' strengths and limitations
+- **Integration & Reflection**: Synthesis of all analytical approaches and evolution from initial predictions
+- **Data-Driven Opinions**: Demonstration of how computational analysis refined and challenged initial assumptions
+- **Critical Analysis**: Assessment of computational methods' strengths and limitations in developing evidence-based cultural insights
 
 #### **Academic Context**:
 - Professional presentation suitable for academic portfolios

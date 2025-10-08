@@ -1,14 +1,14 @@
-# WRIT 20833 — Course Materials (2025)
+# WRIT 20833 — When Coding Meets Culture (Fall 2025)
 
-This repository contains course materials for WRIT 20833, including interactive Jupyter notebooks, web-based lectures, and supporting resources for the 2025 semester. As of September 2025, this repository also serves as the foundation for a comprehensive **textbook development project** scheduled for publication in August 2026.
+Course materials for **Introduction to Coding in the Humanities** including interactive Jupyter notebooks, web-based lectures, and supporting resources. Students explore how computational analysis meets cultural interpretation, developing data-driven opinions through hands-on text analysis projects.
 
-## 📚 Repository Contents
+## 📚 Course Materials
 
-### � **Textbook Development** (New September 2025)
-- **Provisional TOC**: Complete chapter structure for "When Coding Meets Culture" textbook
-- **Planning Documents**: Technical specifications, dataset requirements, and development timeline
-- **Content Integration**: Assessment of existing materials for textbook adaptation
-- **Target Publication**: August 2026 for Fall 2026 course launch
+### 🎯 Quick Access for Students
+- **Course Website**: https://tcu-dcda.github.io/WRIT20833-2025/
+- **Homework Assignments**: [`notebooks/homework/`](notebooks/homework/)
+- **CodeAlong Tutorials**: [`notebooks/codeAlongs/`](notebooks/codeAlongs/)
+- **Course Lectures**: [`docs/lectures/`](docs/lectures/)
 
 ### �📓 Notebooks (11 total)
 - **CodeAlongs**: Interactive coding sessions covering Python fundamentals, data analysis, and text analysis
@@ -62,7 +62,8 @@ WRIT20833-2025/
 │   │   ├── WRIT20833_Pandas_01_Found_Data_Fundamentals_F25.ipynb
 │   │   ├── WRIT20833_Pandas_02_Data_Cleaning_Analysis_Pandas_F25.ipynb
 │   │   ├── WRIT20833_Instant_Data_Scraper_Ethics_F25.ipynb
-│   │   └── WRIT20833_VADER_Sentiment_Analysis_F25.ipynb
+│   │   ├── WRIT20833_VADER_Sentiment_Analysis_F25.ipynb
+│   │   └── WRIT20833_Topic_Modeling_Gensim_F25.ipynb
 │   ├── exercises/
 │   │   └── WRIT20833_Conditionals_9-5-25.ipynb
 │   ├── tutorials/                  # Critical framework integration examples
@@ -70,49 +71,74 @@ WRIT20833-2025/
 │   │   ├── Tutorial_02_Classification_Logic_MiniLecture2.ipynb
 │   │   ├── Tutorial_03_AI_Agency_MiniLecture3.ipynb
 │   │   └── Tutorial_04_Collective_Memory_MiniLecture4.ipynb
-│   └── homework/                   # Assessment model examples
+│   └── homework/                   # Complete learning arc: assumptions → data → insights
 │       ├── WRIT20833_HW1_Fall2025.ipynb
-│       └── WRIT20833_HW4-1_Term_Frequency_Sentiment_F25.ipynb
-└── textbook/                       # **NEW: Textbook Development**
-    ├── provisionalTOC.md           # Complete 18-chapter structure
-    ├── initial_plan.md             # 16-week curriculum design
-    ├── tech_stack_decisions.md     # Platform and tool specifications
-    ├── datasets_needed.md          # Data collection requirements
-    ├── weekly_exercises_outline.md # Pedagogical activity framework
-    └── NEXT_STEPS_TOPIC_MODELING.md # Planning for final text analysis phase
+│       ├── WRIT20833_HW4-1_Term_Frequency_Sentiment_F25.ipynb
+│       ├── WRIT20833_HW4-2_Topic_Modeling_Integration_F25.ipynb
+│       └── WRIT20833_HW5_Final_Project_Proposal.md
+├── docs/                           # Course website and final project requirements
+│   ├── index.html                  # Main course website (GitHub Pages)
+│   ├── WRIT20833_HW5_Final_Project_Requirements.md
+│   └── lectures/                   # Web-accessible HTML presentations
+├── datasets/                       # Cultural data for analysis projects
+└── _development/                   # Course and textbook development materials
 ```
 
 ## 🚀 Getting Started
 
-### **For Current Students (Fall 2025)**
-- **Notebooks**: All configured for Google Colab - click links in [`docs/index.md`](docs/index.md)
-- **Lectures**: Access HTML presentations directly or via GitHub Pages
-- **Course Materials**: Organized access through [`docs/index.md`](docs/index.md)
+### **For Students**
+- **All notebooks configured for Google Colab** - just click and run!
+- **Complete course website** at https://tcu-dcda.github.io/WRIT20833-2025/
+- **Final Project workflow**: Proposal → Requirements → Portfolio
+- **Direct access to all materials** through organized directory structure
 
-### **For Textbook Development (2025-2026)**
-- **Planning Documents**: Start with [`textbook/provisionalTOC.md`](textbook/provisionalTOC.md) for complete chapter overview
-- **Content Assessment**: Existing notebooks map to Chapters 3-4, 7-8 with 80%+ completion for Python and text analysis
-- **Integration Strategy**: Mini-lectures provide critical frameworks for technical chapters
+### **For Instructors & Collaborators**
+- **Complete course materials** ready for classroom use
+- **Modular organization** for easy adaptation and updates
+- **Development materials** available in [`_development/`](_development/) directory
 
 ## 📋 Course & Textbook Vision
 
-### **Current Course (Fall 2025)**
+### **Current Course Theme: "When Coding Meets Culture: Developing Data-Driven Opinions" (Fall 2025)**
+The course explores what happens when computational analysis meets cultural interpretation, guiding students from initial assumptions to well-grounded, data-driven opinions through:
+
 1. **Digital Boundaries**: Exploring the intersection of technology and society
 2. **Classification Logic**: Understanding data categorization and algorithmic thinking  
 3. **AI Agency**: Examining artificial intelligence and human interaction
 4. **Collective Memory**: Investigating digital memory and cultural preservation
 
-### **Planned Textbook: "When Coding Meets Culture"**
+**Complete Learning Arc**: Students progress from predictions → computational analysis → data-driven insights → public portfolio presentation, discovering how "being wrong" about initial assumptions leads to genuine learning and more sophisticated cultural understanding.
+
+### **Course Structure**
 **Target Audience**: Complete coding beginners in humanities  
-**Structure**: 18 chapters across 4 parts
-- **Part I**: Python Foundations (Weeks 1-4)
-- **Part II**: Text Analysis & NLP (Weeks 5-8) 
-- **Part III**: Web Development (Weeks 9-12)
-- **Part IV**: Integration Projects (Weeks 13-16)
+**16-Week Progression**:
+- **Weeks 1-4**: Python Foundations (variables, loops, functions)
+- **Weeks 5-8**: Text Analysis & Cultural Data (pandas, sentiment analysis, topic modeling)
+- **Weeks 9-12**: Web Development & Portfolio Creation (HTML/CSS)
+- **Weeks 13-16**: Final Projects & Public Presentation
 
-**Key Innovation**: Integrates critical thinking about technology's social implications throughout technical instruction
+**Pedagogical Philosophy**: Integrates critical thinking about technology's cultural implications throughout technical instruction, helping students develop both computational skills and cultural analysis capabilities.
 
-**Curriculum Philosophy**: Focus maintained on Python foundations and cultural analysis rather than multiple programming languages, ensuring depth over breadth for humanities students learning their first coding skills
+## 🎯 Final Project: When Coding Meets Culture
+
+### **Complete Learning Arc (HW4-1 → HW4-2 → HW5)**
+Students experience the full journey from assumptions to data-driven opinions:
+
+1. **HW4-1**: Term frequency analysis and sentiment analysis with initial predictions
+2. **HW4-2**: Topic modeling integration and reflection on "being wrong" as learning
+3. **HW5**: Final project proposal → requirements → public portfolio presentation
+
+### **Project Structure**
+- **Proposal Stage** (`notebooks/homework/WRIT20833_HW5_Final_Project_Proposal.md`): 8-point proposal building on HW4 insights
+- **Requirements Document** (`docs/WRIT20833_HW5_Final_Project_Requirements.md`): Complete project specifications with ungrading philosophy
+- **Three Deliverables**: Research essay + Python notebooks + Web portfolio (HTML/CSS)
+
+### **Assessment Philosophy**
+Prioritizes **earned insight over clean code**, emphasizing:
+- Evolution of thinking from initial predictions through final, data-driven opinions
+- Integration of technical analysis with humanistic interpretation
+- Critical assessment of both results and analytical tools
+- "Being wrong" in predictions as evidence of genuine learning
 
 ## 🛠️ Technical Notes
 
@@ -121,48 +147,15 @@ WRIT20833-2025/
 - **Images**: Optimized web formats (PNG, JPG, GIF, SVG)
 - **Structure**: Modular organization for easy maintenance and updates
 
-## 🌿 Development Workflow
+## 📅 Course Information
 
-### **Branch Strategy**
-- **`main` branch**: Stable, classroom-ready content (protected)
-- **`textbook-dev` branch**: Active development for textbook project
-- **Public access**: Students and colleagues use stable `main` branch content
-- **Content control**: Only tested materials reach `main` via pull requests
-
-### **For Contributors & Textbook Development**
-```bash
-# Work on textbook development
-git checkout textbook-dev
-# Make changes, test, commit
-git push origin textbook-dev
-
-# Publish classroom-ready content
-# Create PR: textbook-dev → main
-# Merge after review
-```
-
-**See [`BRANCHING_STRATEGY.md`](BRANCHING_STRATEGY.md) for detailed workflow guidance.**
-
-## 📅 Project Timeline
-
-### **Current Status (September 2025)**
-- ✅ **Content Assessment Complete**: Existing materials evaluated for textbook integration
-- ✅ **Provisional TOC Created**: 18-chapter structure with existing content mapped
-- ✅ **High-Quality Foundation**: Lectures and notebooks ready for adaptation
-- ✅ **Technical Planning**: Platform decisions and development strategy finalized
-- ✅ **Development Workflow**: Branch protection and controlled publishing implemented
-
-### **Development Schedule**
-- **Fall 2025** (Heavy Development): Python foundations content (Chapters 2-6)
-- **Spring 2026** (Maintenance Mode): NLP and web development chapters  
-- **Summer 2026** (Final Push): Integration projects and publication preparation
-- **August 2026**: Textbook publication for Fall 2026 course launch
-
-### **Current Course Information**
 **Course**: WRIT 20833 - Introduction to Coding in the Humanities  
-**Institution**: TCU  
-**Current Semester**: Fall 2025  
-**Repository**: TCU-DCDA/WRIT20833-2025
+**Institution**: Texas Christian University  
+**Semester**: Fall 2025  
+**Instructor**: [Your name]
+
+**Course Website**: https://tcu-dcda.github.io/WRIT20833-2025/  
+**Repository**: https://github.com/TCU-DCDA/WRIT20833-2025
 
 ---
 

@@ -4,7 +4,21 @@
 
 I will start a coding session with you.
 
-Output the message number after each message without explanation.
+Output the message number after each message witho### Content Standards
+
+### Final Project Workflow
+- **Proposal Stage**: 8-point proposal in `notebooks/homework/WRIT20833_HW5_Final_Project_Proposal.md`
+- **Requirements Document**: Complete specifications in `docs/WRIT20833_HW5_Final_Project_Requirements.md`
+- **Assessment Philosophy**: Ungrading approach prioritizing earned insight over clean code
+- **Learning Arc**: Students progress from assumptions → computational analysis → data-driven opinions → public presentation
+- **Theme Integration**: "When Coding Meets Culture: Developing Data-Driven Opinions" woven throughout
+
+### Notebook Structure
+- **Header Cell**: Course info, assignment title, student name field
+- **Setup Cells**: Import statements and helper functions
+- **Exercise Cells**: Clear instructions with expected outputs
+- **Reflection Cells**: Critical thinking prompts connecting code to culture, emphasizing evolution from predictions to insights
+- **Submission Guidelines**: Naming conventions and upload instructionsnation.
 
 Every 4th message, remind yourself of these rules:
 
@@ -50,10 +64,14 @@ WRIT20833-2025/
 │   ├── homework/                  # Structured assignments
 │   ├── exercises/                 # In-class practice activities
 │   └── tutorials/                 # Interactive coding paired with mini-lectures
-├── textbook/                      # Textbook development planning
-│   ├── provisionalTOC.md         # Complete 18-chapter structure
-│   ├── tech_stack_decisions.md   # Platform and tool specifications
-│   └── datasets_needed.md        # Data collection requirements
+├── _development/                  # Course and textbook development materials
+│   ├── textbook/                 # Textbook development planning
+│   │   ├── provisionalTOC.md     # Complete 18-chapter structure
+│   │   ├── tech_stack_decisions.md # Platform and tool specifications
+│   │   └── datasets_needed.md    # Data collection requirements
+│   ├── CLAUDE.md                 # This development guidance file
+│   ├── NEXT_STEPS_*.md          # Planning documents
+│   └── archive/                  # Superseded files and versions
 └── exercises/                     # Additional exercise materials
 ```
 
@@ -89,11 +107,14 @@ The course integrates **technical Python instruction** with **critical cultural 
 3. **AI Agency**: Power and pseudo-agency in AI tools
 4. **Collective Memory**: Digital memory and cultural preservation
 
-### Content Integration Pattern
+### Content Integration Pattern: "When Coding Meets Culture: Developing Data-Driven Opinions"
 - **Main Lectures**: Foundational digital humanities concepts (HTML presentations)
 - **Mini-Lectures**: Critical frameworks connecting coding to cultural analysis
 - **Tutorials**: Interactive coding exercises paired with critical thinking
-- **Homework**: Structured assignments demonstrating assessment approaches
+- **Homework**: Complete learning arc from assumptions to data-driven opinions
+  - **HW4-1**: Term frequency and sentiment analysis with predictions
+  - **HW4-2**: Topic modeling integration and reflection on "being wrong" as learning
+  - **HW5**: Final project with proposal → requirements → public portfolio workflow
 
 ## Development Commands
 
@@ -132,19 +153,21 @@ find notebooks/ -name "*.ipynb" -exec python -m json.tool {} \; > /dev/null
 
 ### Development Priorities (Fall 2025)
 1. **Chapters 2-6**: Python foundations content (high priority)
-2. **Chapters 7-10**: Text analysis and NLP (current focus - sentiment analysis and topic modeling)
-3. **Planning Phase**: Web development and integration chapters
+2. **Chapters 7-10**: Text analysis and NLP (completed - sentiment analysis and topic modeling)
+3. **Chapters 11-15**: Web development and portfolio presentation (current focus)
+4. **Assessment Integration**: Final project workflow with ungrading philosophy
 
-### Recent Developments (Week 7-8)
+### Recent Developments (Week 7-10)
 - **Instant Data Scraper CodeAlong**: Ethical data collection using browser extensions
 - **VADER Sentiment Analysis CodeAlong**: Cultural text sentiment analysis
 - **HW4-1**: Term frequency and sentiment analysis assignment (completed)
-- **Next Steps**: Topic modeling with Gensim LDA for HW4-2
+- **HW4-2**: Topic modeling with Gensim LDA and integration reflection (completed)
+- **HW5 Final Project**: "When Coding Meets Culture: Developing Data-Driven Opinions" - complete workflow from proposal to public portfolio
 
 ### Key Planning Documents
-- `textbook/provisionalTOC.md`: Complete chapter structure and content mapping
-- `textbook/tech_stack_decisions.md`: Technical platform decisions and rationale
-- `textbook/datasets_needed.md`: Data collection requirements for examples
+- `_development/textbook/provisionalTOC.md`: Complete chapter structure and content mapping
+- `_development/textbook/tech_stack_decisions.md`: Technical platform decisions and rationale
+- `_development/textbook/datasets_needed.md`: Data collection requirements for examples
 
 ## Content Standards
 
@@ -223,10 +246,10 @@ All technical content should connect to one of the four critical frameworks:
 ---
 
 *Last Updated: September 28, 2025*
-*For questions about this codebase: Refer to planning documents in `textbook/` directory*
+*For questions about this codebase: Refer to planning documents in `_development/textbook/` directory*
 
 ### Recent CodeAlong Development (Week 7-8)
 - `WRIT20833_Instant_Data_Scraper_Ethics_F25.ipynb`: Ethical data collection with robots.txt compliance
 - `WRIT20833_VADER_Sentiment_Analysis_F25.ipynb`: Cultural text sentiment analysis
 - `WRIT20833_HW4-1_Term_Frequency_Sentiment_F25.ipynb`: Complete text analysis assignment
-- Planning document: `NEXT_STEPS_TOPIC_MODELING.md` for upcoming Gensim LDA work
+- Planning document: `_development/NEXT_STEPS_TOPIC_MODELING.md` for upcoming Gensim LDA work
