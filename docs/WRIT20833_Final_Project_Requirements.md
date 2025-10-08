@@ -1,26 +1,29 @@
 # When Coding Meets Culture: Developing Data-Driven Opinions
 ## WRIT 20833 Final Project Requirements
 
-*This project builds on your approved HW5 proposal and the complete text analysis workflow you developed across HW4-1 and HW4-2.*
+*This project builds on your approved **HW5 proposal** and the complete text analysis workflow you developed across HW4-1 and HW4-2. HTML/CSS training assignments (HW6+) will prepare you for the web portfolio component.*
 
 ## Project Overview
 
-For your final project (groups of up to 3 members or individual work), you will execute the digital research project outlined in your HW5 proposal. Your project explores what happens when coding meets culture, providing a test case for your answer to this question: **What insights emerge when we integrate term frequency analysis, sentiment analysis, and topic modeling with traditional humanities interpretation methods?** What do computational and humanities approaches reveal together that neither could discover alone? How do you move from initial assumptions to well-grounded, data-driven opinions?
+For your final project (groups of up to 3 members or individual work), you will execute the digital research project outlined in your **HW5 proposal**. Your project explores what happens when coding meets culture, providing a test case for your answer to this question: **What insights emerge when we integrate term frequency analysis, sentiment analysis, and topic modeling with traditional humanities interpretation methods?** What do computational and humanities approaches reveal together that neither could discover alone? How do you move from initial assumptions to well-grounded, data-driven opinions?
 
 This assignment combines the technical skills you have learned with your own research and career goals. Your work should employ a humanist approach to data analytics, demonstrating how computational analysis can challenge and refine cultural interpretation, using the digital humanities articles from our threaded discussions as models for your approach.
 
 ## Deliverables
 
-Your project includes three integrated components:
+Your project includes four integrated components:
 
 1. **Research Essay** (1500-2000 words): Academic analysis of your research process, methods, and findings
 2. **Python Notebooks** (.ipynb files): Complete computational analysis demonstrating your three base methods plus additional approaches
-3. **Web Portfolio** (HTML/CSS): Public-facing presentation of your research findings and insights
+3. **Dataset Documentation** (CSV files + data biography): Clean, well-documented datasets with ethical collection documentation
+4. **Web Portfolio** (HTML/CSS): Public-facing presentation of your research findings and insights
+   
+   *Note: HTML/CSS skills will be developed through HW6+ assignments before final project submission*
 
 ## Project Requirements
 
 ### Research Question & Methods
-Building on your HW5 proposal, execute a research question that could not be answered using traditional humanities methods alone (close reading, reflection, etc.). Use the three base methods from HW4-1 and HW4-2 (Term Frequency Analysis, Sentiment Analysis with VADER, Topic Modeling with Gensim) plus close reading and additional computational methods as appropriate to answer your research question.
+Building on your **HW5 proposal**, execute a research question that could not be answered using traditional humanities methods alone (close reading, reflection, etc.). Use the three base methods from HW4-1 and HW4-2 (Term Frequency Analysis, Sentiment Analysis with VADER, Topic Modeling with Gensim) plus close reading and additional computational methods as appropriate to answer your research question.
 
 ### Technical Standards
 - All code must be well-documented with clear comments
@@ -42,13 +45,14 @@ Your essay should outline the significance of your project, the methodologies yo
 Brief high-level overview of the project and how it builds on your HW4-1/HW4-2 work.
 
 **Research Question** (200-300 words)
-The question itself, background context, and how the question evolved from your HW5 proposal through project execution.
+The question itself, background context, and how the question evolved from your **HW5 proposal** through project execution.
 
 **Methods** (400-800 words)
 - Why you selected your specific combination of computational and interpretive methods
 - How you anticipated and addressed limitations or problems with your tools
 - What sections of course materials were helpful
-- Your data biography: sources, collection ethics, and preparation process
+- Your data collection and preparation process: sources, ethical considerations, and methodology
+- Reflection on data quality, limitations, and how these affected your analysis
 
 **Group Roles/Responsibilities** (300-800 words - for group projects only)
 Who was responsible for each component and how the actual work distribution evolved during the project.
@@ -72,6 +76,14 @@ Your computational analysis should demonstrate:
 - Integration of additional methods as appropriate to your research question
 - Clear visualization of results and patterns
 
+### Dataset Documentation
+Your data component should include:
+- **Clean CSV files**: Processed datasets ready for analysis (with privacy/ethical considerations addressed)
+- **Data Biography** (250-400 words): Documentation of sources, collection methods, ethical considerations, and preparation steps
+- **Source Attribution**: Proper citation of data sources and any tools used (e.g., Instant Data Scraper)
+- **Ethical Statement**: Brief reflection on data collection ethics and privacy considerations
+- **Replication Instructions**: Clear documentation allowing others to understand your data preparation process
+
 ### Web Portfolio
 Your public presentation should include:
 - Clear, accessible presentation of computational findings to public audiences
@@ -85,9 +97,10 @@ How did you design your web portfolio to communicate your findings to non-academ
 
 ## Timeline & Submission
 
-- **HW5 Proposal Due**: [Date]
-- **Project Check-in**: [Date] - Brief progress report and any challenges
-- **Final Project Due**: [Date] - All three components submitted
+- **HW5 Proposal Due**: [Date] - Project proposal and research plan
+- **HW6+ HTML/CSS Training**: [Dates] - Web development skills for portfolio component
+- **Project Check-in**: [Date] - Progress report and technical support
+- **Final Project Due**: [Date] - All four components submitted
 - **Class Presentations**: [Date] - Brief presentations of key findings (time permitting)
 
 ## Research Question Examples

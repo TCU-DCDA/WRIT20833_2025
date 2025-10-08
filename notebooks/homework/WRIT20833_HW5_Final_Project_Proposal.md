@@ -36,4 +36,4 @@ For your Proposal, please confirm in your replies to each bullet point below how
 
 ---
 
-*Upon proposal approval, see [WRIT20833_HW5_Final_Project_Requirements.md] for complete project deliverables, assessment criteria, and submission guidelines.*
+*Upon proposal approval, see [Final Project Requirements](../../docs/WRIT20833_Final_Project_Requirements.md) for complete project deliverables and assessment criteria. HTML/CSS training assignments (HW6+) will prepare you for the technical portfolio component.*
