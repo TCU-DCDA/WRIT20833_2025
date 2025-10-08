@@ -2,8 +2,8 @@
 ## When Coding Meets Culture: Building Your Learning Journey Website
 
 **Due**: Wednesday, October 29, 2025
-**Points**: 100 points
 **Format**: Local folder with HTML files + GitHub repository with commit history
+**Assessment**: Ungrading approach (see criteria below)
 
 ---
 
@@ -215,30 +215,48 @@ Submit as a separate document (PDF or .docx) addressing:
 
 ## Assessment Criteria
 
-This assignment follows our "earned insight over clean code" philosophy. You'll be assessed on:
+This assignment follows our **ungrading philosophy**: "earned insight over clean code." Rather than receiving a traditional point-based grade, you'll engage in self-assessment and receive narrative feedback on your learning and growth.
 
-### HTML Structure & Semantics (40 points)
+### What Success Looks Like
+
+Your portfolio demonstrates learning and growth when it shows:
+
+**HTML Structure & Semantics**
 - Proper document structure on all pages
 - Semantic HTML elements used appropriately
 - All required elements present (`<nav>`, `<header>`, `<main>`, `<footer>`)
 - Valid HTML (no missing closing tags, proper nesting)
+- *Growth indicator: You understand why semantic HTML matters for accessibility and meaning*
 
-### Content Quality (30 points)
+**Content Quality**
 - All 4 pages contain required content sections
 - Content clearly presents your HW4 research journey
 - Visualizations embedded and labeled appropriately
 - Writing is clear and audience-appropriate
+- *Growth indicator: You can translate technical work into web-accessible narratives*
 
-### Version Control Practice (20 points)
+**Version Control Practice**
 - Repository properly set up and public
 - 3-5 meaningful commits showing incremental progress
 - Descriptive commit messages
 - Files properly organized
+- *Growth indicator: You understand git as a tool for iterative development and documentation*
 
-### Reflection Report (10 points)
-- Addresses all reflection prompts
+**Reflection Report**
+- Addresses all reflection prompts thoughtfully
 - Demonstrates critical thinking about web presentation
 - 250-300 word length requirement met
+- *Growth indicator: You can articulate your learning process and challenges overcome*
+
+### Self-Assessment Component
+
+With your submission, include a brief self-assessment (can be part of your reflection):
+- What aspects of this assignment challenged you most?
+- What are you most proud of accomplishing?
+- Where do you see room for growth in HW7?
+- How does this work demonstrate your learning?
+
+You'll receive narrative feedback focused on your progress, effort, and areas for continued growth. The goal is learning HTML effectively, not achieving a perfect score.
 
 ---
 

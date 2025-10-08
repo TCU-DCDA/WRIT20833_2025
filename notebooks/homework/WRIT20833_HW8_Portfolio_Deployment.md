@@ -2,8 +2,8 @@
 ## When Coding Meets Culture: Going Public with Your Research
 
 **Due**: Friday, November 15, 2025 (**HARD DEADLINE**)
-**Points**: 100 points
 **Format**: Live GitHub Pages URL + Professional Documentation
+**Assessment**: Ungrading approach (see criteria below)
 
 ---
 
@@ -218,35 +218,73 @@ Make a final commit including:
 
 ## Assessment Criteria
 
-This assignment follows our "earned insight over clean code" philosophy.
+This assignment follows our **ungrading philosophy**: "earned insight over clean code." As the culmination of your individual portfolio work, you'll engage in comprehensive self-assessment and receive narrative feedback on your complete web development journey.
 
-### Deployment Success (30 points)
+### What Success Looks Like
+
+Your deployed portfolio demonstrates learning and growth when it shows:
+
+**Deployment Success**
 - Portfolio successfully deployed to GitHub Pages
 - Live URL accessible and functional
 - All pages load correctly
 - All images display properly
 - Navigation works across all pages
 - Responsive design functions on mobile/tablet
+- *Growth indicator: You can navigate the complete local → remote → public deployment workflow*
 
-### Professional Documentation (30 points)
+**Professional Documentation**
 - README.md file complete with all required sections
 - Clear, professional writing appropriate for public repository
 - Accurate description of project and methods
 - Working link to live site
 - Proper markdown formatting
+- *Growth indicator: You understand documentation as essential professional practice*
 
-### Comprehensive Reflection (30 points)
+**Comprehensive Reflection**
 - All reflection prompts addressed thoughtfully
 - Demonstrates critical thinking about web development learning
 - Connects technical work to humanities research goals
 - 600-800 word length requirement met
 - Clear evidence of growth and learning
+- *Growth indicator: You can articulate your complete learning journey from HTML basics to public deployment*
 
-### Portfolio Quality (10 points)
+**Portfolio Quality**
 - Content is complete, polished, and free of major errors
 - Design is professional and enhances readability
 - Visualizations are clear and well-integrated
 - Overall impression is suitable for public/professional sharing
+- *Growth indicator: You've created work you're proud to share publicly*
+
+### Self-Assessment Component
+
+With your submission, include comprehensive self-assessment addressing:
+
+**Technical Growth**
+- How have your web development skills evolved from Session 1 (setup) to now?
+- What technical challenges did you overcome across HW6, HW7, and HW8?
+- What technical skills are you most confident in now?
+
+**Portfolio as Professional Artifact**
+- How does your portfolio represent your academic/professional identity?
+- Who might view this portfolio and why does that matter?
+- What would you change with more advanced skills or time?
+
+**Learning Journey**
+- How does this portfolio demonstrate "when coding meets culture"?
+- What does your commit history reveal about your learning process?
+- How has building this portfolio changed your confidence in technical work?
+- How will you use or build on this portfolio beyond this course?
+
+### Narrative Feedback
+
+You'll receive comprehensive narrative feedback on:
+- Your complete web development learning arc (HW6 → HW7 → HW8)
+- Strengths demonstrated in your deployed portfolio
+- Growth areas for future web projects
+- How your portfolio showcases computational humanities work
+
+**This assignment marks completion of individual portfolio work.** The goal is celebrating what you've learned and built, while preparing you to apply these skills collaboratively in your group final project.
 
 ---
 
@@ -472,15 +510,15 @@ During Session 15, volunteers will demonstrate their portfolios to the class. Th
 
 ---
 
-## Grading Notes: Earned Insight Over Clean Code
+## Assessment Philosophy: Earned Insight Over Clean Code
 
-This assignment prioritizes:
+Our ungrading approach prioritizes:
 - **Successful deployment** over perfect code
 - **Thoughtful reflection** over technical perfection
 - **Complete documentation** over advanced features
 - **Learning demonstrated** over flawless execution
 
-Your portfolio doesn't need to be perfect—it needs to be **yours, public, and polished enough to share proudly**.
+Your portfolio doesn't need to be perfect—it needs to be **yours, public, and polished enough to share proudly**. You'll receive narrative feedback celebrating your growth and identifying areas for continued development, not a numerical grade.
 
 ---
 

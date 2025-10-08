@@ -2,8 +2,8 @@
 ## When Coding Meets Culture: Designing Your Data Story
 
 **Due**: Friday, November 8, 2025
-**Points**: 100 points
 **Format**: Updated GitHub repository with styled portfolio + design report
+**Assessment**: Ungrading approach (see criteria below)
 
 ---
 
@@ -160,33 +160,52 @@ Submit as PDF or .docx addressing:
 
 ## Assessment Criteria
 
-This assignment follows our "earned insight over clean code" philosophy.
+This assignment follows our **ungrading philosophy**: "earned insight over clean code." You'll engage in self-assessment and receive narrative feedback on your design learning and growth.
 
-### CSS Implementation (40 points)
+### What Success Looks Like
+
+Your styled portfolio demonstrates learning and growth when it shows:
+
+**CSS Implementation**
 - External stylesheet properly linked to all pages
 - Typography styling applied (fonts, sizes, spacing)
 - Cohesive color scheme with good contrast
 - Effective use of margin and padding for spacing
 - At least one Flexbox layout implemented
 - Responsive design with media queries
+- *Growth indicator: You understand CSS as a rhetorical tool for visual communication*
 
-### Design Quality (30 points)
+**Design Quality**
 - Visual hierarchy guides reader through content
 - Consistent styling across all 4 pages
 - Design choices enhance rather than distract from content
 - Professional appearance suitable for public portfolio
 - Color and typography choices are intentional and appropriate
+- *Growth indicator: You make deliberate design decisions that support your research narrative*
 
-### Version Control Practice (20 points)
+**Version Control Practice**
 - 5-7 meaningful commits showing iterative design
 - Commits demonstrate progressive development
 - Descriptive commit messages explain changes
+- *Growth indicator: You embrace iterative design and document your evolution*
 
-### Design Report (10 points)
+**Design Report**
 - All prompts addressed thoughtfully
 - Demonstrates critical thinking about design rhetoric
 - 400-500 word length requirement met
 - Clear connection between design choices and research content
+- *Growth indicator: You can articulate how visual design shapes meaning*
+
+### Self-Assessment Component
+
+With your submission, include a brief self-assessment (can be part of your design report):
+- What design choices are you most proud of and why?
+- What CSS challenges pushed your learning the most?
+- How did iterative design (through commits) improve your final product?
+- How does visual design enhance your data storytelling?
+- Where do you see room for continued growth?
+
+You'll receive narrative feedback focused on your design thinking, technical growth, and areas for continued development. The goal is learning to design effectively for web audiences, not achieving design perfection.
 
 ---
 
