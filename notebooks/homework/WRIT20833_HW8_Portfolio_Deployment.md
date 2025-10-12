@@ -1,7 +1,7 @@
 # WRIT 20833 - Homework 8: Portfolio Deployment & Documentation
 ## When Coding Meets Culture: Going Public with Your Research
 
-**Due**: Friday, November 15, 2025 (**HARD DEADLINE**)
+**Due**: Sunday, November 16, 2025 (**HARD DEADLINE**)
 **Format**: Live GitHub Pages URL + Professional Documentation
 **Assessment**: Ungrading approach (see criteria below)
 

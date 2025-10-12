@@ -1,7 +1,7 @@
 # WRIT 20833 - Homework 7: CSS Portfolio Styling
 ## When Coding Meets Culture: Designing Your Data Story
 
-**Due**: Friday, November 8, 2025
+**Due**: Sunday, November 9, 2025
 **Format**: Updated GitHub repository with styled portfolio + design report
 **Assessment**: Ungrading approach (see criteria below)
 
