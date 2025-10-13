@@ -18,21 +18,21 @@ Imagine the project as discovering what emerges when coding meets culture throug
 
 For your Proposal, please confirm in your replies to each bullet point below how your project will explore the intersection of coding and culture, moving from initial assumptions to data-driven opinions:
 
-• Your current answer to this question: **What insights emerge when we integrate term frequency analysis, sentiment analysis, and topic modeling with traditional humanities interpretation methods?** What do computational and humanities approaches reveal together that neither could discover alone? How might your assumptions be challenged by what the data reveals? (You're encouraged to build on ideas from your HW4-2 reflection on method integration)
+1) Your current answer to this question: **What insights emerge when we integrate term frequency analysis, sentiment analysis, and topic modeling with traditional humanities interpretation methods?** What do computational and humanities approaches reveal together that neither could discover alone? How might your assumptions be challenged by what the data reveals? (You're encouraged to build on ideas from your HW4-2 reflection on method integration)
 
-• Your broad topic or area of cultural concern that will give you an opportunity to explore what happens when coding meets culture
+2) Your broad topic or area of cultural concern that will give you an opportunity to explore what happens when coding meets culture
 
-• Your current (focused and manageable) Research Question that emerges from patterns you discovered in your HW4-2 topic modeling work or from debates related to your broad topic
+3) Your current (focused and manageable) Research Question that emerges from patterns you discovered in your HW4-2 topic modeling work or from debates related to your broad topic
 
-• Your initial Hypothesis (your current provisional answer to the Research Question that your project will test through integrated computational and interpretive analysis—remember, being "wrong" is valuable evidence of learning!)
+4) Your initial Hypothesis (your current provisional answer to the Research Question that your project will test through integrated computational and interpretive analysis—remember, being "wrong" is valuable evidence of learning!)
 
-• The Dataset(s) you'll be working with (building on HW4-1 data collection, found datasets, or ethically scraped new data)
+5) The Dataset(s) you'll be working with (building on HW4-1 data collection, found datasets, or ethically scraped new data)
 
-• The Method(s) you'll use (must include the three base methods: Term Frequency, Sentiment Analysis, Topic Modeling, plus Close Reading and additional methods as appropriate)
+6) The Method(s) you'll use (must include the three base methods: Term Frequency, Sentiment Analysis, Topic Modeling, plus Close Reading and additional methods as appropriate)
 
-• Your plan for the **web-based portfolio component** (how will you present your data-driven insights to a public audience using HTML/CSS?)
+7) Your plan for the **web-based portfolio component** (how will you present your data-driven insights to a public audience using HTML/CSS?)
 
-• If working in a group, a description of the Division of labor (who is responsible for what components of analysis and presentation?)
+8) If working in a group, a description of the Division of labor (who is responsible for what components of analysis and presentation?)
 
 ---
 
