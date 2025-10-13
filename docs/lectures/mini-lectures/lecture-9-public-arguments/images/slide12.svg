@@ -1,0 +1,279 @@
+<svg viewBox="0 0 800 1200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0f0f1e;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="momentumGlow" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#9b59b6;stop-opacity:0.2" />
+      <stop offset="50%" style="stop-color:#3498db;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#2ecc71;stop-opacity:0.5" />
+    </linearGradient>
+
+    <radialGradient id="launchGlow">
+      <stop offset="0%" style="stop-color:#2ecc71;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#2ecc71;stop-opacity:0" />
+    </radialGradient>
+
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <marker id="arrowUp" markerWidth="10" markerHeight="10" refX="5" refY="9" orient="auto">
+      <polygon points="5 0, 10 10, 0 10" fill="#2ecc71" opacity="0.8" />
+    </marker>
+  </defs>
+
+  <rect width="800" height="1200" fill="url(#bgGrad)"/>
+
+  <!-- Momentum gradient overlay -->
+  <rect x="0" y="0" width="800" height="1200" fill="url(#momentumGlow)" opacity="0.7"/>
+
+  <!-- Connecting Flow Lines -->
+  <path d="M 400 400 L 400 490" stroke="#3498db" stroke-width="3" opacity="0.5" stroke-dasharray="8,8" marker-end="url(#arrowUp)">
+    <animate attributeName="stroke-dashoffset" from="16" to="0" dur="1.5s" repeatCount="indefinite"/>
+  </path>
+  <path d="M 400 750 L 400 830" stroke="#2ecc71" stroke-width="3" opacity="0.5" stroke-dasharray="8,8" marker-end="url(#arrowUp)">
+    <animate attributeName="stroke-dashoffset" from="16" to="0" dur="1.5s" repeatCount="indefinite"/>
+  </path>
+
+  <!-- BOTTOM SECTION: Foundations - Python Knowledge -->
+  <g id="foundationsSection">
+    <rect x="40" y="40" width="180" height="32" rx="16" fill="#9b59b6" opacity="0.3"/>
+    <text x="130" y="62" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="#9b59b6" text-anchor="middle">FOUNDATIONS</text>
+
+    <!-- Building Blocks -->
+    <g>
+      <!-- Bottom row - 4 blocks -->
+      <g>
+        <rect x="150" y="320" width="90" height="70" rx="6" fill="#9b59b6" opacity="0.7" stroke="#9b59b6" stroke-width="2"/>
+        <text x="195" y="350" font-family="'Courier New', monospace" font-size="11" font-weight="600" fill="#ecf0f1" text-anchor="middle">Python</text>
+        <text x="195" y="370" font-family="Arial, sans-serif" font-size="9" fill="#ecf0f1" text-anchor="middle">Basics</text>
+      </g>
+
+      <g>
+        <rect x="260" y="320" width="90" height="70" rx="6" fill="#9b59b6" opacity="0.7" stroke="#9b59b6" stroke-width="2"/>
+        <text x="305" y="350" font-family="'Courier New', monospace" font-size="11" font-weight="600" fill="#ecf0f1" text-anchor="middle">Data</text>
+        <text x="305" y="370" font-family="Arial, sans-serif" font-size="9" fill="#ecf0f1" text-anchor="middle">Analysis</text>
+      </g>
+
+      <g>
+        <rect x="370" y="320" width="90" height="70" rx="6" fill="#9b59b6" opacity="0.7" stroke="#9b59b6" stroke-width="2"/>
+        <text x="415" y="350" font-family="'Courier New', monospace" font-size="11" font-weight="600" fill="#ecf0f1" text-anchor="middle">Text</text>
+        <text x="415" y="370" font-family="Arial, sans-serif" font-size="9" fill="#ecf0f1" text-anchor="middle">Processing</text>
+      </g>
+
+      <g>
+        <rect x="480" y="320" width="90" height="70" rx="6" fill="#9b59b6" opacity="0.7" stroke="#9b59b6" stroke-width="2"/>
+        <text x="525" y="350" font-family="'Courier New', monospace" font-size="11" font-weight="600" fill="#ecf0f1" text-anchor="middle">Logic</text>
+        <text x="525" y="370" font-family="Arial, sans-serif" font-size="9" fill="#ecf0f1" text-anchor="middle">&amp; Flow</text>
+      </g>
+
+      <!-- Middle row - 3 blocks -->
+      <g>
+        <rect x="205" y="230" width="90" height="70" rx="6" fill="#9b59b6" opacity="0.8" stroke="#9b59b6" stroke-width="2"/>
+        <text x="250" y="260" font-family="'Courier New', monospace" font-size="11" font-weight="600" fill="#ecf0f1" text-anchor="middle">APIs</text>
+        <text x="250" y="280" font-family="Arial, sans-serif" font-size="9" fill="#ecf0f1" text-anchor="middle">&amp; Libraries</text>
+      </g>
+
+      <g>
+        <rect x="315" y="230" width="90" height="70" rx="6" fill="#9b59b6" opacity="0.8" stroke="#9b59b6" stroke-width="2"/>
+        <text x="360" y="260" font-family="'Courier New', monospace" font-size="11" font-weight="600" fill="#ecf0f1" text-anchor="middle">Research</text>
+        <text x="360" y="280" font-family="Arial, sans-serif" font-size="9" fill="#ecf0f1" text-anchor="middle">Methods</text>
+      </g>
+
+      <g>
+        <rect x="425" y="230" width="90" height="70" rx="6" fill="#9b59b6" opacity="0.8" stroke="#9b59b6" stroke-width="2"/>
+        <text x="470" y="260" font-family="'Courier New', monospace" font-size="11" font-weight="600" fill="#ecf0f1" text-anchor="middle">Problem</text>
+        <text x="470" y="280" font-family="Arial, sans-serif" font-size="9" fill="#ecf0f1" text-anchor="middle">Solving</text>
+      </g>
+
+      <!-- Top row - 2 blocks -->
+      <g>
+        <rect x="260" y="140" width="90" height="70" rx="6" fill="#9b59b6" opacity="0.9" stroke="#9b59b6" stroke-width="2"/>
+        <text x="305" y="170" font-family="'Courier New', monospace" font-size="11" font-weight="600" fill="#ecf0f1" text-anchor="middle">Critical</text>
+        <text x="305" y="190" font-family="Arial, sans-serif" font-size="9" fill="#ecf0f1" text-anchor="middle">Thinking</text>
+      </g>
+
+      <g>
+        <rect x="370" y="140" width="90" height="70" rx="6" fill="#9b59b6" opacity="0.9" stroke="#9b59b6" stroke-width="2"/>
+        <text x="415" y="170" font-family="'Courier New', monospace" font-size="11" font-weight="600" fill="#ecf0f1" text-anchor="middle">Digital</text>
+        <text x="415" y="190" font-family="Arial, sans-serif" font-size="9" fill="#ecf0f1" text-anchor="middle">Literacy</text>
+      </g>
+
+      <!-- Hands placing blocks (left hand) -->
+      <path d="M 120,280 Q 140,270 150,280" fill="#7f8c8d" opacity="0.8"/>
+      <ellipse cx="125" cy="275" rx="15" ry="20" fill="#7f8c8d" opacity="0.8"/>
+
+      <!-- Hands placing blocks (right hand) -->
+      <path d="M 600,280 Q 580,270 570,280" fill="#7f8c8d" opacity="0.8"/>
+      <ellipse cx="595" cy="275" rx="15" ry="20" fill="#7f8c8d" opacity="0.8"/>
+    </g>
+
+    <text x="400" y="420" font-family="Arial, sans-serif" font-size="13" fill="#95a5a6" text-anchor="middle" font-style="italic">Strong programming foundation ready to build</text>
+  </g>
+
+  <!-- MIDDLE SECTION: Tools - HTML/CSS/Design -->
+  <g id="toolsSection">
+    <rect x="40" y="440" width="120" height="32" rx="16" fill="#3498db" opacity="0.3"/>
+    <text x="100" y="462" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="#3498db" text-anchor="middle">TOOLS</text>
+
+    <!-- Tool Collection -->
+    <g>
+      <!-- Code Editor -->
+      <g>
+        <rect x="100" y="520" width="180" height="140" rx="8" fill="#2c3e50" stroke="#3498db" stroke-width="3"/>
+        <rect x="100" y="520" width="180" height="30" rx="8" fill="#34495e"/>
+        <circle cx="115" cy="535" r="5" fill="#e74c3c"/>
+        <circle cx="130" cy="535" r="5" fill="#f1c40f"/>
+        <circle cx="145" cy="535" r="5" fill="#2ecc71"/>
+
+        <!-- Code content -->
+        <g font-family="'Courier New', monospace" font-size="10">
+          <text x="110" y="570" fill="#e74c3c">&lt;html&gt;</text>
+          <text x="120" y="590" fill="#f1c40f">&lt;head&gt;</text>
+          <text x="130" y="610" fill="#3498db">title</text>
+          <text x="120" y="630" fill="#f1c40f">&lt;/head&gt;</text>
+          <text x="110" y="650" fill="#e74c3c">&lt;/html&gt;</text>
+        </g>
+
+        <text x="190" y="685" font-family="Arial, sans-serif" font-size="11" font-weight="600" fill="#3498db" text-anchor="middle">Code Editor</text>
+      </g>
+
+      <!-- Design Tools -->
+      <g>
+        <rect x="310" y="520" width="180" height="140" rx="8" fill="#2c3e50" stroke="#3498db" stroke-width="3"/>
+
+        <!-- CSS styling representation -->
+        <rect x="330" y="540" width="140" height="50" rx="6" fill="#9b59b6" opacity="0.3"/>
+        <text x="400" y="570" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#ecf0f1" text-anchor="middle">Typography</text>
+
+        <!-- Color palette -->
+        <circle cx="340" cy="620" r="15" fill="#e74c3c"/>
+        <circle cx="380" cy="620" r="15" fill="#3498db"/>
+        <circle cx="420" cy="620" r="15" fill="#2ecc71"/>
+        <circle cx="460" cy="620" r="15" fill="#f1c40f"/>
+
+        <text x="400" y="685" font-family="Arial, sans-serif" font-size="11" font-weight="600" fill="#3498db" text-anchor="middle">Design Tools</text>
+      </g>
+
+      <!-- Documentation/References -->
+      <g>
+        <rect x="520" y="520" width="180" height="140" rx="8" fill="#2c3e50" stroke="#3498db" stroke-width="3"/>
+
+        <!-- Book/documentation icon -->
+        <rect x="555" y="550" width="110" height="80" rx="4" fill="#34495e"/>
+        <line x1="610" y1="550" x2="610" y2="630" stroke="#3498db" stroke-width="2"/>
+        <text x="610" y="595" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#3498db" text-anchor="middle">{ }</text>
+
+        <text x="610" y="685" font-family="Arial, sans-serif" font-size="11" font-weight="600" fill="#3498db" text-anchor="middle">Documentation</text>
+      </g>
+
+      <!-- Hands reaching for tools (left) -->
+      <path d="M 70,600 Q 80,590 90,600 L 95,610 Q 85,615 75,610 Z" fill="#7f8c8d" opacity="0.8"/>
+
+      <!-- Hands reaching for tools (right) -->
+      <path d="M 730,600 Q 720,590 710,600 L 705,610 Q 715,615 725,610 Z" fill="#7f8c8d" opacity="0.8"/>
+    </g>
+
+    <text x="400" y="730" font-family="Arial, sans-serif" font-size="13" fill="#95a5a6" text-anchor="middle" font-style="italic">Picking up web development tools</text>
+  </g>
+
+  <!-- TOP SECTION: Launch - Public DH Project -->
+  <g id="launchSection">
+    <rect x="40" y="780" width="140" height="32" rx="16" fill="#2ecc71" opacity="0.3"/>
+    <text x="110" y="802" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="#2ecc71" text-anchor="middle">LAUNCH</text>
+
+    <!-- Launch visualization -->
+    <g>
+      <circle cx="400" cy="960" r="180" fill="url(#launchGlow)"/>
+
+      <!-- Central project -->
+      <rect x="300" y="880" width="200" height="160" rx="12" fill="#2c3e50" stroke="#2ecc71" stroke-width="4" filter="url(#glow)"/>
+
+      <!-- Browser chrome -->
+      <rect x="300" y="880" width="200" height="30" rx="12" fill="#34495e"/>
+      <circle cx="315" cy="895" r="4" fill="#e74c3c"/>
+      <circle cx="328" cy="895" r="4" fill="#f1c40f"/>
+      <circle cx="341" cy="895" r="4" fill="#2ecc71"/>
+
+      <!-- Project content -->
+      <rect x="320" y="925" width="160" height="25" rx="4" fill="#2ecc71" opacity="0.3"/>
+      <text x="400" y="942" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#ecf0f1" text-anchor="middle">DH Project Live</text>
+
+      <!-- Project features -->
+      <circle cx="330" cy="975" r="6" fill="#2ecc71" opacity="0.7"/>
+      <text x="345" y="979" font-family="Arial, sans-serif" font-size="9" fill="#ecf0f1">Interactive Data</text>
+
+      <circle cx="330" cy="995" r="6" fill="#2ecc71" opacity="0.7"/>
+      <text x="345" y="999" font-family="Arial, sans-serif" font-size="9" fill="#ecf0f1">Public Access</text>
+
+      <circle cx="330" cy="1015" r="6" fill="#2ecc71" opacity="0.7"/>
+      <text x="345" y="1019" font-family="Arial, sans-serif" font-size="9" fill="#ecf0f1">Scholarly Impact</text>
+
+      <!-- Global reach indicators -->
+      <!-- Connection lines radiating out -->
+      <line x1="500" y1="920" x2="580" y2="880" stroke="#2ecc71" stroke-width="2" opacity="0.5">
+        <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+      </line>
+      <circle cx="580" cy="880" r="8" fill="#2ecc71" opacity="0.7">
+        <animate attributeName="r" values="8;10;8" dur="2s" repeatCount="indefinite"/>
+      </circle>
+
+      <line x1="500" y1="960" x2="600" y2="960" stroke="#2ecc71" stroke-width="2" opacity="0.5">
+        <animate attributeName="opacity" values="0.5;1;0.5" dur="2.3s" repeatCount="indefinite"/>
+      </line>
+      <circle cx="600" cy="960" r="8" fill="#2ecc71" opacity="0.7">
+        <animate attributeName="r" values="8;10;8" dur="2.3s" repeatCount="indefinite"/>
+      </circle>
+
+      <line x1="500" y1="1000" x2="580" y2="1040" stroke="#2ecc71" stroke-width="2" opacity="0.5">
+        <animate attributeName="opacity" values="0.5;1;0.5" dur="2.6s" repeatCount="indefinite"/>
+      </line>
+      <circle cx="580" cy="1040" r="8" fill="#2ecc71" opacity="0.7">
+        <animate attributeName="r" values="8;10;8" dur="2.6s" repeatCount="indefinite"/>
+      </circle>
+
+      <line x1="300" y1="920" x2="220" y2="880" stroke="#2ecc71" stroke-width="2" opacity="0.5">
+        <animate attributeName="opacity" values="0.5;1;0.5" dur="2.2s" repeatCount="indefinite"/>
+      </line>
+      <circle cx="220" cy="880" r="8" fill="#2ecc71" opacity="0.7">
+        <animate attributeName="r" values="8;10;8" dur="2.2s" repeatCount="indefinite"/>
+      </circle>
+
+      <line x1="300" y1="960" x2="200" y2="960" stroke="#2ecc71" stroke-width="2" opacity="0.5">
+        <animate attributeName="opacity" values="0.5;1;0.5" dur="2.5s" repeatCount="indefinite"/>
+      </line>
+      <circle cx="200" cy="960" r="8" fill="#2ecc71" opacity="0.7">
+        <animate attributeName="r" values="8;10;8" dur="2.5s" repeatCount="indefinite"/>
+      </circle>
+
+      <line x1="300" y1="1000" x2="220" y2="1040" stroke="#2ecc71" stroke-width="2" opacity="0.5">
+        <animate attributeName="opacity" values="0.5;1;0.5" dur="2.8s" repeatCount="indefinite"/>
+      </line>
+      <circle cx="220" cy="1040" r="8" fill="#2ecc71" opacity="0.7">
+        <animate attributeName="r" values="8;10;8" dur="2.8s" repeatCount="indefinite"/>
+      </circle>
+
+      <!-- "Live" indicator -->
+      <circle cx="485" cy="895" r="5" fill="#2ecc71">
+        <animate attributeName="opacity" values="1;0.3;1" dur="1.5s" repeatCount="indefinite"/>
+      </circle>
+    </g>
+
+    <text x="400" y="1070" font-family="Arial, sans-serif" font-size="13" fill="#95a5a6" text-anchor="middle" font-style="italic">Public scholarship reaching global audiences</text>
+  </g>
+
+  <!-- Empowerment Message -->
+  <g>
+    <rect x="150" y="1110" width="500" height="60" rx="10" fill="#2ecc71" opacity="0.1" stroke="#2ecc71" stroke-width="2"/>
+    <text x="400" y="1137" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#2ecc71" text-anchor="middle">You Are Ready to Build</text>
+    <text x="400" y="1158" font-family="Arial, sans-serif" font-size="11" fill="#ecf0f1" text-anchor="middle">From learning to creating — your DH journey begins now</text>
+  </g>
+</svg>

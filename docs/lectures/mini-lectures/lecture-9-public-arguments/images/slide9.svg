@@ -1,0 +1,259 @@
+<svg viewBox="0 0 800 1200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0f0f1e;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="codeGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f1c40f;stop-opacity:0" />
+      <stop offset="50%" style="stop-color:#f1c40f;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#f1c40f;stop-opacity:0" />
+    </linearGradient>
+
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#f1c40f" opacity="0.6" />
+    </marker>
+  </defs>
+
+  <rect width="800" height="1200" fill="url(#bgGrad)"/>
+
+  <!-- Connecting Flow Lines -->
+  <path d="M 400 360 L 400 430" stroke="#f1c40f" stroke-width="2" opacity="0.3" stroke-dasharray="5,5" marker-end="url(#arrow)">
+    <animate attributeName="stroke-dashoffset" from="10" to="0" dur="2s" repeatCount="indefinite"/>
+  </path>
+  <path d="M 400 690 L 400 750" stroke="#f1c40f" stroke-width="2" opacity="0.3" stroke-dasharray="5,5" marker-end="url(#arrow)">
+    <animate attributeName="stroke-dashoffset" from="10" to="0" dur="2s" repeatCount="indefinite"/>
+  </path>
+
+  <!-- TOP SECTION: HTML Semantic Structure -->
+  <g id="htmlSection">
+    <rect x="40" y="40" width="200" height="32" rx="16" fill="#f1c40f" opacity="0.2"/>
+    <text x="140" y="62" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="#f1c40f" text-anchor="middle">SEMANTIC HTML</text>
+
+    <!-- Code Container -->
+    <rect x="60" y="100" width="680" height="240" rx="12" fill="#1e1e3f" opacity="0.9"/>
+
+    <!-- HTML Code with Highlights -->
+    <g font-family="'Courier New', monospace" font-size="14">
+      <!-- Header tag with glow -->
+      <rect x="80" y="120" width="180" height="24" rx="4" fill="#f1c40f" opacity="0.2" filter="url(#glow)"/>
+      <text x="90" y="137" fill="#e74c3c">&lt;h1&gt;</text>
+      <text x="135" y="137" fill="#ecf0f1">Climate Crisis</text>
+      <text x="260" y="137" fill="#e74c3c">&lt;/h1&gt;</text>
+
+      <!-- Annotation -->
+      <line x1="270" y1="132" x2="340" y2="132" stroke="#f1c40f" stroke-width="1.5" opacity="0.6"/>
+      <text x="345" y="137" font-family="Arial, sans-serif" font-size="11" fill="#f1c40f" font-style="italic">Primary importance</text>
+
+      <!-- Article tag with glow -->
+      <rect x="80" y="160" width="240" height="24" rx="4" fill="#f1c40f" opacity="0.15" filter="url(#glow)"/>
+      <text x="90" y="177" fill="#e74c3c">&lt;article&gt;</text>
+
+      <!-- Content inside article -->
+      <text x="110" y="202" fill="#e74c3c">&lt;p&gt;</text>
+      <text x="145" y="202" fill="#95a5a6">Scientific consensus...</text>
+      <text x="340" y="202" fill="#e74c3c">&lt;/p&gt;</text>
+
+      <!-- Annotation for article -->
+      <line x1="330" y1="172" x2="400" y2="172" stroke="#f1c40f" stroke-width="1.5" opacity="0.6"/>
+      <text x="405" y="177" font-family="Arial, sans-serif" font-size="11" fill="#f1c40f" font-style="italic">Independent content</text>
+
+      <!-- Strong tag with glow -->
+      <rect x="110" y="220" width="280" height="24" rx="4" fill="#f1c40f" opacity="0.2" filter="url(#glow)"/>
+      <text x="120" y="237" fill="#e74c3c">&lt;strong&gt;</text>
+      <text x="205" y="237" fill="#ecf0f1">97% of scientists agree</text>
+      <text x="395" y="237" fill="#e74c3c">&lt;/strong&gt;</text>
+
+      <!-- Annotation for strong -->
+      <line x1="395" y1="232" x2="450" y2="232" stroke="#f1c40f" stroke-width="1.5" opacity="0.6"/>
+      <text x="455" y="237" font-family="Arial, sans-serif" font-size="11" fill="#f1c40f" font-style="italic">Emphasis</text>
+
+      <!-- Closing article -->
+      <text x="90" y="262" fill="#e74c3c">&lt;/article&gt;</text>
+
+      <!-- Aside tag with glow -->
+      <rect x="80" y="280" width="160" height="24" rx="4" fill="#f1c40f" opacity="0.1" filter="url(#glow)"/>
+      <text x="90" y="297" fill="#e74c3c">&lt;aside&gt;</text>
+      <text x="165" y="297" fill="#7f8c8d">Related...</text>
+
+      <!-- Annotation for aside -->
+      <line x1="250" y1="292" x2="310" y2="292" stroke="#f1c40f" stroke-width="1.5" opacity="0.6"/>
+      <text x="315" y="297" font-family="Arial, sans-serif" font-size="11" fill="#f1c40f" font-style="italic">Tangential info</text>
+
+      <text x="90" y="322" fill="#e74c3c">&lt;/aside&gt;</text>
+    </g>
+
+    <!-- Key insight -->
+    <text x="90" y="320" font-family="Arial, sans-serif" font-size="11" fill="#95a5a6" font-style="italic">Tags encode meaning and hierarchy</text>
+  </g>
+
+  <!-- MIDDLE SECTION: CSS Styling Decisions -->
+  <g id="cssSection">
+    <rect x="40" y="380" width="240" height="32" rx="16" fill="#f1c40f" opacity="0.2"/>
+    <text x="160" y="402" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="#f1c40f" text-anchor="middle">RHETORICAL STYLING</text>
+
+    <!-- Design Controls Container -->
+    <rect x="60" y="450" width="680" height="220" rx="12" fill="#1e1e3f" opacity="0.9"/>
+
+    <!-- Font Size Control -->
+    <g>
+      <text x="90" y="480" font-family="Arial, sans-serif" font-size="13" font-weight="600" fill="#ecf0f1">Font Size</text>
+      <rect x="90" y="490" width="200" height="8" rx="4" fill="#2c3e50"/>
+      <rect x="90" y="490" width="150" height="8" rx="4" fill="#f1c40f"/>
+      <circle cx="240" cy="494" r="10" fill="#f1c40f" stroke="#1a1a2e" stroke-width="2">
+        <animate attributeName="cx" values="240;250;240" dur="3s" repeatCount="indefinite"/>
+      </circle>
+
+      <!-- Annotation -->
+      <text x="310" y="497" font-family="Arial, sans-serif" font-size="11" fill="#95a5a6" font-style="italic">Larger = More Important</text>
+
+      <!-- Visual example -->
+      <text x="90" y="525" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#ecf0f1">Crisis</text>
+      <text x="170" y="527" font-family="Arial, sans-serif" font-size="14" fill="#7f8c8d">vs</text>
+      <text x="200" y="525" font-family="Arial, sans-serif" font-size="12" fill="#95a5a6">crisis</text>
+    </g>
+
+    <!-- Color Control -->
+    <g>
+      <text x="400" y="480" font-family="Arial, sans-serif" font-size="13" font-weight="600" fill="#ecf0f1">Color</text>
+      <rect x="400" y="490" width="200" height="8" rx="4" fill="#2c3e50"/>
+      <rect x="400" y="490" width="120" height="8" rx="4" fill="#e74c3c"/>
+      <circle cx="520" cy="494" r="10" fill="#e74c3c" stroke="#1a1a2e" stroke-width="2">
+        <animate attributeName="cx" values="520;530;520" dur="2.5s" repeatCount="indefinite"/>
+      </circle>
+
+      <!-- Annotation -->
+      <text x="620" y="497" font-family="Arial, sans-serif" font-size="11" fill="#95a5a6" font-style="italic">Red = Urgency</text>
+
+      <!-- Visual example -->
+      <circle cx="410" cy="520" r="8" fill="#e74c3c"/>
+      <text x="425" y="525" font-family="Arial, sans-serif" font-size="12" fill="#7f8c8d">Urgent</text>
+      <circle cx="500" cy="520" r="8" fill="#3498db"/>
+      <text x="515" y="525" font-family="Arial, sans-serif" font-size="12" fill="#7f8c8d">Calm</text>
+    </g>
+
+    <!-- Position Control -->
+    <g>
+      <text x="90" y="565" font-family="Arial, sans-serif" font-size="13" font-weight="600" fill="#ecf0f1">Position</text>
+      <rect x="90" y="575" width="200" height="8" rx="4" fill="#2c3e50"/>
+      <rect x="90" y="575" width="170" height="8" rx="4" fill="#3498db"/>
+      <circle cx="260" cy="579" r="10" fill="#3498db" stroke="#1a1a2e" stroke-width="2">
+        <animate attributeName="cx" values="260;270;260" dur="3.5s" repeatCount="indefinite"/>
+      </circle>
+
+      <!-- Annotation -->
+      <text x="310" y="582" font-family="Arial, sans-serif" font-size="11" fill="#95a5a6" font-style="italic">Center = Focus</text>
+
+      <!-- Visual example -->
+      <rect x="90" y="600" width="200" height="50" rx="4" fill="#2c3e50" opacity="0.3"/>
+      <rect x="135" y="615" width="110" height="20" rx="3" fill="#3498db" opacity="0.6"/>
+      <text x="190" y="630" font-family="Arial, sans-serif" font-size="11" fill="#ecf0f1" text-anchor="middle">Centered</text>
+    </g>
+
+    <!-- Weight Control -->
+    <g>
+      <text x="400" y="565" font-family="Arial, sans-serif" font-size="13" font-weight="600" fill="#ecf0f1">Weight</text>
+      <rect x="400" y="575" width="200" height="8" rx="4" fill="#2c3e50"/>
+      <rect x="400" y="575" width="180" height="8" rx="4" fill="#9b59b6"/>
+      <circle cx="580" cy="579" r="10" fill="#9b59b6" stroke="#1a1a2e" stroke-width="2">
+        <animate attributeName="cx" values="580;590;580" dur="2.8s" repeatCount="indefinite"/>
+      </circle>
+
+      <!-- Annotation -->
+      <text x="620" y="582" font-family="Arial, sans-serif" font-size="11" fill="#95a5a6" font-style="italic">Bold = Authority</text>
+
+      <!-- Visual example -->
+      <text x="410" y="615" font-family="Arial, sans-serif" font-size="14" font-weight="400" fill="#95a5a6">Normal</text>
+      <text x="480" y="615" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#ecf0f1">Bold</text>
+    </g>
+  </g>
+
+  <!-- BOTTOM SECTION: Three Different Arguments -->
+  <g id="argumentsSection">
+    <rect x="40" y="710" width="260" height="32" rx="16" fill="#f1c40f" opacity="0.2"/>
+    <text x="170" y="732" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="#f1c40f" text-anchor="middle">SAME CONTENT, DIFFERENT ARGUMENTS</text>
+
+    <!-- Three layout variations -->
+
+    <!-- Layout 1: Alarmist -->
+    <g>
+      <text x="90" y="770" font-family="Arial, sans-serif" font-size="11" font-weight="600" fill="#e74c3c">Alarmist Design</text>
+      <rect x="70" y="780" width="200" height="140" rx="8" fill="#2c3e50" stroke="#e74c3c" stroke-width="2"/>
+
+      <!-- Large, red, bold headline -->
+      <text x="170" y="815" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#e74c3c" text-anchor="middle">CLIMATE</text>
+      <text x="170" y="840" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#e74c3c" text-anchor="middle">CRISIS</text>
+
+      <!-- Urgent subtext -->
+      <text x="170" y="865" font-family="Arial, sans-serif" font-size="10" fill="#ecf0f1" text-anchor="middle">97% of scientists</text>
+      <text x="170" y="880" font-family="Arial, sans-serif" font-size="10" fill="#ecf0f1" text-anchor="middle">agree: act now</text>
+
+      <!-- Small related info -->
+      <text x="80" y="905" font-family="Arial, sans-serif" font-size="8" fill="#7f8c8d">Related articles</text>
+
+      <text x="90" y="940" font-family="Arial, sans-serif" font-size="9" fill="#95a5a6" font-style="italic">Creates urgency</text>
+    </g>
+
+    <!-- Layout 2: Balanced -->
+    <g>
+      <text x="340" y="770" font-family="Arial, sans-serif" font-size="11" font-weight="600" fill="#3498db">Balanced Design</text>
+      <rect x="295" y="780" width="200" height="140" rx="8" fill="#2c3e50" stroke="#3498db" stroke-width="2"/>
+
+      <!-- Moderate sized, blue headline -->
+      <text x="395" y="810" font-family="Arial, sans-serif" font-size="16" font-weight="600" fill="#3498db" text-anchor="middle">Climate Change</text>
+
+      <!-- Equal emphasis content -->
+      <text x="395" y="835" font-family="Arial, sans-serif" font-size="10" fill="#ecf0f1" text-anchor="middle">Scientific consensus</text>
+      <text x="395" y="850" font-family="Arial, sans-serif" font-size="10" fill="#ecf0f1" text-anchor="middle">shows 97% agreement</text>
+      <text x="395" y="865" font-family="Arial, sans-serif" font-size="10" fill="#ecf0f1" text-anchor="middle">on human impact</text>
+
+      <!-- Visible related info -->
+      <rect x="310" y="880" width="170" height="25" rx="4" fill="#34495e"/>
+      <text x="395" y="897" font-family="Arial, sans-serif" font-size="9" fill="#95a5a6" text-anchor="middle">Further reading</text>
+
+      <text x="315" y="940" font-family="Arial, sans-serif" font-size="9" fill="#95a5a6" font-style="italic">Invites reflection</text>
+    </g>
+
+    <!-- Layout 3: Minimalist/Skeptical -->
+    <g>
+      <text x="545" y="770" font-family="Arial, sans-serif" font-size="11" font-weight="600" fill="#95a5a6">Minimalist Design</text>
+      <rect x="520" y="780" width="200" height="140" rx="8" fill="#2c3e50" stroke="#95a5a6" stroke-width="2"/>
+
+      <!-- Small, gray, thin headline -->
+      <text x="620" y="810" font-family="Arial, sans-serif" font-size="13" font-weight="300" fill="#95a5a6" text-anchor="middle">climate change</text>
+
+      <!-- Understated content -->
+      <text x="620" y="835" font-family="Arial, sans-serif" font-size="9" fill="#7f8c8d" text-anchor="middle">97% scientific</text>
+      <text x="620" y="850" font-family="Arial, sans-serif" font-size="9" fill="#7f8c8d" text-anchor="middle">consensus noted</text>
+
+      <!-- Prominent related info -->
+      <rect x="535" y="870" width="170" height="35" rx="4" fill="#34495e"/>
+      <text x="620" y="892" font-family="Arial, sans-serif" font-size="10" fill="#ecf0f1" text-anchor="middle">Alternative views</text>
+
+      <text x="540" y="940" font-family="Arial, sans-serif" font-size="9" fill="#95a5a6" font-style="italic">Downplays urgency</text>
+    </g>
+  </g>
+
+  <!-- Bottom Insight -->
+  <g>
+    <rect x="60" y="980" width="680" height="80" rx="12" fill="#f1c40f" opacity="0.1" stroke="#f1c40f" stroke-width="2"/>
+
+    <text x="400" y="1010" font-family="Arial, sans-serif" font-size="16" font-weight="600" fill="#f1c40f" text-anchor="middle">Technical Choices = Rhetorical Arguments</text>
+
+    <text x="400" y="1035" font-family="Arial, sans-serif" font-size="12" fill="#ecf0f1" text-anchor="middle">Every design decision constructs meaning and shapes interpretation</text>
+  </g>
+
+  <!-- Title -->
+  <text x="40" y="1110" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#ecf0f1">Code as Argument</text>
+  <text x="40" y="1135" font-family="Arial, sans-serif" font-size="13" fill="#95a5a6">HTML structure and CSS styling create persuasive effects</text>
+</svg>
