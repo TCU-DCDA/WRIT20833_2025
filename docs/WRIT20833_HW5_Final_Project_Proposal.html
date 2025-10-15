@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HW5: Final Project Proposal — WRIT 20833</title>
+    <meta name="description" content="Final Project Proposal requirements for WRIT 20833">
+    <style>
+        /* CSS Custom Properties for consistent theming */
+        :root {
+            --primary-color: #4d1979;
+            --primary-hover: #3d1461;
+            --secondary-color: #64748b;
+            --accent-color: #7c3aed;
+            --success-color: #059669;
+            --warning-color: #d97706;
+            
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --text-muted: #94a3b8;
+            
+            --bg-primary: #ffffff;
+            --bg-secondary: #fafafa;
+            --bg-card: #ffffff;
+            --bg-accent: #f3f4f6;
+            
+            --border-color: #e2e8f0;
+            --border-radius: 12px;
+            --border-radius-lg: 16px;
+            
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            
+            --space-xs: 0.5rem;
+            --space-sm: 0.75rem;
+            --space-md: 1rem;
+            --space-lg: 1.5rem;
+            --space-xl: 2rem;
+            --space-2xl: 2.5rem;
+            
+            --font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+            --font-family-mono: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+        }
+        
+        /* Reset and Base Styles */
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-family-base);
+            line-height: 1.6;
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-secondary);
+        }
+        
+        /* Typography Scale */
+        h1 {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin: 0 0 var(--space-md) 0;
+            color: var(--text-primary);
+        }
+        
+        h2 {
+            font-size: clamp(1.5rem, 3vw, 1.875rem);
+            font-weight: 600;
+            line-height: 1.3;
+            margin: var(--space-xl) 0 var(--space-lg) 0;
+            color: var(--primary-color);
+        }
+        
+        h3 {
+            font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+            font-weight: 600;
+            line-height: 1.4;
+            margin: var(--space-lg) 0 var(--space-md) 0;
+            color: var(--text-primary);
+        }
+        
+        h4 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            line-height: 1.4;
+            margin: var(--space-md) 0 var(--space-sm) 0;
+            color: var(--text-primary);
+        }
+        
+        p {
+            margin: 0 0 var(--space-md) 0;
+            color: var(--text-secondary);
+        }
+        
+        /* Container Layout */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: var(--space-xl);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: var(--space-md);
+            }
+        }
+        
+        /* Header */
+        .header {
+            text-align: center;
+            padding: var(--space-xl) 0;
+            margin-bottom: var(--space-xl);
+        }
+        
+        .breadcrumb {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .breadcrumb a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        
+        .breadcrumb a:hover {
+            color: var(--primary-hover);
+        }
+        
+        .page-title {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .page-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+        
+        /* Content Card */
+        .content-card {
+            background: var(--bg-card);
+            border-radius: var(--border-radius-lg);
+            padding: var(--space-2xl);
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            margin-bottom: var(--space-xl);
+        }
+        
+        @media (max-width: 768px) {
+            .content-card {
+                padding: var(--space-lg);
+            }
+        }
+        
+        /* Lists */
+        ul, ol {
+            margin: 0 0 var(--space-lg) 0;
+            padding-left: var(--space-xl);
+        }
+        
+        li {
+            margin-bottom: var(--space-sm);
+            color: var(--text-secondary);
+        }
+        
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, #f0e7f8 0%, #e9d5f5 100%);
+            border-left: 4px solid var(--primary-color);
+            border-radius: var(--border-radius);
+            padding: var(--space-lg);
+            margin: var(--space-xl) 0;
+        }
+        
+        .highlight-box p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Callout Box */
+        .callout {
+            background: var(--bg-accent);
+            border-radius: var(--border-radius);
+            padding: var(--space-lg);
+            margin: var(--space-xl) 0;
+            border: 1px solid var(--border-color);
+        }
+        
+        .callout p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Numbered Requirements */
+        .requirements-list {
+            counter-reset: requirement-counter;
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .requirements-list li {
+            counter-increment: requirement-counter;
+            position: relative;
+            padding-left: 3rem;
+            margin-bottom: var(--space-lg);
+        }
+        
+        .requirements-list li::before {
+            content: counter(requirement-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2rem;
+            height: 2rem;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.875rem;
+        }
+        
+        .requirements-list li strong {
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: var(--space-xs);
+        }
+        
+        /* Links */
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        
+        a:hover {
+            color: var(--primary-hover);
+            text-decoration: underline;
+        }
+        
+        /* Back Link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            padding: var(--space-sm) var(--space-md);
+            background: var(--bg-accent);
+            border-radius: var(--border-radius);
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: all 0.2s ease;
+            margin-bottom: var(--space-xl);
+            border: 1px solid var(--border-color);
+        }
+        
+        .back-link:hover {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+            text-decoration: none;
+            transform: translateX(-2px);
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: var(--space-xl) 0;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+        
+        /* Horizontal Rule */
+        hr {
+            border: none;
+            border-top: 2px solid var(--border-color);
+            margin: var(--space-2xl) 0;
+        }
+        
+        /* Focus States for Accessibility */
+        a:focus {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="breadcrumb">
+                <a href="./index.html">← Back to Course Materials</a>
+            </div>
+            <h1 class="page-title">When Coding Meets Culture: Developing Data-Driven Opinions</h1>
+            <p class="page-subtitle">WRIT 20833 Final Project Proposal</p>
+        </header>
+
+        <main>
+            <div class="content-card">
+                <div class="highlight-box">
+                    <p><strong>Getting Started:</strong> Decide as a group (up to 3 members) or individually whether you plan to <strong>1) build on your work from Homework 4-1 & 4-2</strong> (recommended) or <strong>2) start with fresh data</strong>. Either way, your final project explores what happens when coding meets culture—refining, deepening, and expanding the complete text analysis workflow you developed across HW4-1 and HW4-2 to develop well-grounded, data-driven opinions about cultural texts.</p>
+                    
+                    <p><strong>Your final project includes a required web-based portfolio (HTML/CSS)</strong> that presents your computational analysis and findings to a public audience.</p>
+                </div>
+
+                <p>Imagine the project as discovering what emerges when coding meets culture through a scaled-up version of your HW4-1 and HW4-2 work. You can "increase the scale" of your HW4 foundation in the following ways:</p>
+
+                <ul>
+                    <li>by drafting and pursuing a more substantial <strong>Research Question & Hypothesis</strong> that builds on your topic modeling insights from HW4-2</li>
+                    <li>by scraping and analyzing larger <strong>Datasets</strong> using ethical practices from the Instant Data Scraper CodeAlong</li>
+                    <li>by scraping and analyzing a greater number of <strong>Datasets</strong> for comparative analysis</li>
+                    <li>by refining and/or expanding your <strong>Methods</strong> (building on the base methods: Term Frequency, Sentiment Analysis, Topic Modeling)</li>
+                    <li>by refining your <strong>Deliverables</strong> to include sophisticated web-based presentation of findings</li>
+                    <li>by integrating computational analysis with traditional humanities interpretation methods to form data-driven opinions</li>
+                </ul>
+
+                <h2>Proposal Requirements</h2>
+
+                <p>For your Proposal, please confirm in your replies to each bullet point below how your project will explore the intersection of coding and culture, moving from initial assumptions to data-driven opinions:</p>
+
+                <ol class="requirements-list">
+                    <li>
+                        <strong>Your current answer to this question:</strong> What insights emerge when we integrate term frequency analysis, sentiment analysis, and topic modeling with traditional humanities interpretation methods? What do computational and humanities approaches reveal together that neither could discover alone? How might your assumptions be challenged by what the data reveals? (You're encouraged to build on ideas from your HW4-2 reflection on method integration)
+                    </li>
+
+                    <li>
+                        <strong>Your broad topic or area of cultural concern</strong> that will give you an opportunity to explore what happens when coding meets culture
+                    </li>
+
+                    <li>
+                        <strong>Your current (focused and manageable) Research Question</strong> that emerges from patterns you discovered in your HW4-2 topic modeling work or from debates related to your broad topic
+                    </li>
+
+                    <li>
+                        <strong>Your initial Hypothesis</strong> (your current provisional answer to the Research Question that your project will test through integrated computational and interpretive analysis—remember, being "wrong" is valuable evidence of learning!)
+                    </li>
+
+                    <li>
+                        <strong>The Dataset(s) you'll be working with</strong> (building on HW4-1 data collection, found datasets, or ethically scraped new data)
+                    </li>
+
+                    <li>
+                        <strong>The Method(s) you'll use</strong> (must include the three base methods: Term Frequency, Sentiment Analysis, Topic Modeling, plus Close Reading and additional methods as appropriate)
+                    </li>
+
+                    <li>
+                        <strong>Your plan for the web-based portfolio component</strong> (how will you present your data-driven insights to a public audience using HTML/CSS?)
+                    </li>
+
+                    <li>
+                        <strong>If working in a group, a description of the Division of labor</strong> (who is responsible for what components of analysis and presentation?)
+                    </li>
+                </ol>
+
+                <hr>
+
+                <div class="callout">
+                    <p><em><strong>Upon proposal approval,</strong> see <a href="./WRIT20833_Final_Project_Requirements.html">Final Project Requirements</a> for complete project deliverables and assessment criteria. HTML/CSS training assignments (HW6+) will prepare you for the technical portfolio component.</em></p>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>WRIT 20833 — Course Materials (2025)</p>
+        </footer>
+    </div>
+</body>
+</html>
