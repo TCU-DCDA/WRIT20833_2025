@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini-Lecture: Going Public - WRIT 20833</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --tcu-purple: #4d1979;
+            --tcu-grey: #a3a9ac;
+            --tcu-white: #ffffff;
+            --tcu-black: #000000;
+            --tcu-light-purple: #6b2c91;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--tcu-black);
+            color: var(--tcu-black);
+            overflow: hidden;
+        }
+
+        .slides-container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;
+            background: var(--tcu-white);
+            padding: 60px 80px;
+        }
+
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .slide-header {
+            border-left: 6px solid var(--tcu-purple);
+            padding-left: 24px;
+            margin-bottom: 40px;
+        }
+
+        .slide-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--tcu-purple);
+            margin-bottom: 12px;
+        }
+
+        .slide-subtitle {
+            font-size: 1.2rem;
+            color: var(--tcu-grey);
+            font-weight: 400;
+        }
+
+        .slide-content {
+            flex: 1;
+            display: flex;
+            gap: 40px;
+        }
+
+        .content-text {
+            flex: 1;
+        }
+
+        .content-image {
+            flex: 1;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            background: #f5f5f5;
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .content-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .content-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .content-list li {
+            padding: 16px 0;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: var(--tcu-black);
+            border-bottom: 1px solid #e0e0e0;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .content-list li:before {
+            content: "▸";
+            color: var(--tcu-purple);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .content-list li:last-child {
+            border-bottom: none;
+        }
+
+        .slide-footer {
+            margin-top: auto;
+            padding-top: 30px;
+            border-top: 2px solid var(--tcu-purple);
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            color: var(--tcu-grey);
+            font-size: 0.9rem;
+        }
+
+        .slide-number {
+            font-weight: 600;
+        }
+
+        /* Title Slide */
+        .slide.title-slide {
+            background: linear-gradient(135deg, var(--tcu-purple) 0%, var(--tcu-light-purple) 100%);
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--tcu-white);
+        }
+
+        .title-slide .slide-title {
+            font-size: 4rem;
+            color: var(--tcu-white);
+            margin-bottom: 30px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .title-slide .slide-subtitle {
+            font-size: 1.5rem;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 60px;
+        }
+
+        .title-slide .hook-question {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.95);
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 40px auto;
+            font-style: italic;
+        }
+
+        .title-slide .instructor-info {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.8);
+            margin-top: 40px;
+        }
+
+        /* Navigation */
+        .navigation {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            display: flex;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .nav-button {
+            background: var(--tcu-purple);
+            color: var(--tcu-white);
+            border: none;
+            padding: 15px 30px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-button:hover {
+            background: var(--tcu-light-purple);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(77, 25, 121, 0.3);
+        }
+
+        .nav-button:disabled {
+            background: var(--tcu-grey);
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+            .slide {
+                padding: 40px 50px;
+            }
+
+            .slide-title {
+                font-size: 2rem;
+            }
+
+            .slide-subtitle {
+                font-size: 1rem;
+            }
+
+            .content-list li {
+                font-size: 1rem;
+                padding: 12px 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .slide {
+                padding: 30px 25px;
+            }
+
+            .slide-title {
+                font-size: 1.75rem;
+            }
+
+            .slide-subtitle {
+                font-size: 0.95rem;
+            }
+
+            .slide-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .content-text,
+            .content-image {
+                flex: none;
+                width: 100%;
+            }
+
+            .content-list li {
+                font-size: 0.95rem;
+                padding: 10px 0;
+                padding-left: 25px;
+            }
+
+            .navigation {
+                bottom: 20px;
+                right: 20px;
+                gap: 10px;
+            }
+
+            .nav-button {
+                padding: 12px 20px;
+                font-size: 0.9rem;
+            }
+
+            .title-slide .slide-title {
+                font-size: 2.5rem;
+            }
+
+            .title-slide .slide-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .title-slide .hook-question {
+                font-size: 1rem;
+            }
+
+            .title-slide img {
+                max-width: 90% !important;
+            }
+
+            /* Fix nested two-column layouts (like Slide 6) */
+            .slide-content > div[style*="display: flex"] {
+                flex-direction: column !important;
+                gap: 20px !important;
+            }
+
+            .slide-content h3 {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .slide {
+                padding: 20px 15px;
+            }
+
+            .slide-header {
+                border-left: 4px solid var(--tcu-purple);
+                padding-left: 15px;
+                margin-bottom: 20px;
+            }
+
+            .slide-title {
+                font-size: 1.5rem;
+            }
+
+            .slide-subtitle {
+                font-size: 0.85rem;
+            }
+
+            .content-list li {
+                font-size: 0.85rem;
+                padding: 8px 0;
+                padding-left: 20px;
+            }
+
+            .navigation {
+                bottom: 15px;
+                right: 15px;
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .nav-button {
+                padding: 10px 16px;
+                font-size: 0.85rem;
+            }
+
+            .title-slide .slide-title {
+                font-size: 2rem;
+            }
+
+            .title-slide .slide-subtitle {
+                font-size: 1rem;
+                margin-bottom: 30px;
+            }
+
+            .title-slide .hook-question {
+                font-size: 0.9rem;
+                margin: 20px auto;
+            }
+
+            .title-slide .instructor-info {
+                font-size: 0.85rem;
+                margin-top: 20px;
+            }
+
+            .slide-footer {
+                padding-top: 15px;
+                font-size: 0.8rem;
+            }
+
+            iframe {
+                min-height: 300px;
+            }
+
+            .slide-content h3 {
+                font-size: 1rem;
+                margin-bottom: 8px !important;
+            }
+
+            .slide-content p[style*="font-size: 1.2rem"] {
+                font-size: 1rem !important;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .navigation {
+                display: none;
+            }
+            .slide {
+                page-break-after: always;
+                display: block !important;
+                position: relative;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slides-container">
+        <!-- Slide 1: Title & Hook -->
+        <div class="slide title-slide active">
+            <h1 class="slide-title">Going Public</h1>
+            <p class="slide-subtitle">From Analysis to Action</p>
+            <img src="images/slide4.jpg" alt="Private analysis becoming public" style="max-width: 600px; margin: 30px auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+            <div class="hook-question">
+                "You've analyzed 10,000 tweets about climate change. Now what? Who sees your insights?"
+            </div>
+            <div class="instructor-info">WRIT 20833 • Mini-Lecture: Going Public</div>
+        </div>
+
+
+        <!-- Slide 2: The Problem with Private Knowledge -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2 class="slide-title">The Problem with Private Knowledge</h2>
+                <p class="slide-subtitle">Research locked away from the public</p>
+            </div>
+            <div class="slide-content">
+                <div class="content-text">
+                    <ul class="content-list">
+                        <li><strong>Research Locked Away:</strong> Academic articles behind $40 paywalls — only 1% of the public can access</li>
+                        <li><strong>Analysis Trapped:</strong> Jupyter notebooks on your laptop — insights never reach affected communities</li>
+                        <li><strong>Knowledge Gatekeeping:</strong> Expertise isolated in ivory towers — public excluded from cultural conversations</li>
+                        <li><strong>Missed Impact:</strong> Your sentiment analysis of local news — could inform policy but who will see it?</li>
+                    </ul>
+                    <div style="margin-top: 30px; padding: 20px; background: #f9f9f9; border-left: 4px solid var(--tcu-light-purple); font-size: 0.95rem; color: #555; font-style: italic;">
+                        <strong>Framework: Collective Memory</strong><br>
+                        Who controls access to knowledge? Who gets to contribute to the cultural record?
+                    </div>
+                </div>
+                <div class="content-image">
+                    <img src="images/slide2.jpg" alt="Locked knowledge behind paywalls">
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span class="slide-number">Slide 2 of 11</span>
+            </div>
+        </div>
+
+        <!-- Slide 3: What is a Public Argument? -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2 class="slide-title">What is a Public Argument?</h2>
+                <p class="slide-subtitle">Public Digital Scholarship</p>
+            </div>
+            <div class="slide-content">
+                <div class="content-text">
+                    <div style="padding: 20px; background: #f0e6f6; border-radius: 8px; margin-bottom: 30px;">
+                        <h3 style="color: var(--tcu-purple); margin-bottom: 12px;">Definition</h3>
+                        <p style="font-size: 1.1rem; line-height: 1.6;">Making scholarly and cultural insights <strong>accessible</strong>, <strong>engaging</strong>, and <strong>actionable</strong> for audiences beyond academia.</p>
+                    </div>
+                    <ul class="content-list">
+                        <li><strong>Digital exhibits:</strong> Curated collections with cultural context</li>
+                        <li><strong>Interactive visualizations:</strong> Data stories anyone can explore</li>
+                        <li><strong>Community archives:</strong> Preserving local histories online</li>
+                        <li><strong>Public-facing analysis:</strong> Your topic modeling results explained for general audiences</li>
+                    </ul>
+                    <div style="margin-top: 20px; padding: 15px; background: #fff3cd; border-radius: 8px;">
+                        <strong>Academic article:</strong> 8 readers in your field<br>
+                        <strong>Public website:</strong> 8,000+ potential visitors
+                    </div>
+                </div>
+                <div class="content-image">
+                    <img src="images/slide3.jpg" alt="Public digital scholarship">
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span class="slide-number">Slide 3 of 11</span>
+            </div>
+        </div>
+
+        <!-- Slide 4: Case Study -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2 class="slide-title">Case Study: Data as Public Intervention</h2>
+                <p class="slide-subtitle"><a href="https://mappingpoliceviolence.org/" target="_blank" style="color: var(--tcu-light-purple); text-decoration: underline;">Mapping Police Violence</a></p>
+            </div>
+            <div class="slide-content">
+                <div class="content-text">
+                    <p style="font-size: 1.15rem; margin-bottom: 20px; line-height: 1.6;">Project collects, analyzes, and visualizes data on police killings in the US—making invisible patterns visible to the public.</p>
+                    <ul class="content-list">
+                        <li><strong>Data collection:</strong> Python scraping of public records</li>
+                        <li><strong>Analysis:</strong> Statistical patterns over time/geography</li>
+                        <li><strong>Visualization:</strong> Interactive maps and timelines</li>
+                        <li><strong>Web interface:</strong> Accessible to journalists, activists, families</li>
+                        <li><strong>Public impact:</strong> Cited in policy debates, media coverage</li>
+                    </ul>
+                    <div style="margin-top: 20px; padding: 20px; background: #e8f4f8; border-radius: 8px;">
+                        <strong style="color: var(--tcu-purple);">Key insight:</strong> Same data analysis skills you're learning + public web interface = cultural intervention
+                    </div>
+                </div>
+                <div class="content-image">
+                    <iframe src="https://mappingpoliceviolence.org/" 
+                            width="100%" 
+                            height="100%" 
+                            style="border: 2px solid var(--tcu-purple); border-radius: 4px;"
+                            title="Mapping Police Violence Website"></iframe>
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span class="slide-number">Slide 4 of 11</span>
+            </div>
+        </div>
+
+        <!-- Slide 5: Public Humanities Tradition -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2 class="slide-title">The Public Humanities Tradition</h2>
+                <p class="slide-subtitle">A long history of public engagement</p>
+            </div>
+            <div class="slide-content">
+                <div class="content-text">
+                    <ul class="content-list">
+                        <li><strong>Historic Roots:</strong> Public intellectuals writing for newspapers and magazines (1920s-1960s)</li>
+                        <li><strong>Community Archives:</strong> Local historical societies preserving neighborhood memories (1970s-1980s)</li>
+                        <li><strong>Oral History Projects:</strong> Recording and sharing voices from marginalized communities (1980s-1990s)</li>
+                        <li><strong>Digital Humanities (Now):</strong> Web-based projects democratizing access to cultural knowledge and analysis</li>
+                    </ul>
+                    <div style="margin-top: 30px; padding: 20px; background: #f9f9f9; border-left: 4px solid var(--tcu-light-purple); font-size: 0.95rem; color: #555; font-style: italic;">
+                        <strong>Framework: Sacred Boundaries</strong><br>
+                        Breaking down barriers between "expert" knowledge and public understanding. Accessibility as an ethical commitment.
+                    </div>
+                </div>
+                <div class="content-image">
+                    <img src="images/slide5.jpg" alt="Public intellectual history">
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span class="slide-number">Slide 5 of 11</span>
+            </div>
+        </div>
+
+        <!-- Slide 6: Your Skills, Amplified -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2 class="slide-title">Your Skills, Amplified</h2>
+                <p class="slide-subtitle">Analysis + Web Skills = Public Impact</p>
+            </div>
+            <div class="slide-content" style="flex-direction: column;">
+                <div class="content-image" style="max-height: 350px; margin-bottom: 20px;">
+                    <img src="images/slide6.jpg" alt="Skills amplification">
+                </div>
+                <div style="display: flex; gap: 40px; flex: 1;">
+                    <div style="flex: 1;">
+                        <h3 style="color: var(--tcu-purple); margin-bottom: 10px;">Weeks 1-8: Analysis Skills</h3>
+                        <ul class="content-list">
+                            <li>Python data manipulation (pandas)</li>
+                            <li>Text analysis (sentiment, frequency)</li>
+                            <li>Topic modeling (LDA, Gensim)</li>
+                            <li>Data visualization (matplotlib)</li>
+                        </ul>
+                    </div>
+                    <div style="flex: 1;">
+                        <h3 style="color: var(--tcu-purple); margin-bottom: 10px;">Weeks 9-16: Web Skills</h3>
+                        <ul class="content-list">
+                            <li>HTML structure (semantic markup)</li>
+                            <li>CSS styling (design as argument)</li>
+                            <li>Responsive layouts (mobile-friendly)</li>
+                            <li>Publishing (GitHub Pages, portfolios)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div style="padding: 20px; background: #e8f4f8; border-radius: 8px; text-align: center; margin-top: 20px;">
+                    <p style="font-size: 1.2rem; font-weight: 600; color: var(--tcu-purple);">Data → Analysis → Visualization → <span style="color: var(--tcu-light-purple);">Public Web Interface</span></p>
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span class="slide-number">Slide 6 of 11</span>
+            </div>
+        </div>
+
+        <!-- Slide 7: The Web as Democratic Publishing -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2 class="slide-title">The Web as Democratic Publishing</h2>
+                <p class="slide-subtitle">Low barriers, global reach, full control</p>
+            </div>
+            <div class="slide-content">
+                <div class="content-text">
+                    <ul class="content-list">
+                        <li><strong>Low Barrier to Entry:</strong> No publisher gatekeepers. No $3,000 article processing charges. Just HTML, CSS, and your ideas.</li>
+                        <li><strong>Global Reach:</strong> Permanent URLs accessible anywhere. Your local history project can reach diaspora communities worldwide.</li>
+                        <li><strong>You Control the Narrative:</strong> Social media algorithms decide who sees your work. Your website—you control structure, emphasis, presentation. You own it.</li>
+                    </ul>
+                    <div style="margin-top: 30px; padding: 20px; background: #f9f9f9; border-left: 4px solid var(--tcu-light-purple); font-size: 0.95rem; color: #555; font-style: italic;">
+                        <strong>Framework: AI Agency</strong><br>
+                        Taking <em>agency</em> over your digital presence. Building instead of being built upon.
+                    </div>
+                </div>
+                <div class="content-image">
+                    <img src="images/slide7.svg" alt="Open web vs closed platforms">
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span class="slide-number">Slide 7 of 11</span>
+            </div>
+        </div>
+
+        <!-- Slide 8: What You Can Build -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2 class="slide-title">What You Can Build</h2>
+                <p class="slide-subtitle">Achievable projects with HTML/CSS</p>
+            </div>
+            <div class="slide-content">
+                <div class="content-text">
+                    <ul class="content-list">
+                        <li><strong>📊 Interactive Analysis Dashboard:</strong> Your topic modeling results with clickable topics, word clouds, example documents. (HTML + CSS + embedded visualizations)</li>
+                        <li><strong>🗂️ Digital Archive:</strong> Curated collection of cultural artifacts with your contextual analysis. Like a museum exhibit online. (HTML semantic structure + CSS galleries)</li>
+                        <li><strong>📖 Data Story:</strong> Your sentiment analysis findings told as a narrative with visual evidence. Scrollable, engaging, accessible. (HTML sections + CSS scroll effects)</li>
+                        <li><strong>💭 Cultural Commentary Site:</strong> Critical framework applied to contemporary issues. Blog-style posts with data-driven arguments. (HTML articles + CSS typography)</li>
+                    </ul>
+                    <div style="margin-top: 20px; padding: 15px; background: #fff3cd; border-radius: 8px; text-align: center;">
+                        <strong>All of these are achievable</strong> with HTML/CSS skills we'll learn in weeks 9-12. No advanced programming required.
+                    </div>
+                </div>
+                <div class="content-image">
+                    <img src="images/slide6.jpg" alt="Project examples">
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span class="slide-number">Slide 8 of 11</span>
+            </div>
+        </div>
+
+        <!-- Slide 9: Code as Argument -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2 class="slide-title">Code as Argument</h2>
+                <p class="slide-subtitle">Every technical choice is a rhetorical choice</p>
+            </div>
+            <div class="slide-content">
+                <div class="content-text">
+                    <ul class="content-list">
+                        <li><strong>HTML Tags = Meaning:</strong> &lt;h1&gt; says "this is most important", &lt;aside&gt; says "this is supplementary", &lt;strong&gt; says "emphasize this"</li>
+                        <li><strong>CSS Styling = Emphasis:</strong> Larger font = more important, Bright color = demands attention, Top of page = priority information</li>
+                        <li><strong>Layout = Argument:</strong> Same content, three different web layouts = three different arguments about what matters most</li>
+                    </ul>
+                    <div style="margin-top: 30px; padding: 20px; background: #f9f9f9; border-left: 4px solid var(--tcu-light-purple); font-size: 0.95rem; color: #555; font-style: italic;">
+                        <strong>Framework: Classification Logic</strong><br>
+                        How you structure information (headers, sections, navigation) shapes how readers understand it. HTML is an act of categorization.
+                    </div>
+                </div>
+                <div class="content-image">
+                    <img src="images/slide9.svg" alt="HTML structure as rhetorical choice">
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span class="slide-number">Slide 9 of 11</span>
+            </div>
+        </div>
+
+        <!-- Slide 10: Digital Stewardship -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2 class="slide-title">Digital Stewardship</h2>
+                <p class="slide-subtitle">Contributing to the cultural record</p>
+            </div>
+            <div class="slide-content">
+                <div class="content-text">
+                    <ul class="content-list">
+                        <li><strong>Own Your Scholarly Identity:</strong> Build a professional web presence that showcases both humanistic thinking and technical skills. Not just a résumé—a portfolio of public work.</li>
+                        <li><strong>Contribute to Cultural Record:</strong> Every public DH project adds to collective memory. You're not just studying culture—you're actively shaping the digital cultural archive.</li>
+                        <li><strong>Bridge Builder:</strong> Digital humanists translate between technical and humanistic communities. Your website can speak to both.</li>
+                    </ul>
+                    <div style="margin-top: 30px; padding: 20px; background: #f9f9f9; border-left: 4px solid var(--tcu-light-purple); font-size: 0.95rem; color: #555; font-style: italic;">
+                        <strong>Framework: Collective Memory</strong><br>
+                        Contributing to the cultural record, not just consuming it. Your public scholarship becomes part of how culture remembers itself.
+                    </div>
+                </div>
+                <div class="content-image">
+                    <img src="images/slide10.svg" alt="Portfolio and digital identity">
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span class="slide-number">Slide 10 of 11</span>
+            </div>
+        </div>
+
+        <!-- Slide 11: From Theory to Practice -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2 class="slide-title">From Theory to Practice</h2>
+                <p class="slide-subtitle">Ready to build</p>
+            </div>
+            <div class="slide-content">
+                <div class="content-text">
+                    <div style="padding: 25px; background: #f0e6f6; border-radius: 8px; margin-bottom: 30px;">
+                        <h3 style="color: var(--tcu-purple); margin-bottom: 15px;">Reflection Prompt</h3>
+                        <p style="font-size: 1.15rem; font-style: italic;">"What cultural insight from your Python work deserves a public audience? Who needs to see it?"</p>
+                    </div>
+                    <div style="margin-bottom: 25px;">
+                        <h4 style="color: var(--tcu-purple); margin-bottom: 10px;">Next Up:</h4>
+                        <p style="font-size: 1.1rem; margin-bottom: 5px;"><strong>Introduction to HTML - The Language of the Web</strong></p>
+                        <p>Come to next class ready to start building. Bring your curiosity about how websites work.</p>
+                    </div>
+                    <div style="padding: 20px; background: #e8f4f8; border-radius: 8px;">
+                        <h4 style="color: var(--tcu-purple); margin-bottom: 10px;">Remember:</h4>
+                        <p style="margin-bottom: 10px;">You already have valuable insights from your text analysis work. Now we're learning how to share them with the world.</p>
+                        <p style="font-style: italic;">Digital humanities isn't just about understanding culture through code—it's about using code to contribute to culture.</p>
+                    </div>
+                </div>
+                <div class="content-image">
+                    <img src="images/slide12.svg" alt="Ready to build">
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span class="slide-number">Slide 11 of 11</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="navigation">
+        <button class="nav-button" id="prevBtn" onclick="changeSlide(-1)">Previous</button>
+        <button class="nav-button" id="nextBtn" onclick="changeSlide(1)">Next</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+            updateButtons();
+        }
+
+        function changeSlide(direction) {
+            showSlide(currentSlide + direction);
+        }
+
+        function updateButtons() {
+            document.getElementById('prevBtn').disabled = currentSlide === 0;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowRight' || event.key === ' ') {
+                if (currentSlide < totalSlides - 1) changeSlide(1);
+            } else if (event.key === 'ArrowLeft') {
+                if (currentSlide > 0) changeSlide(-1);
+            }
+        });
+
+        // Initialize
+        updateButtons();
+    </script>
+</body>
+</html>

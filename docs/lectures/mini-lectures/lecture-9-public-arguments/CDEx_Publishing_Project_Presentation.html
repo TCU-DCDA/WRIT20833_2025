@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDEx Digital Publishing Initiative - Presentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --tcu-purple: #4d1979;
+            --tcu-grey: #a3a9ac;
+            --tcu-white: #ffffff;
+            --tcu-black: #000000;
+            --tcu-light-purple: #6b2c91;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--tcu-black);
+            color: var(--tcu-black);
+            overflow: hidden;
+        }
+
+        .slides-container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;
+            background: var(--tcu-white);
+            padding: 60px 80px;
+        }
+
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .slide-header {
+            border-left: 6px solid var(--tcu-purple);
+            padding-left: 24px;
+            margin-bottom: 40px;
+        }
+
+        .slide-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--tcu-purple);
+            margin-bottom: 12px;
+        }
+
+        .slide-subtitle {
+            font-size: 1.2rem;
+            color: var(--tcu-grey);
+            font-weight: 400;
+        }
+
+        .slide-content {
+            flex: 1;
+            display: flex;
+            gap: 40px;
+        }
+
+        .content-text {
+            flex: 1;
+        }
+
+        .content-image {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f5f5f5;
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .content-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .content-image.placeholder {
+            border: 2px dashed var(--tcu-grey);
+            color: var(--tcu-grey);
+            font-style: italic;
+        }
+
+        .content-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .content-list li {
+            padding: 16px 0;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: var(--tcu-black);
+            border-bottom: 1px solid #e0e0e0;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .content-list li:before {
+            content: "▸";
+            color: var(--tcu-purple);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .content-list li:last-child {
+            border-bottom: none;
+        }
+
+        .speaker-notes {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-left: 4px solid var(--tcu-light-purple);
+            font-size: 0.95rem;
+            color: #555;
+            font-style: italic;
+        }
+
+        .slide-footer {
+            margin-top: auto;
+            padding-top: 30px;
+            border-top: 2px solid var(--tcu-purple);
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            color: var(--tcu-grey);
+            font-size: 0.9rem;
+        }
+
+        .slide-number {
+            font-weight: 600;
+        }
+
+        /* Title Slide */
+        .slide.title-slide {
+            background: linear-gradient(135deg, var(--tcu-purple) 0%, var(--tcu-light-purple) 100%);
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--tcu-white);
+        }
+
+        .title-slide .slide-title {
+            font-size: 4rem;
+            color: var(--tcu-white);
+            margin-bottom: 30px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .title-slide .slide-subtitle {
+            font-size: 1.5rem;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 60px;
+        }
+
+        .title-slide .contacts {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.8);
+            line-height: 1.8;
+        }
+
+        /* Two Column Layout */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            height: 100%;
+        }
+
+        /* Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th {
+            background: var(--tcu-purple);
+            color: var(--tcu-white);
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Navigation */
+        .navigation {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            display: flex;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .nav-button {
+            background: var(--tcu-purple);
+            color: var(--tcu-white);
+            border: none;
+            padding: 15px 30px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-button:hover {
+            background: var(--tcu-light-purple);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(77, 25, 121, 0.3);
+        }
+
+        .nav-button:disabled {
+            background: var(--tcu-grey);
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Print Styles */
+        @media print {
+            .navigation {
+                display: none;
+            }
+            .slide {
+                page-break-after: always;
+                display: block !important;
+                position: relative;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slides-container">
+        <!-- Slide 1: Title & Vision -->
+        <div class="slide title-slide active">
+            <h1 class="slide-title">CDEx Digital Publishing Initiative</h1>
+            <p class="slide-subtitle">Bridging Public Scholarship and Student Experiential Learning</p>
+            <div class="contacts">
+                <div><strong>Prepared by:</strong> Dr. Curt Rode</div>
+            </div>
+        </div>
+
+        <!-- Slide 2: Context & Infrastructure -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2 class="slide-title">Context & Infrastructure</h2>
+                <p class="slide-subtitle">Building on Existing CDEx Strengths</p>
+            </div>
+            <div class="slide-content">
+                <div class="content-text">
+                    <ul class="content-list">
+                        <li>Center for Digital Expression (CDEx) currently provides multiple digital services</li>
+                        <li>Team already running other services at full capacity</li>
+                        <li>Staff time is limited and must be carefully planned</li>
+                        <li>Digital Publishing Initiative is new work added to current services</li>
+                        <li>Builds on team's existing skills and resources</li>
+                    </ul>
+                    <div class="speaker-notes">
+                        <strong>Speaker Notes:</strong> Clarify how the Initiative fits into existing CDEx responsibilities. Emphasize this is additive, not replacement.
+                    </div>
+                </div>
+                <div class="content-image placeholder">
+                    [Infrastructure Diagram Image]<br>
+                    Image: infrastructure.png
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span class="slide-number">Slide 2 of 7</span>
+            </div>
+        </div>
+
+        <!-- Slide 3: Goals & Deliverables -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2 class="slide-title">Goals & Deliverables</h2>
+                <p class="slide-subtitle">Year 1 Measurable Outcomes</p>
+            </div>
+            <div class="slide-content">
+                <div class="content-text">
+                    <ul class="content-list">
+                        <li>Create a consistent process for publishing work from start to finish</li>
+                        <li>Publish 3–5 faculty and staff projects showcasing AddRan College research</li>
+                        <li>Support 6–10 smaller student projects for real-world learning</li>
+                        <li>Develop clear editing guidelines and make content accessible to all readers</li>
+                        <li>Build written guides so the process continues over time</li>
+                    </ul>
+                    <div class="speaker-notes">
+                        <strong>Speaker Notes:</strong> Emphasize measurable goals for year one. These are realistic targets given capacity constraints.
+                    </div>
+                </div>
+                <div class="content-image placeholder">
+                    [Goals Visual Image]<br>
+                    Image: goals.png
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span class="slide-number">Slide 3 of 6</span>
+            </div>
+        </div>
+
+        <!-- Slide 4: Capacity & Risks -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2 class="slide-title">Capacity & Risks</h2>
+                <p class="slide-subtitle">Realistic Constraints and Mitigation Strategies</p>
+            </div>
+            <div class="slide-content">
+                <div class="content-text">
+                    <ul class="content-list">
+                        <li><strong>Limited Staff Time:</strong> Small team means we can only take on a few projects at once</li>
+                        <li><strong>Academic Calendar:</strong> Student workers are only available during semesters, not breaks</li>
+                        <li><strong>Maintaining Quality:</strong> Limiting projects prevents team exhaustion and keeps standards high</li>
+                        <li><strong>Other Responsibilities:</strong> Team must balance Digital Publishing Initiative with current Center for Digital Expression (CDEx) services</li>
+                        <li><strong>Managing Risk:</strong> Clear project limits and regular check-ins on team workload</li>
+                    </ul>
+                    <div class="speaker-notes">
+                        <strong>Speaker Notes:</strong> Discuss the rationale for scope control. Transparency about limits ensures sustainability.
+                    </div>
+                </div>
+                <div class="content-image placeholder">
+                    [Capacity Chart Image]<br>
+                    Image: capacity.png
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span class="slide-number">Slide 4 of 6</span>
+            </div>
+        </div>
+
+        <!-- Slide 5: Recommendations -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2 class="slide-title">Recommendations</h2>
+                <p class="slide-subtitle">Actionable Steps for Success</p>
+            </div>
+            <div class="slide-content">
+                <div class="content-text">
+                    <ul class="content-list">
+                        <li><strong>Accept Projects Every Three Months:</strong> Take on a maximum of 3 large and 4 small projects per quarter</li>
+                        <li><strong>Hire Extra Student Help:</strong> Bring in additional students during busy production times</li>
+                        <li><strong>Use Standard Templates:</strong> Create reusable templates to reduce planning time for each project</li>
+                        <li><strong>Keep Quality High:</strong> Follow consistent editing and accessibility guidelines</li>
+                        <li><strong>Check in Regularly:</strong> Review team workload every three months and make adjustments</li>
+                    </ul>
+                    <div class="speaker-notes">
+                        <strong>Speaker Notes:</strong> Reinforce actionable recommendations. These are practical steps that can be implemented immediately.
+                    </div>
+                </div>
+                <div class="content-image placeholder">
+                    [Workflow Diagram Image]<br>
+                    Image: workflow.png
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span class="slide-number">Slide 5 of 6</span>
+            </div>
+        </div>
+
+        <!-- Slide 6: Sustainability Framework -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2 class="slide-title">Sustainability Framework</h2>
+                <p class="slide-subtitle">Long-Term Vision and Institutional Alignment</p>
+            </div>
+            <div class="slide-content">
+                <div class="content-text">
+                    <ul class="content-list">
+                        <li><strong>Keep Documents Updated:</strong> Maintain current style guides and process documents with version tracking</li>
+                        <li><strong>Yearly AddRan College Check-in:</strong> Annual meetings to ensure project aligns with college goals</li>
+                        <li><strong>Roxo Partnership Limits:</strong> Only work with external partners when team has at least 25% spare capacity</li>
+                        <li><strong>Document Everything:</strong> Written guides ensure the project continues if team members change</li>
+                        <li><strong>Keep Getting Better:</strong> Regular team reviews to discuss what's working and what to improve</li>
+                    </ul>
+                    <div class="speaker-notes">
+                        <strong>Speaker Notes:</strong> Conclude with sustainability and institutional alignment. This is a long-term initiative built for growth.
+                    </div>
+                </div>
+                <div class="content-image placeholder">
+                    [Timeline Image]<br>
+                    Image: sustainability.png
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span class="slide-number">Slide 6 of 6</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="navigation">
+        <button class="nav-button" id="prevBtn" onclick="changeSlide(-1)">Previous</button>
+        <button class="nav-button" id="nextBtn" onclick="changeSlide(1)">Next</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+            updateButtons();
+        }
+
+        function changeSlide(direction) {
+            showSlide(currentSlide + direction);
+        }
+
+        function updateButtons() {
+            document.getElementById('prevBtn').disabled = currentSlide === 0;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowRight' || event.key === ' ') {
+                if (currentSlide < totalSlides - 1) changeSlide(1);
+            } else if (event.key === 'ArrowLeft') {
+                if (currentSlide > 0) changeSlide(-1);
+            }
+        });
+
+        // Initialize
+        updateButtons();
+    </script>
+</body>
+</html>
