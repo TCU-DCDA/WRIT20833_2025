@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WRIT 20833 — Course Materials (2025)</title>
     <meta name="description" content="Course materials for WRIT 20833 including interactive notebooks, lectures, and resources">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
     <style>
         /* CSS Custom Properties for consistent theming */
         :root {
@@ -156,6 +157,24 @@
             text-align: center;
             box-shadow: var(--shadow-md);
             border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+            min-height: 200px;
+        }
+        
+        #p5-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.3;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
         }
         
         .hero-content p {
@@ -473,6 +492,7 @@
 
         <!-- Hero Section -->
         <section class="hero">
+            <div id="p5-canvas"></div>
             <div class="hero-content">
                 <p>Welcome to your digital humanities workspace. This site hosts weekly notebooks, lectures, and course resources for WRIT 20833—where coding meets culture.</p>
             </div>
@@ -584,6 +604,8 @@
                             <li><a href="/WRIT20833-2025/lectures/mini-lectures/lecture-7-nlp-topic-modeling/index.html" target="_blank" class="link-badge lecture-badge">Natural Language Processing: Teaching Machines to Read Culture</a></li>
 
                             <li><a href="/WRIT20833-2025/lectures/mini-lectures/lecture-9-public-arguments/index.html" target="_blank" class="link-badge lecture-badge">Public Arguments</a></li>
+
+                            <li><a href="/WRIT20833-2025/lectures/mini-lectures/lecture-12-github-infrastructure/index.html" target="_blank" class="link-badge lecture-badge">GitHub as Infrastructure</a></li>
                         </ul>
                     </div>
                 </section>
@@ -692,5 +714,86 @@
             <p>If a link 404s, it's just a placeholder—files will be added as the semester content is finalized.</p>
         </footer>
     </div>
+
+    <script>
+        // P5.js sketch for hero section animation
+        let particles = [];
+        let canvasContainer;
+        
+        function setup() {
+            canvasContainer = select('#p5-canvas');
+            if (!canvasContainer) {
+                console.error('Canvas container not found');
+                return;
+            }
+            
+            let w = canvasContainer.elt.offsetWidth;
+            let h = canvasContainer.elt.offsetHeight;
+            let canvas = createCanvas(w, h);
+            canvas.parent('p5-canvas');
+            
+            // Create particles representing "data points" and "connections"
+            for (let i = 0; i < 30; i++) {
+                particles.push(new Particle());
+            }
+        }
+        
+        function draw() {
+            clear();
+            
+            // Draw connections between nearby particles
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    let d = dist(particles[i].x, particles[i].y, particles[j].x, particles[j].y);
+                    if (d < 100) {
+                        stroke(77, 25, 121, map(d, 0, 100, 40, 0)); // Purple with fading opacity
+                        strokeWeight(1);
+                        line(particles[i].x, particles[i].y, particles[j].x, particles[j].y);
+                    }
+                }
+            }
+            
+            // Update and display particles
+            for (let particle of particles) {
+                particle.update();
+                particle.display();
+                particle.checkEdges();
+            }
+        }
+        
+        function windowResized() {
+            if (canvasContainer) {
+                let w = canvasContainer.elt.offsetWidth;
+                let h = canvasContainer.elt.offsetHeight;
+                resizeCanvas(w, h);
+            }
+        }
+        
+        class Particle {
+            constructor() {
+                this.x = random(width);
+                this.y = random(height);
+                this.vx = random(-0.5, 0.5);
+                this.vy = random(-0.5, 0.5);
+                this.size = random(3, 6);
+            }
+            
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+            }
+            
+            display() {
+                noStroke();
+                fill(77, 25, 121, 150); // Purple with transparency
+                circle(this.x, this.y, this.size);
+            }
+            
+            checkEdges() {
+                if (this.x < 0 || this.x > width) this.vx *= -1;
+                if (this.y < 0 || this.y > height) this.vy *= -1;
+            }
+        }
+    </script>
 </body>
 </html>

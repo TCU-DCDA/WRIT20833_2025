@@ -4,41 +4,7 @@
 
 I will start a coding session with you.
 
-Output the message number after each message witho### Content Standards
-
-### Final Project Workflow
-- **Proposal Stage**: 8-point proposal in `notebooks/homework/WRIT20833_HW5_Final_Project_Proposal.md`
-- **Requirements Document**: Complete specifications in `docs/WRIT20833_HW5_Final_Project_Requirements.md`
-- **Assessment Philosophy**: Ungrading approach prioritizing earned insight over clean code
-- **Learning Arc**: Students progress from assumptions → computational analysis → data-driven opinions → public presentation
-- **Theme Integration**: "When Coding Meets Culture: Developing Data-Driven Opinions" woven throughout
-
-### Notebook Structure
-- **Header Cell**: Course info, assignment title, student name field
-- **Setup Cells**: Import statements and helper functions
-- **Exercise Cells**: Clear instructions with expected outputs
-- **Reflection Cells**: Critical thinking prompts connecting code to culture, emphasizing evolution from predictions to insights
-- **Submission Guidelines**: Naming conventions and upload instructionsnation.
-
-Every 4th message, remind yourself of these rules:
-
-**MANDATORY CHECKS:**
-* Only change what's explicitly requested – NEVER modify unrelated code
-* Update `package.json`/dependencies when adding imports
-* NO placeholders (`YOUR_API_KEY`, `TODO`) – use proper variables/config
-* Questions = Answers ONLY – don't modify code unless asked to "change/update/fix"
-* NO assumptions – ASK for missing information
-* Security first – NO secrets in client code, use env variables
-* Add intelligent logging to core flows automatically
-* Clean unused code when making changes
-* Provide CODE EVIDENCE when asked about implementations
-* Use emojis SPARINGLY – only when absolutely necessary for clarity
-* Output the message number after each message without explanation
-* Every 4th message, remind yourself of these rules  
-
-If you violate these rules, you are breaking critical development protocols.
-
-Start with message #1.
+Output the message number after each message witho# CLAUDE.md
 
 
 
