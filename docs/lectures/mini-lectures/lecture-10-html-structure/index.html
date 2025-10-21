@@ -9,15 +9,34 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../shared-style.css">
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
+    <style>
+        #p5-canvas-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        .slide-container:first-of-type .slide {
+            position: relative;
+            z-index: 1;
+        }
+        .slide-container:first-of-type .slide > * {
+            position: relative;
+            z-index: 2;
+        }
+    </style>
 </head>
 <body>
     <!-- Slide 1: Title -->
     <div class="slide-container active">
+        <div id="p5-canvas-container"></div>
         <div class="slide">
             <div class="slide-number">1 / 10</div>
             <h1>HTML as Structure & Argument</h1>
             <p class="subtitle">Building Meaningful Web Pages for Digital Humanities</p>
-            <img src="images/slide1.jpg" alt="HTML structure" class="slide-image">
             <div class="instructor-info">WRIT 20833 • Lecture 10</div>
         </div>
     </div>
@@ -28,17 +47,17 @@
             <div class="slide-number">2 / 10</div>
             <h2>HTML Document <span class="highlight">Anatomy</span></h2>
 
-            <div class="code-example-large">
-                <pre><code>&lt;!DOCTYPE html&gt;
-&lt;html lang="en"&gt;
-  &lt;head&gt;
-    &lt;meta charset="UTF-8"&gt;
-    &lt;title&gt;My Topic Modeling Results&lt;/title&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
+            <div class="code-example-large" style="display: flex; justify-content: center;">
+                <pre style="text-align: left; margin: 0;"><code style="display: block; text-align: left;">&lt;!DOCTYPE html&gt;
+<span style="color: #ff6b6b;">&lt;html lang="en"&gt;</span>
+  <span style="color: #4ecdc4;">&lt;head&gt;</span>
+    <span style="color: #ffe66d;">&lt;meta charset="UTF-8"&gt;</span>
+    <span style="color: #a8e6cf;">&lt;title&gt;</span>My Topic Modeling Results<span style="color: #a8e6cf;">&lt;/title&gt;</span>
+  <span style="color: #4ecdc4;">&lt;/head&gt;</span>
+  <span style="color: #95e1d3;">&lt;body&gt;</span>
     &lt;!-- Your visible content goes here --&gt;
-  &lt;/body&gt;
-&lt;/html&gt;</code></pre>
+  <span style="color: #95e1d3;">&lt;/body&gt;</span>
+<span style="color: #ff6b6b;">&lt;/html&gt;</span></code></pre>
             </div>
 
             <div class="explanation-grid">
@@ -94,16 +113,17 @@
 
             <div class="two-column-layout">
                 <div class="content-column">
-                    <div class="code-example">
-                        <pre><code>&lt;h1&gt;Sentiment Analysis of Climate Discourse&lt;/h1&gt;
+                    <div class="code-example" style="text-align: left;">
+                        <pre style="text-align: left;"><code style="text-align: left;"><span style="color: #ff6b6b;">&lt;h1&gt;</span>Sentiment Analysis of 
+Climate Discourse<span style="color: #ff6b6b;">&lt;/h1&gt;</span>
 
-&lt;h2&gt;Methods&lt;/h2&gt;
-  &lt;h3&gt;Data Collection&lt;/h3&gt;
-  &lt;h3&gt;VADER Analysis&lt;/h3&gt;
+<span style="color: #4ecdc4;">&lt;h2&gt;</span>Methods<span style="color: #4ecdc4;">&lt;/h2&gt;</span>
+  <span style="color: #ffe66d;">&lt;h3&gt;</span>Data Collection<span style="color: #ffe66d;">&lt;/h3&gt;</span>
+  <span style="color: #ffe66d;">&lt;h3&gt;</span>VADER Analysis<span style="color: #ffe66d;">&lt;/h3&gt;</span>
 
-&lt;h2&gt;Results&lt;/h2&gt;
-  &lt;h3&gt;Overall Trends&lt;/h3&gt;
-  &lt;h3&gt;Key Patterns&lt;/h3&gt;</code></pre>
+<span style="color: #4ecdc4;">&lt;h2&gt;</span>Results<span style="color: #4ecdc4;">&lt;/h2&gt;</span>
+  <span style="color: #ffe66d;">&lt;h3&gt;</span>Overall Trends<span style="color: #ffe66d;">&lt;/h3&gt;</span>
+  <span style="color: #ffe66d;">&lt;h3&gt;</span>Key Patterns<span style="color: #ffe66d;">&lt;/h3&gt;</span></code></pre>
                     </div>
                 </div>
                 <div class="content-column">
@@ -138,37 +158,37 @@
                 <div class="approach-comparison">
                     <div class="approach academic">
                         <h4>Approach A: Academic Frame</h4>
-                        <div class="code-example">
-                            <pre><code>&lt;header&gt;
-  &lt;h1&gt;Research Project: Local Memory&lt;/h1&gt;
-&lt;/header&gt;
-&lt;main&gt;
-  &lt;section&gt;
-    &lt;h2&gt;Methodology&lt;/h2&gt;
-    &lt;article&gt;Collection process...&lt;/article&gt;
-  &lt;/section&gt;
-  &lt;section&gt;
-    &lt;h2&gt;Photo Gallery&lt;/h2&gt;
-  &lt;/section&gt;
-&lt;/main&gt;
-&lt;aside&gt;Community voices&lt;/aside&gt;</code></pre>
+                        <div class="code-example" style="text-align: left;">
+                            <pre style="text-align: left; font-size: 0.85em;"><code style="text-align: left;"><span style="color: #ff6b6b;">&lt;header&gt;</span>
+  <span style="color: #4ecdc4;">&lt;h1&gt;</span>Research Project<span style="color: #4ecdc4;">&lt;/h1&gt;</span>
+<span style="color: #ff6b6b;">&lt;/header&gt;</span>
+<span style="color: #ffe66d;">&lt;main&gt;</span>
+  <span style="color: #a8e6cf;">&lt;section&gt;</span>
+    <span style="color: #95e1d3;">&lt;h2&gt;</span>Methodology<span style="color: #95e1d3;">&lt;/h2&gt;</span>
+    <span style="color: #ffd93d;">&lt;article&gt;</span>...<span style="color: #ffd93d;">&lt;/article&gt;</span>
+  <span style="color: #a8e6cf;">&lt;/section&gt;</span>
+  <span style="color: #a8e6cf;">&lt;section&gt;</span>
+    <span style="color: #95e1d3;">&lt;h2&gt;</span>Gallery<span style="color: #95e1d3;">&lt;/h2&gt;</span>
+  <span style="color: #a8e6cf;">&lt;/section&gt;</span>
+<span style="color: #ffe66d;">&lt;/main&gt;</span>
+<span style="color: #c7ceea;">&lt;aside&gt;</span>Community<span style="color: #c7ceea;">&lt;/aside&gt;</span></code></pre>
                         </div>
                         <p class="argument-claim"><strong>Argument:</strong> Research methodology is primary. Photos are evidence. Community input is supplementary.</p>
                     </div>
 
                     <div class="approach community">
                         <h4>Approach B: Community-Centered</h4>
-                        <div class="code-example">
-                            <pre><code>&lt;header&gt;
-  &lt;h1&gt;Our Community, Our Stories&lt;/h1&gt;
-&lt;/header&gt;
-&lt;main&gt;
-  &lt;section&gt;
-    &lt;h2&gt;Photo Stories&lt;/h2&gt;
-    &lt;article&gt;Each photo with community narrative&lt;/article&gt;
-  &lt;/section&gt;
-&lt;/main&gt;
-&lt;aside&gt;Research context&lt;/aside&gt;</code></pre>
+                        <div class="code-example" style="text-align: left;">
+                            <pre style="text-align: left; font-size: 0.85em;"><code style="text-align: left;"><span style="color: #ff6b6b;">&lt;header&gt;</span>
+  <span style="color: #4ecdc4;">&lt;h1&gt;</span>Our Community<span style="color: #4ecdc4;">&lt;/h1&gt;</span>
+<span style="color: #ff6b6b;">&lt;/header&gt;</span>
+<span style="color: #ffe66d;">&lt;main&gt;</span>
+  <span style="color: #a8e6cf;">&lt;section&gt;</span>
+    <span style="color: #95e1d3;">&lt;h2&gt;</span>Photo Stories<span style="color: #95e1d3;">&lt;/h2&gt;</span>
+    <span style="color: #ffd93d;">&lt;article&gt;</span>...<span style="color: #ffd93d;">&lt;/article&gt;</span>
+  <span style="color: #a8e6cf;">&lt;/section&gt;</span>
+<span style="color: #ffe66d;">&lt;/main&gt;</span>
+<span style="color: #c7ceea;">&lt;aside&gt;</span>Research<span style="color: #c7ceea;">&lt;/aside&gt;</span></code></pre>
                         </div>
                         <p class="argument-claim"><strong>Argument:</strong> Community voices and photos are primary. Research context is supplementary.</p>
                     </div>
@@ -190,14 +210,14 @@
             <div class="two-column-layout">
                 <div class="content-column">
                     <h3>Link Anatomy:</h3>
-                    <div class="code-example">
-                        <pre><code>&lt;a href="results.html"&gt;
+                    <div class="code-example" style="text-align: left;">
+                        <pre style="text-align: left;"><code style="text-align: left;"><span style="color: #ff6b6b;">&lt;a href="results.html"&gt;</span>
   View Analysis Results
-&lt;/a&gt;
+<span style="color: #ff6b6b;">&lt;/a&gt;</span>
 
-&lt;a href="https://example.com"&gt;
+<span style="color: #4ecdc4;">&lt;a href="https://example.com"&gt;</span>
   External Resource
-&lt;/a&gt;</code></pre>
+<span style="color: #4ecdc4;">&lt;/a&gt;</span></code></pre>
                     </div>
 
                     <div class="link-best-practices">
@@ -213,14 +233,14 @@
                 <div class="content-column">
                     <div class="nav-example">
                         <h3>Navigation Structure:</h3>
-                        <div class="code-example">
-                            <pre><code>&lt;nav&gt;
-  &lt;ul&gt;
-    &lt;li&gt;&lt;a href="index.html"&gt;Home&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="findings.html"&gt;Findings&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="sources.html"&gt;Sources&lt;/a&gt;&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/nav&gt;</code></pre>
+                        <div class="code-example" style="text-align: left;">
+                            <pre style="text-align: left;"><code style="text-align: left;"><span style="color: #ff6b6b;">&lt;nav&gt;</span>
+  <span style="color: #4ecdc4;">&lt;ul&gt;</span>
+    <span style="color: #ffe66d;">&lt;li&gt;</span><span style="color: #a8e6cf;">&lt;a href="index.html"&gt;</span>Home<span style="color: #a8e6cf;">&lt;/a&gt;</span><span style="color: #ffe66d;">&lt;/li&gt;</span>
+    <span style="color: #ffe66d;">&lt;li&gt;</span><span style="color: #a8e6cf;">&lt;a href="findings.html"&gt;</span>Findings<span style="color: #a8e6cf;">&lt;/a&gt;</span><span style="color: #ffe66d;">&lt;/li&gt;</span>
+    <span style="color: #ffe66d;">&lt;li&gt;</span><span style="color: #a8e6cf;">&lt;a href="sources.html"&gt;</span>Sources<span style="color: #a8e6cf;">&lt;/a&gt;</span><span style="color: #ffe66d;">&lt;/li&gt;</span>
+  <span style="color: #4ecdc4;">&lt;/ul&gt;</span>
+<span style="color: #ff6b6b;">&lt;/nav&gt;</span></code></pre>
                         </div>
 
                         <div class="nav-rhetoric">
@@ -242,8 +262,8 @@
             <div class="alt-text-comparison">
                 <div class="bad-example">
                     <h3>❌ Inaccessible:</h3>
-                    <div class="code-example">
-                        <pre><code>&lt;img src="chart.jpg"&gt;</code></pre>
+                    <div class="code-example" style="text-align: left;">
+                        <pre style="text-align: left;"><code style="text-align: left;"><span style="color: #ff6b6b;">&lt;img src="chart.jpg"&gt;</span></code></pre>
                     </div>
                     <p class="impact">Screen reader: "Image" (no information)</p>
                     <p class="who-excluded">Excludes: Users who can't see images</p>
@@ -251,8 +271,9 @@
 
                 <div class="better-example">
                     <h3>⚠️ Minimal:</h3>
-                    <div class="code-example">
-                        <pre><code>&lt;img src="chart.jpg" alt="chart"&gt;</code></pre>
+                    <div class="code-example" style="text-align: left;">
+                        <pre style="text-align: left;"><code style="text-align: left;"><span style="color: #ffa500;">&lt;img src="chart.jpg" 
+     alt=</span><span style="color: #4ecdc4;">"chart"</span><span style="color: #ffa500;">&gt;</span></code></pre>
                     </div>
                     <p class="impact">Screen reader: "Chart" (not helpful)</p>
                     <p class="who-excluded">Partially excludes: No actual content</p>
@@ -260,11 +281,12 @@
 
                 <div class="good-example">
                     <h3>✓ Accessible:</h3>
-                    <div class="code-example">
-                        <pre><code>&lt;img src="chart.jpg"
-     alt="Bar chart showing 60% increase in
-     negative sentiment about climate policy
-     from 2015 to 2020"&gt;</code></pre>
+                    <div class="code-example" style="text-align: left;">
+                        <pre style="text-align: left;"><code style="text-align: left;"><span style="color: #a8e6cf;">&lt;img src="chart.jpg"
+     alt=</span><span style="color: #ffe66d;">"Bar chart showing 
+     60% increase in negative 
+     sentiment about climate 
+     policy from 2015 to 2020"</span><span style="color: #a8e6cf;">&gt;</span></code></pre>
                     </div>
                     <p class="impact">Screen reader: Full insight available</p>
                     <p class="who-included">Includes: Everyone gets the data</p>
@@ -286,25 +308,25 @@
             <div class="list-types-grid">
                 <div class="list-type">
                     <h3>Unordered Lists (bullets):</h3>
-                    <div class="code-example">
-                        <pre><code>&lt;ul&gt;
-  &lt;li&gt;Topic: Politics&lt;/li&gt;
-  &lt;li&gt;Topic: Technology&lt;/li&gt;
-  &lt;li&gt;Topic: Health&lt;/li&gt;
-&lt;/ul&gt;</code></pre>
+                    <div class="code-example" style="text-align: left;">
+                        <pre style="text-align: left;"><code style="text-align: left;"><span style="color: #ff6b6b;">&lt;ul&gt;</span>
+  <span style="color: #4ecdc4;">&lt;li&gt;</span>Topic: Politics<span style="color: #4ecdc4;">&lt;/li&gt;</span>
+  <span style="color: #4ecdc4;">&lt;li&gt;</span>Topic: Technology<span style="color: #4ecdc4;">&lt;/li&gt;</span>
+  <span style="color: #4ecdc4;">&lt;li&gt;</span>Topic: Health<span style="color: #4ecdc4;">&lt;/li&gt;</span>
+<span style="color: #ff6b6b;">&lt;/ul&gt;</span></code></pre>
                     </div>
                     <p><strong>Use when:</strong> Order doesn't matter (topics, features, themes)</p>
                 </div>
 
                 <div class="list-type">
                     <h3>Ordered Lists (numbered):</h3>
-                    <div class="code-example">
-                        <pre><code>&lt;ol&gt;
-  &lt;li&gt;Collect data&lt;/li&gt;
-  &lt;li&gt;Clean and preprocess&lt;/li&gt;
-  &lt;li&gt;Run topic modeling&lt;/li&gt;
-  &lt;li&gt;Interpret results&lt;/li&gt;
-&lt;/ol&gt;</code></pre>
+                    <div class="code-example" style="text-align: left;">
+                        <pre style="text-align: left;"><code style="text-align: left;"><span style="color: #ffe66d;">&lt;ol&gt;</span>
+  <span style="color: #a8e6cf;">&lt;li&gt;</span>Collect data<span style="color: #a8e6cf;">&lt;/li&gt;</span>
+  <span style="color: #a8e6cf;">&lt;li&gt;</span>Clean and preprocess<span style="color: #a8e6cf;">&lt;/li&gt;</span>
+  <span style="color: #a8e6cf;">&lt;li&gt;</span>Run topic modeling<span style="color: #a8e6cf;">&lt;/li&gt;</span>
+  <span style="color: #a8e6cf;">&lt;li&gt;</span>Interpret results<span style="color: #a8e6cf;">&lt;/li&gt;</span>
+<span style="color: #ffe66d;">&lt;/ol&gt;</span></code></pre>
                     </div>
                     <p><strong>Use when:</strong> Order matters (steps, rankings, chronology)</p>
                 </div>
@@ -323,59 +345,67 @@
             <h2>Full DH Page <span class="highlight">Structure</span></h2>
 
             <div class="full-page-example">
-                <div class="code-example-scrollable">
-                    <pre><code>&lt;!DOCTYPE html&gt;
-&lt;html lang="en"&gt;
-&lt;head&gt;
-  &lt;meta charset="UTF-8"&gt;
-  &lt;title&gt;Climate Discourse Sentiment Analysis&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-  &lt;header&gt;
-    &lt;h1&gt;Climate Discourse Sentiment Analysis&lt;/h1&gt;
-    &lt;p&gt;Tracking emotional tone in climate conversations, 2015-2020&lt;/p&gt;
-  &lt;/header&gt;
+                <div class="code-example-scrollable" style="text-align: left;">
+                    <pre style="text-align: left; font-size: 0.8em;"><code style="text-align: left;">&lt;!DOCTYPE html&gt;
+<span style="color: #ff6b6b;">&lt;html lang="en"&gt;</span>
+<span style="color: #4ecdc4;">&lt;head&gt;</span>
+  <span style="color: #ffe66d;">&lt;meta charset="UTF-8"&gt;</span>
+  <span style="color: #a8e6cf;">&lt;title&gt;</span>Climate Discourse Sentiment Analysis<span style="color: #a8e6cf;">&lt;/title&gt;</span>
+<span style="color: #4ecdc4;">&lt;/head&gt;</span>
+<span style="color: #95e1d3;">&lt;body&gt;</span>
+  <span style="color: #ffd93d;">&lt;header&gt;</span>
+    <span style="color: #c7ceea;">&lt;h1&gt;</span>Climate Discourse Sentiment Analysis<span style="color: #c7ceea;">&lt;/h1&gt;</span>
+    <span style="color: #ffb6b9;">&lt;p&gt;</span>Tracking emotional tone in climate 
+    conversations, 2015-2020<span style="color: #ffb6b9;">&lt;/p&gt;</span>
+  <span style="color: #ffd93d;">&lt;/header&gt;</span>
 
-  &lt;nav&gt;
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href="#methods"&gt;Methods&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href="#findings"&gt;Findings&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href="#implications"&gt;Implications&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/nav&gt;
+  <span style="color: #b4e7ce;">&lt;nav&gt;</span>
+    <span style="color: #f7d794;">&lt;ul&gt;</span>
+      <span style="color: #778beb;">&lt;li&gt;</span><span style="color: #e77f67;">&lt;a href="#methods"&gt;</span>Methods<span style="color: #e77f67;">&lt;/a&gt;</span><span style="color: #778beb;">&lt;/li&gt;</span>
+      <span style="color: #778beb;">&lt;li&gt;</span><span style="color: #e77f67;">&lt;a href="#findings"&gt;</span>Findings<span style="color: #e77f67;">&lt;/a&gt;</span><span style="color: #778beb;">&lt;/li&gt;</span>
+      <span style="color: #778beb;">&lt;li&gt;</span><span style="color: #e77f67;">&lt;a href="#implications"&gt;</span>Implications<span style="color: #e77f67;">&lt;/a&gt;</span><span style="color: #778beb;">&lt;/li&gt;</span>
+    <span style="color: #f7d794;">&lt;/ul&gt;</span>
+  <span style="color: #b4e7ce;">&lt;/nav&gt;</span>
 
-  &lt;main&gt;
-    &lt;section id="methods"&gt;
-      &lt;h2&gt;Methods&lt;/h2&gt;
-      &lt;p&gt;We analyzed 50,000 tweets using VADER sentiment analysis...&lt;/p&gt;
-      &lt;img src="methodology.jpg" alt="Flowchart showing data collection
-           from Twitter API, preprocessing steps, and VADER analysis"&gt;
-    &lt;/section&gt;
+  <span style="color: #ffd93d;">&lt;main&gt;</span>
+    <span style="color: #a8e6cf;">&lt;section id="methods"&gt;</span>
+      <span style="color: #c7ceea;">&lt;h2&gt;</span>Methods<span style="color: #c7ceea;">&lt;/h2&gt;</span>
+      <span style="color: #ffb6b9;">&lt;p&gt;</span>We analyzed 50,000 tweets using 
+      VADER sentiment analysis...<span style="color: #ffb6b9;">&lt;/p&gt;</span>
+      <span style="color: #95e1d3;">&lt;img src="methodology.jpg" 
+           alt="Flowchart showing data collection
+           from Twitter API, preprocessing steps, 
+           and VADER analysis"&gt;</span>
+    <span style="color: #a8e6cf;">&lt;/section&gt;</span>
 
-    &lt;section id="findings"&gt;
-      &lt;h2&gt;Key Findings&lt;/h2&gt;
-      &lt;article&gt;
-        &lt;h3&gt;Negative Sentiment Increased 60%&lt;/h3&gt;
-        &lt;p&gt;From 2015 to 2020, negative sentiment rose sharply...&lt;/p&gt;
-        &lt;img src="trend.jpg" alt="Line graph showing negative sentiment
-             rising from 20% in 2015 to 80% in 2020"&gt;
-      &lt;/article&gt;
-    &lt;/section&gt;
-  &lt;/main&gt;
+    <span style="color: #a8e6cf;">&lt;section id="findings"&gt;</span>
+      <span style="color: #c7ceea;">&lt;h2&gt;</span>Key Findings<span style="color: #c7ceea;">&lt;/h2&gt;</span>
+      <span style="color: #4ecdc4;">&lt;article&gt;</span>
+        <span style="color: #ffe66d;">&lt;h3&gt;</span>Negative Sentiment Increased 60%<span style="color: #ffe66d;">&lt;/h3&gt;</span>
+        <span style="color: #ffb6b9;">&lt;p&gt;</span>From 2015 to 2020, negative sentiment 
+        rose sharply...<span style="color: #ffb6b9;">&lt;/p&gt;</span>
+        <span style="color: #95e1d3;">&lt;img src="trend.jpg" 
+             alt="Line graph showing negative 
+             sentiment rising from 20% in 2015 
+             to 80% in 2020"&gt;</span>
+      <span style="color: #4ecdc4;">&lt;/article&gt;</span>
+    <span style="color: #a8e6cf;">&lt;/section&gt;</span>
+  <span style="color: #ffd93d;">&lt;/main&gt;</span>
 
-  &lt;aside&gt;
-    &lt;h3&gt;Data Sources&lt;/h3&gt;
-    &lt;ul&gt;
-      &lt;li&gt;Twitter API (2015-2020)&lt;/li&gt;
-      &lt;li&gt;50,000 tweets with #climate&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/aside&gt;
+  <span style="color: #c7ceea;">&lt;aside&gt;</span>
+    <span style="color: #ffe66d;">&lt;h3&gt;</span>Data Sources<span style="color: #ffe66d;">&lt;/h3&gt;</span>
+    <span style="color: #f7d794;">&lt;ul&gt;</span>
+      <span style="color: #778beb;">&lt;li&gt;</span>Twitter API (2015-2020)<span style="color: #778beb;">&lt;/li&gt;</span>
+      <span style="color: #778beb;">&lt;li&gt;</span>50,000 tweets with #climate<span style="color: #778beb;">&lt;/li&gt;</span>
+    <span style="color: #f7d794;">&lt;/ul&gt;</span>
+  <span style="color: #c7ceea;">&lt;/aside&gt;</span>
 
-  &lt;footer&gt;
-    &lt;p&gt;Created by [Your Name] | WRIT 20833 | Fall 2025&lt;/p&gt;
-  &lt;/footer&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
+  <span style="color: #ffd93d;">&lt;footer&gt;</span>
+    <span style="color: #ffb6b9;">&lt;p&gt;</span>Created by [Your Name] | WRIT 20833 | 
+    Fall 2025<span style="color: #ffb6b9;">&lt;/p&gt;</span>
+  <span style="color: #ffd93d;">&lt;/footer&gt;</span>
+<span style="color: #95e1d3;">&lt;/body&gt;</span>
+<span style="color: #ff6b6b;">&lt;/html&gt;</span></code></pre>
                 </div>
             </div>
 
@@ -511,6 +541,87 @@
                 }
             }
         }
+
+        // P5.js sketch for slide 1
+        let htmlElements = [];
+        let sketch1Active = true;
+
+        function setup() {
+            let canvas = createCanvas(windowWidth, windowHeight);
+            canvas.parent('p5-canvas-container');
+            
+            // Create floating HTML tag elements
+            let tags = ['<html>', '<head>', '<body>', '<header>', '<nav>', '<main>', 
+                        '<article>', '<section>', '<footer>', '<h1>', '<p>', '<div>'];
+            
+            for (let i = 0; i < 20; i++) {
+                htmlElements.push({
+                    tag: random(tags),
+                    x: random(width),
+                    y: random(height),
+                    vx: random(-0.5, 0.5),
+                    vy: random(-0.5, 0.5),
+                    size: random(20, 40),
+                    opacity: random(100, 200),
+                    color: color(random([74, 144, 226]), random([100, 150, 200]), random([200, 230, 255]))
+                });
+            }
+        }
+
+        function draw() {
+            if (!sketch1Active) return;
+            
+            clear();
+            
+            // Draw connecting lines between nearby elements
+            stroke(100, 150, 200, 50);
+            strokeWeight(1);
+            for (let i = 0; i < htmlElements.length; i++) {
+                for (let j = i + 1; j < htmlElements.length; j++) {
+                    let d = dist(htmlElements[i].x, htmlElements[i].y, 
+                                htmlElements[j].x, htmlElements[j].y);
+                    if (d < 150) {
+                        line(htmlElements[i].x, htmlElements[i].y, 
+                             htmlElements[j].x, htmlElements[j].y);
+                    }
+                }
+            }
+            
+            // Update and draw HTML elements
+            for (let el of htmlElements) {
+                // Update position
+                el.x += el.vx;
+                el.y += el.vy;
+                
+                // Bounce off edges
+                if (el.x < 0 || el.x > width) el.vx *= -1;
+                if (el.y < 0 || el.y > height) el.vy *= -1;
+                
+                // Draw element
+                noStroke();
+                fill(el.color.levels[0], el.color.levels[1], el.color.levels[2], el.opacity);
+                textSize(el.size);
+                textFont('Courier New');
+                textAlign(CENTER, CENTER);
+                text(el.tag, el.x, el.y);
+            }
+        }
+
+        function windowResized() {
+            resizeCanvas(windowWidth, windowHeight);
+        }
+
+        // Hide canvas when not on slide 1
+        const originalShowSlide = showSlide;
+        showSlide = function(n) {
+            originalShowSlide(n);
+            sketch1Active = (currentSlide === 0);
+            if (!sketch1Active) {
+                select('#p5-canvas-container').style('display', 'none');
+            } else {
+                select('#p5-canvas-container').style('display', 'block');
+            }
+        };
     </script>
 </body>
 </html>
