@@ -9,6 +9,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../shared-style.css">
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
+    <style>
+        #p5-banner-container {
+            width: 100%;
+            height: 300px;
+            margin: 2rem 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
 <body>
     <!-- Slide 1: Title/Hook -->
@@ -17,7 +28,7 @@
             <div class="slide-number">1 / 8</div>
             <h1>Code as Rhetoric</h1>
             <p class="subtitle">How Technical Choices Make Arguments</p>
-            <img src="images/slide1.jpg" alt="Code making arguments" class="slide-image">
+            <div id="p5-banner-container"></div>
 
             <div class="hook-question">
                 <h2 style="color: #c9a9ff; font-size: 2.5rem; margin: 2rem 0;">
@@ -430,6 +441,158 @@
                 }
             }
         }
+
+        // P5.js Banner: Code Making Arguments
+        let bannerSketch = function(p) {
+            let codeElements = [];
+            let argumentElements = [];
+            let particles = [];
+            
+            p.setup = function() {
+                let container = document.getElementById('p5-banner-container');
+                let canvas = p.createCanvas(container.offsetWidth, 300);
+                canvas.parent('p5-banner-container');
+                
+                // Left side: Code snippets
+                codeElements = [
+                    { text: 'font-size: 48px', x: 50, y: 60, color: '#ff6b6b' },
+                    { text: 'font-weight: bold', x: 50, y: 120, color: '#4ecdc4' },
+                    { text: 'color: red', x: 50, y: 180, color: '#ffe66d' },
+                    { text: 'position: top', x: 50, y: 240, color: '#a8e6cf' }
+                ];
+                
+                // Right side: Arguments/Outcomes
+                argumentElements = [
+                    { text: 'IMPORTANT', size: 36, x: p.width - 200, y: 60, color: '#ff6b6b' },
+                    { text: 'PRIMARY', size: 32, x: p.width - 200, y: 120, color: '#4ecdc4' },
+                    { text: 'URGENT', size: 28, x: p.width - 200, y: 180, color: '#ff0000' },
+                    { text: 'First', size: 24, x: p.width - 200, y: 240, color: '#a8e6cf' }
+                ];
+                
+                // Create flowing particles
+                for (let i = 0; i < 30; i++) {
+                    particles.push({
+                        x: p.random(p.width * 0.3, p.width * 0.7),
+                        y: p.random(p.height),
+                        size: p.random(2, 5),
+                        speedX: p.random(0.5, 1.5),
+                        alpha: p.random(100, 200)
+                    });
+                }
+            };
+            
+            p.draw = function() {
+                // Dark gradient background
+                for (let i = 0; i < p.height; i++) {
+                    let inter = p.map(i, 0, p.height, 0, 1);
+                    let c = p.lerpColor(p.color(25, 25, 45), p.color(45, 25, 65), inter);
+                    p.stroke(c);
+                    p.line(0, i, p.width, i);
+                }
+                
+                // Draw flowing particles (representing transformation)
+                for (let particle of particles) {
+                    p.noStroke();
+                    p.fill(200, 150, 255, particle.alpha);
+                    p.circle(particle.x, particle.y, particle.size);
+                    
+                    particle.x += particle.speedX;
+                    if (particle.x > p.width * 0.7) {
+                        particle.x = p.width * 0.3;
+                    }
+                }
+                
+                // Draw connecting lines (transformation arrows)
+                p.stroke(150, 100, 200, 80);
+                p.strokeWeight(1);
+                for (let i = 0; i < codeElements.length; i++) {
+                    let code = codeElements[i];
+                    let arg = argumentElements[i];
+                    
+                    // Animated dash effect
+                    let dashLength = 10;
+                    let gapLength = 10;
+                    let totalLength = p.dist(code.x + 150, code.y, arg.x - 50, arg.y);
+                    let offset = (p.frameCount * 2) % (dashLength + gapLength);
+                    
+                    for (let d = -offset; d < totalLength; d += dashLength + gapLength) {
+                        let x1 = p.lerp(code.x + 150, arg.x - 50, p.max(0, d) / totalLength);
+                        let y1 = p.lerp(code.y, arg.y, p.max(0, d) / totalLength);
+                        let x2 = p.lerp(code.x + 150, arg.x - 50, p.min(1, (d + dashLength) / totalLength));
+                        let y2 = p.lerp(code.y, arg.y, p.min(1, (d + dashLength) / totalLength));
+                        p.line(x1, y1, x2, y2);
+                    }
+                    
+                    // Draw arrow at end
+                    let angle = p.atan2(arg.y - code.y, arg.x - code.x);
+                    p.push();
+                    p.translate(arg.x - 50, arg.y);
+                    p.rotate(angle);
+                    p.fill(150, 100, 200, 80);
+                    p.noStroke();
+                    p.triangle(0, 0, -10, -5, -10, 5);
+                    p.pop();
+                }
+                
+                // Draw code elements (left side)
+                p.textFont('monospace');
+                for (let code of codeElements) {
+                    // Box background
+                    p.fill(30, 30, 50);
+                    p.noStroke();
+                    p.rect(code.x - 5, code.y - 12, p.textWidth(code.text) + 10, 24, 4);
+                    
+                    // Border
+                    p.stroke(code.color);
+                    p.strokeWeight(2);
+                    p.noFill();
+                    p.rect(code.x - 5, code.y - 12, p.textWidth(code.text) + 10, 24, 4);
+                    
+                    // Text
+                    p.fill(code.color);
+                    p.noStroke();
+                    p.textSize(14);
+                    p.textAlign(p.LEFT, p.CENTER);
+                    p.text(code.text, code.x, code.y);
+                }
+                
+                // Draw argument elements (right side)
+                for (let arg of argumentElements) {
+                    p.fill(arg.color);
+                    p.noStroke();
+                    p.textSize(arg.size);
+                    p.textStyle(p.BOLD);
+                    p.textAlign(p.RIGHT, p.CENTER);
+                    p.text(arg.text, arg.x, arg.y);
+                    
+                    // Subtle glow effect
+                    p.fill(arg.color + '40');
+                    p.textSize(arg.size + 2);
+                    p.text(arg.text, arg.x, arg.y);
+                }
+                
+                // Center text: "transforms into"
+                p.push();
+                p.translate(p.width / 2, p.height / 2);
+                p.fill(150, 150, 180, 150);
+                p.noStroke();
+                p.textSize(16);
+                p.textAlign(p.CENTER, p.CENTER);
+                p.textFont('sans-serif');
+                p.textStyle(p.ITALIC);
+                p.text('transforms into', 0, 0);
+                p.pop();
+            };
+            
+            p.windowResized = function() {
+                let container = document.getElementById('p5-banner-container');
+                if (container) {
+                    p.resizeCanvas(container.offsetWidth, 300);
+                }
+            };
+        };
+        
+        new p5(bannerSketch);
     </script>
 </body>
 </html>
