@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semantic HTML & CSS Workshop — WRIT 20833</title>
+    <meta name="description" content="Two-session workshop on semantic HTML and CSS fundamentals for beginners">
+    <style>
+        /* CSS Custom Properties */
+        :root {
+            --primary-color: #4d1979;
+            --secondary-color: #7c3aed;
+            --accent-color: #ffd700;
+            --success-color: #059669;
+            --warning-color: #d97706;
+            --error-color: #dc2626;
+            
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --text-muted: #94a3b8;
+            
+            --bg-primary: #ffffff;
+            --bg-secondary: #fafafa;
+            --bg-code: #f8f9fa;
+            
+            --border-color: #e2e8f0;
+            --border-radius: 8px;
+            
+            --space-xs: 0.5rem;
+            --space-sm: 0.75rem;
+            --space-md: 1rem;
+            --space-lg: 1.5rem;
+            --space-xl: 2rem;
+            
+            --font-mono: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, monospace;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-secondary);
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: var(--space-xl);
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: var(--space-xl) 0;
+            text-align: center;
+            margin-bottom: var(--space-xl);
+        }
+        
+        h1 {
+            margin: 0 0 var(--space-sm) 0;
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+        }
+        
+        .subtitle {
+            font-size: 1.25rem;
+            opacity: 0.95;
+            margin: 0;
+        }
+        
+        .meta-info {
+            display: flex;
+            gap: var(--space-lg);
+            justify-content: center;
+            margin-top: var(--space-md);
+            font-size: 0.95rem;
+            flex-wrap: wrap;
+        }
+        
+        /* Typography */
+        h2 {
+            color: var(--primary-color);
+            font-size: 1.875rem;
+            margin: var(--space-xl) 0 var(--space-md) 0;
+            border-bottom: 3px solid var(--secondary-color);
+            padding-bottom: var(--space-sm);
+        }
+        
+        h3 {
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            margin: var(--space-lg) 0 var(--space-md) 0;
+        }
+        
+        h4 {
+            color: var(--text-primary);
+            font-size: 1.25rem;
+            margin: var(--space-md) 0 var(--space-sm) 0;
+        }
+        
+        p {
+            margin: 0 0 var(--space-md) 0;
+            color: var(--text-secondary);
+        }
+        
+        /* Content Sections */
+        .session {
+            background: var(--bg-primary);
+            border-radius: var(--border-radius);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .session-header {
+            background: var(--primary-color);
+            color: white;
+            padding: var(--space-md) var(--space-lg);
+            border-radius: var(--border-radius);
+            margin: calc(-1 * var(--space-xl)) calc(-1 * var(--space-xl)) var(--space-lg);
+        }
+        
+        .session-header h2 {
+            color: white;
+            margin: 0;
+            border: none;
+            padding: 0;
+        }
+        
+        /* Code Blocks */
+        pre {
+            background: var(--bg-code);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: var(--space-md);
+            overflow-x: auto;
+            margin: var(--space-md) 0;
+        }
+        
+        code {
+            font-family: var(--font-mono);
+            font-size: 0.9em;
+        }
+        
+        pre code {
+            display: block;
+            color: var(--text-primary);
+        }
+        
+        p code, li code {
+            background: var(--bg-code);
+            padding: 0.125rem 0.375rem;
+            border-radius: 4px;
+            color: var(--primary-color);
+        }
+        
+        /* Callout Boxes */
+        .callout {
+            border-left: 4px solid;
+            border-radius: var(--border-radius);
+            padding: var(--space-md) var(--space-lg);
+            margin: var(--space-lg) 0;
+        }
+        
+        .callout-question {
+            background: #e0f2fe;
+            border-color: #0284c7;
+        }
+        
+        .callout-tip {
+            background: #f0e7f8;
+            border-color: var(--secondary-color);
+        }
+        
+        .callout-warning {
+            background: #fef3c7;
+            border-color: var(--warning-color);
+        }
+        
+        .callout-error {
+            background: #fee2e2;
+            border-color: var(--error-color);
+        }
+        
+        .callout-success {
+            background: #d1fae5;
+            border-color: var(--success-color);
+        }
+        
+        .callout strong {
+            color: var(--text-primary);
+        }
+        
+        .callout p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Lists */
+        ul, ol {
+            margin: 0 0 var(--space-md) 0;
+            padding-left: var(--space-xl);
+        }
+        
+        li {
+            margin-bottom: var(--space-sm);
+            color: var(--text-secondary);
+        }
+        
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: var(--space-lg) 0;
+            background: white;
+        }
+        
+        th, td {
+            padding: var(--space-sm) var(--space-md);
+            text-align: left;
+            border: 1px solid var(--border-color);
+        }
+        
+        th {
+            background: var(--primary-color);
+            color: white;
+            font-weight: 600;
+        }
+        
+        tr:nth-child(even) {
+            background: var(--bg-secondary);
+        }
+        
+        /* Activity Boxes */
+        .activity {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            border: 2px solid var(--warning-color);
+            border-radius: var(--border-radius);
+            padding: var(--space-lg);
+            margin: var(--space-lg) 0;
+        }
+        
+        .activity h4 {
+            margin-top: 0;
+            color: var(--warning-color);
+        }
+        
+        /* Checklist */
+        .checklist {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .checklist li {
+            padding-left: 2rem;
+            position: relative;
+        }
+        
+        .checklist li::before {
+            content: '☐';
+            position: absolute;
+            left: 0;
+            font-size: 1.25rem;
+            color: var(--secondary-color);
+        }
+        
+        /* Comparison */
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-lg);
+            margin: var(--space-lg) 0;
+        }
+        
+        .comparison-item {
+            padding: var(--space-md);
+            border-radius: var(--border-radius);
+            border: 2px solid;
+        }
+        
+        .comparison-item.bad {
+            background: #fee2e2;
+            border-color: var(--error-color);
+        }
+        
+        .comparison-item.good {
+            background: #d1fae5;
+            border-color: var(--success-color);
+        }
+        
+        .comparison-item h4 {
+            margin-top: 0;
+        }
+        
+        /* Resources */
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-md);
+            margin: var(--space-lg) 0;
+        }
+        
+        .resource-card {
+            background: var(--bg-code);
+            padding: var(--space-md);
+            border-radius: var(--border-radius);
+            border: 1px solid var(--border-color);
+        }
+        
+        .resource-card h4 {
+            margin-top: 0;
+            color: var(--secondary-color);
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: var(--space-xl) 0;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: var(--space-md);
+            }
+            
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+            
+            .meta-info {
+                flex-direction: column;
+                gap: var(--space-sm);
+            }
+        }
+        
+        /* Print styles */
+        @media print {
+            .session {
+                page-break-inside: avoid;
+            }
+            
+            pre {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Semantic HTML & CSS Workshop</h1>
+            <p class="subtitle">Building Meaningful Web Structures</p>
+            <div class="meta-info">
+                <span>⏱️ Duration: Two 50-minute sessions</span>
+                <span>📚 Prerequisites: Basic HTML understanding</span>
+                <span>🎯 For: WRIT 20833 Students</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Session 1 -->
+        <section class="session">
+            <div class="session-header">
+                <h2>Session 1: Semantic HTML Improvements (50 minutes)</h2>
+            </div>
+
+            <h3>Opening: What is Semantic HTML? (5 minutes)</h3>
+            
+            <div class="callout callout-question">
+                <strong>Question to Class:</strong> "What's the difference between these two pieces of code?"
+            </div>
+
+            <div class="comparison">
+                <div class="comparison-item bad">
+                    <h4>❌ Version A</h4>
+                    <pre><code>&lt;div class="header"&gt;
+    &lt;div class="navigation"&gt;...&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+                <div class="comparison-item good">
+                    <h4>✅ Version B</h4>
+                    <pre><code>&lt;header&gt;
+    &lt;nav&gt;...&lt;/nav&gt;
+&lt;/header&gt;</code></pre>
+                </div>
+            </div>
+
+            <p><strong>Answer:</strong> Both might <em>look</em> the same to users, but Version B uses <strong>semantic HTML</strong>—tags that describe their <em>meaning</em>, not just their appearance.</p>
+
+            <div class="callout callout-tip">
+                <strong>💡 Why does this matter?</strong>
+                <ul>
+                    <li><strong>Accessibility:</strong> Screen readers understand semantic tags</li>
+                    <li><strong>SEO:</strong> Search engines prioritize content in semantic containers</li>
+                    <li><strong>Maintainability:</strong> Code is easier to read and update</li>
+                    <li><strong>Professional Standard:</strong> Industry best practice</li>
+                </ul>
+            </div>
+
+            <hr>
+
+            <h3>Part 1: Fixing Real Code Together (20 minutes)</h3>
+
+            <div class="activity">
+                <h4>🔧 Activity: Let's examine and improve actual student code</h4>
+                <p>We're looking at code from the TCU-DCDA/20833_project repository.</p>
+            </div>
+
+            <h4>Issue #1: Navigation Structure & Link Syntax</h4>
+
+            <p><strong>Current Code:</strong></p>
+            <pre><code>&lt;nav&gt;
+Home | 
+&lt;a href="#overview"&gt;Overview |&lt;/a&gt;
+&lt;a href="#background"&gt;Background |&lt;/a&gt;
+&lt;a href="#methodology"&gt;&lt;/a&gt;Methodology |&lt;/a&gt;  &lt;!-- ERROR HERE --&gt;
+&lt;a href="#analysis"&gt;Analysis |&lt;/a&gt;
+&lt;a href ="#findings"&gt;Findings&lt;/a&gt;
+&lt;/nav&gt;</code></pre>
+
+            <div class="callout callout-error">
+                <strong>🔍 Problems to Notice:</strong>
+                <ol>
+                    <li>Navigation uses plain text with pipe separators (not semantic)</li>
+                    <li>Line 5: <code>&lt;/a&gt;</code> appears BEFORE the link text—link is broken!</li>
+                    <li>"Home" is plain text, not a clickable link</li>
+                    <li>Extra space in <code>href ="#findings"</code></li>
+                    <li>No list structure makes it hard to style consistently</li>
+                </ol>
+            </div>
+
+            <p><strong>✅ Better Approach: Use a List Structure</strong></p>
+            <pre><code>&lt;nav&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#home"&gt;Home&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#overview"&gt;Overview&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#background"&gt;Background&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#methodology"&gt;Methodology&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#analysis"&gt;Analysis&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#findings"&gt;Findings&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+
+            <div class="callout callout-tip">
+                <strong>💡 Why Use a List for Navigation?</strong>
+                <ul>
+                    <li><strong>Semantic meaning:</strong> Navigation IS a list of links</li>
+                    <li><strong>Accessibility:</strong> Screen readers announce "list of 6 items"</li>
+                    <li><strong>Easier to style:</strong> We can remove bullets and arrange horizontally with CSS</li>
+                    <li><strong>Link syntax check:</strong> Each link properly wraps its text: <code>&lt;a href="..."&gt;text&lt;/a&gt;</code></li>
+                    <li><strong>Consistent structure:</strong> All items follow the same pattern</li>
+                </ul>
+            </div>
+
+            <div class="callout callout-question">
+                <strong>📝 Note:</strong> Right now this will display as a vertical bulleted list. That's OK! In Session 2, we'll use CSS to:
+                <ul>
+                    <li>Remove the bullets with <code>list-style: none;</code></li>
+                    <li>Arrange items horizontally with <code>display: flex;</code></li>
+                    <li>Add spacing and hover effects</li>
+                </ul>
+                <p><strong>First we build semantic HTML structure, then we style it with CSS.</strong></p>
+            </div>
+
+            <hr>
+
+            <h4>Issue #2: Missing Semantic Structure</h4>
+
+            <p><strong>Current Code:</strong></p>
+            <pre><code>&lt;body&gt;
+&lt;nav&gt;...&lt;/nav&gt;
+&lt;h1&gt;Welcome to the Project Home&lt;/h1&gt;
+&lt;section id="overview"&gt;...&lt;/section&gt;
+&lt;section id="background"&gt;...&lt;/section&gt;
+&lt;!-- more sections --&gt;
+&lt;/body&gt;</code></pre>
+
+            <div class="callout callout-error">
+                <strong>❌ Problems:</strong>
+                <ul>
+                    <li>No clear document structure</li>
+                    <li>H1 floating loose in <code>&lt;body&gt;</code></li>
+                    <li>Missing semantic containers</li>
+                </ul>
+            </div>
+
+            <p><strong>✅ Improved Version:</strong></p>
+            <pre><code>&lt;body&gt;
+    &lt;header&gt;
+        &lt;nav&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href="#home"&gt;Home&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#overview"&gt;Overview&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#background"&gt;Background&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#methodology"&gt;Methodology&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#analysis"&gt;Analysis&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#findings"&gt;Findings&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/nav&gt;
+        &lt;h1&gt;Welcome to the Project Home&lt;/h1&gt;
+    &lt;/header&gt;
+
+    &lt;main&gt;
+        &lt;section id="overview"&gt;
+            &lt;h2&gt;Project Overview&lt;/h2&gt;
+            &lt;p&gt;Content about the project overview...&lt;/p&gt;
+        &lt;/section&gt;
+        
+        &lt;section id="background"&gt;
+            &lt;h2&gt;Background&lt;/h2&gt;
+            &lt;p&gt;Content about the background...&lt;/p&gt;
+        &lt;/section&gt;
+        
+        &lt;!-- Additional sections --&gt;
+    &lt;/main&gt;
+
+    &lt;footer&gt;
+        &lt;p&gt;&copy; 2025 Research Project Name&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;</code></pre>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Element</th>
+                        <th>Purpose</th>
+                        <th>Rules</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>&lt;header&gt;</code></td>
+                        <td>Contains site/page header content</td>
+                        <td>Usually includes nav, logo, title</td>
+                    </tr>
+                    <tr>
+                        <td><code>&lt;nav&gt;</code></td>
+                        <td>Contains navigation links</td>
+                        <td>Should be inside <code>&lt;header&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>&lt;main&gt;</code></td>
+                        <td>Primary content of the page</td>
+                        <td><strong>Only ONE per page</strong></td>
+                    </tr>
+                    <tr>
+                        <td><code>&lt;section&gt;</code></td>
+                        <td>Thematic grouping of content</td>
+                        <td>Should have a heading</td>
+                    </tr>
+                    <tr>
+                        <td><code>&lt;footer&gt;</code></td>
+                        <td>Footer content (copyright, etc.)</td>
+                        <td>Usually at bottom of page</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <hr>
+
+            <h3>Part 2: Hands-On Practice (20 minutes)</h3>
+
+            <div class="activity">
+                <h4>✏️ Activity: Fix Your Own Code</h4>
+                <p>Students open their project's <code>index.html</code> and:</p>
+                <ol>
+                    <li>Rebuild navigation as a <code>&lt;ul&gt;</code> list structure (check link syntax!)</li>
+                    <li>Add semantic containers (<code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;footer&gt;</code>)</li>
+                    <li>Verify each <code>&lt;section&gt;</code> has an ID and heading</li>
+                </ol>
+                <p><strong>Pair Programming:</strong> Work with a neighbor to review each other's code and identify improvements.</p>
+            </div>
+
+            <hr>
+
+            <h3>Part 3: Preparing for CSS (5 minutes)</h3>
+
+            <p><strong>Add Classes for Future Styling:</strong></p>
+
+            <pre><code>&lt;body&gt;
+    &lt;header class="site-header"&gt;
+        &lt;nav class="main-nav"&gt;
+            &lt;ul class="nav-list"&gt;
+                &lt;li&gt;&lt;a href="#home" class="nav-link"&gt;Home&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#overview" class="nav-link"&gt;Overview&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#background" class="nav-link"&gt;Background&lt;/a&gt;&lt;/li&gt;
+                &lt;!-- etc --&gt;
+            &lt;/ul&gt;
+        &lt;/nav&gt;
+        &lt;h1 class="page-title"&gt;Welcome to the Project Home&lt;/h1&gt;
+    &lt;/header&gt;
+
+    &lt;main class="main-content"&gt;
+        &lt;section id="overview" class="content-section"&gt;
+            &lt;h2 class="section-heading"&gt;Project Overview&lt;/h2&gt;
+            &lt;p class="section-text"&gt;...&lt;/p&gt;
+        &lt;/section&gt;
+    &lt;/main&gt;
+
+    &lt;footer class="site-footer"&gt;
+        &lt;p&gt;&copy; 2025 Research Project&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;</code></pre>
+
+            <div class="callout callout-tip">
+                <strong>💡 Class Naming Best Practices:</strong>
+                <ul>
+                    <li>Use descriptive names that explain purpose</li>
+                    <li>Use hyphens for multi-word names: <code>content-section</code> not <code>contentSection</code></li>
+                    <li>Be consistent throughout your project</li>
+                </ul>
+            </div>
+
+            <div class="callout callout-warning">
+                <strong>⚠️ Classes vs IDs:</strong>
+                <ul>
+                    <li><strong>IDs</strong> = Unique, one per page (used for navigation anchors)</li>
+                    <li><strong>Classes</strong> = Reusable, can appear many times (used for styling)</li>
+                </ul>
+            </div>
+
+            <hr>
+
+            <h3>Session 1 Wrap-Up & Homework (5 minutes)</h3>
+
+            <div class="callout callout-success">
+                <strong>Check Your Understanding:</strong>
+                <ol>
+                    <li>Can you identify all semantic elements in your HTML?</li>
+                    <li>Is your navigation built as a <code>&lt;ul&gt;</code> list with proper link syntax?</li>
+                    <li>Have you added classes to prepare for CSS?</li>
+                </ol>
+            </div>
+
+            <p><strong>Homework Before Session 2:</strong></p>
+            <ul>
+                <li>Complete semantic restructuring of your HTML</li>
+                <li>Rebuild navigation as a list structure</li>
+                <li>Link your CSS file: <code>&lt;link rel="stylesheet" href="css/styles.css"&gt;</code></li>
+                <li>Add basic meta tags (see below)</li>
+            </ul>
+
+            <p><strong>Enhanced <code>&lt;head&gt;</code> Section:</strong></p>
+            <pre><code>&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;meta name="description" content="A brief description of your project"&gt;
+    &lt;meta name="author" content="Your Name"&gt;
+    &lt;title&gt;Project Title - Your Name&lt;/title&gt;
+    &lt;link rel="stylesheet" href="css/styles.css"&gt;
+&lt;/head&gt;</code></pre>
+        </section>
+
+        <!-- Session 2 -->
+        <section class="session">
+            <div class="session-header">
+                <h2>Session 2: CSS Fundamentals & Visual Design (50 minutes)</h2>
+            </div>
+
+            <h3>Opening: CSS as Visual Rhetoric (5 minutes)</h3>
+
+            <div class="callout callout-tip">
+                <strong>Remember from Lecture 8:</strong> Code makes arguments!
+                <p>Every CSS choice is a rhetorical choice:</p>
+                <ul>
+                    <li><code>font-size: 48px</code> → "This is IMPORTANT"</li>
+                    <li><code>color: red</code> → "Pay attention! Urgent!"</li>
+                    <li><code>margin: 100px</code> → "Give this breathing room"</li>
+                    <li><code>display: none</code> → "This doesn't exist (for some audiences)"</li>
+                </ul>
+                <p>Today we style with <strong>intention</strong>, not just decoration.</p>
+            </div>
+
+            <hr>
+
+            <h3>Part 1: Understanding the CSS File (10 minutes)</h3>
+
+            <p><strong>Current CSS from the repo:</strong></p>
+            <pre><code>h1, h2 {
+    color: purple;
+}
+
+p {
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 
+                'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}  /* Missing semicolon here! */</code></pre>
+
+            <div class="callout callout-error">
+                <strong>❌ Issues:</strong>
+                <ol>
+                    <li>Missing semicolon after font-family</li>
+                    <li>No layout or spacing</li>
+                    <li>Not using the classes we added</li>
+                </ol>
+            </div>
+
+            <hr>
+
+            <h3>Part 2: CSS Fundamentals (15 minutes)</h3>
+
+            <h4>1. Reset & Base Styles</h4>
+
+            <pre><code>/* =========================
+   Basic Reset & Typography
+   ========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 
+                 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+}</code></pre>
+
+            <div class="callout callout-tip">
+                <strong>Why these choices?</strong>
+                <ul>
+                    <li><code>* { margin: 0; padding: 0; }</code> = Remove browser defaults (gives you control)</li>
+                    <li><code>box-sizing: border-box</code> = Makes sizing calculations easier</li>
+                    <li><code>line-height: 1.6</code> = Improves readability</li>
+                    <li>Set base styles on <code>body</code>, they inherit to children</li>
+                </ul>
+            </div>
+
+            <h4>2. The Box Model Concept</h4>
+
+            <p><strong>Every HTML element is a box with 4 parts:</strong></p>
+
+            <pre><code>┌─────────────────────────────────┐
+│         MARGIN (outside)         │
+│  ┌───────────────────────────┐  │
+│  │      BORDER              │  │
+│  │  ┌───────────────────┐  │  │
+│  │  │    PADDING       │  │  │
+│  │  │  ┌───────────┐  │  │  │
+│  │  │  │  CONTENT │  │  │  │
+│  │  │  └───────────┘  │  │  │
+│  │  └───────────────────┘  │  │
+│  └───────────────────────────┘  │
+└─────────────────────────────────┘</code></pre>
+
+            <p><strong>Visual Example:</strong></p>
+            <pre><code>.content-section {
+    /* Content = defined by width/height */
+    width: 300px;
+    
+    /* Padding = space inside, between content and border */
+    padding: 20px;
+    
+    /* Border = visible edge */
+    border: 2px solid purple;
+    
+    /* Margin = space outside, between this element and others */
+    margin: 30px;
+}</code></pre>
+
+            <h4>3. Color & Typography</h4>
+
+            <p><strong>Using a Consistent Color Palette:</strong></p>
+
+            <pre><code>/* At the top of your CSS, define your colors */
+:root {
+    --primary-color: #4d1979;      /* TCU Purple */
+    --secondary-color: #7c3aed;    /* Light Purple */
+    --accent-color: #ffd700;       /* Gold accent */
+    --text-color: #333;            /* Dark gray for text */
+    --bg-color: #f4f4f4;           /* Light background */
+    --white: #ffffff;
+}
+
+/* Then use them throughout */
+.site-header {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.section-heading {
+    color: var(--primary-color);
+    border-bottom: 3px solid var(--secondary-color);
+}</code></pre>
+
+            <div class="callout callout-tip">
+                <strong>💡 Why CSS Variables?</strong>
+                <ul>
+                    <li>Change colors in ONE place</li>
+                    <li>Easier to maintain consistent theme</li>
+                    <li>Professional standard</li>
+                </ul>
+            </div>
+
+            <hr>
+
+            <h3>Part 3: Styling Your Portfolio (20 minutes)</h3>
+
+            <p><strong>Live Coding Together:</strong> We'll build CSS step-by-step</p>
+
+            <h4>Step 1: Header & Navigation</h4>
+
+            <pre><code>/* =========================
+   Header & Navigation
+   ========================= */
+.site-header {
+    background-color: #4d1979;
+    color: white;
+    padding: 1rem 0;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.page-title {
+    color: white;
+    margin: 1rem 0;
+    font-size: 2rem;
+}
+
+.main-nav {
+    background-color: #3d1461;
+    padding: 0.75rem;
+}
+
+/* Style the navigation list */
+.nav-list {
+    list-style: none;           /* Remove bullets */
+    padding: 0;
+    margin: 0;
+    display: flex;              /* Arrange items horizontally */
+    justify-content: center;    /* Center the items */
+    gap: 1rem;                  /* Space between items */
+    flex-wrap: wrap;            /* Wrap on small screens */
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s ease;
+    border-radius: 4px;
+}
+
+.nav-link:hover {
+    background-color: #4d1979;
+}</code></pre>
+
+            <div class="callout callout-tip">
+                <strong>💡 CSS Concepts Introduced:</strong>
+                <ul>
+                    <li><strong>list-style: none;</strong> Removes bullet points from the list</li>
+                    <li><strong>display: flex;</strong> Modern layout that arranges list items in a row</li>
+                    <li><strong>justify-content: center;</strong> Centers items horizontally</li>
+                    <li><strong>gap:</strong> Space between flex items (cleaner than margins)</li>
+                    <li><strong>flex-wrap: wrap;</strong> Items move to new line on small screens</li>
+                    <li><strong>Padding/Margin Units:</strong> <code>rem</code> (relative to root font size)</li>
+                    <li><strong>Box Shadow:</strong> Creates depth <code>box-shadow: x y blur color</code></li>
+                    <li><strong>Transition:</strong> Smooth animation on hover</li>
+                    <li><strong>Pseudo-class (<code>:hover</code>):</strong> Styles that apply on user interaction</li>
+                </ul>
+            </div>
+
+            <h4>Step 2: Main Content Layout</h4>
+
+            <pre><code>/* =========================
+   Main Content
+   ========================= */
+.main-content {
+    max-width: 900px;          /* Don't get too wide */
+    margin: 2rem auto;         /* Center horizontally */
+    padding: 0 1rem;           /* Space on sides for mobile */
+}
+
+.content-section {
+    background-color: white;
+    padding: 2rem;
+    margin-bottom: 2rem;       /* Space between sections */
+    border-radius: 8px;        /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.section-heading {
+    color: #4d1979;
+    border-bottom: 3px solid #7c3aed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.section-text {
+    margin-bottom: 1rem;
+    line-height: 1.8;
+}</code></pre>
+
+            <h4>Step 3: Special Elements</h4>
+
+            <pre><code>/* Highlighted text box */
+.highlighted {
+    background-color: #f0e7f8;
+    padding: 1rem;
+    border-left: 4px solid #7c3aed;
+    border-radius: 4px;
+    margin: 1rem 0;
+}
+
+/* External links */
+.external-link {
+    color: #4d1979;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.external-link:hover {
+    color: #7c3aed;
+}
+
+/* Footer */
+.site-footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+}</code></pre>
+
+            <h4>Step 4: Responsive Design (Mobile-Friendly)</h4>
+
+            <pre><code>/* =========================
+   Responsive Design
+   ========================= */
+@media (max-width: 768px) {
+    .page-title {
+        font-size: 1.5rem;     /* Smaller on mobile */
+    }
+    
+    .main-nav {
+        font-size: 0.9rem;
+    }
+    
+    .content-section {
+        padding: 1rem;         /* Less padding on mobile */
+    }
+}</code></pre>
+
+            <div class="callout callout-tip">
+                <strong>💡 Media Queries:</strong>
+                <ul>
+                    <li><code>@media (max-width: 768px)</code> = "When screen is 768px or narrower"</li>
+                    <li>Tablet/phone breakpoint</li>
+                    <li>Adjust font sizes, padding for small screens</li>
+                </ul>
+            </div>
+
+            <hr>
+
+            <h3>Part 4: Testing & Refinement (10 minutes)</h3>
+
+            <div class="activity">
+                <h4>✏️ Activity: Apply & Test</h4>
+                <p>Students:</p>
+                <ol>
+                    <li>Copy the CSS code to their <code>styles.css</code> file</li>
+                    <li>Refresh browser to see changes</li>
+                    <li>Resize browser window to test responsive design</li>
+                    <li>Customize colors using CSS variables</li>
+                </ol>
+            </div>
+
+            <p><strong>Quick Wins to Try:</strong></p>
+            <pre><code>/* Smooth scrolling for anchor links */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Sticky navigation that stays at top */
+.main-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}</code></pre>
+
+            <hr>
+
+            <h3>Session 2 Wrap-Up (5 minutes)</h3>
+
+            <div class="callout callout-success">
+                <strong>What We Accomplished:</strong>
+                <ul class="checklist">
+                    <li>Fixed HTML structure with semantic elements</li>
+                    <li>Added classes for CSS targeting</li>
+                    <li>Built complete CSS from scratch</li>
+                    <li>Created professional, responsive layout</li>
+                    <li>Understood CSS as rhetorical choices</li>
+                </ul>
+            </div>
+
+            <div class="callout callout-tip">
+                <strong>Key Takeaways:</strong>
+                <ol>
+                    <li><strong>Semantic HTML</strong> helps accessibility, SEO, and maintainability</li>
+                    <li><strong>CSS Box Model</strong> controls spacing and layout</li>
+                    <li><strong>Classes</strong> let you style multiple elements consistently</li>
+                    <li><strong>Responsive design</strong> ensures mobile users have good experience</li>
+                    <li><strong>Every style choice is an argument</strong> about what matters</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Resources Section -->
+        <section class="session">
+            <h2>Additional Resources</h2>
+
+            <h3>CSS Property Quick Reference</h3>
+
+            <div class="resource-grid">
+                <div class="resource-card">
+                    <h4>Typography</h4>
+                    <pre><code>font-family: 'Arial', sans-serif;
+font-size: 16px;
+font-weight: bold;
+line-height: 1.6;
+text-align: center;
+text-decoration: underline;
+color: #333;</code></pre>
+                </div>
+
+                <div class="resource-card">
+                    <h4>Spacing</h4>
+                    <pre><code>margin: 20px;
+margin: 10px 20px;
+margin: 10px 20px 30px 40px;
+padding: 1rem;</code></pre>
+                </div>
+
+                <div class="resource-card">
+                    <h4>Background & Borders</h4>
+                    <pre><code>background-color: #f4f4f4;
+border: 2px solid purple;
+border-radius: 8px;
+box-shadow: 0 2px 4px rgba(0,0,0,0.1);</code></pre>
+                </div>
+
+                <div class="resource-card">
+                    <h4>Layout</h4>
+                    <pre><code>width: 300px;
+max-width: 900px;
+display: block | flex | grid;
+position: static | sticky;</code></pre>
+                </div>
+            </div>
+
+            <h3>Common CSS Mistakes & Fixes</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Mistake</th>
+                        <th>Fix</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Missing semicolons</td>
+                        <td>Always end declarations with <code>;</code></td>
+                    </tr>
+                    <tr>
+                        <td>Wrong selector</td>
+                        <td>Check spelling, use browser DevTools</td>
+                    </tr>
+                    <tr>
+                        <td>No units on numbers</td>
+                        <td><code>margin: 20px</code> not <code>margin: 20</code></td>
+                    </tr>
+                    <tr>
+                        <td>Colors without <code>#</code></td>
+                        <td><code>color: #333</code> not <code>color: 333</code></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Assessment Checklist</h3>
+
+            <p><strong>Students should be able to:</strong></p>
+
+            <ul class="checklist">
+                <li>Identify and fix HTML syntax errors</li>
+                <li>Use semantic HTML elements appropriately</li>
+                <li>Explain the purpose of <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;footer&gt;</code></li>
+                <li>Add classes to HTML elements</li>
+                <li>Link external CSS file to HTML</li>
+                <li>Understand the CSS box model</li>
+                <li>Apply colors, fonts, and spacing with CSS</li>
+                <li>Create hover effects on interactive elements</li>
+                <li>Make basic responsive design adjustments</li>
+                <li>Test their website on different screen sizes</li>
+            </ul>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 WRIT 20833 — Course Materials</p>
+    </footer>
+</body>
+</html>
