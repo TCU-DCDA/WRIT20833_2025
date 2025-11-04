@@ -19,26 +19,47 @@ Course materials for **Introduction to Coding in the Humanities** including inte
 - **Tutorial assignments**: Interactive coding exercises paired with mini-lectures (ready for textbook integration)
 - **Homework assignments**: Structured assignments including term frequency and sentiment analysis
 
-### 🎓 Lectures (6 HTML presentations)
+### 🎓 Lectures (14 HTML presentations)
 - **Main lectures**: "When Coding Meets Culture" - foundational digital humanities introduction
-- **Mini-lecture series**: Critical frameworks connecting coding to cultural analysis
-  1. Sacred Boundaries (taboos → digital privacy)
-  2. Classification Logic (sacred categories → digital classification)  
-  3. AI Agency (power and pseudo-agency in AI tools)
-  4. Collective Memory (how code remembers what communities forget)
+- **Mini-lecture series**: Critical frameworks connecting coding to cultural analysis (13 lectures)
+  0. Humanities & Coding
+  1. Connotations & Code
+  2. Boundaries (taboos → digital privacy)
+  3. Classification Logic (sacred categories → digital classification)  
+  4. AI Agency (power and pseudo-agency in AI tools)
+  5. Collective Memory (how code remembers what communities forget)
+  6. Data Archaeology
+  7. NLP & Topic Modeling
+  8. Code as Rhetoric
+  9. Public Arguments
+  10. GitHub Infrastructure
+  11. HTML as Structure
+  12. CSS as Rhetoric
 - **Supporting materials**: Curated reading lists, outlines, and academic resources
 
-### 🖼️ Visual Assets (65+ images)
-- **Lecture graphics**: Custom illustrations and diagrams
+### 🖼️ Visual Assets (100+ images)
+- **Lecture graphics**: Custom illustrations and diagrams across 13 mini-lectures
 - **Conceptual imagery**: AI-generated and curated visuals
 - **Reference materials**: Screenshots and external resources
+
+### 🌐 Web Development Materials
+- **HTML/CSS Workshop**: Comprehensive in-class code-along for semantic HTML and CSS fundamentals
+  - `html_training/semantic_html_css_workshop.md` - Markdown source
+  - `html_training/semantic_html_css_workshop.html` - Styled browser version
+- **Web Portfolio Homework Series**: Progressive assignments building student project sites
+  - `homework_md/WRIT20833_HW6_HTML_Portfolio_Structure.md`
+  - `homework_md/WRIT20833_HW7_CSS_Portfolio_Styling.md`
+  - `homework_md/WRIT20833_HW8_Portfolio_Deployment.md`
+- **Final Project Requirements**: `docs/WRIT20833_Final_Project_Requirements.html`
 
 ## 🗂️ Directory Structure
 
 ```
 WRIT20833-2025/
 ├── docs/
-│   ├── index.md                    # Main course materials index
+│   ├── index.html                  # Main course website (GitHub Pages)
+│   ├── WRIT20833_Final_Project_Requirements.md
+│   ├── WRIT20833_HW5_Final_Project_Proposal.html
 │   └── lectures/                   # Web-accessible lectures for GitHub Pages
 │       ├── main/
 │       │   ├── lecture1.html       # "When Coding Meets Culture" presentation
@@ -48,11 +69,11 @@ WRIT20833-2025/
 │           ├── index.html          # Mini-lecture series overview
 │           ├── lecture_outlines_clarified.txt  # Detailed pedagogical notes
 │           ├── suggested-readings.md # Curated academic reading list
-│           ├── images/             # Shared visual assets (34+ files)
-│           └── lecture-1/ through lecture-4/
-│               ├── index.html      # Individual critical framework presentations
-│               ├── style.css       # Consistent styling
-│               └── newImages/      # Additional visual resources
+│           ├── shared-style.css    # Consistent styling across all lectures
+│           ├── images/             # Shared visual assets (50+ files)
+│           └── lecture-0/ through lecture-12/
+│               ├── index.html      # Individual lecture presentations (13 total)
+│               └── images/         # Lecture-specific visual resources
 ├── notebooks/
 │   ├── codeAlongs/                 # Ready for textbook Chapters 3-4, 7-8
 │   │   ├── WRIT20833_Variables_DataTypes_F25.ipynb
@@ -76,10 +97,14 @@ WRIT20833-2025/
 │       ├── WRIT20833_HW4-1_Term_Frequency_Sentiment_F25.ipynb
 │       ├── WRIT20833_HW4-2_Topic_Modeling_Integration_F25.ipynb
 │       └── WRIT20833_HW5_Final_Project_Proposal.md
-├── docs/                           # Course website and final project requirements
-│   ├── index.html                  # Main course website (GitHub Pages)
-│   ├── WRIT20833_HW5_Final_Project_Requirements.md
-│   └── lectures/                   # Web-accessible HTML presentations
+├── html_training/                  # Web development workshop materials
+│   ├── semantic_html_css_workshop.md   # Two-session workshop (markdown source)
+│   └── semantic_html_css_workshop.html # Styled browser version
+├── homework_md/                    # Markdown source files for homework assignments
+│   ├── WRIT20833_HW5_Final_Project_Proposal.md
+│   ├── WRIT20833_HW6_HTML_Portfolio_Structure.md
+│   ├── WRIT20833_HW7_CSS_Portfolio_Styling.md
+│   └── WRIT20833_HW8_Portfolio_Deployment.md
 ├── datasets/                       # Cultural data for analysis projects
 └── _development/                   # Course and textbook development materials
 ```
@@ -114,7 +139,7 @@ The course explores what happens when computational analysis meets cultural inte
 **16-Week Progression**:
 - **Weeks 1-4**: Python Foundations (variables, loops, functions)
 - **Weeks 5-8**: Text Analysis & Cultural Data (pandas, sentiment analysis, topic modeling)
-- **Weeks 9-12**: Web Development & Portfolio Creation (HTML/CSS)
+- **Weeks 9-12**: Web Development & Portfolio Creation (HTML/CSS workshop, HW6-HW8, GitHub Pages)
 - **Weeks 13-16**: Final Projects & Public Presentation
 
 **Pedagogical Philosophy**: Integrates critical thinking about technology's cultural implications throughout technical instruction, helping students develop both computational skills and cultural analysis capabilities.
@@ -129,8 +154,9 @@ Students experience the full journey from assumptions to data-driven opinions:
 3. **HW5**: Final project proposal → requirements → public portfolio presentation
 
 ### **Project Structure**
-- **Proposal Stage** (`notebooks/homework/WRIT20833_HW5_Final_Project_Proposal.md`): 8-point proposal building on HW4 insights
-- **Requirements Document** (`docs/WRIT20833_HW5_Final_Project_Requirements.md`): Complete project specifications with ungrading philosophy
+- **Proposal Stage** (`homework_md/WRIT20833_HW5_Final_Project_Proposal.md`): 8-point proposal building on HW4 insights
+- **Requirements Document** (`docs/WRIT20833_Final_Project_Requirements.html`): Complete project specifications with ungrading philosophy
+- **Web Portfolio Development** (`homework_md/HW6-HW8`): Progressive assignments from HTML structure → CSS styling → GitHub Pages deployment
 - **Three Deliverables**: Research essay + Python notebooks + Web portfolio (HTML/CSS)
 
 ### **Assessment Philosophy**
@@ -143,7 +169,8 @@ Prioritizes **earned insight over clean code**, emphasizing:
 ## 🛠️ Technical Notes
 
 - **Notebooks**: Jupyter format, Python-based, Colab-ready
-- **Lectures**: HTML5 presentations with CSS styling
+- **Lectures**: HTML5 presentations with CSS3 styling and responsive design
+- **Web Development**: Semantic HTML5, modern CSS (flexbox, custom properties), GitHub Pages deployment
 - **Images**: Optimized web formats (PNG, JPG, GIF, SVG)
 - **Structure**: Modular organization for easy maintenance and updates
 
@@ -160,6 +187,13 @@ Prioritizes **earned insight over clean code**, emphasizing:
 ---
 
 ## 🔄 Recent Updates
+
+### **November 4, 2025 - Web Portfolio Development Phase**
+- **HTML/CSS Workshop Created**: Comprehensive two-session code-along covering semantic HTML and CSS fundamentals
+- **Web Portfolio Homework Series**: HW6 (HTML Structure), HW7 (CSS Styling), HW8 (Deployment)
+- **Mini-Lectures Expansion**: Lectures 10-12 added covering GitHub Infrastructure, HTML as Structure, CSS as Rhetoric
+- **Final Project Requirements**: HTML version created with complete specifications and assessment criteria
+- **Course Website Updates**: All materials linked through main course index at https://tcu-dcda.github.io/WRIT20833-2025/
 
 ### **September 20, 2025 - Development Workflow Implementation**
 - **Branch Strategy**: Implemented protected `main` branch with `textbook-dev` for active development
