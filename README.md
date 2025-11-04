@@ -44,8 +44,8 @@ Course materials for **Introduction to Coding in the Humanities** including inte
 
 ### 🌐 Web Development Materials
 - **HTML/CSS Workshop**: Comprehensive in-class code-along for semantic HTML and CSS fundamentals
-  - `html_training/semantic_html_css_workshop.md` - Markdown source
-  - `html_training/semantic_html_css_workshop.html` - Styled browser version
+  - `docs/html_training/semantic_html_css_workshop.md` - Markdown source
+  - `docs/html_training/semantic_html_css_workshop.html` - Styled browser version
 - **Web Portfolio Homework Series**: Progressive assignments building student project sites
   - `homework_md/WRIT20833_HW6_HTML_Portfolio_Structure.md`
   - `homework_md/WRIT20833_HW7_CSS_Portfolio_Styling.md`
@@ -97,9 +97,14 @@ WRIT20833-2025/
 │       ├── WRIT20833_HW4-1_Term_Frequency_Sentiment_F25.ipynb
 │       ├── WRIT20833_HW4-2_Topic_Modeling_Integration_F25.ipynb
 │       └── WRIT20833_HW5_Final_Project_Proposal.md
-├── html_training/                  # Web development workshop materials
-│   ├── semantic_html_css_workshop.md   # Two-session workshop (markdown source)
-│   └── semantic_html_css_workshop.html # Styled browser version
+├── docs/                           # GitHub Pages published content
+│   ├── index.html                  # Main course website
+│   ├── WRIT20833_Final_Project_Requirements.html
+│   ├── WRIT20833_HW5_Final_Project_Proposal.html
+│   ├── html_training/              # Web development workshop materials
+│   │   ├── semantic_html_css_workshop.md
+│   │   └── semantic_html_css_workshop.html
+│   └── lectures/                   # HTML presentation slides
 ├── homework_md/                    # Markdown source files for homework assignments
 │   ├── WRIT20833_HW5_Final_Project_Proposal.md
 │   ├── WRIT20833_HW6_HTML_Portfolio_Structure.md
