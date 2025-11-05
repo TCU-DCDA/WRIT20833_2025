@@ -72,6 +72,7 @@
             font-size: 1.25rem;
             opacity: 0.95;
             margin: 0;
+            color: var(--white);
         }
         
         .meta-info {
@@ -358,11 +359,7 @@
         <div class="container">
             <h1>Semantic HTML & CSS Workshop</h1>
             <p class="subtitle">Building Meaningful Web Structures</p>
-            <div class="meta-info">
-                <span>⏱️ Duration: Two 50-minute sessions</span>
-                <span>📚 Prerequisites: Basic HTML understanding</span>
-                <span>🎯 For: WRIT 20833 Students</span>
-            </div>
+            
         </div>
     </header>
 
@@ -370,10 +367,10 @@
         <!-- Session 1 -->
         <section class="session">
             <div class="session-header">
-                <h2>Session 1: Semantic HTML Improvements (50 minutes)</h2>
+                <h2>Semantic HTML Improvements</h2>
             </div>
 
-            <h3>Opening: What is Semantic HTML? (5 minutes)</h3>
+            <h3>Opening: What is Semantic HTML?</h3>
             
             <div class="callout callout-question">
                 <strong>Question to Class:</strong> "What's the difference between these two pieces of code?"
@@ -408,7 +405,7 @@
 
             <hr>
 
-            <h3>Part 1: Fixing Real Code Together (20 minutes)</h3>
+            <h3>Fixing Real Code Together</h3>
 
             <div class="activity">
                 <h4>🔧 Activity: Let's examine and improve actual student code</h4>
@@ -567,7 +564,7 @@ Home |
 
             <hr>
 
-            <h3>Part 2: Hands-On Practice (20 minutes)</h3>
+            <h3>Hands-On Practice</h3>
 
             <div class="activity">
                 <h4>✏️ Activity: Fix Your Own Code</h4>
@@ -582,41 +579,49 @@ Home |
 
             <hr>
 
-            <h3>Part 3: Preparing for CSS (5 minutes)</h3>
+            <h3>Preparing for CSS</h3>
 
-            <p><strong>Add Classes for Future Styling:</strong></p>
+            <p><strong>Strategic Use of Classes:</strong></p>
+            
+            <p>For static structural elements (header, nav, footer), you can style the semantic tags directly:</p>
 
-            <pre><code>&lt;body&gt;
-    &lt;header class="site-header"&gt;
-        &lt;nav class="main-nav"&gt;
-            &lt;ul class="nav-list"&gt;
-                &lt;li&gt;&lt;a href="#home" class="nav-link"&gt;Home&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="#overview" class="nav-link"&gt;Overview&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="#background" class="nav-link"&gt;Background&lt;/a&gt;&lt;/li&gt;
-                &lt;!-- etc --&gt;
+            <pre><code>&lt;!-- ✅ Good: Minimal classes, let semantic tags do the work --&gt;
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;nav&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href="#home"&gt;Home&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#overview"&gt;Overview&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#background"&gt;Background&lt;/a&gt;&lt;/li&gt;
             &lt;/ul&gt;
         &lt;/nav&gt;
-        &lt;h1 class="page-title"&gt;Welcome to the Project Home&lt;/h1&gt;
+        &lt;h1&gt;Welcome to the Project Home&lt;/h1&gt;
     &lt;/header&gt;
 
-    &lt;main class="main-content"&gt;
-        &lt;section id="overview" class="content-section"&gt;
-            &lt;h2 class="section-heading"&gt;Project Overview&lt;/h2&gt;
-            &lt;p class="section-text"&gt;...&lt;/p&gt;
+    &lt;main&gt;
+        &lt;section id="overview"&gt;
+            &lt;h2&gt;Project Overview&lt;/h2&gt;
+            &lt;p&gt;...&lt;/p&gt;
+        &lt;/section&gt;
+        
+        &lt;!-- Add classes only when you need variations --&gt;
+        &lt;section id="findings" class="highlight-section"&gt;
+            &lt;h2&gt;Key Findings&lt;/h2&gt;
+            &lt;p&gt;This section gets special styling&lt;/p&gt;
         &lt;/section&gt;
     &lt;/main&gt;
 
-    &lt;footer class="site-footer"&gt;
+    &lt;footer&gt;
         &lt;p&gt;&copy; 2025 Research Project&lt;/p&gt;
     &lt;/footer&gt;
 &lt;/body&gt;</code></pre>
 
             <div class="callout callout-tip">
-                <strong>💡 Class Naming Best Practices:</strong>
+                <strong>💡 When to Use Classes:</strong>
                 <ul>
-                    <li>Use descriptive names that explain purpose</li>
-                    <li>Use hyphens for multi-word names: <code>content-section</code> not <code>contentSection</code></li>
-                    <li>Be consistent throughout your project</li>
+                    <li><strong>Add classes only when needed:</strong> For variations (e.g., <code>highlight-section</code> vs. regular section)</li>
+                    <li><strong>Style semantic tags directly:</strong> Use CSS selectors like <code>header</code>, <code>nav ul</code>, <code>footer</code></li>
+                    <li><strong>Keep it simple:</strong> Don't add classes "just in case" — add them when you actually need them</li>
                 </ul>
             </div>
 
@@ -630,7 +635,7 @@ Home |
 
             <hr>
 
-            <h3>Session 1 Wrap-Up & Homework (5 minutes)</h3>
+            <h3>Wrap-Up & Homework</h3>
 
             <div class="callout callout-success">
                 <strong>Check Your Understanding:</strong>
@@ -641,7 +646,7 @@ Home |
                 </ol>
             </div>
 
-            <p><strong>Homework Before Session 2:</strong></p>
+            <p><strong>Homework:</strong></p>
             <ul>
                 <li>Complete semantic restructuring of your HTML</li>
                 <li>Rebuild navigation as a list structure</li>
@@ -663,10 +668,10 @@ Home |
         <!-- Session 2 -->
         <section class="session">
             <div class="session-header">
-                <h2>Session 2: CSS Fundamentals & Visual Design (50 minutes)</h2>
+                <h2>CSS Fundamentals & Visual Design</h2>
             </div>
 
-            <h3>Opening: CSS as Visual Rhetoric (5 minutes)</h3>
+            <h3>Opening: CSS as Visual Rhetoric</h3>
 
             <div class="callout callout-tip">
                 <strong>Remember from Lecture 8:</strong> Code makes arguments!
@@ -682,7 +687,7 @@ Home |
 
             <hr>
 
-            <h3>Part 1: Understanding the CSS File (10 minutes)</h3>
+            <h3>Understanding the CSS File</h3>
 
             <p><strong>Current CSS from the repo:</strong></p>
             <pre><code>h1, h2 {
@@ -705,7 +710,7 @@ p {
 
             <hr>
 
-            <h3>Part 2: CSS Fundamentals (15 minutes)</h3>
+            <h3>CSS Fundamentals</h3>
 
             <h4>1. Reset & Base Styles</h4>
 
@@ -804,7 +809,7 @@ body {
 
             <hr>
 
-            <h3>Part 3: Styling Your Portfolio (20 minutes)</h3>
+            <h3>Styling Your Portfolio</h3>
 
             <p><strong>Live Coding Together:</strong> We'll build CSS step-by-step</p>
 
@@ -962,7 +967,7 @@ body {
 
             <hr>
 
-            <h3>Part 4: Testing & Refinement (10 minutes)</h3>
+            <h3>Testing & Refinement</h3>
 
             <div class="activity">
                 <h4>✏️ Activity: Apply & Test</h4>
@@ -990,7 +995,7 @@ html {
 
             <hr>
 
-            <h3>Session 2 Wrap-Up (5 minutes)</h3>
+            <h3>Wrap-Up</h3>
 
             <div class="callout callout-success">
                 <strong>What We Accomplished:</strong>
