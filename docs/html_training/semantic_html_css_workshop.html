@@ -787,13 +787,13 @@ body {
     --white: #ffffff;
 }
 
-/* Then use them throughout */
-.site-header {
+/* Then use them with semantic selectors */
+header {
     background-color: var(--primary-color);
     color: var(--white);
 }
 
-.section-heading {
+main section h2 {
     color: var(--primary-color);
     border-bottom: 3px solid var(--secondary-color);
 }</code></pre>
@@ -818,7 +818,8 @@ body {
             <pre><code>/* =========================
    Header & Navigation
    ========================= */
-.site-header {
+/* Style semantic tags directly - no classes needed! */
+header {
     background-color: #4d1979;
     color: white;
     padding: 1rem 0;
@@ -826,19 +827,19 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.page-title {
+header h1 {
     color: white;
     margin: 1rem 0;
     font-size: 2rem;
 }
 
-.main-nav {
+nav {
     background-color: #3d1461;
     padding: 0.75rem;
 }
 
 /* Style the navigation list */
-.nav-list {
+nav ul {
     list-style: none;           /* Remove bullets */
     padding: 0;
     margin: 0;
@@ -848,7 +849,7 @@ body {
     flex-wrap: wrap;            /* Wrap on small screens */
 }
 
-.nav-link {
+nav a {
     color: white;
     text-decoration: none;
     padding: 0.5rem 1rem;
@@ -856,13 +857,15 @@ body {
     border-radius: 4px;
 }
 
-.nav-link:hover {
+nav a:hover {
     background-color: #4d1979;
 }</code></pre>
 
             <div class="callout callout-tip">
                 <strong>💡 CSS Concepts Introduced:</strong>
                 <ul>
+                    <li><strong>Semantic tag selectors:</strong> We style <code>header</code>, <code>nav</code>, <code>nav ul</code> directly—no classes needed!</li>
+                    <li><strong>Descendant selectors:</strong> <code>header h1</code> targets h1 inside header, <code>nav a</code> targets links in navigation</li>
                     <li><strong>list-style: none;</strong> Removes bullet points from the list</li>
                     <li><strong>display: flex;</strong> Modern layout that arranges list items in a row</li>
                     <li><strong>justify-content: center;</strong> Centers items horizontally</li>
@@ -880,13 +883,15 @@ body {
             <pre><code>/* =========================
    Main Content
    ========================= */
-.main-content {
+/* Style main semantic tag directly */
+main {
     max-width: 900px;          /* Don't get too wide */
     margin: 2rem auto;         /* Center horizontally */
     padding: 0 1rem;           /* Space on sides for mobile */
 }
 
-.content-section {
+/* All sections inside main get consistent styling */
+main section {
     background-color: white;
     padding: 2rem;
     margin-bottom: 2rem;       /* Space between sections */
@@ -894,22 +899,29 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.section-heading {
+/* Style h2 headings inside sections */
+main section h2 {
     color: #4d1979;
     border-bottom: 3px solid #7c3aed;
     padding-bottom: 0.5rem;
     margin-bottom: 1rem;
 }
 
-.section-text {
+/* Paragraphs inside sections */
+main section p {
     margin-bottom: 1rem;
     line-height: 1.8;
 }</code></pre>
 
-            <h4>Step 3: Special Elements</h4>
+            <h4>Step 3: Special Elements & Classes for Variations</h4>
 
-            <pre><code>/* Highlighted text box */
-.highlighted {
+            <p><strong>Now we add classes—but only for variations!</strong></p>
+
+            <pre><code>/* =========================
+   Classes for Variations
+   ========================= */
+/* Use a class when you need a SPECIAL version of something */
+.highlight-section {
     background-color: #f0e7f8;
     padding: 1rem;
     border-left: 4px solid #7c3aed;
@@ -917,19 +929,20 @@ body {
     margin: 1rem 0;
 }
 
-/* External links */
-.external-link {
+/* Links that go outside your site can be styled differently */
+a[href^="http"] {
     color: #4d1979;
     font-weight: bold;
-    text-decoration: underline;
 }
 
-.external-link:hover {
+a[href^="http"]:hover {
     color: #7c3aed;
 }
 
-/* Footer */
-.site-footer {
+/* =========================
+   Footer (semantic tag)
+   ========================= */
+footer {
     background-color: #333;
     color: white;
     text-align: center;
@@ -937,21 +950,31 @@ body {
     margin-top: 2rem;
 }</code></pre>
 
+            <div class="callout callout-tip">
+                <strong>💡 When to Use Classes:</strong>
+                <ul>
+                    <li><strong>.highlight-section</strong> = A variation when you want ONE section to stand out</li>
+                    <li><strong>Attribute selectors:</strong> <code>a[href^="http"]</code> automatically styles external links (starts with "http")</li>
+                    <li><strong>footer</strong> = Styled directly, no class needed</li>
+                </ul>
+                <p><strong>Rule of thumb:</strong> If it's structural (header, nav, main, footer), style the semantic tag. If it's a variation (special section, different button style), use a class.</p>
+            </div>
+
             <h4>Step 4: Responsive Design (Mobile-Friendly)</h4>
 
             <pre><code>/* =========================
    Responsive Design
    ========================= */
 @media (max-width: 768px) {
-    .page-title {
+    header h1 {
         font-size: 1.5rem;     /* Smaller on mobile */
     }
-    
-    .main-nav {
+
+    nav {
         font-size: 0.9rem;
     }
-    
-    .content-section {
+
+    main section {
         padding: 1rem;         /* Less padding on mobile */
     }
 }</code></pre>
@@ -987,7 +1010,7 @@ html {
 }
 
 /* Sticky navigation that stays at top */
-.main-nav {
+nav {
     position: sticky;
     top: 0;
     z-index: 100;
