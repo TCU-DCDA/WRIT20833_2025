@@ -492,17 +492,18 @@ Home |
 
             <p><strong>✅ Improved Version:</strong></p>
             <pre><code>&lt;body&gt;
+    &lt;nav&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href="#home"&gt;Home&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#overview"&gt;Overview&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#background"&gt;Background&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#methodology"&gt;Methodology&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#analysis"&gt;Analysis&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#findings"&gt;Findings&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/nav&gt;
+
     &lt;header&gt;
-        &lt;nav&gt;
-            &lt;ul&gt;
-                &lt;li&gt;&lt;a href="#home"&gt;Home&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="#overview"&gt;Overview&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="#background"&gt;Background&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="#methodology"&gt;Methodology&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="#analysis"&gt;Analysis&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="#findings"&gt;Findings&lt;/a&gt;&lt;/li&gt;
-            &lt;/ul&gt;
-        &lt;/nav&gt;
         &lt;h1&gt;Welcome to the Project Home&lt;/h1&gt;
     &lt;/header&gt;
 
@@ -535,14 +536,14 @@ Home |
                 </thead>
                 <tbody>
                     <tr>
-                        <td><code>&lt;header&gt;</code></td>
-                        <td>Contains site/page header content</td>
-                        <td>Usually includes nav, logo, title</td>
-                    </tr>
-                    <tr>
                         <td><code>&lt;nav&gt;</code></td>
                         <td>Contains navigation links</td>
-                        <td>Should be inside <code>&lt;header&gt;</code></td>
+                        <td>Typically first element in <code>&lt;body&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>&lt;header&gt;</code></td>
+                        <td>Contains site/page header content</td>
+                        <td>Usually includes logo, title, tagline</td>
                     </tr>
                     <tr>
                         <td><code>&lt;main&gt;</code></td>
@@ -587,14 +588,15 @@ Home |
 
             <pre><code>&lt;!-- ✅ Good: Minimal classes, let semantic tags do the work --&gt;
 &lt;body&gt;
+    &lt;nav&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href="#home"&gt;Home&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#overview"&gt;Overview&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#background"&gt;Background&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/nav&gt;
+
     &lt;header&gt;
-        &lt;nav&gt;
-            &lt;ul&gt;
-                &lt;li&gt;&lt;a href="#home"&gt;Home&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="#overview"&gt;Overview&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="#background"&gt;Background&lt;/a&gt;&lt;/li&gt;
-            &lt;/ul&gt;
-        &lt;/nav&gt;
         &lt;h1&gt;Welcome to the Project Home&lt;/h1&gt;
     &lt;/header&gt;
 
@@ -683,6 +685,36 @@ Home |
                     <li><code>display: none</code> → "This doesn't exist (for some audiences)"</li>
                 </ul>
                 <p>Today we style with <strong>intention</strong>, not just decoration.</p>
+            </div>
+
+            <hr>
+
+            <h3>Before We Start: HTML Structure Check</h3>
+
+            <div class="callout callout-warning">
+                <strong>⚠️ Important: Update Your HTML Structure</strong>
+                <p>Before applying CSS, make sure your HTML follows this structure:</p>
+                <pre><code>&lt;body&gt;
+    &lt;nav&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href="#home"&gt;Home&lt;/a&gt;&lt;/li&gt;
+            &lt;!-- more nav items --&gt;
+        &lt;/ul&gt;
+    &lt;/nav&gt;
+
+    &lt;header&gt;
+        &lt;h1&gt;Your Page Title&lt;/h1&gt;
+    &lt;/header&gt;
+
+    &lt;main&gt;
+        &lt;!-- your sections here --&gt;
+    &lt;/main&gt;
+
+    &lt;footer&gt;
+        &lt;!-- footer content --&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;</code></pre>
+                <p><strong>Key change:</strong> Move <code>&lt;nav&gt;</code> OUTSIDE and ABOVE <code>&lt;header&gt;</code>. This makes styling much easier!</p>
             </div>
 
             <hr>
@@ -836,6 +868,8 @@ header h1 {
 nav {
     background-color: #3d1461;
     padding: 0.75rem;
+    display: flex;              /* Make nav a flex container */
+    justify-content: center;    /* Center the ul inside nav */
 }
 
 /* Style the navigation list */
@@ -871,8 +905,9 @@ nav a:hover {
                 <ul>
                     <li><strong>Semantic tag selectors:</strong> We style <code>header</code>, <code>nav</code>, <code>nav ul</code> directly—no classes needed!</li>
                     <li><strong>Descendant selectors:</strong> <code>header h1</code> targets h1 inside header, <code>nav a</code> targets links in navigation</li>
+                    <li><strong>Nested flex containers:</strong> Both <code>nav</code> and <code>nav ul</code> use flexbox for proper layout</li>
                     <li><strong>list-style: none;</strong> Removes bullet points from the list</li>
-                    <li><strong>display: flex;</strong> Modern layout that arranges list items</li>
+                    <li><strong>display: flex;</strong> Modern layout that arranges child elements</li>
                     <li><strong>flex-direction: row;</strong> Arranges items horizontally on desktop (this is flex default)</li>
                     <li><strong>justify-content: center;</strong> Centers items horizontally</li>
                     <li><strong>gap:</strong> Space between flex items (cleaner than margins)</li>
