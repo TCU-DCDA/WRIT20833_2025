@@ -841,12 +841,16 @@ nav {
 /* Style the navigation list */
 nav ul {
     list-style: none;           /* Remove bullets */
-    padding: 0;
-    margin: 0;
+    padding: 0;                 /* Remove default padding */
+    margin: 0;                  /* Remove default margin */
     display: flex;              /* Arrange items horizontally */
     justify-content: center;    /* Center the items */
     gap: 1rem;                  /* Space between items */
     flex-wrap: wrap;            /* Wrap on small screens */
+}
+
+nav li {
+    list-style: none;           /* Extra insurance - remove bullets from li too */
 }
 
 nav a {
@@ -876,6 +880,17 @@ nav a:hover {
                     <li><strong>Transition:</strong> Smooth animation on hover</li>
                     <li><strong>Pseudo-class (<code>:hover</code>):</strong> Styles that apply on user interaction</li>
                 </ul>
+            </div>
+
+            <div class="callout callout-warning">
+                <strong>⚠️ Troubleshooting: Bullets Still Showing?</strong>
+                <p>If you still see bullets on your navigation:</p>
+                <ol>
+                    <li><strong>Check specificity:</strong> Make sure <code>nav ul</code> is targeting your navigation list</li>
+                    <li><strong>Reset padding:</strong> Always include <code>padding: 0;</code> to remove default list indentation</li>
+                    <li><strong>Double-check:</strong> Apply <code>list-style: none;</code> to both <code>nav ul</code> AND <code>nav li</code></li>
+                    <li><strong>Inspect in browser:</strong> Use browser DevTools (F12) to see which CSS rules are being applied</li>
+                </ol>
             </div>
 
             <h4>Step 2: Main Content Layout</h4>
@@ -974,6 +989,18 @@ footer {
         font-size: 0.9rem;
     }
 
+    /* Stack navigation vertically on mobile */
+    nav ul {
+        flex-direction: column;  /* Change from row to column */
+        align-items: center;     /* Center the stacked items */
+    }
+
+    nav a {
+        display: block;          /* Full width for easier tapping */
+        width: 100%;
+        text-align: center;
+    }
+
     main section {
         padding: 1rem;         /* Less padding on mobile */
     }
@@ -984,6 +1011,8 @@ footer {
                 <ul>
                     <li><code>@media (max-width: 768px)</code> = "When screen is 768px or narrower"</li>
                     <li>Tablet/phone breakpoint</li>
+                    <li><strong>flex-direction: column;</strong> Stacks navigation vertically on mobile</li>
+                    <li><strong>align-items: center;</strong> Centers the vertically stacked items</li>
                     <li>Adjust font sizes, padding for small screens</li>
                 </ul>
             </div>
