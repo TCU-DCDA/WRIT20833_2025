@@ -844,6 +844,7 @@ nav ul {
     padding: 0;                 /* Remove default padding */
     margin: 0;                  /* Remove default margin */
     display: flex;              /* Arrange items horizontally */
+    flex-direction: row;        /* Explicit: horizontal on desktop (this is the default) */
     justify-content: center;    /* Center the items */
     gap: 1rem;                  /* Space between items */
     flex-wrap: wrap;            /* Wrap on small screens */
@@ -871,7 +872,8 @@ nav a:hover {
                     <li><strong>Semantic tag selectors:</strong> We style <code>header</code>, <code>nav</code>, <code>nav ul</code> directly—no classes needed!</li>
                     <li><strong>Descendant selectors:</strong> <code>header h1</code> targets h1 inside header, <code>nav a</code> targets links in navigation</li>
                     <li><strong>list-style: none;</strong> Removes bullet points from the list</li>
-                    <li><strong>display: flex;</strong> Modern layout that arranges list items in a row</li>
+                    <li><strong>display: flex;</strong> Modern layout that arranges list items</li>
+                    <li><strong>flex-direction: row;</strong> Arranges items horizontally on desktop (this is flex default)</li>
                     <li><strong>justify-content: center;</strong> Centers items horizontally</li>
                     <li><strong>gap:</strong> Space between flex items (cleaner than margins)</li>
                     <li><strong>flex-wrap: wrap;</strong> Items move to new line on small screens</li>
@@ -1011,8 +1013,10 @@ footer {
                 <ul>
                     <li><code>@media (max-width: 768px)</code> = "When screen is 768px or narrower"</li>
                     <li>Tablet/phone breakpoint</li>
-                    <li><strong>flex-direction: column;</strong> Stacks navigation vertically on mobile</li>
+                    <li><strong>Desktop:</strong> <code>flex-direction: row</code> (horizontal navigation)</li>
+                    <li><strong>Mobile:</strong> <code>flex-direction: column</code> (vertical stack)</li>
                     <li><strong>align-items: center;</strong> Centers the vertically stacked items</li>
+                    <li><strong>display: block; width: 100%;</strong> Makes links full-width for easier tapping</li>
                     <li>Adjust font sizes, padding for small screens</li>
                 </ul>
             </div>
