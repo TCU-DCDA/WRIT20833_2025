@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Digital humanities research project exploring [your topic]">
+    <meta name="author" content="Your Name">
+    <title>Your Project Title | WRIT 20833</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#question">Research Question</a></li>
+            <li><a href="#data">Data & Methods</a></li>
+            <li><a href="#analysis">Analysis</a></li>
+            <li><a href="#findings">Findings</a></li>
+            <li><a href="#reflection">Reflection</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>Your Project Title</h1>
+        <p>Your Name | WRIT 20833 | Fall 2025</p>
+    </header>
+
+    <main>
+        <section id="question">
+            <h2>Research Question</h2>
+            <!-- TODO: Add your research question here -->
+            <p>What patterns emerge when we analyze [your cultural phenomenon] using computational text analysis methods?</p>
+
+            <p><strong>Background:</strong> Explain why this question matters and what motivated your research.</p>
+        </section>
+
+        <section id="data">
+            <h2>Data & Methods</h2>
+
+            <h3>Dataset</h3>
+            <!-- TODO: Describe your data collection and methodology -->
+            <p><strong>Data Source:</strong> [Where did you collect your data?]</p>
+            <p><strong>Collection Method:</strong> [How did you gather the data? Instant Data Scraper? API? Manual collection?]</p>
+            <p><strong>Dataset Size:</strong> [Number of items, date range, etc.]</p>
+            <p><strong>Ethical Considerations:</strong> [How did you protect privacy? What ethical decisions did you make?]</p>
+
+            <h3>Analysis Methods</h3>
+            <p><strong>Tools:</strong> Python (pandas, VADER, Gensim)</p>
+            <ul>
+                <li><strong>Term Frequency Analysis:</strong> [Brief description of how you used this method]</li>
+                <li><strong>Sentiment Analysis (VADER):</strong> [What sentiment patterns did you look for?]</li>
+                <li><strong>Topic Modeling (Gensim LDA):</strong> [How many topics? What did you discover?]</li>
+            </ul>
+        </section>
+
+        <section id="analysis">
+            <h2>Analysis</h2>
+            <!-- TODO: Add visualizations and code snippets -->
+
+            <h3>Sentiment Analysis Results</h3>
+            <p>Using VADER sentiment analysis, I examined [describe what you analyzed]...</p>
+
+            <!-- Single visualization with caption -->
+            <figure class="viz-container">
+                <img src="images/sentiment-distribution.png"
+                     alt="Bar chart showing distribution of positive, negative, and neutral sentiment">
+                <figcaption>Figure 1: Distribution of sentiment scores across dataset</figcaption>
+            </figure>
+
+            <h3>Code Example</h3>
+            <p>Here's how I implemented the sentiment analysis using <code>vaderSentiment</code>:</p>
+
+            <div class="code-title">sentiment_analysis.py</div>
+            <pre><code>from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+import pandas as pd
+
+analyzer = SentimentIntensityAnalyzer()
+
+# Analyze sentiment for each text
+df['compound'] = df['text'].apply(
+    lambda x: analyzer.polarity_scores(x)['compound']
+)
+
+# Classify sentiment
+df['sentiment'] = df['compound'].apply(
+    lambda x: 'positive' if x > 0.05
+    else ('negative' if x < -0.05 else 'neutral')
+)</code></pre>
+
+            <h3>Topic Modeling Results</h3>
+            <p>Using Gensim's LDA implementation, I identified [number] major topics...</p>
+
+            <!-- Multiple visualizations in a grid -->
+            <div class="viz-grid">
+                <figure class="viz-container">
+                    <img src="images/topic-model.png"
+                         alt="Visualization of topic clusters from LDA analysis">
+                    <figcaption>Figure 2: Topic clusters from LDA analysis</figcaption>
+                </figure>
+
+                <figure class="viz-container">
+                    <img src="images/word-cloud.png"
+                         alt="Word cloud showing most frequent terms">
+                    <figcaption>Figure 3: Most common terms in the corpus</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section id="findings">
+            <h2>Key Findings</h2>
+            <!-- TODO: Present your main discoveries -->
+
+            <p>The computational analysis revealed three major insights:</p>
+
+            <ol>
+                <li><strong>Finding 1:</strong> [Describe your first key discovery]</li>
+                <li><strong>Finding 2:</strong> [Describe your second key discovery]</li>
+                <li><strong>Finding 3:</strong> [Describe your third key discovery]</li>
+            </ol>
+
+            <h3>Detailed Results</h3>
+            <p>Breaking down the sentiment distribution:</p>
+
+            <table class="results-table">
+                <thead>
+                    <tr>
+                        <th>Sentiment Category</th>
+                        <th>Count</th>
+                        <th>Percentage</th>
+                        <th>Avg. Compound Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="highlight">
+                        <td>Positive</td>
+                        <td>XXX</td>
+                        <td>XX%</td>
+                        <td>0.XX</td>
+                    </tr>
+                    <tr>
+                        <td>Neutral</td>
+                        <td>XXX</td>
+                        <td>XX%</td>
+                        <td>0.XX</td>
+                    </tr>
+                    <tr>
+                        <td>Negative</td>
+                        <td>XXX</td>
+                        <td>XX%</td>
+                        <td>-0.XX</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>What Surprised Me</h3>
+            <p>I initially predicted that [your assumption], but the data revealed [what actually happened]. This challenged my understanding because...</p>
+        </section>
+
+        <section id="reflection">
+            <h2>Critical Reflection</h2>
+            <!-- TODO: Connect to course frameworks -->
+
+            <p>This project demonstrates what happens when coding meets culture by revealing insights that neither computational analysis nor traditional close reading could discover alone.</p>
+
+            <h3>Integration of Methods</h3>
+            <p><strong>What computational methods revealed:</strong> [Describe patterns only visible through large-scale analysis]</p>
+            <p><strong>What close reading added:</strong> [Describe how interpretive work enriched the computational findings]</p>
+
+            <div class="framework-callout">
+                <h3>📐 Classification Logic</h3>
+                <p>This project connects to <strong>Classification Logic</strong> by revealing how algorithmic categorization shapes our understanding of [your topic]. [Explain the connection...]</p>
+
+                <p><em>Critical question:</em> What nuances are lost when we reduce complex cultural expressions to computational categories?</p>
+            </div>
+
+            <div class="framework-callout">
+                <h3>🤖 AI Agency</h3>
+                <p>The use of topic modeling and sentiment analysis demonstrates <strong>AI Agency</strong> concerns. While the algorithms appear to "discover" meaning, the interpretation and framing of results remains entirely human. [Explain further...]</p>
+            </div>
+
+            <h3>Limitations & Future Directions</h3>
+            <p><strong>What I would do differently:</strong> [Reflect on your process]</p>
+            <p><strong>Questions that remain:</strong> [What would you investigate with more time?]</p>
+            <p><strong>Confidence in conclusions:</strong> [How certain are you about your findings? What caveats should readers consider?]</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>📊 <strong>Project Materials:</strong>
+            <a href="https://github.com/yourusername/project-name">View Jupyter Notebooks & Data on GitHub</a>
+        </p>
+        <p>&copy; 2025 Your Name | WRIT 20833: Introduction to Coding in the Humanities</p>
+    </footer>
+</body>
+</html>
