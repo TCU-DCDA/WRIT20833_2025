@@ -133,117 +133,7 @@
             border: none;
             padding: 0;
         }
-
-        /* Session Navigation Menu */
-        .session-nav {
-            background: #f8f9fa;
-            border: 2px solid var(--primary-color);
-            border-radius: var(--border-radius);
-            padding: var(--space-lg);
-            margin-bottom: var(--space-xl);
-        }
-
-        .session-nav h3 {
-            color: var(--primary-color);
-            margin-top: 0;
-            margin-bottom: var(--space-md);
-            font-size: 1.25rem;
-        }
-
-        .session-nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: var(--space-sm);
-        }
-
-        .session-nav li {
-            margin: 0;
-        }
-
-        .session-nav a {
-            display: block;
-            padding: var(--space-sm) var(--space-md);
-            background: white;
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-            color: var(--primary-color);
-            text-decoration: none;
-            transition: all 0.2s ease;
-        }
-
-        .session-nav a:hover {
-            background: var(--primary-color);
-            color: white;
-            border-color: var(--primary-color);
-            transform: translateX(4px);
-        }
-
-        @media (max-width: 768px) {
-            .session-nav ul {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Top Navigation Menu (Cross-Session) */
-        .top-nav {
-            background: var(--primary-color);
-            color: white;
-            padding: 0;
-            margin: 0;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .top-nav .container {
-            padding: 0;
-        }
-
-        .top-nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .top-nav li {
-            margin: 0;
-        }
-
-        .top-nav a {
-            display: block;
-            padding: var(--space-md) var(--space-lg);
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.2s ease;
-            border-bottom: 3px solid transparent;
-        }
-
-        .top-nav a:hover {
-            background: var(--secondary-color);
-            border-bottom-color: var(--accent-color);
-        }
-
-        @media (max-width: 768px) {
-            .top-nav ul {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .top-nav a {
-                text-align: center;
-                padding: var(--space-sm) var(--space-md);
-            }
-        }
-
+        
         /* Code Blocks */
         pre {
             background: var(--bg-code);
@@ -469,40 +359,18 @@
         <div class="container">
             <h1>Semantic HTML & CSS Workshop</h1>
             <p class="subtitle">Building Meaningful Web Structures</p>
-
+            
         </div>
     </header>
 
-    <nav class="top-nav">
-        <div class="container">
-            <ul>
-                <li><a href="#session1">Session 1: Semantic HTML</a></li>
-                <li><a href="#session2">Session 2: CSS Fundamentals</a></li>
-                <li><a href="#session3">Session 3: Project Portfolio</a></li>
-                <li><a href="#resources">Resources</a></li>
-            </ul>
-        </div>
-    </nav>
-
     <div class="container">
         <!-- Session 1 -->
-        <section id="session1" class="session">
+        <section class="session">
             <div class="session-header">
-                <h2>Session 1: Semantic HTML Improvements</h2>
+                <h2>Semantic HTML Improvements</h2>
             </div>
 
-            <nav class="session-nav">
-                <h3>In This Session:</h3>
-                <ul>
-                    <li><a href="#session1-opening">What is Semantic HTML?</a></li>
-                    <li><a href="#session1-fixing">Fixing Real Code Together</a></li>
-                    <li><a href="#session1-practice">Hands-On Practice</a></li>
-                    <li><a href="#session1-preparing">Preparing for CSS</a></li>
-                    <li><a href="#session1-homework">Wrap-Up & Homework</a></li>
-                </ul>
-            </nav>
-
-            <h3 id="session1-opening">Opening: What is Semantic HTML?</h3>
+            <h3>Opening: What is Semantic HTML?</h3>
             
             <div class="callout callout-question">
                 <strong>Question to Class:</strong> "What's the difference between these two pieces of code?"
@@ -537,7 +405,7 @@
 
             <hr>
 
-            <h3 id="session1-fixing">Fixing Real Code Together</h3>
+            <h3>Fixing Real Code Together</h3>
 
             <div class="activity">
                 <h4>🔧 Activity: Let's examine and improve actual student code</h4>
@@ -697,7 +565,7 @@ Home |
 
             <hr>
 
-            <h3 id="session1-practice">Hands-On Practice</h3>
+            <h3>Hands-On Practice</h3>
 
             <div class="activity">
                 <h4>✏️ Activity: Fix Your Own Code</h4>
@@ -712,7 +580,7 @@ Home |
 
             <hr>
 
-            <h3 id="session1-preparing">Preparing for CSS</h3>
+            <h3>Preparing for CSS</h3>
 
             <p><strong>Strategic Use of Classes:</strong></p>
             
@@ -769,7 +637,7 @@ Home |
 
             <hr>
 
-            <h3 id="session1-homework">Wrap-Up & Homework</h3>
+            <h3>Wrap-Up & Homework</h3>
 
             <div class="callout callout-success">
                 <strong>Check Your Understanding:</strong>
@@ -800,24 +668,12 @@ Home |
         </section>
 
         <!-- Session 2 -->
-        <section id="session2" class="session">
+        <section class="session">
             <div class="session-header">
-                <h2>Session 2: CSS Fundamentals & Visual Design</h2>
+                <h2>CSS Fundamentals & Visual Design</h2>
             </div>
 
-            <nav class="session-nav">
-                <h3>In This Session:</h3>
-                <ul>
-                    <li><a href="#session2-opening">CSS as Visual Rhetoric</a></li>
-                    <li><a href="#session2-structure-check">HTML Structure Check</a></li>
-                    <li><a href="#session2-fundamentals">CSS Fundamentals</a></li>
-                    <li><a href="#session2-styling">Styling Your Portfolio (Steps 1-4)</a></li>
-                    <li><a href="#session2-testing">Testing & Refinement</a></li>
-                    <li><a href="#session2-wrap">Wrap-Up</a></li>
-                </ul>
-            </nav>
-
-            <h3 id="session2-opening">Opening: CSS as Visual Rhetoric</h3>
+            <h3>Opening: CSS as Visual Rhetoric</h3>
 
             <div class="callout callout-tip">
                 <strong>Remember from Lecture 8:</strong> Code makes arguments!
@@ -833,7 +689,7 @@ Home |
 
             <hr>
 
-            <h3 id="session2-structure-check">Before We Start: HTML Structure Check</h3>
+            <h3>Before We Start: HTML Structure Check</h3>
 
             <div class="callout callout-warning">
                 <strong>⚠️ Important: Update Your HTML Structure</strong>
@@ -863,9 +719,7 @@ Home |
 
             <hr>
 
-            <h3 id="session2-fundamentals">CSS Fundamentals</h3>
-
-            <h4>Understanding the CSS File</h4>
+            <h3>Understanding the CSS File</h3>
 
             <p><strong>Current CSS from the repo:</strong></p>
             <pre><code>h1, h2 {
@@ -887,6 +741,8 @@ p {
             </div>
 
             <hr>
+
+            <h3>CSS Fundamentals</h3>
 
             <h4>1. Reset & Base Styles</h4>
 
@@ -985,7 +841,7 @@ main section h2 {
 
             <hr>
 
-            <h3 id="session2-styling">Styling Your Portfolio</h3>
+            <h3>Styling Your Portfolio</h3>
 
             <p><strong>Live Coding Together:</strong> We'll build CSS step-by-step</p>
 
@@ -1202,7 +1058,7 @@ footer {
 
             <hr>
 
-            <h3 id="session2-testing">Testing & Refinement</h3>
+            <h3>Testing & Refinement</h3>
 
             <div class="activity">
                 <h4>✏️ Activity: Apply & Test</h4>
@@ -1230,7 +1086,7 @@ nav {
 
             <hr>
 
-            <h3 id="session2-wrap">Wrap-Up</h3>
+            <h3>Wrap-Up</h3>
 
             <div class="callout callout-success">
                 <strong>What We Accomplished:</strong>
@@ -1255,534 +1111,8 @@ nav {
             </div>
         </section>
 
-        <!-- Session 3 -->
-        <section id="session3" class="session">
-            <div class="session-header">
-                <h2>Session 3: Building Your Project Portfolio</h2>
-            </div>
-
-            <nav class="session-nav">
-                <h3>In This Session:</h3>
-                <ul>
-                    <li><a href="#session3-opening">From Generic to Specific</a></li>
-                    <li><a href="#session3-step1">Step 1: Restructure for Research</a></li>
-                    <li><a href="#session3-step2">Step 2: Data Visualizations</a></li>
-                    <li><a href="#session3-step3">Step 3: Code Blocks</a></li>
-                    <li><a href="#session3-step4">Step 4: Data Tables</a></li>
-                    <li><a href="#session3-step5">Step 5: Framework Integration</a></li>
-                    <li><a href="#session3-step6">Step 6: File Structure</a></li>
-                    <li><a href="#session3-example">Complete Example</a></li>
-                    <li><a href="#session3-wrap">Wrap-Up & Next Steps</a></li>
-                </ul>
-            </nav>
-
-            <h3 id="session3-opening">Opening: From Generic to Specific</h3>
-
-            <div class="callout callout-tip">
-                <strong>The Goal:</strong> Transform your portfolio into a professional research presentation
-                <p>Today we adapt our semantic HTML/CSS foundation to showcase your <strong>"When Coding Meets Culture"</strong> project:</p>
-                <ul>
-                    <li>Research question and methodology</li>
-                    <li>Data collection and analysis</li>
-                    <li>Visualizations and findings</li>
-                    <li>Critical framework connections</li>
-                </ul>
-            </div>
-
-            <hr>
-
-            <h3 id="session3-step1">Step 1: Restructure Sections for Research</h3>
-
-            <p><strong>Current generic structure:</strong></p>
-            <pre><code>&lt;nav&gt;
-    &lt;ul&gt;
-        &lt;li&gt;&lt;a href="#home"&gt;Home&lt;/a&gt;&lt;/li&gt;
-        &lt;li&gt;&lt;a href="#overview"&gt;Overview&lt;/a&gt;&lt;/li&gt;
-        &lt;li&gt;&lt;a href="#background"&gt;Background&lt;/a&gt;&lt;/li&gt;
-        &lt;li&gt;&lt;a href="#methodology"&gt;Methodology&lt;/a&gt;&lt;/li&gt;
-        &lt;li&gt;&lt;a href="#analysis"&gt;Analysis&lt;/a&gt;&lt;/li&gt;
-        &lt;li&gt;&lt;a href="#findings"&gt;Findings&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-&lt;/nav&gt;</code></pre>
-
-            <p><strong>✅ Better: Research-focused structure:</strong></p>
-            <pre><code>&lt;nav&gt;
-    &lt;ul&gt;
-        &lt;li&gt;&lt;a href="#question"&gt;Research Question&lt;/a&gt;&lt;/li&gt;
-        &lt;li&gt;&lt;a href="#data"&gt;Data &amp; Methods&lt;/a&gt;&lt;/li&gt;
-        &lt;li&gt;&lt;a href="#analysis"&gt;Analysis&lt;/a&gt;&lt;/li&gt;
-        &lt;li&gt;&lt;a href="#findings"&gt;Findings&lt;/a&gt;&lt;/li&gt;
-        &lt;li&gt;&lt;a href="#reflection"&gt;Reflection&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-&lt;/nav&gt;
-
-&lt;header&gt;
-    &lt;h1&gt;Your Project Title&lt;/h1&gt;
-    &lt;p&gt;Your Name | WRIT 20833 | Fall 2025&lt;/p&gt;
-&lt;/header&gt;
-
-&lt;main&gt;
-    &lt;section id="question"&gt;
-        &lt;h2&gt;Research Question&lt;/h2&gt;
-        &lt;!-- TODO: Add your research question here --&gt;
-        &lt;p&gt;What patterns of sentiment emerge in...&lt;/p&gt;
-    &lt;/section&gt;
-
-    &lt;section id="data"&gt;
-        &lt;h2&gt;Data &amp; Methods&lt;/h2&gt;
-        &lt;!-- TODO: Describe your data collection and methodology --&gt;
-        &lt;p&gt;&lt;strong&gt;Data Source:&lt;/strong&gt; ...&lt;/p&gt;
-        &lt;p&gt;&lt;strong&gt;Collection Method:&lt;/strong&gt; ...&lt;/p&gt;
-        &lt;p&gt;&lt;strong&gt;Analysis Tools:&lt;/strong&gt; Python (pandas, VADER, Gensim)&lt;/p&gt;
-    &lt;/section&gt;
-
-    &lt;section id="analysis"&gt;
-        &lt;h2&gt;Analysis&lt;/h2&gt;
-        &lt;!-- TODO: Add visualizations and code snippets --&gt;
-    &lt;/section&gt;
-
-    &lt;section id="findings"&gt;
-        &lt;h2&gt;Key Findings&lt;/h2&gt;
-        &lt;!-- TODO: Present your main discoveries --&gt;
-    &lt;/section&gt;
-
-    &lt;section id="reflection"&gt;
-        &lt;h2&gt;Critical Reflection&lt;/h2&gt;
-        &lt;!-- TODO: Connect to course frameworks --&gt;
-        &lt;p&gt;This project connects to &lt;strong&gt;[Framework Name]&lt;/strong&gt; because...&lt;/p&gt;
-    &lt;/section&gt;
-&lt;/main&gt;
-
-&lt;footer&gt;
-    &lt;p&gt;Data and code available at: &lt;a href="your-github-repo"&gt;GitHub Repository&lt;/a&gt;&lt;/p&gt;
-    &lt;p&gt;&amp;copy; 2025 Your Name&lt;/p&gt;
-&lt;/footer&gt;</code></pre>
-
-            <div class="callout callout-tip">
-                <strong>💡 Use TODO Comments as Placeholders</strong>
-                <p>HTML comments (<code>&lt;!-- comment --&gt;</code>) won't appear on your page but help you remember what to fill in:</p>
-                <ul>
-                    <li>They keep your workflow organized</li>
-                    <li>They remind you what content is still needed</li>
-                    <li>You can search for "TODO" to find incomplete sections</li>
-                </ul>
-            </div>
-
-            <hr>
-
-            <h3 id="session3-step2">Step 2: Add Styles for Data Visualizations</h3>
-
-            <p>Add these CSS rules to your <code>styles.css</code> file:</p>
-
-            <pre><code>/* =========================
-   Data Visualizations
-   ========================= */
-/* Container for charts and images */
-.viz-container {
-    margin: 2rem 0;
-    text-align: center;
-}
-
-.viz-container img {
-    max-width: 100%;           /* Responsive: never wider than container */
-    height: auto;              /* Maintain aspect ratio */
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-bottom: 0.5rem;
-}
-
-/* Figure captions */
-.viz-container figcaption {
-    font-style: italic;
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-    margin-top: 0.5rem;
-}
-
-/* Grid layout for multiple visualizations */
-.viz-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-    margin: 2rem 0;
-}
-
-@media (max-width: 768px) {
-    .viz-grid {
-        grid-template-columns: 1fr;  /* Single column on mobile */
-    }
-}</code></pre>
-
-            <p><strong>Using it in your HTML:</strong></p>
-            <pre><code>&lt;section id="analysis"&gt;
-    &lt;h2&gt;Sentiment Analysis Results&lt;/h2&gt;
-    &lt;p&gt;Analysis of 500 tweets revealed distinct sentiment patterns...&lt;/p&gt;
-
-    &lt;!-- Single visualization with caption --&gt;
-    &lt;figure class="viz-container"&gt;
-        &lt;img src="images/sentiment-distribution.png"
-             alt="Bar chart showing distribution of positive, negative, and neutral sentiment"&gt;
-        &lt;figcaption&gt;Figure 1: Distribution of sentiment scores across dataset&lt;/figcaption&gt;
-    &lt;/figure&gt;
-
-    &lt;!-- Multiple visualizations in a grid --&gt;
-    &lt;div class="viz-grid"&gt;
-        &lt;figure class="viz-container"&gt;
-            &lt;img src="images/topic-model.png"
-                 alt="LDA topic modeling visualization showing 5 distinct topics"&gt;
-            &lt;figcaption&gt;Figure 2: Topic clusters from LDA analysis&lt;/figcaption&gt;
-        &lt;/figure&gt;
-
-        &lt;figure class="viz-container"&gt;
-            &lt;img src="images/word-cloud.png"
-                 alt="Word cloud of most frequent terms in positive sentiment tweets"&gt;
-            &lt;figcaption&gt;Figure 3: Most common terms in positive tweets&lt;/figcaption&gt;
-        &lt;/figure&gt;
-    &lt;/div&gt;
-&lt;/section&gt;</code></pre>
-
-            <div class="callout callout-warning">
-                <strong>⚠️ Accessibility: Alt Text for Data Visualizations</strong>
-                <p>Alt text describes images for screen readers. For data visualizations:</p>
-                <ul>
-                    <li><strong>Bad:</strong> <code>alt="chart"</code></li>
-                    <li><strong>Good:</strong> <code>alt="Bar chart showing 60% positive, 25% neutral, 15% negative sentiment"</code></li>
-                </ul>
-                <p>Describe <em>what the data shows</em>, not just what type of chart it is.</p>
-            </div>
-
-            <hr>
-
-            <h3 id="session3-step3">Step 3: Style Code Blocks</h3>
-
-            <p>Add enhanced styling for Python code snippets:</p>
-
-            <pre><code>/* =========================
-   Code Blocks
-   ========================= */
-/* Improve existing pre/code styling */
-pre {
-    background: #2d2d2d;          /* Dark background */
-    color: #f8f8f2;               /* Light text */
-    border: none;
-    border-radius: 8px;
-    padding: 1.5rem;
-    overflow-x: auto;
-    margin: 1.5rem 0;
-    font-size: 0.9rem;
-    line-height: 1.5;
-}
-
-code {
-    font-family: 'Courier New', Courier, monospace;
-}
-
-/* Inline code (inside paragraphs) */
-p code, li code {
-    background: #f4f4f4;
-    color: #c7254e;
-    padding: 0.2rem 0.4rem;
-    border-radius: 3px;
-    font-size: 0.9em;
-}
-
-/* Code block titles */
-.code-title {
-    background: #1e1e1e;
-    color: #9cdcfe;
-    padding: 0.5rem 1rem;
-    border-radius: 8px 8px 0 0;
-    font-family: monospace;
-    font-size: 0.85rem;
-    margin-bottom: -0.5rem;
-}
-
-.code-title + pre {
-    border-radius: 0 0 8px 8px;
-    margin-top: 0;
-}</code></pre>
-
-            <p><strong>Using it in your HTML:</strong></p>
-            <pre><code>&lt;section id="analysis"&gt;
-    &lt;h2&gt;Analysis Process&lt;/h2&gt;
-    &lt;p&gt;I used the &lt;code&gt;vaderSentiment&lt;/code&gt; library to analyze tweet sentiment:&lt;/p&gt;
-
-    &lt;div class="code-title"&gt;sentiment_analysis.py&lt;/div&gt;
-    &lt;pre&gt;&lt;code&gt;from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
-
-analyzer = SentimentIntensityAnalyzer()
-
-for tweet in tweets:
-    scores = analyzer.polarity_scores(tweet)
-    print(f"Compound score: {scores['compound']}")&lt;/code&gt;&lt;/pre&gt;
-
-    &lt;p&gt;The compound score ranges from -1 (most negative) to +1 (most positive).&lt;/p&gt;
-&lt;/section&gt;</code></pre>
-
-            <hr>
-
-            <h3 id="session3-step4">Step 4: Add Data Tables</h3>
-
-            <p>Style tables for presenting results (building on existing table styles):</p>
-
-            <pre><code>/* =========================
-   Data Tables (extends existing styles)
-   ========================= */
-.results-table {
-    font-size: 0.95rem;
-    margin: 1.5rem auto;
-    max-width: 700px;
-}
-
-.results-table th {
-    background: var(--primary-color);
-    color: white;
-}
-
-.results-table td {
-    text-align: center;
-}
-
-.results-table td:first-child {
-    text-align: left;
-    font-weight: 500;
-}
-
-/* Highlight key rows */
-.results-table tr.highlight {
-    background: #fff3cd;
-    font-weight: bold;
-}</code></pre>
-
-            <p><strong>Using it in your HTML:</strong></p>
-            <pre><code>&lt;section id="findings"&gt;
-    &lt;h2&gt;Topic Distribution&lt;/h2&gt;
-    &lt;p&gt;LDA analysis identified five major topics:&lt;/p&gt;
-
-    &lt;table class="results-table"&gt;
-        &lt;thead&gt;
-            &lt;tr&gt;
-                &lt;th&gt;Topic&lt;/th&gt;
-                &lt;th&gt;Top Keywords&lt;/th&gt;
-                &lt;th&gt;% of Corpus&lt;/th&gt;
-            &lt;/tr&gt;
-        &lt;/thead&gt;
-        &lt;tbody&gt;
-            &lt;tr class="highlight"&gt;
-                &lt;td&gt;Topic 1: Climate Action&lt;/td&gt;
-                &lt;td&gt;climate, change, action, urgent&lt;/td&gt;
-                &lt;td&gt;32%&lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-                &lt;td&gt;Topic 2: Policy Debate&lt;/td&gt;
-                &lt;td&gt;policy, government, debate&lt;/td&gt;
-                &lt;td&gt;28%&lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;!-- Add more topics --&gt;
-        &lt;/tbody&gt;
-    &lt;/table&gt;
-&lt;/section&gt;</code></pre>
-
-            <hr>
-
-            <h3 id="session3-step5">Step 5: Critical Framework Integration</h3>
-
-            <p>Add special styling for connecting to course frameworks:</p>
-
-            <pre><code>/* =========================
-   Framework Connections
-   ========================= */
-.framework-callout {
-    background: linear-gradient(135deg, #f0e7f8, #e9d5ff);
-    border-left: 5px solid var(--secondary-color);
-    border-radius: 8px;
-    padding: 1.5rem;
-    margin: 2rem 0;
-}
-
-.framework-callout h3 {
-    color: var(--primary-color);
-    margin-top: 0;
-}
-
-.framework-callout strong {
-    color: var(--secondary-color);
-}</code></pre>
-
-            <p><strong>Using it in your HTML:</strong></p>
-            <pre><code>&lt;section id="reflection"&gt;
-    &lt;h2&gt;Critical Reflection&lt;/h2&gt;
-
-    &lt;div class="framework-callout"&gt;
-        &lt;h3&gt;📐 Classification Logic&lt;/h3&gt;
-        &lt;p&gt;This project reveals how &lt;strong&gt;algorithmic sentiment analysis&lt;/strong&gt;
-        imposes categorical boundaries on human emotion. VADER's compound score
-        reduces complex cultural expressions to a single number between -1 and +1.&lt;/p&gt;
-
-        &lt;p&gt;Question to consider: &lt;em&gt;What nuances are lost when we classify
-        sentiment as simply "positive," "negative," or "neutral"?&lt;/em&gt;&lt;/p&gt;
-    &lt;/div&gt;
-
-    &lt;div class="framework-callout"&gt;
-        &lt;h3&gt;🤖 AI Agency&lt;/h3&gt;
-        &lt;p&gt;Topic modeling with LDA appears to "discover" themes in text,
-        creating an illusion of &lt;strong&gt;machine intelligence&lt;/strong&gt;.
-        However, the algorithm simply identifies statistical word co-occurrences—
-        the interpretation and meaning-making is entirely human.&lt;/p&gt;
-    &lt;/div&gt;
-&lt;/section&gt;</code></pre>
-
-            <hr>
-
-            <h3 id="session3-step6">Step 6: Creating Your File Structure</h3>
-
-            <div class="activity">
-                <h4>✏️ Activity: Set Up Your Project Portfolio</h4>
-                <p><strong>Create this folder structure on your computer:</strong></p>
-                <pre><code>my-portfolio/
-├── index.html          (your main HTML file)
-├── css/
-│   └── styles.css      (your complete CSS file)
-├── images/             (save your visualizations here)
-│   ├── sentiment-distribution.png
-│   ├── topic-model.png
-│   └── word-cloud.png
-└── README.md           (optional: deployment notes)</code></pre>
-
-                <p><strong>Steps:</strong></p>
-                <ol>
-                    <li>Create a folder called <code>my-portfolio</code></li>
-                    <li>Inside it, create a folder called <code>css</code></li>
-                    <li>Inside it, create a folder called <code>images</code></li>
-                    <li>Create <code>index.html</code> in the main folder</li>
-                    <li>Create <code>styles.css</code> in the <code>css</code> folder</li>
-                    <li>Export your Jupyter notebook visualizations and save in <code>images/</code></li>
-                </ol>
-            </div>
-
-            <div class="callout callout-tip">
-                <strong>💡 Exporting Visualizations from Jupyter</strong>
-                <p>In your Jupyter notebook, after creating a matplotlib/seaborn chart:</p>
-                <pre><code>import matplotlib.pyplot as plt
-
-# Create your visualization
-plt.figure(figsize=(10, 6))
-# ... your plotting code ...
-
-# Save it as an image
-plt.savefig('sentiment-distribution.png', dpi=300, bbox_inches='tight')
-plt.show()</code></pre>
-                <p>Then move the PNG file to your <code>images/</code> folder!</p>
-            </div>
-
-            <hr>
-
-            <h3 id="session3-example">Complete Example Section</h3>
-
-            <p><strong>Here's a complete example showing all elements together:</strong></p>
-
-            <pre><code>&lt;section id="analysis"&gt;
-    &lt;h2&gt;Sentiment Analysis&lt;/h2&gt;
-
-    &lt;p&gt;Using VADER (Valence Aware Dictionary and sEntiment Reasoner),
-    I analyzed 500 tweets about climate change to identify emotional patterns
-    in public discourse.&lt;/p&gt;
-
-    &lt;h3&gt;Methodology&lt;/h3&gt;
-    &lt;div class="code-title"&gt;sentiment_analysis.py&lt;/div&gt;
-    &lt;pre&gt;&lt;code&gt;from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
-import pandas as pd
-
-analyzer = SentimentIntensityAnalyzer()
-df['compound'] = df['tweet'].apply(lambda x: analyzer.polarity_scores(x)['compound'])
-
-# Classify sentiment
-df['sentiment'] = df['compound'].apply(
-    lambda x: 'positive' if x &gt; 0.05 else ('negative' if x &lt; -0.05 else 'neutral')
-)&lt;/code&gt;&lt;/pre&gt;
-
-    &lt;h3&gt;Results&lt;/h3&gt;
-    &lt;figure class="viz-container"&gt;
-        &lt;img src="images/sentiment-distribution.png"
-             alt="Bar chart showing 45% positive, 30% neutral, and 25% negative sentiment in climate tweets"&gt;
-        &lt;figcaption&gt;Figure 1: Overall sentiment distribution (n=500 tweets)&lt;/figcaption&gt;
-    &lt;/figure&gt;
-
-    &lt;p&gt;The analysis revealed that &lt;strong&gt;45% of tweets expressed positive sentiment&lt;/strong&gt;,
-    often focused on solutions and activism, while 25% were negative, typically
-    expressing frustration or doom.&lt;/p&gt;
-
-    &lt;table class="results-table"&gt;
-        &lt;thead&gt;
-            &lt;tr&gt;
-                &lt;th&gt;Sentiment Category&lt;/th&gt;
-                &lt;th&gt;Count&lt;/th&gt;
-                &lt;th&gt;Percentage&lt;/th&gt;
-                &lt;th&gt;Avg. Compound Score&lt;/th&gt;
-            &lt;/tr&gt;
-        &lt;/thead&gt;
-        &lt;tbody&gt;
-            &lt;tr class="highlight"&gt;
-                &lt;td&gt;Positive&lt;/td&gt;
-                &lt;td&gt;225&lt;/td&gt;
-                &lt;td&gt;45%&lt;/td&gt;
-                &lt;td&gt;0.52&lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-                &lt;td&gt;Neutral&lt;/td&gt;
-                &lt;td&gt;150&lt;/td&gt;
-                &lt;td&gt;30%&lt;/td&gt;
-                &lt;td&gt;0.02&lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-                &lt;td&gt;Negative&lt;/td&gt;
-                &lt;td&gt;125&lt;/td&gt;
-                &lt;td&gt;25%&lt;/td&gt;
-                &lt;td&gt;-0.48&lt;/td&gt;
-            &lt;/tr&gt;
-        &lt;/tbody&gt;
-    &lt;/table&gt;
-&lt;/section&gt;</code></pre>
-
-            <hr>
-
-            <h3 id="session3-wrap">Wrap-Up & Next Steps</h3>
-
-            <div class="callout callout-success">
-                <strong>✅ Portfolio Checklist</strong>
-                <ul class="checklist">
-                    <li>Created project folder structure</li>
-                    <li>Updated navigation with research-focused sections</li>
-                    <li>Added CSS for visualizations, code blocks, and tables</li>
-                    <li>Exported charts from Jupyter notebooks</li>
-                    <li>Added placeholder TODO comments for content</li>
-                    <li>Tested responsive design in browser</li>
-                </ul>
-            </div>
-
-            <p><strong>What to Work on Next:</strong></p>
-            <ol>
-                <li><strong>Content First:</strong> Complete your data analysis in Jupyter</li>
-                <li><strong>Export Visuals:</strong> Save all charts as PNG files</li>
-                <li><strong>Fill in Placeholders:</strong> Replace TODO comments with your actual research</li>
-                <li><strong>Write Reflections:</strong> Connect findings to critical frameworks</li>
-                <li><strong>Deploy:</strong> (Next session) Publish to GitHub Pages</li>
-            </ol>
-
-            <div class="callout callout-tip">
-                <strong>💡 Working Iteratively</strong>
-                <p>You don't need to complete everything at once! Build your portfolio alongside your project:</p>
-                <ul>
-                    <li><strong>Week 1:</strong> Set up structure with placeholders</li>
-                    <li><strong>Week 2:</strong> Add data collection and methodology</li>
-                    <li><strong>Week 3:</strong> Add analysis and visualizations</li>
-                    <li><strong>Week 4:</strong> Write reflection and polish</li>
-                </ul>
-            </div>
-        </section>
-
         <!-- Resources Section -->
-        <section id="resources" class="session">
+        <section class="session">
             <h2>Additional Resources</h2>
 
             <h3>CSS Property Quick Reference</h3>
