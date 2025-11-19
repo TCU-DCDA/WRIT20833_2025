@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Beginner's guide to editing your WRIT 20833 portfolio template">
+    <title>Editing Your Portfolio: A Beginner's Guide | WRIT 20833</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Additional styles specific to this guide */
+        .tip-box {
+            background: #f0f9ff;
+            border-left: 4px solid #3b82f6;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .warning-box {
+            background: #fef2f2;
+            border-left: 4px solid #ef4444;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .success-box {
+            background: #f0fdf4;
+            border-left: 4px solid #10b981;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .comparison .wrong {
+            background: #fee;
+            padding: 1rem;
+            border-left: 4px solid #f00;
+        }
+
+        .comparison .right {
+            background: #efe;
+            padding: 1rem;
+            border-left: 4px solid #0a0;
+        }
+
+        @media (max-width: 768px) {
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .step-number {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            width: 2rem;
+            height: 2rem;
+            line-height: 2rem;
+            text-align: center;
+            border-radius: 50%;
+            margin-right: 0.5rem;
+            font-weight: bold;
+        }
+
+        kbd {
+            background: #333;
+            color: white;
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-family: monospace;
+            font-size: 0.9em;
+        }
+
+        .checklist {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .checklist li {
+            padding: 0.5rem 0;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .checklist li::before {
+            content: "☐";
+            position: absolute;
+            left: 0;
+            font-size: 1.5em;
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#opening">Opening Project</a></li>
+            <li><a href="#structure">Template Structure</a></li>
+            <li><a href="#workflow">Editing Workflow</a></li>
+            <li><a href="#todos">Finding TODOs</a></li>
+            <li><a href="#editing">Editing HTML</a></li>
+            <li><a href="#images">Adding Images</a></li>
+            <li><a href="#preview">Preview Changes</a></li>
+            <li><a href="#github">GitHub Desktop</a></li>
+            <li><a href="#mistakes">Common Mistakes</a></li>
+            <li><a href="#troubleshooting">Troubleshooting</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>Editing Your Portfolio</h1>
+        <p>A Beginner's Guide for WRIT 20833 Students</p>
+    </header>
+
+    <main>
+        <section id="intro">
+            <p>This guide focuses on the practical, day-to-day workflow of editing your portfolio template. If you need setup instructions, see <a href="SETUP_GUIDE.md">SETUP_GUIDE.md</a> instead.</p>
+
+            <div class="tip-box">
+                <strong>For Beginners:</strong> Don't worry if HTML seems intimidating! This guide assumes zero experience. You'll be editing like a pro in no time.
+            </div>
+        </section>
+
+        <section id="opening">
+            <h2>Opening Your Project in VS Code</h2>
+
+            <h3><span class="step-number">1</span> Launch VS Code</h3>
+
+            <h3><span class="step-number">2</span> Open Folder (NOT File!)</h3>
+            <p>Go to <strong>File → Open Folder</strong></p>
+
+            <h3><span class="step-number">3</span> Select Your Portfolio Folder</h3>
+            <p>Navigate to wherever you cloned the repository and click <strong>Open</strong></p>
+
+            <div class="success-box">
+                <strong>You should see</strong> a file tree on the left showing:<br>
+                <code>index.html</code>, <code>css/</code>, <code>images/</code>, <code>README.md</code>, etc.
+            </div>
+
+            <div class="warning-box">
+                <strong>Pro Tip:</strong> Always open the <strong>folder</strong>, not individual files. This gives you access to all project files at once in the sidebar.
+            </div>
+        </section>
+
+        <section id="structure">
+            <h2>Understanding the Template Structure</h2>
+
+            <table class="results-table">
+                <thead>
+                    <tr>
+                        <th>File</th>
+                        <th>What It Is</th>
+                        <th>Do You Edit It?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="highlight">
+                        <td><strong>index.html</strong></td>
+                        <td>Your portfolio content</td>
+                        <td>✅ <strong>YES - Main file</strong></td>
+                    </tr>
+                    <tr>
+                        <td>css/styles.css</td>
+                        <td>Visual styling</td>
+                        <td>❌ Only if changing colors</td>
+                    </tr>
+                    <tr class="highlight">
+                        <td>images/ folder</td>
+                        <td>Storage for charts</td>
+                        <td>✅ <strong>Add PNG files here</strong></td>
+                    </tr>
+                    <tr>
+                        <td>README.md</td>
+                        <td>Documentation</td>
+                        <td>❌ No</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p><strong>Focus 95% of your time on <code>index.html</code></strong> - that's where all your content goes.</p>
+        </section>
+
+        <section id="workflow">
+            <h2>The Editing Workflow</h2>
+
+            <p>Here's the cycle you'll repeat over and over:</p>
+
+            <ol>
+                <li><strong>PULL</strong> → Get latest changes from GitHub</li>
+                <li><strong>EDIT</strong> → Make changes in VS Code</li>
+                <li><strong>SAVE</strong> → Save your file (<kbd>Cmd+S</kbd> or <kbd>Ctrl+S</kbd>)</li>
+                <li><strong>PREVIEW</strong> → Check in browser</li>
+                <li><strong>COMMIT</strong> → Save changes with GitHub Desktop</li>
+                <li><strong>PUSH</strong> → Send changes to GitHub</li>
+            </ol>
+
+            <div class="framework-callout">
+                <h3>🔄 The Golden Rule</h3>
+                <p><strong>PULL → EDIT → COMMIT → PUSH</strong></p>
+                <p>Always pull before editing (especially when working in groups) to get the latest version and avoid conflicts!</p>
+            </div>
+        </section>
+
+        <section id="todos">
+            <h2>Finding Your TODO Markers</h2>
+
+            <p>The template has helpful <code>&lt;!-- TODO: ... --&gt;</code> comments showing exactly where to add content.</p>
+
+            <h3>How to Find TODOs in VS Code</h3>
+
+            <p><strong>Method 1: Search</strong></p>
+            <ol>
+                <li>Press <kbd>Cmd+F</kbd> (Mac) or <kbd>Ctrl+F</kbd> (Windows)</li>
+                <li>Type <code>TODO</code></li>
+                <li>Press <strong>Enter</strong> to jump through each one</li>
+            </ol>
+
+            <p><strong>Method 2: TODO Tree Extension (Optional)</strong></p>
+            <ol>
+                <li>Install "TODO Tree" extension in VS Code</li>
+                <li>TODOs appear in a special sidebar panel</li>
+                <li>Click to jump to each one</li>
+            </ol>
+
+            <h3>Example: Before and After</h3>
+
+            <div class="code-title">Before (with TODO)</div>
+            <pre><code>&lt;!-- TODO: Add your research question here --&gt;
+&lt;p&gt;What patterns emerge when we analyze [your topic]?&lt;/p&gt;</code></pre>
+
+            <div class="code-title">After (your content)</div>
+            <pre><code>&lt;p&gt;What patterns emerge when we analyze Taylor Swift's lyrical
+   evolution using sentiment analysis and topic modeling across
+   her discography?&lt;/p&gt;</code></pre>
+
+            <div class="tip-box">
+                <strong>Pro Tip:</strong> Delete the TODO comment once you've completed that section. This helps you track your progress!
+            </div>
+        </section>
+
+        <section id="editing">
+            <h2>Editing HTML Content</h2>
+
+            <p>Don't worry - you only need to understand a few basic patterns!</p>
+
+            <h3>1. Paragraphs</h3>
+            <div class="code-title">HTML</div>
+            <pre><code>&lt;p&gt;Your text goes here.&lt;/p&gt;</code></pre>
+
+            <div class="tip-box">
+                You can break long paragraphs across multiple lines in your code - HTML ignores line breaks inside tags.
+            </div>
+
+            <h3>2. Headings</h3>
+            <div class="code-title">HTML</div>
+            <pre><code>&lt;h2&gt;Main Section Title&lt;/h2&gt;
+&lt;h3&gt;Subsection Title&lt;/h3&gt;</code></pre>
+
+            <h3>3. Bold and Emphasis</h3>
+            <div class="code-title">HTML</div>
+            <pre><code>&lt;p&gt;&lt;strong&gt;This text is bold&lt;/strong&gt; and &lt;em&gt;this is italicized&lt;/em&gt;.&lt;/p&gt;</code></pre>
+
+            <h3>4. Lists</h3>
+
+            <p><strong>Bulleted lists:</strong></p>
+            <div class="code-title">HTML</div>
+            <pre><code>&lt;ul&gt;
+    &lt;li&gt;First point&lt;/li&gt;
+    &lt;li&gt;Second point&lt;/li&gt;
+    &lt;li&gt;Third point&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+
+            <p><strong>Numbered lists:</strong></p>
+            <div class="code-title">HTML</div>
+            <pre><code>&lt;ol&gt;
+    &lt;li&gt;First finding&lt;/li&gt;
+    &lt;li&gt;Second finding&lt;/li&gt;
+    &lt;li&gt;Third finding&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+
+            <h3>5. Links</h3>
+            <div class="code-title">HTML</div>
+            <pre><code>&lt;a href="https://github.com/yourusername/your-repo"&gt;Link text here&lt;/a&gt;</code></pre>
+
+            <div class="warning-box">
+                <strong>Don't forget:</strong> Update the footer link to YOUR GitHub repository!
+            </div>
+
+            <h3>Editing Strategy: Copy and Modify</h3>
+
+            <p><strong>Keep the structure</strong> (the tags), just change the text inside:</p>
+
+            <div class="comparison">
+                <div class="wrong">
+                    <strong>❌ Don't Delete This:</strong>
+                    <pre><code>&lt;section id="findings"&gt;
+    &lt;h2&gt;Key Findings&lt;/h2&gt;</code></pre>
+                </div>
+                <div class="right">
+                    <strong>✅ Only Change This:</strong>
+                    <pre><code>&lt;p&gt;The analysis revealed...&lt;/p&gt;</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <section id="images">
+            <h2>Adding Your Images</h2>
+
+            <h3><span class="step-number">1</span> Prepare Images in Google Colab</h3>
+
+            <div class="code-title">In your Colab notebook</div>
+            <pre><code>import matplotlib.pyplot as plt
+
+# Your plotting code here
+plt.figure(figsize=(10, 6))
+# ...
+
+# Save with high quality
+plt.savefig('sentiment-distribution.png', dpi=300, bbox_inches='tight')
+plt.show()</code></pre>
+
+            <p><strong>Download the PNG:</strong></p>
+            <ol>
+                <li>In Colab, click <strong>Files</strong> tab (left sidebar)</li>
+                <li><strong>Right-click</strong> your PNG file</li>
+                <li><strong>Download</strong></li>
+            </ol>
+
+            <h3><span class="step-number">2</span> Add to Your Project</h3>
+
+            <p><strong>Option A: Drag and Drop (Easiest)</strong></p>
+            <ol>
+                <li>Open the <code>images/</code> folder on your computer</li>
+                <li>Drag your PNG files into that folder</li>
+            </ol>
+
+            <p><strong>Option B: Using VS Code</strong></p>
+            <ol>
+                <li>In VS Code, <strong>right-click</strong> the <code>images/</code> folder</li>
+                <li><strong>Reveal in Finder</strong> (Mac) or <strong>Reveal in File Explorer</strong> (Windows)</li>
+                <li>Copy your PNG files into this folder</li>
+            </ol>
+
+            <h3><span class="step-number">3</span> Reference in HTML</h3>
+
+            <div class="code-title">Update the image path</div>
+            <pre><code>&lt;img src="images/sentiment-distribution.png"
+     alt="Bar chart showing sentiment distribution"&gt;</code></pre>
+
+            <div class="warning-box">
+                <h4>Common Image Path Mistakes:</h4>
+                <ul>
+                    <li>❌ <code>src="sentiment-chart.PNG"</code> (wrong case)</li>
+                    <li>❌ <code>src="images\chart.png"</code> (wrong slash)</li>
+                    <li>❌ <code>src="Downloads/chart.png"</code> (wrong folder)</li>
+                    <li>✅ <code>src="images/chart.png"</code> <strong>(CORRECT!)</strong></li>
+                </ul>
+            </div>
+
+            <h3><span class="step-number">4</span> Add Captions</h3>
+
+            <div class="code-title">Complete figure with caption</div>
+            <pre><code>&lt;figure class="viz-container"&gt;
+    &lt;img src="images/your-chart.png"
+         alt="Description for screen readers"&gt;
+    &lt;figcaption&gt;Figure 1: Description of what this chart shows&lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+        </section>
+
+        <section id="preview">
+            <h2>Previewing Your Changes</h2>
+
+            <h3>Method 1: Open in Browser (Simplest)</h3>
+            <ol>
+                <li><strong>Save</strong> your file in VS Code (<kbd>Cmd+S</kbd> or <kbd>Ctrl+S</kbd>)</li>
+                <li>Right-click <code>index.html</code> in VS Code</li>
+                <li><strong>Reveal in Finder/Explorer</strong></li>
+                <li><strong>Double-click</strong> <code>index.html</code></li>
+                <li><strong>Refresh</strong> browser after making more changes</li>
+            </ol>
+
+            <h3>Method 2: Live Server Extension (Recommended)</h3>
+
+            <p><strong>One-time setup:</strong></p>
+            <ol>
+                <li>In VS Code, go to <strong>Extensions</strong> (left sidebar)</li>
+                <li>Search for <strong>"Live Server"</strong></li>
+                <li>Install it</li>
+            </ol>
+
+            <p><strong>Using Live Server:</strong></p>
+            <ol>
+                <li>Right-click anywhere in <code>index.html</code></li>
+                <li>Select <strong>"Open with Live Server"</strong></li>
+                <li>Browser opens automatically</li>
+                <li><strong>Auto-refreshes when you save</strong> - super convenient!</li>
+            </ol>
+
+            <div class="success-box">
+                <strong>Live Server Benefit:</strong> You make a change, press <kbd>Cmd+S</kbd>, and instantly see the update in your browser. No manual refresh needed!
+            </div>
+        </section>
+
+        <section id="github">
+            <h2>Saving with GitHub Desktop</h2>
+
+            <div class="framework-callout">
+                <h3>🔄 The Golden Rule (Again!)</h3>
+                <p><strong>PULL → EDIT → COMMIT → PUSH</strong></p>
+                <p>Always in this order!</p>
+            </div>
+
+            <h3><span class="step-number">1</span> PULL First (Critical!)</h3>
+            <ol>
+                <li>Open <strong>GitHub Desktop</strong></li>
+                <li>Click <strong>"Fetch origin"</strong> (top right)</li>
+                <li>If it says <strong>"Pull origin"</strong>, click that too</li>
+            </ol>
+
+            <div class="tip-box">
+                <strong>Why pull first?</strong> This gets any changes your teammates made. Always pull BEFORE editing to avoid merge conflicts.
+            </div>
+
+            <h3><span class="step-number">2</span> Make Your Edits in VS Code</h3>
+            <p>Edit <code>index.html</code>, add images, etc.</p>
+
+            <h3><span class="step-number">3</span> Check What Changed</h3>
+            <p>Go back to <strong>GitHub Desktop</strong>. You'll see:</p>
+            <ul>
+                <li><strong>Left panel:</strong> Files you changed</li>
+                <li><strong>Right panel:</strong> Exactly what changed (red = deleted, green = added)</li>
+            </ul>
+
+            <h3><span class="step-number">4</span> Commit Your Changes</h3>
+
+            <p>At the bottom left of GitHub Desktop:</p>
+
+            <div class="code-title">Good commit message example</div>
+            <pre><code>Summary: Added research question and data description
+
+Description:
+- Wrote my research question section
+- Added data source and ethics discussion
+- Still need to add visualizations</code></pre>
+
+            <p>Click <strong>"Commit to main"</strong></p>
+
+            <h3><span class="step-number">5</span> PUSH to GitHub</h3>
+            <p>Click <strong>"Push origin"</strong> (top right button)</p>
+
+            <div class="success-box">
+                <strong>Done!</strong> Your changes are now on GitHub and visible to your team.
+            </div>
+
+            <h3>Good vs. Bad Commit Messages</h3>
+
+            <div class="comparison">
+                <div class="right">
+                    <strong>✅ Good:</strong>
+                    <ul>
+                        <li>"Added sentiment analysis section with code examples"</li>
+                        <li>"Fixed broken image links"</li>
+                        <li>"Updated research question"</li>
+                    </ul>
+                </div>
+                <div class="wrong">
+                    <strong>❌ Not Helpful:</strong>
+                    <ul>
+                        <li>"updated stuff"</li>
+                        <li>"changes"</li>
+                        <li>"asdfjkl"</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="mistakes">
+            <h2>Common Beginner Mistakes</h2>
+
+            <h3>1. Forgetting to Save</h3>
+            <p><strong>Problem:</strong> Made changes, refreshed browser, nothing happened.</p>
+            <p><strong>Solution:</strong> Press <kbd>Cmd+S</kbd> or <kbd>Ctrl+S</kbd>. Look for the white dot next to the filename in VS Code - if you see it, the file isn't saved.</p>
+
+            <h3>2. Opening Individual Files Instead of Folder</h3>
+            <p><strong>Problem:</strong> Can't see other project files in VS Code.</p>
+            <p><strong>Solution:</strong> <strong>File → Open Folder</strong>, then select your portfolio folder. NOT "Open File"!</p>
+
+            <h3>3. Wrong Image Paths</h3>
+            <p><strong>Problem:</strong> Images show as broken icons.</p>
+            <div class="comparison">
+                <div class="wrong">
+                    <strong>❌ Wrong:</strong>
+                    <ul>
+                        <li><code>Images/</code> or <code>img/</code></li>
+                        <li><code>C:/Users/Downloads/</code></li>
+                        <li>Wrong filename case</li>
+                    </ul>
+                </div>
+                <div class="right">
+                    <strong>✅ Correct:</strong>
+                    <ul>
+                        <li><code>images/filename.png</code></li>
+                        <li>Exact filename match</li>
+                        <li>Forward slashes</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>4. Forgetting to Pull Before Editing (Groups)</h3>
+            <p><strong>Problem:</strong> "Merge conflict" error when trying to push.</p>
+            <p><strong>Solution:</strong></p>
+            <ul>
+                <li><strong>ALWAYS</strong> click "Fetch origin" → "Pull" before editing</li>
+                <li>Communicate with team: "I'm editing Methods now"</li>
+                <li>Wait for teammates to push before you start</li>
+            </ul>
+
+            <h3>5. Deleting HTML Tags Accidentally</h3>
+            <p><strong>Problem:</strong> Page looks broken, styling disappeared.</p>
+            <p><strong>Solution:</strong></p>
+            <ul>
+                <li>Only edit text <strong>inside</strong> tags, not the tags themselves</li>
+                <li>If you deleted <code>&lt;/section&gt;</code> by accident, undo (<kbd>Cmd+Z</kbd>)</li>
+                <li>Use VS Code's auto-indent: Select all (<kbd>Cmd+A</kbd>), then Format Document</li>
+            </ul>
+
+            <h3>6. Not Testing Before Committing</h3>
+            <p><strong>Problem:</strong> Pushed broken code to GitHub, entire team affected.</p>
+            <p><strong>Solution:</strong></p>
+            <ol>
+                <li><strong>Always preview</strong> in browser before committing</li>
+                <li>Check that images load</li>
+                <li>Read through for typos</li>
+                <li><strong>THEN</strong> commit and push</li>
+            </ol>
+        </section>
+
+        <section id="troubleshooting">
+            <h2>Quick Troubleshooting</h2>
+
+            <h3>Images Not Showing</h3>
+            <ul class="checklist">
+                <li>File is in <code>images/</code> folder (not <code>Images/</code>, not root)</li>
+                <li>Filename in HTML matches exactly (case-sensitive)</li>
+                <li>Path uses forward slash: <code>images/chart.png</code></li>
+                <li>File is actually a PNG (not .pdf, .ai, etc.)</li>
+                <li>You saved the HTML file</li>
+                <li>You hard-refreshed browser (<kbd>Cmd+Shift+R</kbd> or <kbd>Ctrl+Shift+R</kbd>)</li>
+            </ul>
+
+            <h3>CSS Not Loading (Page Looks Plain)</h3>
+            <ul class="checklist">
+                <li><code>styles.css</code> is in <code>css/</code> folder</li>
+                <li>Link tag in HTML: <code>&lt;link rel="stylesheet" href="css/styles.css"&gt;</code></li>
+                <li>Hard refresh browser (<kbd>Cmd+Shift+R</kbd> or <kbd>Ctrl+Shift+R</kbd>)</li>
+            </ul>
+
+            <h3>Can't Push to GitHub</h3>
+            <p><strong>Error:</strong> "You don't have permission"</p>
+            <ul>
+                <li>If in a group: Repository owner must add you as collaborator</li>
+                <li>Check you're logged into correct GitHub account in GitHub Desktop</li>
+            </ul>
+
+            <p><strong>Error:</strong> "Need to pull first"</p>
+            <ol>
+                <li>Click <strong>"Fetch origin"</strong></li>
+                <li>Click <strong>"Pull origin"</strong></li>
+                <li>If conflicts appear, see Merge Conflicts section below</li>
+            </ol>
+
+            <h3>Merge Conflicts (Group Work)</h3>
+            <p><strong>What it means:</strong> You and a teammate edited the same lines.</p>
+
+            <p><strong>How to fix:</strong></p>
+            <ol>
+                <li>GitHub Desktop shows which file has conflicts</li>
+                <li><strong>Open that file in VS Code</strong></li>
+                <li>Look for conflict markers:
+                    <pre><code><<<<<<< HEAD
+Your version here
+=======
+Teammate's version here
+>>>>>>> main</code></pre>
+                </li>
+                <li><strong>Delete the markers</strong> and keep the version you want (or combine both)</li>
+                <li><strong>Save the file</strong></li>
+                <li>Go to GitHub Desktop → Commit → Push</li>
+            </ol>
+
+            <div class="tip-box">
+                <strong>Prevention:</strong> Coordinate with your team - work on different sections at different times! Communicate constantly.
+            </div>
+        </section>
+
+        <section id="teamwork">
+            <h2>Working as a Team: Best Practices</h2>
+
+            <h3>Communication is Everything</h3>
+
+            <div class="success-box">
+                <strong>Before editing:</strong><br>
+                "Hey team, I'm going to work on the Data & Methods section for the next hour. Don't edit that part!"
+            </div>
+
+            <div class="success-box">
+                <strong>After editing:</strong><br>
+                "Methods section is done and pushed. Safe to pull now!"
+            </div>
+
+            <h3>Divide Sections Clearly</h3>
+
+            <p><strong>Example for a 3-person team:</strong></p>
+            <ul>
+                <li><strong>Person A:</strong> Research Question + Background</li>
+                <li><strong>Person B:</strong> Data & Methods + Analysis code</li>
+                <li><strong>Person C:</strong> Findings + Reflection + Images</li>
+            </ul>
+
+            <p><strong>Everyone:</strong> Pull before editing, push when done, communicate constantly!</p>
+        </section>
+
+        <section id="shortcuts">
+            <h2>Quick Reference: Essential Shortcuts</h2>
+
+            <h3>VS Code</h3>
+            <table class="results-table">
+                <thead>
+                    <tr>
+                        <th>Action</th>
+                        <th>Mac</th>
+                        <th>Windows</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Save file</td>
+                        <td><kbd>Cmd+S</kbd></td>
+                        <td><kbd>Ctrl+S</kbd></td>
+                    </tr>
+                    <tr>
+                        <td>Find</td>
+                        <td><kbd>Cmd+F</kbd></td>
+                        <td><kbd>Ctrl+F</kbd></td>
+                    </tr>
+                    <tr>
+                        <td>Find and Replace</td>
+                        <td><kbd>Cmd+H</kbd></td>
+                        <td><kbd>Ctrl+H</kbd></td>
+                    </tr>
+                    <tr>
+                        <td>Undo</td>
+                        <td><kbd>Cmd+Z</kbd></td>
+                        <td><kbd>Ctrl+Z</kbd></td>
+                    </tr>
+                    <tr>
+                        <td>Select All</td>
+                        <td><kbd>Cmd+A</kbd></td>
+                        <td><kbd>Ctrl+A</kbd></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Browser</h3>
+            <table class="results-table">
+                <thead>
+                    <tr>
+                        <th>Action</th>
+                        <th>Mac</th>
+                        <th>Windows</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Hard Refresh</td>
+                        <td><kbd>Cmd+Shift+R</kbd></td>
+                        <td><kbd>Ctrl+Shift+R</kbd></td>
+                    </tr>
+                    <tr>
+                        <td>Developer Tools</td>
+                        <td><kbd>Cmd+Option+I</kbd></td>
+                        <td><kbd>F12</kbd></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="next-steps">
+            <h2>Next Steps</h2>
+
+            <h3>Once You Finish Editing</h3>
+            <ol>
+                <li><strong>Remove all TODO comments</strong> - Shows completion</li>
+                <li><strong>Test thoroughly:</strong>
+                    <ul>
+                        <li>Click every navigation link</li>
+                        <li>Check every image loads</li>
+                        <li>Read through for typos</li>
+                        <li>Test on mobile (resize browser window)</li>
+                    </ul>
+                </li>
+                <li><strong>Get feedback</strong> from group or classmate</li>
+                <li><strong>Make final edits</strong></li>
+                <li><strong>Deploy to GitHub Pages</strong> (see <a href="README.md">README.md</a>)</li>
+            </ol>
+
+            <h3>Make It Yours</h3>
+            <p><strong>Optional enhancements:</strong></p>
+            <ul>
+                <li>Change color scheme (edit <code>css/styles.css</code>)</li>
+                <li>Add more visualizations</li>
+                <li>Include additional code examples</li>
+                <li>Add a dataset preview section</li>
+            </ul>
+        </section>
+
+        <section id="remember">
+            <h2>Remember</h2>
+
+            <div class="framework-callout">
+                <h3>Key Habits for Success</h3>
+                <ul>
+                    <li><strong>Save often</strong> (<kbd>Cmd+S</kbd> becomes muscle memory)</li>
+                    <li><strong>Preview frequently</strong> (catch mistakes early)</li>
+                    <li><strong>Pull before editing</strong> (especially in groups)</li>
+                    <li><strong>Commit with good messages</strong> (your future self will thank you)</li>
+                    <li><strong>Ask for help</strong> when stuck (office hours, classmates, discussion board)</li>
+                </ul>
+            </div>
+
+            <div class="success-box">
+                <strong>You've got this!</strong> The template does most of the hard work - you just need to add your research story. Focus on explaining your project clearly, and the technical stuff will fall into place.
+            </div>
+        </section>
+
+        <section id="help">
+            <h2>Need More Help?</h2>
+
+            <ul>
+                <li><strong>Setup issues?</strong> See <a href="SETUP_GUIDE.md">SETUP_GUIDE.md</a></li>
+                <li><strong>Quick reference?</strong> See <a href="QUICK_START.md">QUICK_START.md</a></li>
+                <li><strong>Visual walkthrough?</strong> See <a href="VISUAL_GUIDE.md">VISUAL_GUIDE.md</a></li>
+                <li><strong>Stuck?</strong> Come to office hours or post on Canvas!</li>
+            </ul>
+
+            <p><strong>Good luck with your portfolio!</strong> Remember: every expert was once a beginner. You're learning valuable skills that will serve you beyond this class.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p><strong>Additional Resources:</strong>
+            <a href="README.md">Full Documentation</a> |
+            <a href="SETUP_GUIDE.md">Setup Guide</a> |
+            <a href="QUICK_START.md">Quick Start</a> |
+            <a href="VISUAL_GUIDE.md">Visual Guide</a>
+        </p>
+        <p>WRIT 20833: Introduction to Coding in the Humanities | Fall 2025</p>
+    </footer>
+</body>
+</html>
