@@ -1,561 +1,450 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Final Project Requirements — WRIT 20833</title>
     <meta name="description" content="Final Project requirements for WRIT 20833">
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        /* CSS Custom Properties for consistent theming */
         :root {
-            --primary-color: #4d1979;
-            --primary-hover: #3d1461;
-            --secondary-color: #64748b;
-            --accent-color: #7c3aed;
-            --success-color: #059669;
-            --warning-color: #d97706;
-            
-            --text-primary: #1e293b;
-            --text-secondary: #64748b;
-            --text-muted: #94a3b8;
-            
-            --bg-primary: #ffffff;
-            --bg-secondary: #fafafa;
-            --bg-card: #ffffff;
-            --bg-accent: #f3f4f6;
-            
-            --border-color: #e2e8f0;
-            --border-radius: 12px;
-            --border-radius-lg: 16px;
-            
-            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-            
-            --space-xs: 0.5rem;
-            --space-sm: 0.75rem;
-            --space-md: 1rem;
-            --space-lg: 1.5rem;
-            --space-xl: 2rem;
-            --space-2xl: 2.5rem;
-            
-            --font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
-            --font-family-mono: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+            --bg-body: #0f172a;
+            --bg-card: #1e293b;
+            --bg-card-hover: #334155;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent: #8b5cf6; /* Violet */
+            --accent-glow: rgba(139, 92, 246, 0.3);
+            --success: #10b981;
+            --warning: #f59e0b;
+            --border: #334155;
+            --radius: 16px;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
         }
-        
-        /* Reset and Base Styles */
-        * {
-            box-sizing: border-box;
-        }
-        
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
         body {
-            font-family: var(--font-family-base);
+            font-family: var(--font-sans);
+            background-color: var(--bg-body);
+            color: var(--text-primary);
             line-height: 1.6;
-            color: var(--text-primary);
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-secondary);
+            overflow-x: hidden;
         }
-        
-        /* Typography Scale */
-        h1 {
-            font-size: clamp(2rem, 4vw, 2.5rem);
-            font-weight: 700;
-            line-height: 1.2;
-            margin: 0 0 var(--space-md) 0;
-            color: var(--text-primary);
+
+        /* Layout */
+        .app-container {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            min-height: 100vh;
         }
-        
-        h2 {
-            font-size: clamp(1.5rem, 3vw, 1.875rem);
-            font-weight: 600;
-            line-height: 1.3;
-            margin: var(--space-xl) 0 var(--space-lg) 0;
-            color: var(--primary-color);
+
+        /* Sidebar */
+        .sidebar {
+            background: rgba(15, 23, 42, 0.95);
+            border-right: 1px solid var(--border);
+            padding: 2rem;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            backdrop-filter: blur(10px);
+            z-index: 100;
         }
-        
-        h3 {
-            font-size: clamp(1.25rem, 2.5vw, 1.5rem);
-            font-weight: 600;
-            line-height: 1.4;
-            margin: var(--space-lg) 0 var(--space-md) 0;
-            color: var(--text-primary);
-        }
-        
-        h4 {
-            font-size: 1.125rem;
-            font-weight: 600;
-            line-height: 1.4;
-            margin: var(--space-md) 0 var(--space-sm) 0;
-            color: var(--text-primary);
-        }
-        
-        p {
-            margin: 0 0 var(--space-md) 0;
-            color: var(--text-secondary);
-        }
-        
-        /* Container Layout */
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: var(--space-xl);
-        }
-        
-        @media (max-width: 768px) {
-            .container {
-                padding: var(--space-md);
-            }
-        }
-        
-        /* Header */
-        .header {
-            text-align: center;
-            padding: var(--space-xl) 0;
-            margin-bottom: var(--space-xl);
-        }
-        
-        .breadcrumb {
-            font-size: 0.875rem;
-            color: var(--text-muted);
-            margin-bottom: var(--space-sm);
-        }
-        
-        .breadcrumb a {
-            color: var(--primary-color);
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-        
-        .breadcrumb a:hover {
-            color: var(--primary-hover);
-        }
-        
-        .page-title {
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+
+        .brand {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(to right, #c084fc, #8b5cf6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: var(--space-sm);
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
         }
-        
-        .page-subtitle {
-            font-size: 1.25rem;
+
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            border-radius: 12px;
             color: var(--text-secondary);
-            font-weight: 400;
-        }
-        
-        /* Content Card */
-        .content-card {
-            background: var(--bg-card);
-            border-radius: var(--border-radius-lg);
-            padding: var(--space-2xl);
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--border-color);
-            margin-bottom: var(--space-xl);
-        }
-        
-        @media (max-width: 768px) {
-            .content-card {
-                padding: var(--space-lg);
-            }
-        }
-        
-        /* Lists */
-        ul, ol {
-            margin: 0 0 var(--space-lg) 0;
-            padding-left: var(--space-xl);
-        }
-        
-        li {
-            margin-bottom: var(--space-sm);
-            color: var(--text-secondary);
-        }
-        
-        /* Highlight Box */
-        .highlight-box {
-            background: linear-gradient(135deg, #f0e7f8 0%, #e9d5f5 100%);
-            border-left: 4px solid var(--primary-color);
-            border-radius: var(--border-radius);
-            padding: var(--space-lg);
-            margin: var(--space-xl) 0;
-        }
-        
-        .highlight-box p:last-child {
-            margin-bottom: 0;
-        }
-        
-        /* Callout Box */
-        .callout {
-            background: var(--bg-accent);
-            border-radius: var(--border-radius);
-            padding: var(--space-lg);
-            margin: var(--space-xl) 0;
-            border: 1px solid var(--border-color);
-        }
-        
-        .callout p:last-child {
-            margin-bottom: 0;
-        }
-        
-        /* Info Box */
-        .info-box {
-            background: #e0f2fe;
-            border-left: 4px solid #0284c7;
-            border-radius: var(--border-radius);
-            padding: var(--space-lg);
-            margin: var(--space-xl) 0;
-        }
-        
-        .info-box p:last-child {
-            margin-bottom: 0;
-        }
-        
-        /* Section Box */
-        .section-box {
-            background: var(--bg-accent);
-            border-radius: var(--border-radius);
-            padding: var(--space-lg);
-            margin: var(--space-lg) 0;
-        }
-        
-        .section-box h4 {
-            margin-top: 0;
-            color: var(--primary-color);
-        }
-        
-        .section-box p:last-child,
-        .section-box ul:last-child {
-            margin-bottom: 0;
-        }
-        
-        /* Deliverables List */
-        .deliverables-list {
-            list-style: none;
-            padding-left: 0;
-            margin: var(--space-lg) 0;
-        }
-        
-        .deliverables-list li {
-            padding: var(--space-md);
-            margin-bottom: var(--space-md);
-            background: var(--bg-accent);
-            border-radius: var(--border-radius);
-            border-left: 4px solid var(--accent-color);
-        }
-        
-        .deliverables-list li strong {
-            color: var(--text-primary);
-            display: block;
-            margin-bottom: var(--space-xs);
-        }
-        
-        /* Examples Box */
-        .examples-box {
-            background: #fef3c7;
-            border-left: 4px solid var(--warning-color);
-            border-radius: var(--border-radius);
-            padding: var(--space-lg);
-            margin: var(--space-xl) 0;
-        }
-        
-        .examples-box h4 {
-            margin-top: 0;
-            color: var(--warning-color);
-        }
-        
-        /* Links */
-        a {
-            color: var(--primary-color);
             text-decoration: none;
-            transition: color 0.2s ease;
+            transition: all 0.2s;
+            font-weight: 500;
+            cursor: pointer;
+            font-size: 0.95rem;
         }
-        
-        a:hover {
-            color: var(--primary-hover);
-            text-decoration: underline;
+
+        .nav-item:hover, .nav-item.active {
+            background: var(--bg-card);
+            color: var(--text-primary);
         }
-        
-        /* Back Link */
+
+        .nav-item.active {
+            background: rgba(139, 92, 246, 0.1);
+            color: var(--accent);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        .nav-item i { width: 18px; }
+
         .back-link {
+            margin-bottom: 1rem;
             display: inline-flex;
             align-items: center;
-            gap: var(--space-xs);
-            padding: var(--space-sm) var(--space-md);
-            background: var(--bg-accent);
-            border-radius: var(--border-radius);
-            color: var(--primary-color);
+            gap: 0.5rem;
+            color: var(--text-secondary);
             text-decoration: none;
-            transition: all 0.2s ease;
-            margin-bottom: var(--space-xl);
-            border: 1px solid var(--border-color);
+            font-size: 0.9rem;
+            transition: color 0.2s;
         }
-        
-        .back-link:hover {
-            background: var(--primary-color);
-            color: white;
-            border-color: var(--primary-color);
-            text-decoration: none;
-            transform: translateX(-2px);
+
+        .back-link:hover { color: var(--accent); }
+
+        /* Main Content */
+        .main {
+            padding: 3rem 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
         }
-        
-        /* Footer */
-        .footer {
-            text-align: center;
-            padding: var(--space-xl) 0;
-            color: var(--text-muted);
-            font-size: 0.875rem;
+
+        /* Typography */
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            background: linear-gradient(to right, #fff, #cbd5e1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        
-        /* Horizontal Rule */
-        hr {
-            border: none;
-            border-top: 2px solid var(--border-color);
-            margin: var(--space-2xl) 0;
+
+        h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin: 3rem 0 1.5rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
         }
-        
-        /* Focus States for Accessibility */
-        a:focus {
-            outline: 2px solid var(--primary-color);
-            outline-offset: 2px;
+
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 2rem 0 1rem;
+            color: var(--text-primary);
         }
-        
-        /* Code/Monospace */
+
+        h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 1.5rem 0 0.75rem;
+            color: var(--accent);
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+        }
+
+        /* Cards & Boxes */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .info-box {
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            color: #bae6fd;
+        }
+
+        .warning-box {
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.2);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            color: #fcd34d;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(139, 92, 246, 0.05));
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: var(--radius);
+            padding: 2rem;
+            margin: 3rem 0;
+        }
+
+        /* Lists */
+        ul, ol {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        li { margin-bottom: 0.5rem; }
+
+        .deliverables-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .deliverable-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            transition: transform 0.2s;
+        }
+
+        .deliverable-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+
+        .deliverable-icon {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .deliverable-title {
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        /* Code */
         code {
-            font-family: var(--font-family-mono);
-            background: var(--bg-accent);
-            padding: 0.125rem 0.375rem;
-            border-radius: 4px;
-            font-size: 0.875em;
-            color: var(--text-primary);
+            font-family: var(--font-mono);
+            background: rgba(0,0,0,0.3);
+            padding: 0.2rem 0.4rem;
+            border-radius: 6px;
+            font-size: 0.9em;
+            color: #e2e8f0;
         }
-        
-        /* Strong text in section boxes */
-        .section-box strong {
-            color: var(--text-primary);
+
+        /* Mobile */
+        @media (max-width: 1024px) {
+            .app-container { grid-template-columns: 1fr; }
+            .sidebar { display: none; }
+            .main { padding: 2rem; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header class="header">
-            <div class="breadcrumb">
-                <a href="./index.html">← Back to Course Materials</a>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div>
+                <a href="index.html" class="back-link">
+                    <i data-lucide="arrow-left"></i> Back to Dashboard
+                </a>
+                <div class="brand">WRIT 20833</div>
             </div>
-            <h1 class="page-title">When Coding Meets Culture: Developing Data-Driven Opinions</h1>
-            <p class="page-subtitle">WRIT 20833 Final Project Requirements</p>
-        </header>
+            
+            <nav class="nav-links">
+                <a href="#overview" class="nav-item active">
+                    <i data-lucide="layout"></i> Overview
+                </a>
+                <a href="#deliverables" class="nav-item">
+                    <i data-lucide="package"></i> Deliverables
+                </a>
+                <a href="#requirements" class="nav-item">
+                    <i data-lucide="check-circle"></i> Requirements
+                </a>
+                <a href="#assessment" class="nav-item">
+                    <i data-lucide="clipboard-check"></i> Assessment
+                </a>
+            </nav>
+        </aside>
 
-        <main>
-            <div class="content-card">
-                <div class="info-box">
-                    <p><em>This project builds on your approved <strong>HW5 proposal</strong> and the complete text analysis workflow you developed across HW4-1 and HW4-2. HTML/CSS training assignments (HW6+) will prepare you for the web portfolio component.</em></p>
+        <!-- Main Content -->
+        <main class="main">
+            <header style="margin-bottom: 4rem;">
+                <div style="border-radius: 24px; overflow: hidden; margin-bottom: 2rem; border: 1px solid var(--border); position: relative; height: 300px;">
+                    <img src="Gemini_Generated_Image_jidrj0jidrj0jidr.png" 
+                         alt="Classical sculpture merging with digital network" 
+                         style="width: 100%; height: 100%; object-fit: cover; object-position: center 20%;">
+                    <div style="position: absolute; inset: 0; background: linear-gradient(to top, var(--bg-body), transparent); z-index: 1;"></div>
                 </div>
+                <div style="color: var(--accent); font-weight: 600; margin-bottom: 0.5rem; letter-spacing: 0.05em;">FINAL PROJECT</div>
+                <h1>When Coding Meets Culture</h1>
+                <p style="font-size: 1.25rem; color: var(--text-secondary);">Developing Data-Driven Opinions through Computational Analysis</p>
+            </header>
 
-                <h2>Project Overview</h2>
+            <div class="info-box">
+                <div style="display: flex; gap: 1rem;">
+                    <i data-lucide="info" style="flex-shrink: 0;"></i>
+                    <div>
+                        <strong>Context:</strong> This project builds on your approved <strong>HW5 proposal</strong> and the complete text analysis workflow you developed across HW4-1 and HW4-2. HTML/CSS training assignments (HW6+) will prepare you for the digital essay component.
+                    </div>
+                </div>
+            </div>
 
-                <p>For your final project (groups of up to 3 members or individual work), you will execute the digital research project outlined in your <strong>HW5 proposal</strong>. Your project explores what happens when coding meets culture, providing a test case for your answer to this question: <strong>What insights emerge when we integrate term frequency analysis, sentiment analysis, and topic modeling with traditional humanities interpretation methods?</strong> What do computational and humanities approaches reveal together that neither could discover alone? How do you move from initial assumptions to well-grounded, data-driven opinions?</p>
-
-                <p>This assignment combines the technical skills you have learned with your own research and career goals. Your work should employ a humanist approach to data analytics, demonstrating how computational analysis can challenge and refine cultural interpretation, using the digital humanities articles from our threaded discussions as models for your approach.</p>
-
-                <h2>Deliverables</h2>
-
-                <p>Your project includes four integrated components:</p>
-
-                <ol class="deliverables-list">
-                    <li>
-                        <strong>Research Essay</strong> (1500-2000 words): Academic analysis of your research process, methods, and findings
-                    </li>
-                    <li>
-                        <strong>Python Notebooks</strong> (.ipynb files): Complete computational analysis demonstrating your three base methods plus additional approaches
-                    </li>
-                    <li>
-                        <strong>Dataset Documentation</strong> (CSV files + data biography): Clean, well-documented datasets with ethical collection documentation
-                    </li>
-                    <li>
-                        <strong>Web Portfolio</strong> (HTML/CSS): Public-facing presentation of your research findings and insights
-                        <p style="margin-top: var(--space-xs);"><em>Note: HTML/CSS skills will be developed through HW6+ assignments before final project submission</em></p>
-                    </li>
-                </ol>
-
-                <h2>Project Requirements</h2>
-
-                <h3>Research Question & Methods</h3>
-                <p>Building on your <strong>HW5 proposal</strong>, execute a research question that could not be answered using traditional humanities methods alone (close reading, reflection, etc.). Use the three base methods from HW4-1 and HW4-2 (Term Frequency Analysis, Sentiment Analysis with VADER, Topic Modeling with Gensim) plus close reading and additional computational methods as appropriate to answer your research question.</p>
-
-                <h3>Technical Standards</h3>
-                <ul>
-                    <li>All code must be well-documented with clear comments</li>
-                    <li>Cite all tutorials you use and any code you take from elsewhere (in comments and/or the essay)</li>
-                    <li>Notebooks should run cleanly and reproduce your results</li>
-                    <li>Web portfolio must demonstrate functional HTML/CSS skills</li>
-                </ul>
-
-                <h3>Collaborative Work</h3>
-                <p>If working in a group, your essay should clearly document which members contributed to each component of the project. Success depends on effective planning and task allocation.</p>
-
-                <h2>Assessment Components</h2>
-
-                <h3>Research Essay</h3>
+            <section id="overview">
+                <h2><i data-lucide="compass"></i> Project Overview</h2>
+                <p>For your final project (groups of up to 3 members or individual work), you will execute the digital research project outlined in your <strong>HW5 proposal</strong>. Your project explores what happens when coding meets culture, providing a test case for your answer to this question:</p>
                 
-                <p>Your essay should outline the significance of your project, the methodologies you chose (and why), your research results, and your assessment of the project's success. This is an exploratory essay that documents how your research question evolved and how your methods worked (or didn't).</p>
-
-                <p><strong>Required sections:</strong></p>
-
-                <div class="section-box">
-                    <h4>Overview (100-300 words)</h4>
-                    <p>Brief high-level overview of the project and how it builds on your HW4-1/HW4-2 work.</p>
+                <div class="card" style="border-left: 4px solid var(--accent);">
+                    <p style="font-size: 1.2rem; color: var(--text-primary); margin: 0; font-weight: 500;">
+                        "What insights emerge when we integrate term frequency analysis, sentiment analysis, and topic modeling with traditional humanities interpretation methods?"
+                    </p>
                 </div>
 
-                <div class="section-box">
-                    <h4>Research Question (200-300 words)</h4>
-                    <p>The question itself, background context, and how the question evolved from your <strong>HW5 proposal</strong> through project execution.</p>
-                </div>
+                <p>What do computational and humanities approaches reveal together that neither could discover alone? How do you move from initial assumptions to well-grounded, data-driven opinions?</p>
+            </section>
 
-                <div class="section-box">
-                    <h4>Methods (400-800 words)</h4>
-                    <ul>
-                        <li>Why you selected your specific combination of computational and interpretive methods</li>
-                        <li>How you anticipated and addressed limitations or problems with your tools</li>
-                        <li>What sections of course materials were helpful</li>
-                        <li>Your data collection and preparation process: sources, ethical considerations, and methodology</li>
-                        <li>Reflection on data quality, limitations, and how these affected your analysis</li>
+            <section id="deliverables">
+                <h2><i data-lucide="package"></i> Digital Essay Deliverables</h2>
+                <p>Your project is a single, cohesive <strong>Digital Essay</strong> that serves as the public-facing window into your research. The following components are the <em>content</em> of that essay, not separate submissions:</p>
+
+                <div class="deliverables-grid">
+                    <div class="deliverable-card">
+                        <div class="deliverable-icon"><i data-lucide="file-text" size="32"></i></div>
+                        <span class="deliverable-title">Written Content</span>
+                        <p style="font-size: 0.9rem; margin: 0;">1500-2000 words. Academic analysis of your research process, methods, and findings (embedded in the site).</p>
+                    </div>
+
+                    <div class="deliverable-card">
+                        <div class="deliverable-icon"><i data-lucide="code-2" size="32"></i></div>
+                        <span class="deliverable-title">Python Notebooks</span>
+                        <p style="font-size: 0.9rem; margin: 0;">.ipynb files. Complete computational analysis demonstrating your three base methods (linked/hosted on the site).</p>
+                    </div>
+
+                    <div class="deliverable-card">
+                        <div class="deliverable-icon"><i data-lucide="database" size="32"></i></div>
+                        <span class="deliverable-title">Dataset Documentation</span>
+                        <p style="font-size: 0.9rem; margin: 0;">CSV files + data biography. Clean, well-documented datasets with ethical collection notes (linked/hosted on the site).</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="requirements">
+                <h2><i data-lucide="check-circle"></i> Project Requirements</h2>
+                
+                <div class="card">
+                    <h3>Research Question & Methods</h3>
+                    <p>Building on your <strong>HW5 proposal</strong>, execute a research question that could not be answered using traditional humanities methods alone. Use the three base methods from HW4-1 and HW4-2:</p>
+                    <ul style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; list-style: none; padding: 0;">
+                        <li style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 8px; text-align: center;">Term Frequency</li>
+                        <li style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 8px; text-align: center;">Sentiment Analysis (VADER)</li>
+                        <li style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 8px; text-align: center;">Topic Modeling (Gensim)</li>
                     </ul>
                 </div>
 
-                <div class="section-box">
-                    <h4>Group Roles/Responsibilities (300-800 words - for group projects only)</h4>
-                    <p>Who was responsible for each component and how the actual work distribution evolved during the project.</p>
-                </div>
-
-                <div class="section-box">
-                    <h4>Findings (300-500 words)</h4>
+                <div class="card">
+                    <h3>Technical Standards</h3>
                     <ul>
-                        <li>What did your integrated analysis reveal?</li>
-                        <li>How did results compare to your initial hypothesis?</li>
-                        <li>What limitations or gaps remain in your findings?</li>
-                        <li>How confident are you in your conclusions?</li>
+                        <li>All code must be well-documented with clear comments</li>
+                        <li>Cite all tutorials you use and any code you take from elsewhere</li>
+                        <li>Notebooks should run cleanly and reproduce your results</li>
+                        <li>Digital essay must demonstrate functional HTML/CSS skills</li>
                     </ul>
                 </div>
+            </section>
 
-                <div class="section-box">
-                    <h4>Integration & Reflection (200-300 words)</h4>
-                    <ul>
-                        <li>How did your project integrate both humanities work and data analytics?</li>
-                        <li>What did computational methods reveal that close reading alone could not?</li>
-                        <li>What would you change if you repeated the project?</li>
-                        <li>What directions would you pursue with additional time?</li>
-                    </ul>
-                </div>
-
-                <h3>Python Notebooks</h3>
+            <section id="assessment">
+                <h2><i data-lucide="clipboard-check"></i> Assessment Components</h2>
                 
-                <p>Your computational analysis should demonstrate:</p>
-                <ul>
-                    <li>Clean, well-documented code that reproduces your analysis</li>
-                    <li>Effective use of all three base methods (Term Frequency, Sentiment Analysis, Topic Modeling)</li>
-                    <li>Integration of additional methods as appropriate to your research question</li>
-                    <li>Clear visualization of results and patterns</li>
-                </ul>
-
-                <h3>Dataset Documentation</h3>
-                
-                <p>Your data component should include:</p>
-                <ul>
-                    <li><strong>Clean CSV files</strong>: Processed datasets ready for analysis (with privacy/ethical considerations addressed)</li>
-                    <li><strong>Data Biography</strong> (250-400 words): Documentation of sources, collection methods, ethical considerations, and preparation steps</li>
-                    <li><strong>Source Attribution</strong>: Proper citation of data sources and any tools used (e.g., Instant Data Scraper)</li>
-                    <li><strong>Ethical Statement</strong>: Brief reflection on data collection ethics and privacy considerations</li>
-                    <li><strong>Replication Instructions</strong>: Clear documentation allowing others to understand your data preparation process</li>
-                </ul>
-
-                <h3>Web Portfolio</h3>
-                
-                <p>Your public presentation should include:</p>
-                <ul>
-                    <li>Clear, accessible presentation of computational findings to public audiences</li>
-                    <li>Integration of visualizations and analysis from your notebooks</li>
-                    <li>Demonstration of HTML/CSS technical skills</li>
-                    <li>Effective narrative structure that communicates your insights</li>
-                    <li>Professional presentation suitable for academic or career portfolios</li>
-                </ul>
-
-                <div class="section-box">
-                    <h4>Public Presentation Strategy (address in your essay, 200-300 words)</h4>
-                    <p>How did you design your web portfolio to communicate your findings to non-academic audiences? What choices did you make about visualization, narrative structure, and accessibility?</p>
+                <div class="card">
+                    <h3>Written Content Structure</h3>
+                    <div style="display: grid; gap: 1.5rem; margin-top: 1.5rem;">
+                        <div>
+                            <h4 style="margin-top: 0;">Overview (100-300 words)</h4>
+                            <p style="margin: 0;">Brief high-level overview of the project and how it builds on your HW4-1/HW4-2 work.</p>
+                        </div>
+                        <div>
+                            <h4 style="margin-top: 0;">Research Question (200-300 words)</h4>
+                            <p style="margin: 0;">The question itself, background context, and how the question evolved from your proposal.</p>
+                        </div>
+                        <div>
+                            <h4 style="margin-top: 0;">Methods (400-800 words)</h4>
+                            <p style="margin: 0;">Why you selected your methods, limitations addressed, data collection process, and reflection on data quality.</p>
+                        </div>
+                        <div>
+                            <h4 style="margin-top: 0;">Findings (300-500 words)</h4>
+                            <p style="margin: 0;">What did your analysis reveal? How did results compare to your hypothesis? What limitations remain?</p>
+                        </div>
+                        <div>
+                            <h4 style="margin-top: 0;">Integration & Reflection (200-300 words)</h4>
+                            <p style="margin: 0;">How did you integrate humanities and data? What did computation reveal that close reading could not?</p>
+                        </div>
+                    </div>
                 </div>
-
-                <h2>Timeline & Submission</h2>
-
-                <ul>
-                    <li><strong>HW5 Proposal Due</strong>: [Date] - Project proposal and research plan</li>
-                    <li><strong>HW6+ HTML/CSS Training</strong>: [Dates] - Web development skills for portfolio component</li>
-                    <li><strong>Project Check-in</strong>: [Date] - Progress report and technical support</li>
-                    <li><strong>Final Project Due</strong>: [Date] - All four components submitted</li>
-                    <li><strong>Class Presentations</strong>: [Date] - Brief presentations of key findings (time permitting)</li>
-                </ul>
-
-                <h2>Research Question Examples</h2>
-
-                <div class="examples-box">
-                    <h4>Your question should demonstrate why computational methods are necessary:</h4>
-                    <ul>
-                        <li>How do sentiment patterns in [cultural domain] reveal underlying ideological tensions that traditional literary analysis might miss?</li>
-                        <li>What topics emerge from large-scale analysis of [text corpus] that reshape our understanding of [cultural phenomenon]?</li>
-                        <li>How does the integration of term frequency, sentiment, and topic modeling create a more complete picture of [cultural debate/movement/period]?</li>
-                    </ul>
-                </div>
-
-                <h2>Success Criteria</h2>
-
-                <p>A successful project will:</p>
-                <ul>
-                    <li>Execute an intellectually significant research question that requires both computational and interpretive methods</li>
-                    <li>Demonstrate sophisticated use of all three base analytical methods</li>
-                    <li>Present findings effectively to both academic and public audiences</li>
-                    <li>Reflect critically on the integration of digital and traditional humanities approaches</li>
-                    <li>Show clear evolution from HW5 proposal through final execution</li>
-                </ul>
-
-                <h2>Assessment Philosophy</h2>
 
                 <div class="highlight-box">
+                    <h3 style="margin-top: 0; color: var(--accent);">Assessment Philosophy</h3>
                     <p>This project prioritizes <strong>earned insight over clean code</strong>. You'll be evaluated on:</p>
-                    <ul style="margin-top: var(--space-md);">
+                    <ul>
                         <li><strong>Depth of reflection</strong> and willingness to be surprised by your data</li>
                         <li><strong>Evolution of thinking</strong> from initial predictions through final, data-driven opinions</li>
                         <li><strong>Critical assessment</strong> of both your results and your analytical tools</li>
                         <li><strong>Integration</strong> of technical analysis with humanistic interpretation</li>
                     </ul>
-                    <p>Technical execution matters, but <strong>intellectual growth and genuine insight are the primary goals</strong>. The best submissions will show students whose understanding deepened and changed through engagement with their data—demonstrating what happens when coding truly meets culture.</p>
+                    <p style="margin-bottom: 0;">Technical execution matters, but <strong>intellectual growth and genuine insight are the primary goals</strong>.</p>
                 </div>
+            </section>
 
-                <div class="callout">
-                    <p><strong>Remember</strong>: Being "wrong" in your initial assumptions is not failure—it's evidence of genuine learning and the foundation for developing well-grounded, data-driven opinions. The goal is not to confirm what you already thought, but to discover what emerges when computational analysis challenges cultural interpretation.</p>
-                </div>
-
-                <h2>Self-Assessment & Reflection</h2>
-
-                <p>As part of our ungrading approach, you will engage in self-assessment throughout the project:</p>
-                <ul>
-                    <li><strong>Proposal Stage</strong>: Reflect on how your project builds meaningfully on course concepts</li>
-                    <li><strong>Check-in Stage</strong>: Assess your progress and identify areas needing support</li>
-                    <li><strong>Final Submission</strong>: Include a self-assessment of your learning and growth through the project</li>
-                </ul>
-
-                <p>Your final project represents the culmination of your semester-long exploration of digital humanities methods. Consider how this work demonstrates your development as both a computational thinker and humanities scholar.</p>
-
-                <hr>
-
-                <div class="info-box">
-                    <p><em>Upon completing this project, you will have developed a complete digital humanities workflow suitable for inclusion in academic or professional portfolios.</em></p>
+            <div class="warning-box">
+                <div style="display: flex; gap: 1rem;">
+                    <i data-lucide="lightbulb" style="flex-shrink: 0;"></i>
+                    <div>
+                        <strong>Remember:</strong> Being "wrong" in your initial assumptions is not failure—it's evidence of genuine learning. The goal is not to confirm what you already thought, but to discover what emerges when computational analysis challenges cultural interpretation.
+                    </div>
                 </div>
             </div>
-        </main>
 
-        <footer class="footer">
-            <p>WRIT 20833 — Course Materials (2025)</p>
-        </footer>
+        </main>
     </div>
+
+    <script>
+        lucide.createIcons();
+
+        // Simple scroll spy for sidebar navigation
+        const sections = document.querySelectorAll('section');
+        const navItems = document.querySelectorAll('.nav-item');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href').includes(current)) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>

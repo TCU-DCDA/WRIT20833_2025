@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WRIT 20833 — Course Materials (2025)</title>
+    <meta name="description" content="Course materials for WRIT 20833 including interactive notebooks, lectures, and resources">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
+    <style>
+        /* CSS Custom Properties for consistent theming */
+        :root {
+            --primary-color: #4d1979;
+            --primary-hover: #3d1461;
+            --secondary-color: #64748b;
+            --accent-color: #7c3aed;
+            --success-color: #059669;
+            --warning-color: #d97706;
+            
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --text-muted: #94a3b8;
+            
+            --bg-primary: #ffffff;
+            --bg-secondary: #fafafa;
+            --bg-card: #ffffff;
+            --bg-accent: #f3f4f6;
+            
+            --border-color: #e2e8f0;
+            --border-radius: 12px;
+            --border-radius-lg: 16px;
+            
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            
+            --space-xs: 0.5rem;
+            --space-sm: 0.75rem;
+            --space-md: 1rem;
+            --space-lg: 1.5rem;
+            --space-xl: 2rem;
+            --space-2xl: 2.5rem;
+            
+            --font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+            --font-family-mono: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+        }
+        
+        /* Reset and Base Styles */
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-family-base);
+            line-height: 1.6;
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-secondary);
+        }
+        
+        /* Typography Scale */
+        h1 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin: 0 0 var(--space-md) 0;
+            color: var(--text-primary);
+        }
+        
+        h2 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 600;
+            line-height: 1.3;
+            margin: 0 0 var(--space-lg) 0;
+            color: var(--text-primary);
+        }
+        
+        h3 {
+            font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+            font-weight: 600;
+            line-height: 1.4;
+            margin: 0 0 var(--space-md) 0;
+            color: var(--text-primary);
+        }
+        
+        h4 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            line-height: 1.4;
+            margin: 0 0 var(--space-sm) 0;
+            color: var(--text-primary);
+        }
+        
+        p {
+            margin: 0 0 var(--space-md) 0;
+            color: var(--text-secondary);
+        }
+        
+        /* Main Grid Layout */
+        .container {
+            min-height: 100vh;
+            display: grid;
+            grid-template-areas: 
+                "header"
+                "hero"
+                "nav-cards"
+                "content"
+                "footer";
+            grid-template-rows: auto auto auto 1fr auto;
+            max-width: 1400px;
+            margin: 0 auto;
+            gap: var(--space-xl);
+            padding: var(--space-lg);
+        }
+        
+        @media (min-width: 1024px) {
+            .container {
+                grid-template-areas: 
+                    "header header header"
+                    "hero hero hero"
+                    "nav-cards nav-cards nav-cards"
+                    "content content content"
+                    "footer footer footer";
+                grid-template-columns: 1fr 1fr 1fr;
+                gap: var(--space-2xl);
+                padding: var(--space-2xl);
+            }
+        }
+        
+        /* Header */
+        .header {
+            grid-area: header;
+            text-align: center;
+            padding: var(--space-md) 0;
+        }
+        
+        .course-title {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .course-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+        
+        /* Hero Section */
+        .hero {
+            grid-area: hero;
+            background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-accent) 100%);
+            border-radius: var(--border-radius-lg);
+            padding: var(--space-2xl);
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+            min-height: 200px;
+        }
+        
+        #p5-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.3;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-content p {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Navigation Cards */
+        .nav-cards {
+            grid-area: nav-cards;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-lg);
+        }
+        
+        .nav-card {
+            background: var(--bg-card);
+            border-radius: var(--border-radius);
+            padding: var(--space-xl);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .nav-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-color);
+        }
+        
+        .nav-card-icon {
+            font-size: 2rem;
+            margin-bottom: var(--space-md);
+            display: block;
+        }
+        
+        .nav-card h3 {
+            color: var(--text-primary);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .nav-card p {
+            color: var(--text-secondary);
+            margin: 0;
+            font-size: 0.9rem;
+        }
+        
+        /* Content Grid */
+        .content {
+            grid-area: content;
+            display: grid;
+            gap: var(--space-2xl);
+        }
+        
+        @media (min-width: 1024px) {
+            .content {
+                grid-template-columns: 2fr 1fr;
+                gap: var(--space-2xl);
+            }
+        }
+        
+        /* Main Content Area */
+        .main-content {
+            display: grid;
+            gap: var(--space-2xl);
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            display: grid;
+            gap: var(--space-xl);
+            align-content: start;
+        }
+        
+        /* Section Styling */
+        .section {
+            background: var(--bg-card);
+            border-radius: var(--border-radius);
+            padding: var(--space-xl);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-lg);
+            padding-bottom: var(--space-md);
+            border-bottom: 2px solid var(--bg-accent);
+        }
+        
+        .section-icon {
+            font-size: 1.5rem;
+        }
+        
+        /* Subsection Styling */
+        .subsection {
+            margin-bottom: var(--space-xl);
+        }
+        
+        .subsection:last-child {
+            margin-bottom: 0;
+        }
+        
+        .subsection h4 {
+            color: var(--primary-color);
+            border-left: 3px solid var(--primary-color);
+            padding-left: var(--space-md);
+            margin-bottom: var(--space-md);
+        }
+        
+        /* Resource Cards */
+        .resource-grid {
+            display: grid;
+            gap: var(--space-lg);
+        }
+        
+        @media (min-width: 768px) {
+            .resource-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+        }
+        
+        .resource-card {
+            background: var(--bg-accent);
+            border-radius: var(--border-radius);
+            padding: var(--space-lg);
+            border: 1px solid var(--border-color);
+        }
+        
+        /* Lists */
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        li {
+            margin-bottom: var(--space-sm);
+        }
+        
+        /* Grid Lists for CodeAlongs */
+        .grid-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-md);
+            margin: 0;
+            padding: 0;
+        }
+        
+        .grid-list li {
+            margin-bottom: 0;
+        }
+        
+        /* Links */
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s ease;
+            position: relative;
+        }
+        
+        a:hover {
+            color: var(--primary-hover);
+        }
+        
+        /* Link Badges */
+        .link-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: 6px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            margin-bottom: var(--space-xs);
+        }
+        
+        .link-badge:hover {
+            transform: translateY(-1px);
+        }
+        
+        .colab-badge {
+            background-color: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+        
+        .colab-badge:hover {
+            background-color: #ffeaa7;
+            color: #856404;
+        }
+        
+        .lecture-badge {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        
+        .lecture-badge:hover {
+            background-color: #bee5eb;
+            color: #0c5460;
+        }
+        
+        .external-badge {
+            background-color: #e1f5fe;
+            color: #01579b;
+            border: 1px solid #b3e5fc;
+        }
+        
+        .external-badge:hover {
+            background-color: #b3e5fc;
+            color: #01579b;
+        }
+        
+        /* Quick Stats */
+        .quick-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: var(--space-md);
+            margin-bottom: var(--space-lg);
+        }
+        
+        .stat {
+            text-align: center;
+            padding: var(--space-md);
+            background: var(--bg-accent);
+            border-radius: var(--border-radius);
+        }
+        
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+        }
+        
+        /* Footer */
+        .footer {
+            grid-area: footer;
+            text-align: center;
+            padding: var(--space-xl) 0;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            font-style: italic;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: var(--space-md);
+                gap: var(--space-lg);
+            }
+            
+            .hero {
+                padding: var(--space-lg);
+            }
+            
+            .section {
+                padding: var(--space-lg);
+            }
+            
+            .nav-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Focus States for Accessibility */
+        a:focus,
+        .nav-card:focus {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+        
+        /* Print Styles */
+        @media print {
+            .container {
+                display: block;
+            }
+            
+            .nav-cards,
+            .hero {
+                display: none;
+            }
+            
+            .section {
+                box-shadow: none;
+                border: 1px solid #ccc;
+                margin-bottom: var(--space-lg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="course-title">WRIT 20833</h1>
+            <p class="course-subtitle">Course Materials (2025)</p>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div id="p5-canvas"></div>
+            <div class="hero-content">
+                <p>Welcome to your digital humanities workspace. This site hosts weekly notebooks, lectures, and course resources for WRIT 20833—where coding meets culture.</p>
+            </div>
+        </section>
+
+        <!-- Quick Navigation Cards -->
+        <nav class="nav-cards" role="navigation" aria-label="Main navigation">
+            <a href="#notebooks" class="nav-card">
+                <span class="nav-card-icon">📓</span>
+                <h3>Interactive Notebooks</h3>
+                <p>CodeAlongs, exercises, and hands-on tutorials</p>
+            </a>
+            
+            <a href="#lectures" class="nav-card">
+                <span class="nav-card-icon">🎓</span>
+                <h3>Lectures</h3>
+                <p>Weekly presentations and mini-lectures</p>
+            </a>
+            
+            <a href="#resources" class="nav-card">
+                <span class="nav-card-icon">📚</span>
+                <h3>Resources</h3>
+                <p>Tools, datasets, and reference materials</p>
+            </a>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="content">
+            <div class="main-content">
+                <!-- Notebooks Section -->
+                <section id="notebooks" class="section">
+                    <div class="section-header">
+                        <span class="section-icon">📓</span>
+                        <h2>Notebooks</h2>
+                    </div>
+                    
+                    
+
+                    <div class="subsection">
+                        <h4>CodeAlongs</h4>
+                        <ul class="grid-list">
+                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/codeAlongs/WRIT20833_Variables_DataTypes_F25.ipynb" target="_blank" class="link-badge colab-badge">1. Variables & Data Types</a></li>
+                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/codeAlongs/WRIT20833_StrMethods_Conditionals_Loops_F25.ipynb" target="_blank" class="link-badge colab-badge">2. String Methods, Conditionals & Loops</a></li>
+                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/codeAlongs/WRIT20833_Lists_Loops_Complete_F25.ipynb" target="_blank" class="link-badge colab-badge">3. Lists & Loops</a></li>
+                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/codeAlongs/WRIT20833_Dictionaries_Functions_F25.ipynb" target="_blank" class="link-badge colab-badge">4. Dictionaries & Functions</a></li>
+                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/codeAlongs/WRIT20833_Pandas_01_Found_Data_Fundamentals_F25.ipynb" target="_blank" class="link-badge colab-badge">5. Found Data & Pandas Fundamentals 01</a></li>
+                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/codeAlongs/WRIT20833_Pandas_02_Data_Cleaning_Analysis_Pandas_F25.ipynb" target="_blank" class="link-badge colab-badge">6. Data Cleaning & Analysis with Pandas</a></li>
+                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/codeAlongs/WRIT20833_Instant_Data_Scraper_Ethics_F25.ipynb" target="_blank" class="link-badge colab-badge">7. Instant Data Scraper & Ethics</a></li>
+                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/codeAlongs/WRIT20833_VADER_Sentiment_Analysis_F25.ipynb" target="_blank" class="link-badge colab-badge">8. VADER Sentiment Analysis</a></li>
+                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/codeAlongs/WRIT20833_Topic_Modeling_Part1_Introduction_F25.ipynb" target="_blank" class="link-badge colab-badge">9a. Topic Modeling Part 1: Introduction</a></li>
+                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/codeAlongs/WRIT20833_Topic_Modeling_Part2_Research_Application_F25.ipynb" target="_blank" class="link-badge colab-badge">9b. Topic Modeling Part 2: Research Application</a></li>
+                            <li><a href="html_training/semantic_html_css_workshop.html" target="_blank" class="link-badge external-badge">10. Semantic HTML & CSS Workshop</a></li>
+                            <li><a href="html_training/editing-portfolio.html" target="_blank" class="link-badge external-badge">11. Editing Portfolio</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="subsection">
+                        <h4>In-Class Exercises</h4>
+                        <ul>
+                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/exercises/WRIT20833_Conditionals_9-5-25.ipynb" target="_blank" class="link-badge colab-badge">Conditionals Exercise (9-5-25)</a></li>
+                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/exercises/WRIT20833_InClassEx_Family_Dictionaries_F25.ipynb" target="_blank" class="link-badge colab-badge">Family Exercise - Dictionaries</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="subsection">
+                        <h4>Homework Assignments</h4>
+                        <ul>
+                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/homework/WRIT20833_HW1_Fall2025.ipynb" target="_blank" class="link-badge colab-badge">HW1: Term Frequency Analysis</a></li>
+                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/homework/WRIT20833_HW3-1_Pandas_Found_Data_F25.ipynb" target="_blank" class="link-badge colab-badge">HW3-1: Pandas & Found Data</a></li>
+                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/homework/WRIT20833_HW3-2_Pandas_Data_Cleaning_F25.ipynb" target="_blank" class="link-badge colab-badge">HW3-2: Pandas Data Cleaning</a></li>
+                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/homework/WRIT20833_HW4-1_Term_Frequency_Sentiment_F25.ipynb" target="_blank" class="link-badge colab-badge">HW4-1: Term Frequency & Sentiment Analysis</a></li>
+                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/homework/WRIT20833_HW4-2_Topic_Modeling_Integration_F25.ipynb" target="_blank" class="link-badge colab-badge">HW4-2: Topic Modeling & Integration</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="subsection">
+                        <h4>Semester Project</h4>
+                        <ul>
+                            <li><a href="./WRIT20833_HW5_Final_Project_Proposal.html" class="link-badge external-badge">HW5: Final Project Proposal</a></li>
+                            <li><a href="./WRIT20833_Final_Project_Requirements.html" class="link-badge external-badge">Final Project Requirements</a></li>
+                            <li><a href="html_training/editing-portfolio.html" target="_blank" class="link-badge external-badge">Portfolio Editing Guide</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="subsection">
+                        <h4>Review Notebooks</h4>
+                        <p>The following nine notebooks were created to help you walk through some of the coding work we covered in the first half of the semester.</p>
+                        <ul class="grid-list">
+                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/exercises/WRIT20833_Basic-Review_01_Colab.ipynb" target="_blank" class="link-badge colab-badge">Review 01: Python Foundations</a></li>
+                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/exercises/WRIT20833_Basic-Review_02_Text_Processing.ipynb" target="_blank" class="link-badge colab-badge">Review 02: Text Processing</a></li>
+                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/exercises/WRIT20833_Basic-Review_03_Loops_Data_Structures.ipynb" target="_blank" class="link-badge colab-badge">Review 03: Loops & Data Structures</a></li>
+                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/exercises/WRIT20833_Basic-Review_04_Functions_Advanced.ipynb" target="_blank" class="link-badge colab-badge">Review 04: Functions & Advanced Processing</a></li>
+                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/exercises/WRIT20833_Basic-Review_05_Data_Ethics_Collection.ipynb" target="_blank" class="link-badge colab-badge">Review 05: Data Ethics & Collection Methods</a></li>
+                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/exercises/WRIT20833_Basic-Review_06_Pandas_Data_Analysis.ipynb" target="_blank" class="link-badge colab-badge">Review 06: Pandas for Data Analysis</a></li>
+                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/exercises/WRIT20833_Basic-Review_07_Text_Sentiment_Analysis.ipynb" target="_blank" class="link-badge colab-badge">Review 07: Text Analysis & Sentiment Analysis</a></li>
+                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/exercises/WRIT20833_Basic-Review_08_Data_Visualization.ipynb" target="_blank" class="link-badge colab-badge">Review 08: Data Visualization</a></li>
+                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/exercises/WRIT20833_Basic-Review_09_Integration_Final_Project.ipynb" target="_blank" class="link-badge colab-badge">Review 09: Integration</a></li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Lectures Section -->
+                <section id="lectures" class="section">
+                    <div class="section-header">
+                        <span class="section-icon">🎓</span>
+                        <h2>Lectures</h2>
+                    </div>
+
+                    <div class="subsection">
+                        <h4>Main Lectures</h4>
+                        <ul>
+                            <li><a href="/WRIT20833-2025/lectures/main/lecture1.html" target="_blank" class="link-badge lecture-badge">Lecture 1: When Coding Meets Culture</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="subsection">
+                        <h4>Mini-Lectures</h4>
+                        <ul>
+                            <li><a href="/WRIT20833-2025/lectures/mini-lectures/lecture-7-nlp-topic-modeling/index.html" target="_blank" class="link-badge lecture-badge">Natural Language Processing: Teaching Machines to Read Culture</a></li>
+
+                            <li><a href="/WRIT20833-2025/lectures/mini-lectures/lecture-9-public-arguments/index.html" target="_blank" class="link-badge lecture-badge">Public Arguments</a></li>
+
+                            <li><a href="/WRIT20833-2025/lectures/mini-lectures/lecture-11-html-structure/index.html" target="_blank" class="link-badge lecture-badge">HTML as Structure & Argument</a></li>
+
+                            <li><a href="/WRIT20833-2025/lectures/mini-lectures/lecture-12-github-infrastructure/index.html" target="_blank" class="link-badge lecture-badge">GitHub as Infrastructure</a></li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <!-- Quick Access -->
+                <section class="section">
+                    <div class="section-header">
+                        <span class="section-icon">⚡</span>
+                        <h3>Quick Access</h3>
+                    </div>
+                    <ul>
+                        <li><a href="#datasets" class="link-badge external-badge">Practice Datasets</a></li>
+                        <li><a href="https://colab.research.google.com/" target="_blank" class="link-badge external-badge">Google Colab</a></li>
+                        <li><a href="https://github.com/TCU-DCDA/WRIT20833-2025" target="_blank" class="link-badge external-badge">Course GitHub</a></li>
+                    </ul>
+                </section>
+
+                <!-- Recent Updates -->
+                <section class="section">
+                    <div class="section-header">
+                        <span class="section-icon">🔄</span>
+                        <h3>Recent Updates</h3>
+                    </div>
+                    <ul>
+                        <li><span style="color: var(--text-muted); font-size: 0.875rem;">Nov 4</span><br>
+                            HTML/CSS Workshop and web portfolio materials added</li>
+                        <li><span style="color: var(--text-muted); font-size: 0.875rem;">Nov 3</span><br>
+                            Mini-lectures 10-12: GitHub, HTML, CSS</li>
+                        <li><span style="color: var(--text-muted); font-size: 0.875rem;">Sep 29</span><br>
+                            VADER Sentiment Analysis notebook added</li>
+                        <li><span style="color: var(--text-muted); font-size: 0.875rem;">Sep 25</span><br>
+                            Data scraping ethics materials</li>
+                    </ul>
+                </section>
+            </aside>
+        </main>
+
+        <!-- Resources Section (Full Width) -->
+        <section id="resources" class="section" style="grid-column: 1 / -1;">
+            <div class="section-header">
+                <span class="section-icon">📚</span>
+                <h2>Course Resources</h2>
+            </div>
+
+            <div class="resource-grid">
+                <div class="resource-card">
+                    <h4>Python Fundamentals</h4>
+                    <ul>
+                        <li><a href="https://docs.python.org/3/tutorial/" target="_blank" class="link-badge external-badge">Python.org Official Tutorial</a></li>
+                        <li><a href="https://www.codecademy.com/learn/learn-python-3" target="_blank" class="link-badge external-badge">Codecademy Python Course</a></li>
+                        <li><a href="https://automatetheboringstuff.com/" target="_blank" class="link-badge external-badge">Automate the Boring Stuff</a></li>
+                    </ul>
+                </div>
+
+                <div class="resource-card">
+                    <h4>Data Analysis</h4>
+                    <ul>
+                        <li><a href="https://pandas.pydata.org/docs/getting_started/intro_tutorials/" target="_blank" class="link-badge external-badge">Pandas Official Tutorials</a></li>
+                        <li><a href="https://www.kaggle.com/learn/pandas" target="_blank" class="link-badge external-badge">Kaggle Learn: Pandas</a></li>
+                        <li><a href="https://github.com/jvns/pandas-cookbook" target="_blank" class="link-badge external-badge">Pandas Cookbook</a></li>
+                    </ul>
+                </div>
+
+                <div class="resource-card">
+                    <h4>Data Visualization</h4>
+                    <ul>
+                        <li><a href="https://matplotlib.org/stable/tutorials/index.html" target="_blank" class="link-badge external-badge">Matplotlib Tutorials</a></li>
+                        <li><a href="https://seaborn.pydata.org/tutorial.html" target="_blank" class="link-badge external-badge">Seaborn Tutorial</a></li>
+                        <li><a href="https://python-graph-gallery.com/" target="_blank" class="link-badge external-badge">Python Graph Gallery</a></li>
+                    </ul>
+                </div>
+
+                <div class="resource-card" id="datasets">
+                    <h4>Practice Datasets</h4>
+                    <p style="font-size: 0.875rem; margin-bottom: var(--space-md); color: var(--text-secondary);">Real-world messy datasets perfect for pandas practice:</p>
+                    <ul>
+                        <li><a href="https://www.kaggle.com/datasets/tmthyjames/nashville-housing-data" target="_blank" class="link-badge external-badge">Nashville Housing Data</a></li>
+                        <li><a href="https://www.kaggle.com/competitions/titanic/data" target="_blank" class="link-badge external-badge">Titanic Dataset</a></li>
+                        <li><a href="https://www.kaggle.com/datasets/mylesoneill/world-university-rankings" target="_blank" class="link-badge external-badge">University Rankings</a></li>
+                    </ul>
+                </div>
+
+                <div class="resource-card">
+                    <h4>Web Development</h4>
+                    <ul>
+                        <li><a href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics" target="_blank" class="link-badge external-badge">MDN HTML Basics</a></li>
+                        <li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps" target="_blank" class="link-badge external-badge">MDN CSS First Steps</a></li>
+                        <li><a href="https://flexboxfroggy.com/" target="_blank" class="link-badge external-badge">Flexbox Froggy</a></li>
+                    </ul>
+                </div>
+
+                <div class="resource-card">
+                    <h4>Ethics & Critical Thinking</h4>
+                    <ul>
+                        <li><a href="https://www.newyorker.com/science/annals-of-artificial-intelligence/will-ai-become-the-new-mckinsey" target="_blank" class="link-badge external-badge">Ted Chiang: AI & McKinsey</a></li>
+                        <li><a href="https://towardsdatascience.com/ethics-in-web-scraping-b96b18136f01" target="_blank" class="link-badge external-badge">Ethics in Web Scraping</a></li>
+                        <li><a href="https://www.eff.org/issues/privacy" target="_blank" class="link-badge external-badge">EFF: Privacy Issues</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>If a link 404s, it's just a placeholder—files will be added as the semester content is finalized.</p>
+        </footer>
+    </div>
+
+    <script>
+        // P5.js sketch for hero section animation
+        let particles = [];
+        let canvasContainer;
+        
+        function setup() {
+            canvasContainer = select('#p5-canvas');
+            if (!canvasContainer) {
+                console.error('Canvas container not found');
+                return;
+            }
+            
+            let w = canvasContainer.elt.offsetWidth;
+            let h = canvasContainer.elt.offsetHeight;
+            let canvas = createCanvas(w, h);
+            canvas.parent('p5-canvas');
+            
+            // Create particles representing "data points" and "connections"
+            for (let i = 0; i < 30; i++) {
+                particles.push(new Particle());
+            }
+        }
+        
+        function draw() {
+            clear();
+            
+            // Draw connections between nearby particles
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    let d = dist(particles[i].x, particles[i].y, particles[j].x, particles[j].y);
+                    if (d < 100) {
+                        stroke(77, 25, 121, map(d, 0, 100, 40, 0)); // Purple with fading opacity
+                        strokeWeight(1);
+                        line(particles[i].x, particles[i].y, particles[j].x, particles[j].y);
+                    }
+                }
+            }
+            
+            // Update and display particles
+            for (let particle of particles) {
+                particle.update();
+                particle.display();
+                particle.checkEdges();
+            }
+        }
+        
+        function windowResized() {
+            if (canvasContainer) {
+                let w = canvasContainer.elt.offsetWidth;
+                let h = canvasContainer.elt.offsetHeight;
+                resizeCanvas(w, h);
+            }
+        }
+        
+        class Particle {
+            constructor() {
+                this.x = random(width);
+                this.y = random(height);
+                this.vx = random(-0.5, 0.5);
+                this.vy = random(-0.5, 0.5);
+                this.size = random(3, 6);
+            }
+            
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+            }
+            
+            display() {
+                noStroke();
+                fill(77, 25, 121, 150); // Purple with transparency
+                circle(this.x, this.y, this.size);
+            }
+            
+            checkEdges() {
+                if (this.x < 0 || this.x > width) this.vx *= -1;
+                if (this.y < 0 || this.y > height) this.vy *= -1;
+            }
+        }
+    </script>
+</body>
+</html>

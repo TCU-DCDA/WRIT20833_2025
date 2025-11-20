@@ -1,811 +1,826 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WRIT 20833 — Course Materials (2025)</title>
+    <title>WRIT 20833 — Digital Humanities Workspace</title>
     <meta name="description" content="Course materials for WRIT 20833 including interactive notebooks, lectures, and resources">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        /* CSS Custom Properties for consistent theming */
         :root {
-            --primary-color: #4d1979;
-            --primary-hover: #3d1461;
-            --secondary-color: #64748b;
-            --accent-color: #7c3aed;
-            --success-color: #059669;
-            --warning-color: #d97706;
-            
-            --text-primary: #1e293b;
-            --text-secondary: #64748b;
-            --text-muted: #94a3b8;
-            
-            --bg-primary: #ffffff;
-            --bg-secondary: #fafafa;
-            --bg-card: #ffffff;
-            --bg-accent: #f3f4f6;
-            
-            --border-color: #e2e8f0;
-            --border-radius: 12px;
-            --border-radius-lg: 16px;
-            
-            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-            
-            --space-xs: 0.5rem;
-            --space-sm: 0.75rem;
-            --space-md: 1rem;
-            --space-lg: 1.5rem;
-            --space-xl: 2rem;
-            --space-2xl: 2.5rem;
-            
-            --font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
-            --font-family-mono: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+            --bg-body: #0f172a;
+            --bg-card: #1e293b;
+            --bg-card-hover: #334155;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent: #8b5cf6; /* Violet */
+            --accent-glow: rgba(139, 92, 246, 0.3);
+            --border: #334155;
+            --radius: 16px;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         }
-        
-        /* Reset and Base Styles */
-        * {
-            box-sizing: border-box;
-        }
-        
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
         body {
-            font-family: var(--font-family-base);
-            line-height: 1.6;
+            font-family: var(--font-sans);
+            background-color: var(--bg-body);
             color: var(--text-primary);
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-secondary);
+            line-height: 1.5;
+            overflow-x: hidden;
         }
-        
-        /* Typography Scale */
-        h1 {
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 700;
-            line-height: 1.2;
-            margin: 0 0 var(--space-md) 0;
-            color: var(--text-primary);
-        }
-        
-        h2 {
-            font-size: clamp(1.5rem, 3vw, 2rem);
-            font-weight: 600;
-            line-height: 1.3;
-            margin: 0 0 var(--space-lg) 0;
-            color: var(--text-primary);
-        }
-        
-        h3 {
-            font-size: clamp(1.25rem, 2.5vw, 1.5rem);
-            font-weight: 600;
-            line-height: 1.4;
-            margin: 0 0 var(--space-md) 0;
-            color: var(--text-primary);
-        }
-        
-        h4 {
-            font-size: 1.125rem;
-            font-weight: 600;
-            line-height: 1.4;
-            margin: 0 0 var(--space-sm) 0;
-            color: var(--text-primary);
-        }
-        
-        p {
-            margin: 0 0 var(--space-md) 0;
-            color: var(--text-secondary);
-        }
-        
-        /* Main Grid Layout */
-        .container {
-            min-height: 100vh;
+
+        /* Layout */
+        .app-container {
             display: grid;
-            grid-template-areas: 
-                "header"
-                "hero"
-                "nav-cards"
-                "content"
-                "footer";
-            grid-template-rows: auto auto auto 1fr auto;
-            max-width: 1400px;
-            margin: 0 auto;
-            gap: var(--space-xl);
-            padding: var(--space-lg);
+            grid-template-columns: 280px 1fr;
+            min-height: 100vh;
         }
-        
-        @media (min-width: 1024px) {
-            .container {
-                grid-template-areas: 
-                    "header header header"
-                    "hero hero hero"
-                    "nav-cards nav-cards nav-cards"
-                    "content content content"
-                    "footer footer footer";
-                grid-template-columns: 1fr 1fr 1fr;
-                gap: var(--space-2xl);
-                padding: var(--space-2xl);
-            }
+
+        /* Sidebar */
+        .sidebar {
+            background: rgba(15, 23, 42, 0.95);
+            border-right: 1px solid var(--border);
+            padding: 2rem;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            backdrop-filter: blur(10px);
+            z-index: 100;
         }
-        
-        /* Header */
-        .header {
-            grid-area: header;
-            text-align: center;
-            padding: var(--space-md) 0;
-        }
-        
-        .course-title {
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+
+        .brand {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(to right, #c084fc, #8b5cf6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: var(--space-sm);
+            letter-spacing: -0.02em;
         }
-        
-        .course-subtitle {
-            font-size: 1.125rem;
+
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            border-radius: 12px;
             color: var(--text-secondary);
-            font-weight: 400;
+            text-decoration: none;
+            transition: all 0.2s;
+            font-weight: 500;
+            cursor: pointer;
         }
-        
-        /* Hero Section */
-        .hero {
-            grid-area: hero;
-            background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-accent) 100%);
-            border-radius: var(--border-radius-lg);
-            padding: var(--space-2xl);
-            text-align: center;
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--border-color);
+
+        .nav-item:hover, .nav-item.active {
+            background: var(--bg-card);
+            color: var(--text-primary);
+        }
+
+        .nav-item.active {
+            background: var(--accent);
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        .nav-item i { width: 20px; }
+
+        /* Main Content */
+        .main {
+            padding: 2rem 3rem;
+            max-width: 1600px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Header & Search */
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+            gap: 2rem;
+        }
+
+        .search-container {
+            position: relative;
+            flex: 1;
+            max-width: 500px;
+        }
+
+        .search-input {
+            width: 100%;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 1rem 1rem 1rem 3rem;
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: all 0.2s;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px var(--accent-glow);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+        }
+
+        /* Hero Card */
+        .hero-card {
+            background: linear-gradient(135deg, #2e1065, #4c1d95);
+            border-radius: 24px;
+            padding: 3rem;
+            margin-bottom: 3rem;
             position: relative;
             overflow: hidden;
-            min-height: 200px;
+            border: 1px solid rgba(255,255,255,0.1);
         }
-        
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .hero-text {
+            font-size: 1.1rem;
+            color: #e2e8f0;
+            opacity: 0.9;
+        }
+
         #p5-canvas {
             position: absolute;
             top: 0;
-            left: 0;
-            width: 100%;
+            right: 0;
+            width: 60%;
             height: 100%;
-            z-index: 0;
-            opacity: 0.3;
-        }
-        
-        .hero-content {
-            position: relative;
             z-index: 1;
+            opacity: 0.6;
+            mask-image: linear-gradient(to right, transparent, black);
+            -webkit-mask-image: linear-gradient(to right, transparent, black);
         }
-        
-        .hero-content p {
-            font-size: 1.125rem;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        /* Navigation Cards */
-        .nav-cards {
-            grid-area: nav-cards;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: var(--space-lg);
-        }
-        
-        .nav-card {
-            background: var(--bg-card);
-            border-radius: var(--border-radius);
-            padding: var(--space-xl);
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--border-color);
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: inherit;
-            display: block;
-        }
-        
-        .nav-card:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--primary-color);
-        }
-        
-        .nav-card-icon {
-            font-size: 2rem;
-            margin-bottom: var(--space-md);
-            display: block;
-        }
-        
-        .nav-card h3 {
-            color: var(--text-primary);
-            margin-bottom: var(--space-sm);
-        }
-        
-        .nav-card p {
-            color: var(--text-secondary);
-            margin: 0;
-            font-size: 0.9rem;
-        }
-        
-        /* Content Grid */
-        .content {
-            grid-area: content;
-            display: grid;
-            gap: var(--space-2xl);
-        }
-        
-        @media (min-width: 1024px) {
-            .content {
-                grid-template-columns: 2fr 1fr;
-                gap: var(--space-2xl);
-            }
-        }
-        
-        /* Main Content Area */
-        .main-content {
-            display: grid;
-            gap: var(--space-2xl);
-        }
-        
-        /* Sidebar */
-        .sidebar {
-            display: grid;
-            gap: var(--space-xl);
-            align-content: start;
-        }
-        
-        /* Section Styling */
-        .section {
-            background: var(--bg-card);
-            border-radius: var(--border-radius);
-            padding: var(--space-xl);
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--border-color);
-        }
-        
-        .section-header {
-            display: flex;
-            align-items: center;
-            gap: var(--space-sm);
-            margin-bottom: var(--space-lg);
-            padding-bottom: var(--space-md);
-            border-bottom: 2px solid var(--bg-accent);
-        }
-        
-        .section-icon {
-            font-size: 1.5rem;
-        }
-        
-        /* Subsection Styling */
-        .subsection {
-            margin-bottom: var(--space-xl);
-        }
-        
-        .subsection:last-child {
-            margin-bottom: 0;
-        }
-        
-        .subsection h4 {
-            color: var(--primary-color);
-            border-left: 3px solid var(--primary-color);
-            padding-left: var(--space-md);
-            margin-bottom: var(--space-md);
-        }
-        
-        /* Resource Cards */
-        .resource-grid {
-            display: grid;
-            gap: var(--space-lg);
-        }
-        
-        @media (min-width: 768px) {
-            .resource-grid {
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            }
-        }
-        
-        .resource-card {
-            background: var(--bg-accent);
-            border-radius: var(--border-radius);
-            padding: var(--space-lg);
-            border: 1px solid var(--border-color);
-        }
-        
-        /* Lists */
-        ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        
-        li {
-            margin-bottom: var(--space-sm);
-        }
-        
-        /* Grid Lists for CodeAlongs */
-        .grid-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: var(--space-md);
-            margin: 0;
-            padding: 0;
-        }
-        
-        .grid-list li {
-            margin-bottom: 0;
-        }
-        
-        /* Links */
-        a {
-            color: var(--primary-color);
-            text-decoration: none;
-            transition: color 0.2s ease;
-            position: relative;
-        }
-        
-        a:hover {
-            color: var(--primary-hover);
-        }
-        
-        /* Link Badges */
-        .link-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: var(--space-xs);
-            padding: var(--space-xs) var(--space-sm);
-            border-radius: 6px;
-            font-size: 0.875rem;
-            font-weight: 500;
-            transition: all 0.2s ease;
-            margin-bottom: var(--space-xs);
-        }
-        
-        .link-badge:hover {
-            transform: translateY(-1px);
-        }
-        
-        .colab-badge {
-            background-color: #fff3cd;
-            color: #856404;
-            border: 1px solid #ffeaa7;
-        }
-        
-        .colab-badge:hover {
-            background-color: #ffeaa7;
-            color: #856404;
-        }
-        
-        .lecture-badge {
-            background-color: #d1ecf1;
-            color: #0c5460;
-            border: 1px solid #bee5eb;
-        }
-        
-        .lecture-badge:hover {
-            background-color: #bee5eb;
-            color: #0c5460;
-        }
-        
-        .external-badge {
-            background-color: #e1f5fe;
-            color: #01579b;
-            border: 1px solid #b3e5fc;
-        }
-        
-        .external-badge:hover {
-            background-color: #b3e5fc;
-            color: #01579b;
-        }
-        
-        /* Quick Stats */
-        .quick-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: var(--space-md);
-            margin-bottom: var(--space-lg);
-        }
-        
-        .stat {
-            text-align: center;
-            padding: var(--space-md);
-            background: var(--bg-accent);
-            border-radius: var(--border-radius);
-        }
-        
-        .stat-number {
+
+        /* Grid Layouts */
+        .section-title {
             font-size: 1.5rem;
             font-weight: 700;
-            color: var(--primary-color);
-            display: block;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
         }
         
-        .stat-label {
-            font-size: 0.875rem;
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+            margin-left: 1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            background: var(--bg-card-hover);
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 0.75rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 100px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .badge-colab { background: rgba(251, 191, 36, 0.1); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.2); }
+        .badge-lecture { background: rgba(56, 189, 248, 0.1); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.2); }
+        .badge-resource { background: rgba(16, 185, 129, 0.1); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.2); }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .card-desc {
+            font-size: 0.9rem;
             color: var(--text-secondary);
-            margin-top: var(--space-xs);
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+
+        .card-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: auto;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            .app-container { grid-template-columns: 1fr; }
+            .sidebar { display: none; } /* Add mobile menu later if needed */
+            .main { padding: 1.5rem; }
+            .hero-card { padding: 2rem; }
+            #p5-canvas { width: 100%; opacity: 0.2; }
         }
         
-        /* Footer */
-        .footer {
-            grid-area: footer;
-            text-align: center;
-            padding: var(--space-xl) 0;
-            border-top: 1px solid var(--border-color);
-            color: var(--text-muted);
-            font-size: 0.875rem;
-            font-style: italic;
-        }
-        
-        /* Responsive Adjustments */
-        @media (max-width: 768px) {
-            .container {
-                padding: var(--space-md);
-                gap: var(--space-lg);
-            }
-            
-            .hero {
-                padding: var(--space-lg);
-            }
-            
-            .section {
-                padding: var(--space-lg);
-            }
-            
-            .nav-cards {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        /* Focus States for Accessibility */
-        a:focus,
-        .nav-card:focus {
-            outline: 2px solid var(--primary-color);
-            outline-offset: 2px;
-        }
-        
-        /* Print Styles */
-        @media print {
-            .container {
-                display: block;
-            }
-            
-            .nav-cards,
-            .hero {
-                display: none;
-            }
-            
-            .section {
-                box-shadow: none;
-                border: 1px solid #ccc;
-                margin-bottom: var(--space-lg);
-            }
-        }
+        /* Utility for hiding elements */
+        .hidden { display: none !important; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Header -->
-        <header class="header">
-            <h1 class="course-title">WRIT 20833</h1>
-            <p class="course-subtitle">Course Materials (2025)</p>
-        </header>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="brand">WRIT 20833</div>
+            
+            <nav class="nav-links">
+                <a class="nav-item active" onclick="filterContent('all', this)">
+                    <i data-lucide="layout-grid"></i> Dashboard
+                </a>
+                <a class="nav-item" onclick="filterContent('notebooks', this)">
+                    <i data-lucide="code-2"></i> Notebooks
+                </a>
+                <a class="nav-item" onclick="filterContent('lectures', this)">
+                    <i data-lucide="graduation-cap"></i> Lectures
+                </a>
+                <a class="nav-item" onclick="filterContent('assignments', this)">
+                    <i data-lucide="file-edit"></i> Assignments
+                </a>
+                <a class="nav-item" onclick="filterContent('resources', this)">
+                    <i data-lucide="library"></i> Resources
+                </a>
+            </nav>
 
-        <!-- Hero Section -->
-        <section class="hero">
-            <div id="p5-canvas"></div>
-            <div class="hero-content">
-                <p>Welcome to your digital humanities workspace. This site hosts weekly notebooks, lectures, and course resources for WRIT 20833—where coding meets culture.</p>
+            <div style="margin-top: auto;">
+                <div class="card" style="background: rgba(255,255,255,0.03); border: none;">
+                    <h4 style="font-size: 0.9rem; margin-bottom: 0.5rem;">Quick Links</h4>
+                    <a href="https://github.com/TCU-DCDA/WRIT20833-2025" target="_blank" style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem; display: block; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                        <i data-lucide="github" size="14"></i> GitHub Repo
+                    </a>
+                    <a href="https://colab.research.google.com/" target="_blank" style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem; display: block; display: flex; align-items: center; gap: 0.5rem;">
+                        <i data-lucide="external-link" size="14"></i> Google Colab
+                    </a>
+                </div>
             </div>
-        </section>
-
-        <!-- Quick Navigation Cards -->
-        <nav class="nav-cards" role="navigation" aria-label="Main navigation">
-            <a href="#notebooks" class="nav-card">
-                <span class="nav-card-icon">📓</span>
-                <h3>Interactive Notebooks</h3>
-                <p>CodeAlongs, exercises, and hands-on tutorials</p>
-            </a>
-            
-            <a href="#lectures" class="nav-card">
-                <span class="nav-card-icon">🎓</span>
-                <h3>Lectures</h3>
-                <p>Weekly presentations and mini-lectures</p>
-            </a>
-            
-            <a href="#resources" class="nav-card">
-                <span class="nav-card-icon">📚</span>
-                <h3>Resources</h3>
-                <p>Tools, datasets, and reference materials</p>
-            </a>
-        </nav>
+        </aside>
 
         <!-- Main Content -->
-        <main class="content">
-            <div class="main-content">
+        <main class="main">
+            <!-- Top Bar -->
+            <div class="top-bar">
+                <div class="search-container">
+                    <i data-lucide="search" class="search-icon"></i>
+                    <input type="text" class="search-input" placeholder="Search notebooks, lectures, topics..." id="searchInput">
+                </div>
+                <div style="color: var(--text-secondary); font-size: 0.9rem;">Fall 2025</div>
+            </div>
+
+            <!-- Hero -->
+            <div class="hero-card">
+                <div id="p5-canvas"></div>
+                <div class="hero-content">
+                    <h1 class="hero-title">Coding Meets Culture</h1>
+                    <p class="hero-text">Welcome to your digital humanities workspace. Access weekly notebooks, lectures, and resources for WRIT 20833.</p>
+                </div>
+            </div>
+
+            <!-- Content Grid -->
+            <div id="content-area">
+                
                 <!-- Notebooks Section -->
-                <section id="notebooks" class="section">
-                    <div class="section-header">
-                        <span class="section-icon">📓</span>
-                        <h2>Notebooks</h2>
-                    </div>
-                    
-                    
+                <div class="content-section" data-category="notebooks">
+                    <h2 class="section-title"><i data-lucide="code-2"></i> CodeAlongs</h2>
+                    <div class="grid">
+                        <!-- Cards generated from data -->
+                        <a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/codeAlongs/WRIT20833_Variables_DataTypes_F25.ipynb" target="_blank" class="card searchable">
+                            <span class="card-badge badge-colab">Colab</span>
+                            <div class="card-icon"><i data-lucide="terminal"></i></div>
+                            <h3 class="card-title">01. Variables & Data Types</h3>
+                            <p class="card-desc">Introduction to Python variables, basic data types, and operations.</p>
+                            <div class="card-meta"><i data-lucide="clock" size="14"></i> Week 1</div>
+                        </a>
 
-                    <div class="subsection">
-                        <h4>CodeAlongs</h4>
-                        <ul class="grid-list">
-                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/codeAlongs/WRIT20833_Variables_DataTypes_F25.ipynb" target="_blank" class="link-badge colab-badge">1. Variables & Data Types</a></li>
-                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/codeAlongs/WRIT20833_StrMethods_Conditionals_Loops_F25.ipynb" target="_blank" class="link-badge colab-badge">2. String Methods, Conditionals & Loops</a></li>
-                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/codeAlongs/WRIT20833_Lists_Loops_Complete_F25.ipynb" target="_blank" class="link-badge colab-badge">3. Lists & Loops</a></li>
-                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/codeAlongs/WRIT20833_Dictionaries_Functions_F25.ipynb" target="_blank" class="link-badge colab-badge">4. Dictionaries & Functions</a></li>
-                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/codeAlongs/WRIT20833_Pandas_01_Found_Data_Fundamentals_F25.ipynb" target="_blank" class="link-badge colab-badge">5. Found Data & Pandas Fundamentals 01</a></li>
-                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/codeAlongs/WRIT20833_Pandas_02_Data_Cleaning_Analysis_Pandas_F25.ipynb" target="_blank" class="link-badge colab-badge">6. Data Cleaning & Analysis with Pandas</a></li>
-                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/codeAlongs/WRIT20833_Instant_Data_Scraper_Ethics_F25.ipynb" target="_blank" class="link-badge colab-badge">7. Instant Data Scraper & Ethics</a></li>
-                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/codeAlongs/WRIT20833_VADER_Sentiment_Analysis_F25.ipynb" target="_blank" class="link-badge colab-badge">8. VADER Sentiment Analysis</a></li>
-                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/codeAlongs/WRIT20833_Topic_Modeling_Part1_Introduction_F25.ipynb" target="_blank" class="link-badge colab-badge">9a. Topic Modeling Part 1: Introduction</a></li>
-                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/codeAlongs/WRIT20833_Topic_Modeling_Part2_Research_Application_F25.ipynb" target="_blank" class="link-badge colab-badge">9b. Topic Modeling Part 2: Research Application</a></li>
-                            <li><a href="html_training/semantic_html_css_workshop.html" target="_blank" class="link-badge external-badge">10. Semantic HTML & CSS Workshop</a></li>
-                            <li><a href="html_training/editing-portfolio.html" target="_blank" class="link-badge external-badge">11. Editing Portfolio</a></li>
-                        </ul>
-                    </div>
+                        <a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/codeAlongs/WRIT20833_StrMethods_Conditionals_Loops_F25.ipynb" target="_blank" class="card searchable">
+                            <span class="card-badge badge-colab">Colab</span>
+                            <div class="card-icon"><i data-lucide="git-branch"></i></div>
+                            <h3 class="card-title">02. Strings & Conditionals</h3>
+                            <p class="card-desc">Working with text data, string methods, and control flow logic.</p>
+                            <div class="card-meta"><i data-lucide="clock" size="14"></i> Week 2</div>
+                        </a>
 
-                    <div class="subsection">
-                        <h4>In-Class Exercises</h4>
-                        <ul>
-                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/exercises/WRIT20833_Conditionals_9-5-25.ipynb" target="_blank" class="link-badge colab-badge">Conditionals Exercise (9-5-25)</a></li>
-                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/exercises/WRIT20833_InClassEx_Family_Dictionaries_F25.ipynb" target="_blank" class="link-badge colab-badge">Family Exercise - Dictionaries</a></li>
-                        </ul>
-                    </div>
+                        <a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/codeAlongs/WRIT20833_Lists_Loops_Complete_F25.ipynb" target="_blank" class="card searchable">
+                            <span class="card-badge badge-colab">Colab</span>
+                            <div class="card-icon"><i data-lucide="list"></i></div>
+                            <h3 class="card-title">03. Lists & Loops</h3>
+                            <p class="card-desc">Mastering iteration and list data structures in Python.</p>
+                            <div class="card-meta"><i data-lucide="clock" size="14"></i> Week 3</div>
+                        </a>
 
-                    <div class="subsection">
-                        <h4>Homework Assignments</h4>
-                        <ul>
-                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/homework/WRIT20833_HW1_Fall2025.ipynb" target="_blank" class="link-badge colab-badge">HW1: Term Frequency Analysis</a></li>
-                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/homework/WRIT20833_HW3-1_Pandas_Found_Data_F25.ipynb" target="_blank" class="link-badge colab-badge">HW3-1: Pandas & Found Data</a></li>
-                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/homework/WRIT20833_HW3-2_Pandas_Data_Cleaning_F25.ipynb" target="_blank" class="link-badge colab-badge">HW3-2: Pandas Data Cleaning</a></li>
-                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/homework/WRIT20833_HW4-1_Term_Frequency_Sentiment_F25.ipynb" target="_blank" class="link-badge colab-badge">HW4-1: Term Frequency & Sentiment Analysis</a></li>
-                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/homework/WRIT20833_HW4-2_Topic_Modeling_Integration_F25.ipynb" target="_blank" class="link-badge colab-badge">HW4-2: Topic Modeling & Integration</a></li>
-                        </ul>
-                    </div>
+                        <a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/codeAlongs/WRIT20833_Dictionaries_Functions_F25.ipynb" target="_blank" class="card searchable">
+                            <span class="card-badge badge-colab">Colab</span>
+                            <div class="card-icon"><i data-lucide="braces"></i></div>
+                            <h3 class="card-title">04. Dictionaries & Functions</h3>
+                            <p class="card-desc">Key-value pairs and reusable code blocks.</p>
+                            <div class="card-meta"><i data-lucide="clock" size="14"></i> Week 4</div>
+                        </a>
 
-                    <div class="subsection">
-                        <h4>Semester Project</h4>
-                        <ul>
-                            <li><a href="./WRIT20833_HW5_Final_Project_Proposal.html" class="link-badge external-badge">HW5: Final Project Proposal</a></li>
-                            <li><a href="./WRIT20833_Final_Project_Requirements.html" class="link-badge external-badge">Final Project Requirements</a></li>
-                            <li><a href="html_training/editing-portfolio.html" target="_blank" class="link-badge external-badge">Portfolio Editing Guide</a></li>
-                        </ul>
-                    </div>
+                        <a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/codeAlongs/WRIT20833_Pandas_01_Found_Data_Fundamentals_F25.ipynb" target="_blank" class="card searchable">
+                            <span class="card-badge badge-colab">Colab</span>
+                            <div class="card-icon"><i data-lucide="database"></i></div>
+                            <h3 class="card-title">05. Pandas Fundamentals</h3>
+                            <p class="card-desc">Introduction to data analysis with the Pandas library.</p>
+                            <div class="card-meta"><i data-lucide="clock" size="14"></i> Week 5</div>
+                        </a>
 
-                    <div class="subsection">
-                        <h4>Review Notebooks</h4>
-                        <p>The following nine notebooks were created to help you walk through some of the coding work we covered in the first half of the semester.</p>
-                        <ul class="grid-list">
-                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/exercises/WRIT20833_Basic-Review_01_Colab.ipynb" target="_blank" class="link-badge colab-badge">Review 01: Python Foundations</a></li>
-                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/exercises/WRIT20833_Basic-Review_02_Text_Processing.ipynb" target="_blank" class="link-badge colab-badge">Review 02: Text Processing</a></li>
-                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/exercises/WRIT20833_Basic-Review_03_Loops_Data_Structures.ipynb" target="_blank" class="link-badge colab-badge">Review 03: Loops & Data Structures</a></li>
-                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/exercises/WRIT20833_Basic-Review_04_Functions_Advanced.ipynb" target="_blank" class="link-badge colab-badge">Review 04: Functions & Advanced Processing</a></li>
-                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/exercises/WRIT20833_Basic-Review_05_Data_Ethics_Collection.ipynb" target="_blank" class="link-badge colab-badge">Review 05: Data Ethics & Collection Methods</a></li>
-                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/exercises/WRIT20833_Basic-Review_06_Pandas_Data_Analysis.ipynb" target="_blank" class="link-badge colab-badge">Review 06: Pandas for Data Analysis</a></li>
-                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/exercises/WRIT20833_Basic-Review_07_Text_Sentiment_Analysis.ipynb" target="_blank" class="link-badge colab-badge">Review 07: Text Analysis & Sentiment Analysis</a></li>
-                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/exercises/WRIT20833_Basic-Review_08_Data_Visualization.ipynb" target="_blank" class="link-badge colab-badge">Review 08: Data Visualization</a></li>
-                            <li><a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/exercises/WRIT20833_Basic-Review_09_Integration_Final_Project.ipynb" target="_blank" class="link-badge colab-badge">Review 09: Integration</a></li>
-                        </ul>
+                        <a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/codeAlongs/WRIT20833_Pandas_02_Data_Cleaning_Analysis_Pandas_F25.ipynb" target="_blank" class="card searchable">
+                            <span class="card-badge badge-colab">Colab</span>
+                            <div class="card-icon"><i data-lucide="filter"></i></div>
+                            <h3 class="card-title">06. Data Cleaning</h3>
+                            <p class="card-desc">Techniques for cleaning and preparing real-world datasets.</p>
+                            <div class="card-meta"><i data-lucide="clock" size="14"></i> Week 6</div>
+                        </a>
+
+                        <a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/codeAlongs/WRIT20833_Instant_Data_Scraper_Ethics_F25.ipynb" target="_blank" class="card searchable">
+                            <span class="card-badge badge-colab">Colab</span>
+                            <div class="card-icon"><i data-lucide="shield-alert"></i></div>
+                            <h3 class="card-title">07. Data Scraper & Ethics</h3>
+                            <p class="card-desc">Using Instant Data Scraper and discussing data ethics.</p>
+                            <div class="card-meta"><i data-lucide="clock" size="14"></i> Week 7</div>
+                        </a>
+                        
+                        <a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/codeAlongs/WRIT20833_VADER_Sentiment_Analysis_F25.ipynb" target="_blank" class="card searchable">
+                            <span class="card-badge badge-colab">Colab</span>
+                            <div class="card-icon"><i data-lucide="smile"></i></div>
+                            <h3 class="card-title">08. Sentiment Analysis</h3>
+                            <p class="card-desc">Using VADER to analyze emotional tone in text.</p>
+                            <div class="card-meta"><i data-lucide="clock" size="14"></i> Week 8</div>
+                        </a>
+
+                        <a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/codeAlongs/WRIT20833_Topic_Modeling_Part1_Introduction_F25.ipynb" target="_blank" class="card searchable">
+                            <span class="card-badge badge-colab">Colab</span>
+                            <div class="card-icon"><i data-lucide="brain-circuit"></i></div>
+                            <h3 class="card-title">09. Topic Modeling</h3>
+                            <p class="card-desc">Uncovering hidden themes in large text corpora.</p>
+                            <div class="card-meta"><i data-lucide="clock" size="14"></i> Week 9</div>
+                        </a>
+
+                        <a href="html_training/semantic_html_css_workshop.html" target="_blank" class="card searchable">
+                            <span class="card-badge badge-resource">Workshop</span>
+                            <div class="card-icon"><i data-lucide="layout-template"></i></div>
+                            <h3 class="card-title">10. HTML & CSS Workshop</h3>
+                            <p class="card-desc">Semantic HTML structure and CSS styling basics.</p>
+                            <div class="card-meta"><i data-lucide="clock" size="14"></i> Week 10</div>
+                        </a>
+
+                        <a href="html_training/editing-portfolio.html" target="_blank" class="card searchable">
+                            <span class="card-badge badge-resource">Guide</span>
+                            <div class="card-icon"><i data-lucide="pen-tool"></i></div>
+                            <h3 class="card-title">11. Editing Portfolio</h3>
+                            <p class="card-desc">Guide to customizing your digital portfolio.</p>
+                            <div class="card-meta"><i data-lucide="clock" size="14"></i> Week 11</div>
+                        </a>
                     </div>
-                </section>
+                </div>
+
+                <!-- In-Class Exercises Section -->
+                <div class="content-section" data-category="notebooks">
+                    <h2 class="section-title"><i data-lucide="pen-tool"></i> In-Class Exercises</h2>
+                    <div class="grid">
+                        <a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/exercises/WRIT20833_Conditionals_9-5-25.ipynb" target="_blank" class="card searchable">
+                            <span class="card-badge badge-colab">Exercise</span>
+                            <div class="card-icon"><i data-lucide="check-square"></i></div>
+                            <h3 class="card-title">Conditionals Exercise</h3>
+                            <p class="card-desc">Practice with Python conditional logic.</p>
+                            <div class="card-meta"><i data-lucide="calendar" size="14"></i> Sep 5</div>
+                        </a>
+                        <a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/exercises/WRIT20833_InClassEx_Family_Dictionaries_F25.ipynb" target="_blank" class="card searchable">
+                            <span class="card-badge badge-colab">Exercise</span>
+                            <div class="card-icon"><i data-lucide="users"></i></div>
+                            <h3 class="card-title">Family Dictionaries</h3>
+                            <p class="card-desc">Practice creating and accessing dictionary structures.</p>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Review Notebooks Section -->
+                <div class="content-section" data-category="notebooks">
+                    <h2 class="section-title"><i data-lucide="refresh-cw"></i> Review Notebooks</h2>
+                    <div class="grid">
+                        <a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/exercises/WRIT20833_Basic-Review_01_Colab.ipynb" target="_blank" class="card searchable">
+                            <span class="card-badge badge-colab">Review</span>
+                            <div class="card-icon"><i data-lucide="play-circle"></i></div>
+                            <h3 class="card-title">01. Python Foundations</h3>
+                            <p class="card-desc">Review of basic Python syntax and concepts.</p>
+                        </a>
+                        <a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/exercises/WRIT20833_Basic-Review_02_Text_Processing.ipynb" target="_blank" class="card searchable">
+                            <span class="card-badge badge-colab">Review</span>
+                            <div class="card-icon"><i data-lucide="type"></i></div>
+                            <h3 class="card-title">02. Text Processing</h3>
+                            <p class="card-desc">Review of string manipulation and text analysis.</p>
+                        </a>
+                        <a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/exercises/WRIT20833_Basic-Review_03_Loops_Data_Structures.ipynb" target="_blank" class="card searchable">
+                            <span class="card-badge badge-colab">Review</span>
+                            <div class="card-icon"><i data-lucide="repeat"></i></div>
+                            <h3 class="card-title">03. Loops & Data Structures</h3>
+                            <p class="card-desc">Review of lists, dictionaries, and iteration.</p>
+                        </a>
+                        <a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/exercises/WRIT20833_Basic-Review_04_Functions_Advanced.ipynb" target="_blank" class="card searchable">
+                            <span class="card-badge badge-colab">Review</span>
+                            <div class="card-icon"><i data-lucide="function-square"></i></div>
+                            <h3 class="card-title">04. Functions & Advanced</h3>
+                            <p class="card-desc">Review of functions and advanced processing.</p>
+                        </a>
+                        <a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/exercises/WRIT20833_Basic-Review_05_Data_Ethics_Collection.ipynb" target="_blank" class="card searchable">
+                            <span class="card-badge badge-colab">Review</span>
+                            <div class="card-icon"><i data-lucide="shield"></i></div>
+                            <h3 class="card-title">05. Data Ethics</h3>
+                            <p class="card-desc">Review of data collection methods and ethics.</p>
+                        </a>
+                        <a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/exercises/WRIT20833_Basic-Review_06_Pandas_Data_Analysis.ipynb" target="_blank" class="card searchable">
+                            <span class="card-badge badge-colab">Review</span>
+                            <div class="card-icon"><i data-lucide="table-2"></i></div>
+                            <h3 class="card-title">06. Pandas Analysis</h3>
+                            <p class="card-desc">Review of data analysis with Pandas.</p>
+                        </a>
+                        <a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/exercises/WRIT20833_Basic-Review_07_Text_Sentiment_Analysis.ipynb" target="_blank" class="card searchable">
+                            <span class="card-badge badge-colab">Review</span>
+                            <div class="card-icon"><i data-lucide="heart"></i></div>
+                            <h3 class="card-title">07. Sentiment Analysis</h3>
+                            <p class="card-desc">Review of text analysis and sentiment.</p>
+                        </a>
+                        <a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/exercises/WRIT20833_Basic-Review_08_Data_Visualization.ipynb" target="_blank" class="card searchable">
+                            <span class="card-badge badge-colab">Review</span>
+                            <div class="card-icon"><i data-lucide="pie-chart"></i></div>
+                            <h3 class="card-title">08. Data Visualization</h3>
+                            <p class="card-desc">Review of plotting and visualization.</p>
+                        </a>
+                        <a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/exercises/WRIT20833_Basic-Review_09_Integration_Final_Project.ipynb" target="_blank" class="card searchable">
+                            <span class="card-badge badge-colab">Review</span>
+                            <div class="card-icon"><i data-lucide="combine"></i></div>
+                            <h3 class="card-title">09. Integration</h3>
+                            <p class="card-desc">Review of integrating concepts for final project.</p>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Assignments Section -->
+                <div class="content-section" data-category="assignments">
+                    <h2 class="section-title"><i data-lucide="file-edit"></i> Assignments & Projects</h2>
+                    <div class="grid">
+                        <a href="./WRIT20833_HW5_Final_Project_Proposal.html" class="card searchable" style="border-color: var(--accent);">
+                            <span class="card-badge badge-resource">Major Project</span>
+                            <div class="card-icon" style="color: #fbbf24;"><i data-lucide="rocket"></i></div>
+                            <h3 class="card-title">Final Project Proposal</h3>
+                            <p class="card-desc">Guidelines and requirements for your semester capstone project proposal.</p>
+                            <div class="card-meta">Due Date: TBD</div>
+                        </a>
+
+                        <a href="./WRIT20833_Final_Project_Requirements.html" class="card searchable">
+                            <span class="card-badge badge-resource">Docs</span>
+                            <div class="card-icon"><i data-lucide="scroll-text"></i></div>
+                            <h3 class="card-title">Project Requirements</h3>
+                            <p class="card-desc">Detailed rubric and technical requirements for the final project.</p>
+                        </a>
+
+                        <a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/homework/WRIT20833_HW1_Fall2025.ipynb" target="_blank" class="card searchable">
+                            <span class="card-badge badge-colab">HW 1</span>
+                            <div class="card-icon"><i data-lucide="bar-chart"></i></div>
+                            <h3 class="card-title">Term Frequency Analysis</h3>
+                            <p class="card-desc">Analyzing word frequency in text.</p>
+                        </a>
+
+                        <a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/homework/WRIT20833_HW3-1_Pandas_Found_Data_F25.ipynb" target="_blank" class="card searchable">
+                            <span class="card-badge badge-colab">HW 3.1</span>
+                            <div class="card-icon"><i data-lucide="database"></i></div>
+                            <h3 class="card-title">Pandas & Found Data</h3>
+                            <p class="card-desc">Working with found datasets in Pandas.</p>
+                        </a>
+
+                        <a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/homework/WRIT20833_HW3-2_Pandas_Data_Cleaning_F25.ipynb" target="_blank" class="card searchable">
+                            <span class="card-badge badge-colab">HW 3.2</span>
+                            <div class="card-icon"><i data-lucide="eraser"></i></div>
+                            <h3 class="card-title">Pandas Data Cleaning</h3>
+                            <p class="card-desc">Cleaning and preparing data for analysis.</p>
+                        </a>
+
+                        <a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/homework/WRIT20833_HW4-1_Term_Frequency_Sentiment_F25.ipynb" target="_blank" class="card searchable">
+                            <span class="card-badge badge-colab">HW 4.1</span>
+                            <div class="card-icon"><i data-lucide="bar-chart-2"></i></div>
+                            <h3 class="card-title">Term Frequency & Sentiment</h3>
+                            <p class="card-desc">Homework assignment on text analysis techniques.</p>
+                        </a>
+
+                        <a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833-2025/blob/main/notebooks/homework/WRIT20833_HW4-2_Topic_Modeling_Integration_F25.ipynb" target="_blank" class="card searchable">
+                            <span class="card-badge badge-colab">HW 4.2</span>
+                            <div class="card-icon"><i data-lucide="layers"></i></div>
+                            <h3 class="card-title">Topic Modeling Integration</h3>
+                            <p class="card-desc">Integrating topic modeling into your analysis.</p>
+                        </a>
+                    </div>
+                </div>
 
                 <!-- Lectures Section -->
-                <section id="lectures" class="section">
-                    <div class="section-header">
-                        <span class="section-icon">🎓</span>
-                        <h2>Lectures</h2>
+                <div class="content-section" data-category="lectures">
+                    <h2 class="section-title"><i data-lucide="graduation-cap"></i> Lectures</h2>
+                    <div class="grid">
+                        <a href="/WRIT20833-2025/lectures/main/lecture1.html" target="_blank" class="card searchable">
+                            <span class="card-badge badge-lecture">Slides</span>
+                            <div class="card-icon"><i data-lucide="presentation"></i></div>
+                            <h3 class="card-title">01. When Coding Meets Culture</h3>
+                            <p class="card-desc">Introduction to Digital Humanities and course overview.</p>
+                        </a>
+
+                        <a href="/WRIT20833-2025/lectures/mini-lectures/lecture-7-nlp-topic-modeling/index.html" target="_blank" class="card searchable">
+                            <span class="card-badge badge-lecture">Mini</span>
+                            <div class="card-icon"><i data-lucide="bot"></i></div>
+                            <h3 class="card-title">NLP & Topic Modeling</h3>
+                            <p class="card-desc">Teaching machines to read culture through natural language processing.</p>
+                        </a>
+
+                        <a href="/WRIT20833-2025/lectures/mini-lectures/lecture-9-public-arguments/index.html" target="_blank" class="card searchable">
+                            <span class="card-badge badge-lecture">Mini</span>
+                            <div class="card-icon"><i data-lucide="message-square"></i></div>
+                            <h3 class="card-title">Public Arguments</h3>
+                            <p class="card-desc">Rhetorical strategies in public discourse.</p>
+                        </a>
+
+                        <a href="/WRIT20833-2025/lectures/mini-lectures/lecture-11-html-structure/index.html" target="_blank" class="card searchable">
+                            <span class="card-badge badge-lecture">Mini</span>
+                            <div class="card-icon"><i data-lucide="layout"></i></div>
+                            <h3 class="card-title">HTML as Structure</h3>
+                            <p class="card-desc">Understanding the semantic web and document structure.</p>
+                        </a>
+                        
+                        <a href="/WRIT20833-2025/lectures/mini-lectures/lecture-12-github-infrastructure/index.html" target="_blank" class="card searchable">
+                            <span class="card-badge badge-lecture">Mini</span>
+                            <div class="card-icon"><i data-lucide="git-merge"></i></div>
+                            <h3 class="card-title">GitHub Infrastructure</h3>
+                            <p class="card-desc">Version control and collaborative coding workflows.</p>
+                        </a>
                     </div>
+                </div>
 
-                    <div class="subsection">
-                        <h4>Main Lectures</h4>
-                        <ul>
-                            <li><a href="/WRIT20833-2025/lectures/main/lecture1.html" target="_blank" class="link-badge lecture-badge">Lecture 1: When Coding Meets Culture</a></li>
-                        </ul>
+                <!-- Resources Section -->
+                <div class="content-section" data-category="resources">
+                    <h2 class="section-title"><i data-lucide="library"></i> Resources</h2>
+                    <div class="grid">
+                        <a href="html_training/semantic_html_css_workshop.html" target="_blank" class="card searchable">
+                            <span class="card-badge badge-resource">Workshop</span>
+                            <div class="card-icon"><i data-lucide="palette"></i></div>
+                            <h3 class="card-title">HTML & CSS Workshop</h3>
+                            <p class="card-desc">Interactive guide to building semantic and styled web pages.</p>
+                        </a>
+
+                        <a href="html_training/editing-portfolio.html" target="_blank" class="card searchable">
+                            <span class="card-badge badge-resource">Guide</span>
+                            <div class="card-icon"><i data-lucide="pen-tool"></i></div>
+                            <h3 class="card-title">Portfolio Editing</h3>
+                            <p class="card-desc">Guide to customizing and refining your digital portfolio.</p>
+                        </a>
+
+                        <div class="card searchable">
+                            <span class="card-badge badge-resource">External</span>
+                            <div class="card-icon"><i data-lucide="book-open"></i></div>
+                            <h3 class="card-title">Python Documentation</h3>
+                            <p class="card-desc">Official Python 3 documentation and tutorials.</p>
+                            <div class="card-meta">
+                                <a href="https://docs.python.org/3/" target="_blank" style="color: var(--accent); text-decoration: none;">Visit Site &rarr;</a>
+                            </div>
+                        </div>
+
+                        <div class="card searchable">
+                            <span class="card-badge badge-resource">External</span>
+                            <div class="card-icon"><i data-lucide="table"></i></div>
+                            <h3 class="card-title">Pandas Cookbook</h3>
+                            <p class="card-desc">Recipes for common data analysis tasks.</p>
+                            <div class="card-meta">
+                                <a href="https://github.com/jvns/pandas-cookbook" target="_blank" style="color: var(--accent); text-decoration: none;">Visit Site &rarr;</a>
+                            </div>
+                        </div>
+
+                        <div class="card searchable">
+                            <span class="card-badge badge-resource">Datasets</span>
+                            <div class="card-icon"><i data-lucide="database"></i></div>
+                            <h3 class="card-title">Practice Datasets</h3>
+                            <p class="card-desc">Nashville Housing, Titanic, University Rankings.</p>
+                            <div class="card-meta">
+                                <a href="https://www.kaggle.com/datasets/tmthyjames/nashville-housing-data" target="_blank" style="color: var(--accent); text-decoration: none; margin-right: 10px;">Housing</a>
+                                <a href="https://www.kaggle.com/competitions/titanic/data" target="_blank" style="color: var(--accent); text-decoration: none;">Titanic</a>
+                            </div>
+                        </div>
+
+                        <div class="card searchable">
+                            <span class="card-badge badge-resource">Web Dev</span>
+                            <div class="card-icon"><i data-lucide="globe"></i></div>
+                            <h3 class="card-title">Web Development</h3>
+                            <p class="card-desc">MDN Docs and Flexbox Froggy.</p>
+                            <div class="card-meta">
+                                <a href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics" target="_blank" style="color: var(--accent); text-decoration: none; margin-right: 10px;">HTML</a>
+                                <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps" target="_blank" style="color: var(--accent); text-decoration: none;">CSS</a>
+                            </div>
+                        </div>
+
+                        <div class="card searchable">
+                            <span class="card-badge badge-resource">Ethics</span>
+                            <div class="card-icon"><i data-lucide="scale"></i></div>
+                            <h3 class="card-title">Ethics & Critical Thinking</h3>
+                            <p class="card-desc">Readings on AI, privacy, and scraping ethics.</p>
+                            <div class="card-meta">
+                                <a href="https://www.newyorker.com/science/annals-of-artificial-intelligence/will-ai-become-the-new-mckinsey" target="_blank" style="color: var(--accent); text-decoration: none;">Ted Chiang Article</a>
+                            </div>
+                        </div>
+                        
+                        <div class="card searchable">
+                            <span class="card-badge badge-resource">Viz</span>
+                            <div class="card-icon"><i data-lucide="image"></i></div>
+                            <h3 class="card-title">Data Visualization</h3>
+                            <p class="card-desc">Matplotlib, Seaborn, and Graph Gallery.</p>
+                            <div class="card-meta">
+                                <a href="https://python-graph-gallery.com/" target="_blank" style="color: var(--accent); text-decoration: none;">Graph Gallery</a>
+                            </div>
+                        </div>
                     </div>
+                </div>
 
-                    <div class="subsection">
-                        <h4>Mini-Lectures</h4>
-                        <ul>
-                            <li><a href="/WRIT20833-2025/lectures/mini-lectures/lecture-7-nlp-topic-modeling/index.html" target="_blank" class="link-badge lecture-badge">Natural Language Processing: Teaching Machines to Read Culture</a></li>
-
-                            <li><a href="/WRIT20833-2025/lectures/mini-lectures/lecture-9-public-arguments/index.html" target="_blank" class="link-badge lecture-badge">Public Arguments</a></li>
-
-                            <li><a href="/WRIT20833-2025/lectures/mini-lectures/lecture-11-html-structure/index.html" target="_blank" class="link-badge lecture-badge">HTML as Structure & Argument</a></li>
-
-                            <li><a href="/WRIT20833-2025/lectures/mini-lectures/lecture-12-github-infrastructure/index.html" target="_blank" class="link-badge lecture-badge">GitHub as Infrastructure</a></li>
-                        </ul>
-                    </div>
-                </section>
             </div>
-
-            <!-- Sidebar -->
-            <aside class="sidebar">
-                <!-- Quick Access -->
-                <section class="section">
-                    <div class="section-header">
-                        <span class="section-icon">⚡</span>
-                        <h3>Quick Access</h3>
-                    </div>
-                    <ul>
-                        <li><a href="#datasets" class="link-badge external-badge">Practice Datasets</a></li>
-                        <li><a href="https://colab.research.google.com/" target="_blank" class="link-badge external-badge">Google Colab</a></li>
-                        <li><a href="https://github.com/TCU-DCDA/WRIT20833-2025" target="_blank" class="link-badge external-badge">Course GitHub</a></li>
-                    </ul>
-                </section>
-
-                <!-- Recent Updates -->
-                <section class="section">
-                    <div class="section-header">
-                        <span class="section-icon">🔄</span>
-                        <h3>Recent Updates</h3>
-                    </div>
-                    <ul>
-                        <li><span style="color: var(--text-muted); font-size: 0.875rem;">Nov 4</span><br>
-                            HTML/CSS Workshop and web portfolio materials added</li>
-                        <li><span style="color: var(--text-muted); font-size: 0.875rem;">Nov 3</span><br>
-                            Mini-lectures 10-12: GitHub, HTML, CSS</li>
-                        <li><span style="color: var(--text-muted); font-size: 0.875rem;">Sep 29</span><br>
-                            VADER Sentiment Analysis notebook added</li>
-                        <li><span style="color: var(--text-muted); font-size: 0.875rem;">Sep 25</span><br>
-                            Data scraping ethics materials</li>
-                    </ul>
-                </section>
-            </aside>
         </main>
-
-        <!-- Resources Section (Full Width) -->
-        <section id="resources" class="section" style="grid-column: 1 / -1;">
-            <div class="section-header">
-                <span class="section-icon">📚</span>
-                <h2>Course Resources</h2>
-            </div>
-
-            <div class="resource-grid">
-                <div class="resource-card">
-                    <h4>Python Fundamentals</h4>
-                    <ul>
-                        <li><a href="https://docs.python.org/3/tutorial/" target="_blank" class="link-badge external-badge">Python.org Official Tutorial</a></li>
-                        <li><a href="https://www.codecademy.com/learn/learn-python-3" target="_blank" class="link-badge external-badge">Codecademy Python Course</a></li>
-                        <li><a href="https://automatetheboringstuff.com/" target="_blank" class="link-badge external-badge">Automate the Boring Stuff</a></li>
-                    </ul>
-                </div>
-
-                <div class="resource-card">
-                    <h4>Data Analysis</h4>
-                    <ul>
-                        <li><a href="https://pandas.pydata.org/docs/getting_started/intro_tutorials/" target="_blank" class="link-badge external-badge">Pandas Official Tutorials</a></li>
-                        <li><a href="https://www.kaggle.com/learn/pandas" target="_blank" class="link-badge external-badge">Kaggle Learn: Pandas</a></li>
-                        <li><a href="https://github.com/jvns/pandas-cookbook" target="_blank" class="link-badge external-badge">Pandas Cookbook</a></li>
-                    </ul>
-                </div>
-
-                <div class="resource-card">
-                    <h4>Data Visualization</h4>
-                    <ul>
-                        <li><a href="https://matplotlib.org/stable/tutorials/index.html" target="_blank" class="link-badge external-badge">Matplotlib Tutorials</a></li>
-                        <li><a href="https://seaborn.pydata.org/tutorial.html" target="_blank" class="link-badge external-badge">Seaborn Tutorial</a></li>
-                        <li><a href="https://python-graph-gallery.com/" target="_blank" class="link-badge external-badge">Python Graph Gallery</a></li>
-                    </ul>
-                </div>
-
-                <div class="resource-card" id="datasets">
-                    <h4>Practice Datasets</h4>
-                    <p style="font-size: 0.875rem; margin-bottom: var(--space-md); color: var(--text-secondary);">Real-world messy datasets perfect for pandas practice:</p>
-                    <ul>
-                        <li><a href="https://www.kaggle.com/datasets/tmthyjames/nashville-housing-data" target="_blank" class="link-badge external-badge">Nashville Housing Data</a></li>
-                        <li><a href="https://www.kaggle.com/competitions/titanic/data" target="_blank" class="link-badge external-badge">Titanic Dataset</a></li>
-                        <li><a href="https://www.kaggle.com/datasets/mylesoneill/world-university-rankings" target="_blank" class="link-badge external-badge">University Rankings</a></li>
-                    </ul>
-                </div>
-
-                <div class="resource-card">
-                    <h4>Web Development</h4>
-                    <ul>
-                        <li><a href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics" target="_blank" class="link-badge external-badge">MDN HTML Basics</a></li>
-                        <li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps" target="_blank" class="link-badge external-badge">MDN CSS First Steps</a></li>
-                        <li><a href="https://flexboxfroggy.com/" target="_blank" class="link-badge external-badge">Flexbox Froggy</a></li>
-                    </ul>
-                </div>
-
-                <div class="resource-card">
-                    <h4>Ethics & Critical Thinking</h4>
-                    <ul>
-                        <li><a href="https://www.newyorker.com/science/annals-of-artificial-intelligence/will-ai-become-the-new-mckinsey" target="_blank" class="link-badge external-badge">Ted Chiang: AI & McKinsey</a></li>
-                        <li><a href="https://towardsdatascience.com/ethics-in-web-scraping-b96b18136f01" target="_blank" class="link-badge external-badge">Ethics in Web Scraping</a></li>
-                        <li><a href="https://www.eff.org/issues/privacy" target="_blank" class="link-badge external-badge">EFF: Privacy Issues</a></li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="footer">
-            <p>If a link 404s, it's just a placeholder—files will be added as the semester content is finalized.</p>
-        </footer>
     </div>
 
     <script>
-        // P5.js sketch for hero section animation
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Filter Functionality
+        function filterContent(category, element) {
+            // Update active nav state
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            element.classList.add('active');
+
+            const sections = document.querySelectorAll('.content-section');
+            
+            if (category === 'all') {
+                sections.forEach(section => section.classList.remove('hidden'));
+            } else {
+                sections.forEach(section => {
+                    if (section.dataset.category === category) {
+                        section.classList.remove('hidden');
+                    } else {
+                        section.classList.add('hidden');
+                    }
+                });
+            }
+        }
+
+        // Search Functionality
+        const searchInput = document.getElementById('searchInput');
+        searchInput.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            const cards = document.querySelectorAll('.searchable');
+            
+            cards.forEach(card => {
+                const title = card.querySelector('.card-title').textContent.toLowerCase();
+                const desc = card.querySelector('.card-desc').textContent.toLowerCase();
+                
+                if (title.includes(term) || desc.includes(term)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+
+        // P5.js Background Animation
         let particles = [];
-        let canvasContainer;
         
         function setup() {
-            canvasContainer = select('#p5-canvas');
-            if (!canvasContainer) {
-                console.error('Canvas container not found');
-                return;
-            }
-            
-            let w = canvasContainer.elt.offsetWidth;
-            let h = canvasContainer.elt.offsetHeight;
-            let canvas = createCanvas(w, h);
+            let container = document.getElementById('p5-canvas');
+            let canvas = createCanvas(container.offsetWidth, container.offsetHeight);
             canvas.parent('p5-canvas');
             
-            // Create particles representing "data points" and "connections"
-            for (let i = 0; i < 30; i++) {
+            for(let i = 0; i < 50; i++) {
                 particles.push(new Particle());
             }
         }
-        
+
         function draw() {
             clear();
             
-            // Draw connections between nearby particles
-            for (let i = 0; i < particles.length; i++) {
-                for (let j = i + 1; j < particles.length; j++) {
-                    let d = dist(particles[i].x, particles[i].y, particles[j].x, particles[j].y);
-                    if (d < 100) {
-                        stroke(77, 25, 121, map(d, 0, 100, 40, 0)); // Purple with fading opacity
-                        strokeWeight(1);
-                        line(particles[i].x, particles[i].y, particles[j].x, particles[j].y);
+            for(let i = 0; i < particles.length; i++) {
+                let p = particles[i];
+                p.update();
+                p.display();
+                p.checkEdges();
+                
+                // Connect particles
+                for(let j = i + 1; j < particles.length; j++) {
+                    let p2 = particles[j];
+                    let d = dist(p.x, p.y, p2.x, p2.y);
+                    if(d < 100) {
+                        stroke(139, 92, 246, map(d, 0, 100, 50, 0));
+                        line(p.x, p.y, p2.x, p2.y);
                     }
                 }
             }
-            
-            // Update and display particles
-            for (let particle of particles) {
-                particle.update();
-                particle.display();
-                particle.checkEdges();
-            }
         }
-        
+
         function windowResized() {
-            if (canvasContainer) {
-                let w = canvasContainer.elt.offsetWidth;
-                let h = canvasContainer.elt.offsetHeight;
-                resizeCanvas(w, h);
-            }
+            let container = document.getElementById('p5-canvas');
+            resizeCanvas(container.offsetWidth, container.offsetHeight);
         }
-        
+
         class Particle {
             constructor() {
                 this.x = random(width);
                 this.y = random(height);
                 this.vx = random(-0.5, 0.5);
                 this.vy = random(-0.5, 0.5);
-                this.size = random(3, 6);
+                this.size = random(2, 4);
             }
-            
+
             update() {
                 this.x += this.vx;
                 this.y += this.vy;
             }
-            
+
             display() {
                 noStroke();
-                fill(77, 25, 121, 150); // Purple with transparency
+                fill(139, 92, 246, 150);
                 circle(this.x, this.y, this.size);
             }
-            
+
             checkEdges() {
-                if (this.x < 0 || this.x > width) this.vx *= -1;
-                if (this.y < 0 || this.y > height) this.vy *= -1;
+                if(this.x < 0 || this.x > width) this.vx *= -1;
+                if(this.y < 0 || this.y > height) this.vy *= -1;
             }
         }
     </script>
