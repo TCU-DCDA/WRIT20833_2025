@@ -50,6 +50,7 @@ Course materials for **Introduction to Coding in the Humanities** including inte
   - `homework_md/WRIT20833_HW6_HTML_Portfolio_Structure.md`
   - `homework_md/WRIT20833_HW7_CSS_Portfolio_Styling.md`
   - `homework_md/WRIT20833_HW8_Portfolio_Deployment.md`
+- **Editing Digital Essay Guide**: `docs/html_training/editing-portfolio.html` - Comprehensive guide for customizing the digital essay portfolio
 - **Final Project Requirements**: `docs/WRIT20833_Final_Project_Requirements.html`
 
 ## 🗂️ Directory Structure
@@ -192,6 +193,13 @@ Prioritizes **earned insight over clean code**, emphasizing:
 ---
 
 ## 🔄 Recent Updates
+
+### **November 20, 2025 - Site Modernization & "Go Live"**
+- **Site Modernization**: Full "Go Live" deployment of modern, dark-themed dashboard and documentation
+- **Dashboard Redesign**: Separated "Major Projects" from "Homework Assignments" for better navigation
+- **Editing Digital Essay Guide**: Renamed and expanded "Portfolio Editing" guide to "Editing Digital Essay Guide"
+- **Project Requirements**: Added prominent links to the Editing Digital Essay Guide in project requirements
+- **File Structure**: Standardized file naming (removed `_modern` suffixes) for production deployment
 
 ### **November 4, 2025 - Web Portfolio Development Phase**
 - **HTML/CSS Workshop Created**: Comprehensive two-session code-along covering semantic HTML and CSS fundamentals
