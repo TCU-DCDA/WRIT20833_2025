@@ -294,6 +294,7 @@
                 <div style="color: var(--accent); font-weight: 600; margin-bottom: 0.5rem; letter-spacing: 0.05em;">FINAL PROJECT</div>
                 <h1>When Coding Meets Culture</h1>
                 <p style="font-size: 1.25rem; color: var(--text-secondary);">Developing Data-Driven Opinions through Computational Analysis</p>
+                <p id="last-updated" style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 1rem; opacity: 0.8;"></p>
             </header>
 
             <div class="info-box">
@@ -441,6 +442,13 @@
 
     <script>
         lucide.createIcons();
+
+        // Set last updated date
+        const date = new Date(document.lastModified);
+        const dateElement = document.getElementById('last-updated');
+        if (dateElement) {
+            dateElement.textContent = 'Last Updated: ' + date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+        }
 
         // Simple scroll spy for sidebar navigation
         const sections = document.querySelectorAll('section');
